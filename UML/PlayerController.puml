@@ -1,0 +1,91 @@
+@startuml
+title Player Controller System
+
+left to right direction
+skinparam classAttributeIconSize 0
+skinparam monochrome true
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam linetype ortho
+
+package "Input Layer" {
+  class PlayerController {
+    - movement : Movement
+    - facing : Facing2D
+    - aimPivot : AimPivot2D
+    - mainCamera : Camera
+    + OnMove(context : InputAction.CallbackContext) : void
+    - Awake() : void
+    - Update() : void
+  }
+}
+
+package "Movement Layer" {
+  class Movement {
+    - moveSpeed : float = 5f
+    - rb2d : Rigidbody2D
+    - moveInput : Vector2
+    + SetmoveInput(input : Vector2) : void
+    - Start() : void
+    - FixedUpdate() : void
+  }
+}
+
+package "Facing Layer" {
+  together {
+    class Facing2D {
+      - faceRight : bool = true
+      + IsFacingRight : bool { get }
+      + SetDirection(direction : float) : void
+      - Flip() : void
+    }
+
+    class AimPivot2D {
+      - aimPivot : Transform
+      + SetDirection(direction : Vector2) : void
+      + ResetRotation() : void
+    }
+  }
+}
+
+package "Unity Objects" {
+  class Camera
+  class Rigidbody2D
+  class Transform
+}
+
+PlayerController --> Movement : move input
+PlayerController --> Facing2D : facing
+PlayerController --> AimPivot2D : aim
+PlayerController --> Camera : mouse position
+
+Movement --> Rigidbody2D : MovePosition()
+AimPivot2D --> Transform : rotate pivot
+
+PlayerController -[hidden]right- Movement
+Movement -[hidden]right- Facing2D
+Facing2D -[hidden]down- AimPivot2D
+Movement -[hidden]down- Camera
+AimPivot2D -[hidden]right- Transform
+Movement -[hidden]right- Rigidbody2D
+
+note right of PlayerController
+Main flow:
+1. Read move input from Input System
+2. Send input to Movement
+3. Read mouse position from camera
+4. Compute look direction
+5. Update Facing2D and AimPivot2D
+end note
+
+note bottom of Rigidbody2D
+Moves player in FixedUpdate
+using Rigidbody2D.MovePosition.
+end note
+
+note bottom of Transform
+Rotates weapon/aim pivot
+to face mouse direction.
+end note
+
+@enduml

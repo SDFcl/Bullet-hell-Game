@@ -44,7 +44,7 @@ public class ObjectPooler : MonoBehaviour
         }
     }
 
-	public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
+	public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation, System.Action<GameObject> beforeSpawn = null)
 	{
 		if (!poolDictionary.ContainsKey(tag))
 		{
@@ -53,10 +53,13 @@ public class ObjectPooler : MonoBehaviour
 		}
 
 		GameObject objectToSpawn = poolDictionary[tag].Dequeue();
-
-		objectToSpawn.SetActive(true);
+		
 		objectToSpawn.transform.position = position;
 		objectToSpawn.transform.rotation = rotation;
+
+		beforeSpawn?.Invoke(objectToSpawn);
+
+		objectToSpawn.SetActive(true);
 
 		IPooledObject pooledObj = objectToSpawn.GetComponent<IPooledObject>();
 		if(pooledObj != null)

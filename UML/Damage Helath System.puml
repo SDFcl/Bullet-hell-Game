@@ -1,0 +1,186 @@
+@startuml
+title Damage Helath System
+
+top to bottom direction
+skinparam classAttributeIconSize 0
+skinparam monochrome true
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam linetype ortho
+
+package "Interfaces" {
+  together {
+    interface IDamageable {
+      + TakeDamage(damage : float) : void
+    }
+
+    interface IHealable {
+      + Heal(amount : float) : void
+    }
+
+    interface IWeapon {
+      + OnAttack : Action
+      + SetOwner(owner : GameObject) : void
+      + ExecuteAttack() : void
+    }
+
+    interface IPooledObject {
+      + OnObjectSpawn() : void
+    }
+  }
+}
+
+package "Health System" {
+  together {
+    class Health {
+      # maxHealth : float = 100f
+      + CurrentHP : float { get protected set }
+      + IsDead : bool { get }
+      + OnDead : Action
+      + OnHealthChanged : Action<float>
+      # DeadEvent() : void
+      # HealthChangedEvent() : void
+      + TakeDamage(damage : float) : void
+      + Kill() : void
+    }
+
+    class PlayerHealth {
+      + Heal(amount : float) : void
+    }
+
+    class Mana {
+      - maxMana : float = 100f
+      - manaRegenRate : float = 1f
+      + CurrentMana : float { get private set }
+      - RegenMana() : void
+      + BoostMaxMana(value : float) : void
+      + BoostCurrentMana(value : float) : void
+      + BoostRegenRate(value : float) : void
+      + ConsumeMana(amount : float) : void
+    }
+  }
+}
+
+package "Combat System" {
+  together {
+    class Hitbox {
+      - damage : float
+      - hitCollider : Collider2D
+      - isTrigger : bool
+      - owner : GameObject
+      + SetDamage(damage : float) : void
+      + SetOwner(owner : GameObject) : void
+      + EnableCol(enable : bool) : void
+      # ProcessHit(col : Collider2D) : void
+    }
+
+    class ProjectlieHit {
+      - lifeTime : float = 0f
+      - speed : float = 0f
+      - rb : Rigidbody2D
+      + OnObjectSpawn() : void
+      - Disable() : IEnumerator
+      # ProcessHit(col : Collider2D) : void
+      + SetProjectlieSpeed(value : float) : void
+    }
+
+    class MeleeWeapon {
+      - damage : float = 10f
+      - cooldown : float = 0.5f
+      - hitbox : Hitbox
+      - cooldownTimer : float
+      + OnAttack : Action
+      + SetOwner(owner : GameObject) : void
+      + ExecuteAttack() : void
+      + EnableHitbox() : void
+      + DisableHitbox() : void
+    }
+
+    class ProjectileWeapon {
+      - damage : int = 10
+      - cooldown : float = 0.5f
+      - projectileSpeed : float = 10f
+      - projectilePoolTag : string = "BlueProjectile"
+      - manaCost : float = 20f
+      - shootPoint : Transform
+      + OnAttack : Action
+      - cooldownTimer : float
+      - owner : GameObject
+      - mana : Mana
+      + ExecuteAttack() : void
+      - Shoot() : void
+      + SetProjectileTag(tag : string) : void
+      + SetOwner(owner : GameObject) : void
+      + SetMana(mana : Mana) : void
+    }
+  }
+}
+
+package "Support System" {
+  class ObjectPooler {
+    + Instance : ObjectPooler
+    + SpawnFromPool(tag : string, position : Vector3, rotation : Quaternion, beforeSpawn : Action<GameObject>) : GameObject
+  }
+}
+
+PlayerHealth --|> Health
+PlayerHealth ..|> IHealable
+Health ..|> IDamageable
+
+ProjectlieHit --|> Hitbox
+ProjectlieHit ..|> IPooledObject
+
+MeleeWeapon ..|> IWeapon
+ProjectileWeapon ..|> IWeapon
+
+together {
+  MeleeWeapon --> Hitbox : uses
+  ProjectileWeapon --> ProjectlieHit : configures
+}
+
+ProjectileWeapon --> Mana : consumes
+ProjectileWeapon --> ObjectPooler : spawns
+Hitbox ..> IDamageable : deals damage
+
+' Hidden links only for layout
+Health -[hidden]right- Mana
+Health -[hidden]down- PlayerHealth
+MeleeWeapon -[hidden]right- ProjectileWeapon
+ProjectileWeapon -[hidden]right- Hitbox
+Hitbox -[hidden]down- ProjectlieHit
+ProjectileWeapon -[hidden]down- ObjectPooler
+IDamageable -[hidden]right- IWeapon
+IWeapon -[hidden]right- IPooledObject
+PlayerHealth -[hidden]right- IHealable
+Health -[hidden]down- IDamageable
+ProjectileWeapon -[hidden]down- IWeapon
+ProjectlieHit -[hidden]down- IPooledObject
+
+note bottom of Hitbox
+Ignores collision with owner
+or same tag as owner.
+On hit:
+1. Find IDamageable in parent
+2. Call TakeDamage(damage)
+end note
+
+note bottom of ProjectileWeapon
+Attack flow:
+1. Check cooldown
+2. Check mana
+3. Spawn projectile from pool
+4. Set damage, speed, owner
+5. Consume mana
+6. Fire OnAttack event
+end note
+
+note bottom of Health
+Health flow:
+TakeDamage reduces CurrentHP.
+If CurrentHP <= 0:
+- set CurrentHP to 0
+- invoke OnDead
+Every change invokes OnHealthChanged.
+end note
+
+@enduml
