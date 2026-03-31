@@ -1,24 +1,18 @@
-﻿using System.Linq;
-using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using UnityEngine;
 
-public class PlayerMoveMent : MonoBehaviour
+public class Movement : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 5f;
 
     Rigidbody2D rb2d;
     Vector2 moveInput;
+    public void SetmoveInput(Vector2 input) => moveInput = input;
 
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         rb2d.freezeRotation = true;
         rb2d.gravityScale = 0f;
-    }
-
-    public void OnMove(InputAction.CallbackContext context)
-    {
-        moveInput = context.ReadValue<Vector2>();
     }
 
     void FixedUpdate()
