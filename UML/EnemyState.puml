@@ -1,0 +1,242 @@
+@startuml EnemyState
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam shadowing false
+skinparam linetype ortho
+skinparam nodesep 35
+skinparam ranksep 45
+left to right direction
+
+title Enemy + State Pattern
+
+package "Enemy" {
+  class EnemyController {
+    - target : Transform
+    - stateGraph : EnemyStateGraphSO
+    - ctx : EnemyContext
+    - stateMachine : StateMachine<EnemyContext>
+    + Awake()
+    + Update()
+  }
+
+  class EnemyContext {
+    + Self : Transform
+    + Target : Transform
+    + Health : Health
+    + Mana : Mana
+    + Movement : Movement
+    + AimPivot : AimPivot2D
+    + Facing : Facing2D
+    + PathToDir : PathToDir
+    + Get<T>() : T
+  }
+
+  class PathToDir {
+    - seeker : Seeker
+    - currentPath : Path
+    + SetDestination()
+    + ClearDestination()
+    + GetDirection() : Vector2
+    + ReachedDestination() : bool
+    + SetReachedDestinationDistance()
+    + ResetReachedDestinationDistance()
+  }
+
+  EnemyController *-- EnemyContext
+  EnemyContext *-- PathToDir
+}
+
+package "Pathfinding" {
+  class Seeker {
+    + IsDone() : bool
+    + StartPath(start, end, callback)
+  }
+
+  class Path {
+    + vectorPath
+    + error : bool
+    + errorLog : string
+  }
+}
+
+package "State Pattern" {
+  interface "IState<EnemyContext>" as IState {
+    + OnEnter(ctx)
+    + OnUpdate(ctx)
+    + OnExit(ctx)
+  }
+
+  interface "IAction<EnemyContext>" as IAction {
+    + OnEnter(ctx)
+    + OnUpdate(ctx)
+    + OnExit(ctx)
+  }
+
+  interface "ICondition<EnemyContext>" as ICondition {
+    + IsMet(ctx) : bool
+  }
+
+  class "State<EnemyContext>" as State {
+    - _actions : List<IAction>
+    - _transitions : List<Transition>
+    + AddAction()
+    + AddTransition()
+    + GetNextState()
+    + OnEnter()
+    + OnUpdate()
+    + OnExit()
+  }
+
+  class "Transition<EnemyContext>" as Transition {
+    + Condition : ICondition
+    + TargetState : IState
+  }
+
+  class "StateMachine<EnemyContext>" as StateMachine {
+    + CurrentState
+    + Initialize()
+    + ChangeState()
+    + Tick()
+  }
+
+  IState <|.. State
+  State *-- IAction
+  State *-- Transition
+  Transition --> ICondition
+  Transition --> IState
+  StateMachine --> IState
+  StateMachine --> State : checks transition
+}
+
+package "State Assets" {
+  abstract class EnemyActionSO {
+    + CreateAction() : IAction
+  }
+
+  abstract class EnemyConditionSO {
+    + CreateCondition() : ICondition
+  }
+
+  class EnemyStateTransitionSO {
+    + condition : EnemyConditionSO
+    + targetState : EnemyStateSO
+  }
+
+  class EnemyStateSO {
+    + actions : List<EnemyActionSO>
+    + transitions : List<EnemyStateTransitionSO>
+  }
+
+  class EnemyStateGraphSO {
+    + entryState : EnemyStateSO
+    + allStates : List<EnemyStateSO>
+  }
+
+  class EnemyStateGraphBuilder {
+    + Build(graph : EnemyStateGraphSO) : IState
+  }
+
+  EnemyStateGraphSO *-- EnemyStateSO
+  EnemyStateSO *-- EnemyActionSO
+  EnemyStateSO *-- EnemyStateTransitionSO
+  EnemyStateTransitionSO --> EnemyConditionSO
+  EnemyStateTransitionSO --> EnemyStateSO
+}
+
+package "Concrete Types" {
+  class EnemyIdleAction {
+    + OnEnter(ctx)
+    + OnUpdate(ctx)
+    + OnExit(ctx)
+  }
+
+  class ChaseAction {
+    + OnEnter(ctx)
+    + OnUpdate(ctx)
+    + OnExit(ctx)
+  }
+
+  class WanderAction {
+    + OnEnter(ctx)
+    + OnUpdate(ctx)
+    + OnExit(ctx)
+  }
+
+  class PressKeyCondition {
+    + IsMet(ctx) : bool
+  }
+
+  class EnemyIdleActionSO {
+    + CreateAction() : IAction
+  }
+
+  class ChaseActionSO {
+    + CreateAction() : IAction
+  }
+
+  class WanderActionSO {
+    + CreateAction() : IAction
+  }
+
+  class PressKeyConditionSO {
+    + CreateCondition() : ICondition
+  }
+
+  IAction <|.. EnemyIdleAction
+  IAction <|.. ChaseAction
+  IAction <|.. WanderAction
+  ICondition <|.. PressKeyCondition
+
+  EnemyActionSO <|-- EnemyIdleActionSO
+  EnemyActionSO <|-- ChaseActionSO
+  EnemyActionSO <|-- WanderActionSO
+  EnemyConditionSO <|-- PressKeyConditionSO
+
+  EnemyIdleActionSO ..> EnemyIdleAction : create
+  ChaseActionSO ..> ChaseAction : create
+  WanderActionSO ..> WanderAction : create
+  PressKeyConditionSO ..> PressKeyCondition : create
+}
+
+EnemyController *-- StateMachine
+EnemyController --> EnemyStateGraphSO
+EnemyStateGraphBuilder ..> EnemyStateGraphSO : build from
+EnemyStateGraphBuilder ..> State : create runtime state
+EnemyStateGraphBuilder ..> Transition : create runtime transition
+EnemyStateGraphBuilder ..> EnemyActionSO : create action
+EnemyStateGraphBuilder ..> EnemyConditionSO : create condition
+EnemyContext --> PathToDir : use movement path
+PathToDir *-- Seeker
+PathToDir --> Path
+ChaseAction --> PathToDir : set destination / get direction
+WanderAction --> PathToDir : roam path control
+
+EnemyController -[hidden]right- StateMachine
+StateMachine -[hidden]right- EnemyStateGraphBuilder
+EnemyStateGraphBuilder -[hidden]down- EnemyStateGraphSO
+PathToDir -[hidden]down- Seeker
+Seeker -[hidden]right- Path
+EnemyIdleAction -[hidden]right- ChaseAction
+ChaseAction -[hidden]right- WanderAction
+EnemyIdleActionSO -[hidden]right- ChaseActionSO
+ChaseActionSO -[hidden]right- WanderActionSO
+
+note right of StateMachine
+Context = EnemyController
+State = IState / State
+Behavior = IAction
+Guard = ICondition
+end note
+
+note bottom of EnemyStateGraphBuilder
+Build converts ScriptableObject graph
+into runtime State and Transition objects.
+end note
+
+note right of PathToDir
+Wraps A* Pathfinding Project API
+and converts path result into
+movement direction for enemy AI.
+end note
+
+@enduml
