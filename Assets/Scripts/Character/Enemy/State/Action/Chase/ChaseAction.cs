@@ -11,7 +11,9 @@ public class ChaseAction : IAction<EnemyContext>
         if (ctx.Target == null)
             return;
 
-        Vector2 dir = ctx.Target.position - ctx.Self.position;
+        ctx.PathToDir.SetDestination(ctx.Target.position);
+
+        Vector2 dir = ctx.PathToDir.GetDirection();
 
         ctx.Facing?.SetDirection(dir.x);
 
@@ -22,6 +24,8 @@ public class ChaseAction : IAction<EnemyContext>
     public void OnExit(EnemyContext ctx)
     {
         Debug.Log("Exit Chase");
+        ctx.PathToDir.ClearDestination();
+        ctx.Movement.StopMovement();
     }
 }
 

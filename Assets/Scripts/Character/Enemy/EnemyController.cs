@@ -1,4 +1,5 @@
 using UnityEngine;
+using Pathfinding;
 
 public class EnemyController : MonoBehaviour
 {
@@ -17,7 +18,8 @@ public class EnemyController : MonoBehaviour
             mana: GetComponent<Mana>(),
             movement: GetComponent<Movement>(),
             aimPivot: GetComponentInChildren<AimPivot2D>(),
-            facing: GetComponent<Facing2D>()
+            facing: GetComponent<Facing2D>(),
+            pathToDir: GetComponent<PathToDir>()
         );
 
         stateMachine = new StateMachine<EnemyContext>(ctx);

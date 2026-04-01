@@ -11,11 +11,14 @@ GameObject:
   - component: {fileID: 5186417453158515993}
   - component: {fileID: 1598138450162243886}
   - component: {fileID: 5008803227342585709}
+  - component: {fileID: 9033796279139054383}
   - component: {fileID: 2346490093800541275}
   - component: {fileID: 1016200764030385484}
   - component: {fileID: 6589654705949520299}
   - component: {fileID: 8680120798866964799}
   - component: {fileID: 6161866243694476481}
+  - component: {fileID: 7159617837322246399}
+  - component: {fileID: 1872898421231478509}
   m_Layer: 0
   m_Name: "\u0E3ABaseEnemy"
   m_TagString: Untagged
@@ -103,6 +106,20 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.5, y: 1}
   m_Direction: 0
+--- !u!114 &9033796279139054383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4764147975119969297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57699e222e1ff9e48912c6d0afc4d515, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  stateGraph: {fileID: 11400000, guid: ea010681310239b4f9c270308c81e7e2, type: 2}
 --- !u!114 &2346490093800541275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +188,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   faceRight: 1
+--- !u!114 &7159617837322246399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4764147975119969297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
+--- !u!114 &1872898421231478509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4764147975119969297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a962fc29feef29489fc1c1e30655f09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  repathRate: 0.35
+  nextWaypointDistance: 0.15
+  reachedDestinationDistance: 0.2
 --- !u!1 &8618897680076142067
 GameObject:
   m_ObjectHideFlags: 0

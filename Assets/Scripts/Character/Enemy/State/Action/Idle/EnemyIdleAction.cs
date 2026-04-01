@@ -4,7 +4,7 @@ public class EnemyIdleAction : IAction<EnemyContext>
 {
     public void OnEnter(EnemyContext ctx)
     {
-        Debug.Log("Enter Idle");
+        ctx.Movement.StopMovement();
     }
 
     public void OnUpdate(EnemyContext ctx)
@@ -14,6 +14,6 @@ public class EnemyIdleAction : IAction<EnemyContext>
 
     public void OnExit(EnemyContext ctx)
     {
-        Debug.Log("Exit Idle");
+        //Debug.Log("Exit Idle");
     }
 }
