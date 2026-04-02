@@ -6,15 +6,13 @@ public class ItemPickup : MonoBehaviour
 
     public void Pickup(Inventory inventory)
     {
-        if (itemData != null && inventory != null)
-        {
-            Item newItem = new Item(itemData);
-            inventory.AddItem(newItem);
-            Destroy(gameObject); // ทำลอบวัตถุในโลกหลังจากหยิบขึ้นมา
-        }
-        else
-        {
-            Debug.LogWarning("ItemData หรือ Inventory ไม่ถูกกำหนดสำหรับการหยิบไอเท็มนี้.");
-        }
+        if (itemData == null || inventory == null) return;
+
+        Item newItem = new Item(itemData);
+        if (itemData.itemType == ItemType.Weapon)
+            inventory.AddWeapon(newItem);
+        if (itemData.itemType == ItemType.Consumable)
+            inventory.AddConsumable(newItem);
+        Destroy(gameObject);
     }
 }

@@ -1,38 +1,61 @@
 ﻿using UnityEngine;
 
-public class HoldingItem : MonoBehaviour
+public class HoldingWeapon : MonoBehaviour
 {
-    public GameObject DropPosition;
-
-    [SerializeField]
-    private Inventory Inventory;
+    [SerializeField] private Inventory inventory;
 
     public GameObject currentItem;
-    public int currentIndex = 0;
+    public int currentIndex;
 
-    private void Awake()
+    private void OnEnable()
     {
-        if (DropPosition == null)
-        {
-            DropPosition = this.gameObject; // กำหนด DropPosition เป็นตัวเองถ้าไม่ได้กำหนดใน Inspector
-        }
+        inventory.OnWeaponChanged += SetHoldingWeapon;
     }
 
-    private void Update()
+    private void OnDisable()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            HoldItem(1); // เลื่อนขวา
-        }
-        else if (Input.GetKeyDown(KeyCode.X))
-        {
-            HoldItem(-1); // เลื่อนซ้าย
-        }
+        inventory.OnWeaponChanged -= SetHoldingWeapon;
     }
 
-    public void SetHoldingItem(int index)
+
+    public void SetHoldingWeapon(int index = -2, int direction = 0, bool Check = true)
     {
-        // ลบของเก่าก่อน
+        if (index == -2) index = currentIndex; // ถ้าไม่ได้ส่ง index มา ให้ใช้ currentIndex
+        Debug.Log("SetHoldingWeapon called with index: " + index + ", direction: " + direction + ", Check: " + Check);
+
+        if (Check)
+        {
+            int count = inventory.Weapons.Count;
+
+            if (count == 0)
+            {
+                Debug.Log("No items in inventory to hold.");
+                return;
+            }
+
+            // ทำให้ index อยู่ใน range ก่อน
+            index = (index + direction + count) % count;
+
+            int startIndex = index;
+
+            // 🔥 วนหา item ที่ valid
+            while (inventory.Weapons[index].itemData == null)
+            {
+                index = (index + direction + count) % count;
+
+                // ถ้าวนครบแล้วไม่เจอ
+                if (index == startIndex)
+                {
+                    Debug.Log("No valid weapon to hold.");
+                    return;
+                }
+            }
+
+            // ถ้าเป็นตัวเดิม ไม่ต้องทำอะไร
+            if (currentIndex == index) return;
+        }
+
+        // ลบของเก่า
         if (currentItem != null)
         {
             Destroy(currentItem);
@@ -40,67 +63,41 @@ public class HoldingItem : MonoBehaviour
 
         currentIndex = index;
 
-        currentItem = Instantiate(
-            Inventory.items[currentIndex].itemData.HoldingPrefab,
-            transform
-        );
+        Item item = inventory.Weapons[index];
+
+        currentItem = Instantiate(item.itemData.HoldingPrefab, transform);
+        Debug.Log("Holding weapon: " + item.itemData.itemName + " at index " + index);
     }
 
-    public void HoldItem(int value)
+    public void HoldWeapon(int value)
     {
-        if (Inventory.items.Count == 0)
-        {
+        if (inventory.Weapons.Count == 0) 
+        { 
             Debug.Log("No items in inventory to hold.");
-            return;
+            return; 
         }
 
-        int count = Inventory.items.Count;
-
+        // 🔥 ใช้ modulo เพื่อให้มันวนรอบได้ และเช็คว่ามันมี item ไหม ถ้าไม่มีก็ข้ามไปเรื่อยๆ จนกว่าจะเจอ หรือถ้าเจอกลับมาที่เดิมก็หยุด
+        int count = inventory.Weapons.Count;
         int Index = (currentIndex + value + count) % count;
         int startIndex = Index;
-
-        while (Inventory.items[Index].itemData == null)
+        while (inventory.Weapons[Index].itemData == null) 
         {
             Index = (Index + value + count) % count;
-
             if (Index == startIndex)
             {
                 Debug.Log("No valid items to hold.");
                 return;
             }
         }
-
         if (currentIndex == Index) return;
 
         // 🔥 แค่ลบของเก่า (ไม่ drop)
         if (currentItem != null)
         {
             Destroy(currentItem);
-        }
-
+        } 
         currentIndex = Index;
-
-        currentItem = Instantiate(
-            Inventory.items[currentIndex].itemData.HoldingPrefab,
-            transform
-        );
+        currentItem = Instantiate( inventory.Weapons[currentIndex].itemData.HoldingPrefab, transform ); 
     }
-
-    public void DropCurrentItem()
-    {
-        if (currentItem == null) return;
-
-        ItemData data = currentItem.GetComponent<ItemPickup>().itemData;
-
-        // สร้างของในโลก
-        Instantiate(data.WorldPrefab, DropPosition.transform.position, Quaternion.identity);
-
-        // ลบออกจาก inventory
-        Inventory.items[currentIndex].itemData = null;
-
-        Destroy(currentItem);
-        currentItem = null;
-    }
-
-
 }

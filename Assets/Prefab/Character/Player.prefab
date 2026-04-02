@@ -166,9 +166,37 @@ MonoBehaviour:
     m_ActionId: e849d73d-6098-42c5-a1d4-92c323b3626f
     m_ActionName: Player/Dodge
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8709628061743692171}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnInteract
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 24431f56-ded2-4305-9a91-fcae25836eaf
     m_ActionName: 'Player/Interact[/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8709628061743692171}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnHoldItem
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1322698a-ee18-4d7e-af10-83d75e01aeca
+    m_ActionName: 'Player/Change Weapon[/Mouse/scroll]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -311,9 +339,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e149856b005c4964b832d55645268044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxItems: 5
   holdingItem: {fileID: 1806227272745888316}
-  items: []
+  maxWeapons: 5
+  Weapons: []
+  maxUsableItems: 5
+  Items: []
 --- !u!114 &2240252014442532520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -657,9 +687,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1976162329
+  m_SortingLayer: 3
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
