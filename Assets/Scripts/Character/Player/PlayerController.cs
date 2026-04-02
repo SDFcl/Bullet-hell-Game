@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,7 +10,8 @@ public class PlayerController : MonoBehaviour
     private PlayerInput playerInput;
     private Dodge dodge;
     private RayInteract rayInteract;
-    private HoldingItem holdingItem;
+    private HoldingWeapon holdingItem;
+    private Inventory inventory;
 
     Vector2 dir;
 
@@ -23,7 +25,8 @@ public class PlayerController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         dodge = GetComponent<Dodge>();
         rayInteract = GetComponent<RayInteract>();
-        holdingItem = GetComponentInChildren<HoldingItem>();
+        holdingItem = GetComponentInChildren<HoldingWeapon>();
+        inventory = GetComponentInChildren<Inventory>();
 
         if (mainCamera == null)
             mainCamera = Camera.main;  
@@ -72,16 +75,35 @@ public class PlayerController : MonoBehaviour
         if (Time.time - lastScrollTime < scrollCooldown) return;
 
         float scroll = context.ReadValue<Vector2>().y;
-        Debug.Log("Scroll Input: " + scroll);   // ไว้เช็คค่ามัน smooth มั้ย
+        //Debug.Log("Scroll Input: " + scroll);   // ไว้เช็คค่ามัน smooth มั้ย
         if (scroll > 0f)
         {
-            holdingItem.HoldItem(1);
+            holdingItem.SetHoldingWeapon(-2, 1, true);
         }
         else if (scroll < 0f)
         {
-            holdingItem.HoldItem(-1);
+            holdingItem.SetHoldingWeapon(-2, -1, true);
         }
         lastScrollTime = Time.time;
+    }
+
+    public void UseConsumable(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            foreach (ItemEffect itemEffect in inventory.Consumables[0].itemData.effects)
+            {
+                if (itemEffect != null)
+                {
+                    itemEffect.Apply(gameObject);
+                    Debug.Log("Applied effect: " + itemEffect.name);   // ไว้เช็คว่ามัน detect ปุ่มมั้ย
+                }
+                else
+                {
+                    Debug.Log("No effect found in the consumable item.");   // ไว้เช็คว่ามัน detect ปุ่มมั้ย
+                }
+            }
+        }
     }
 
     private void Update()

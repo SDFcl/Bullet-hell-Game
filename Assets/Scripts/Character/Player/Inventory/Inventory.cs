@@ -1,74 +1,74 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    [Header("Settings")]
-    public int maxItems = 5;
+    [Header("Weapons")]
+    public List<Item> Weapons = new List<Item>();
+    public int maxWeapons = 5;
 
-    [Header("References")]
-    public HoldingItem holdingItem;
-    public List<Item> items = new List<Item>();
+    [Header("Consumables")]
+    public List<Item> Consumables = new List<Item>();
+    public int maxConsumables = 1;
 
+    // 🔥 Event
+    public Action<int,int,bool> OnWeaponChanged;
 
-    public void AddItem(Item item)
+    public void AddWeapon(Item item)
     {
-        // 🔹 กรณี inventory ว่าง
-        if (items.Count == 0)
+        if (Weapons.Count == 0)
         {
-            items.Add(item);
-            Debug.Log("Holding item : " + item.itemData.itemName);
-            holdingItem.SetHoldingItem(0);
+            Weapons.Add(item);
+            OnWeaponChanged?.Invoke(0, 0, false);
+            Debug.Log("Added weapon: " + item.itemData.itemName + " at index 0");
             return;
         }
 
-        // 🔹 กรณีเต็ม
-        if (items.Count >= maxItems)
+        if (Weapons.Count >= maxWeapons)
         {
-            Debug.Log("Inventory full, replacing current item");
+            HoldingWeapon holdingWeapon = FindObjectOfType<HoldingWeapon>();
+            int currentIndex = holdingWeapon.currentIndex;
+            DropWeapon(currentIndex);
+            Weapons.Insert(currentIndex, item);
 
-            int index = holdingItem.currentIndex;
-
-            // 1. Drop ของเก่า
-            holdingItem.DropCurrentItem();
-
-            // 2. แทนที่ slot เดิม (ไม่ใช่ Add)
-            items[index] = item;
-
-            // 3. ถือของใหม่
-            holdingItem.SetHoldingItem(index);
-
-            Debug.Log("Holding new item : " + item.itemData.itemName);
+            OnWeaponChanged?.Invoke(currentIndex, 0, false);
             return;
         }
 
-        // 🔹 กรณีปกติ
-        items.Add(item);
-        Debug.Log("Added item: " + item.itemData.itemName);
+        Weapons.Add(item);
+        int newIndex = Weapons.Count - 1;
+        OnWeaponChanged?.Invoke(newIndex, 0, false);
     }
 
-    public void RemoveItem(Item item, Vector2 dropPosition)
+    public void AddConsumable(Item item)
     {
-        if (items.Contains(item))
+        if (Consumables.Count >= maxConsumables)
         {
-            GameObject.Instantiate(item.itemData.WorldPrefab, dropPosition, Quaternion.identity);
-            items.Remove(item);
-            Debug.Log("Removed item: " + item.itemData.itemName);
+            DropConsumable(0);
+            Consumables.Insert(0, item);
+            return;
         }
-        else
-        {
-            Debug.Log("Item not found in inventory: " + item.itemData.itemName);
-        }
+
+        Consumables.Add(item);
     }
 
-    /* Debugging method to check inventory contents
-    private void Update()
+    public void DropWeapon(int index)
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            //
-            Debug.Log(Equals(items.Count, 0) ? "Inventory is empty." : "Inventory has " + items.Count + " item(s).");
-            Debug.Log(items.Count > 0 ? "First item: " + items[0].itemData.itemName : "No items to display.");
-        }
-    }*/
+        if (index < 0 || index >= Weapons.Count) return;
+
+        Item item = Weapons[index];
+
+        Instantiate(item.itemData.WorldPrefab, this.transform.position, Quaternion.identity);
+
+        Weapons.RemoveAt(index);
+    }
+
+    public void DropConsumable(int index)
+    {
+        if (index < 0 || index >= Consumables.Count) return;
+        Item item = Consumables[index];
+        Instantiate(item.itemData.WorldPrefab, this.transform.position, Quaternion.identity);
+        Consumables.RemoveAt(index);
+    }
 }

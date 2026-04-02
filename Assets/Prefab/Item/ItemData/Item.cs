@@ -8,4 +8,12 @@ public class Item : MonoBehaviour
     {
         itemData = data;
     }
+
+    public void Use(GameObject user)
+    {
+        foreach (var effect in itemData.effects)
+        {
+            effect.Apply(user);
+        }
+    }
 }
