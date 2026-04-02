@@ -9,6 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a7b394187aea6047a73f7e40b9b5643, type: 3}
-  m_Name: BaseEnemyChaseAction
+  m_Script: {fileID: 11500000, guid: 099ebe250625a5f41b5c1aba10c536cd, type: 3}
+  m_Name: BasicEnemy
   m_EditorClassIdentifier: 
+  entryState: {fileID: 11400000, guid: c2710c817011ab94eb92a0f9887aadc3, type: 2}
+  allStates:
+  - {fileID: 11400000, guid: 90d27a1c0e968304cadb68615900a38d, type: 2}

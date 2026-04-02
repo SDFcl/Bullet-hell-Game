@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3227682f4a06603448b68bada9713a76, type: 3}
-  m_Name: BaseEnemyIdleState
+  m_Name: "\u0E3AEnemyWanderState"
   m_EditorClassIdentifier: 
   actions:
-  - {fileID: 11400000, guid: 6eb8884b42151564992b300baa809a6d, type: 2}
+  - {fileID: 11400000, guid: c23695bcbe1cc654abead0f76e9ddf42, type: 2}
   transitions:
   - condition: {fileID: 11400000, guid: 92a5b6789a5abdc4785de75135962962, type: 2}
     targetState: {fileID: 11400000, guid: 90d27a1c0e968304cadb68615900a38d, type: 2}

@@ -26,10 +26,22 @@ public class EnemyController : MonoBehaviour
 
         IState<EnemyContext> startState = EnemyStateGraphBuilder.Build(stateGraph);
         stateMachine.Initialize(startState);
+
+        stateMachine.OnStateChanged += HandleStateChanged;
+    }
+
+    void OnDestroy()
+    {
+        stateMachine.OnStateChanged -= HandleStateChanged;
     }
 
     private void Update()
     {
+        ctx.Timer.Tick(Time.deltaTime);
         stateMachine.Tick();
+    }
+    private void HandleStateChanged(IState<EnemyContext> prev, IState<EnemyContext> next)
+    {
+        ctx.Timer.ResetTimer();
     }
 }

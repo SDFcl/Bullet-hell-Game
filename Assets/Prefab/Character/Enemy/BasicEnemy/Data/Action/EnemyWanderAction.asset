@@ -9,6 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ca92d9400564e44ebe75123d1de7e5b, type: 3}
-  m_Name: BaseEnemyIdleAction
+  m_Script: {fileID: 11500000, guid: d8e9d61c7e1ab0f43ac53b1d34214401, type: 3}
+  m_Name: EnemyWanderAction
   m_EditorClassIdentifier: 
+  wanderRadius: 4
+  minWaitTime: 1
+  maxWaitTime: 2.5
+  wanderMoveSpeed: 4
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 8

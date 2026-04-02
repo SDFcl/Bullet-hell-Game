@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 
 public class StateMachine<T>
 {
     public IState<T> CurrentState { get; private set; }
     private readonly T _ctx;
+    public event Action<IState<T>, IState<T>> OnStateChanged;
 
     public StateMachine(T ctx)
     {
@@ -27,10 +29,14 @@ public class StateMachine<T>
         if (ReferenceEquals(CurrentState, nextState))
             return;
 
+        var previousState = CurrentState;
+
         CurrentState.OnExit(_ctx);
         CurrentState = nextState;
         CurrentState.OnEnter(_ctx);
-    }
+
+        OnStateChanged?.Invoke(previousState, CurrentState);
+}
 
     public void Tick()
     {

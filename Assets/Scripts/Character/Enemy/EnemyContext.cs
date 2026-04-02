@@ -13,8 +13,10 @@ public class EnemyContext
     public Facing2D Facing { get; }
     public Seeker Seeker { get; }
     public PathToDir PathToDir { get; }
-
-    public EnemyContext(Transform self, Transform target, Health health, Mana mana, Movement movement, AimPivot2D aimPivot, Facing2D facing, PathToDir pathToDir)
+    public Timer Timer { get; } = new Timer();
+    public EnemyContext(Transform self, Transform target,
+     Health health, Mana mana, Movement movement, 
+     AimPivot2D aimPivot, Facing2D facing, PathToDir pathToDir)
     {
         Self = self;
         Target = target;
