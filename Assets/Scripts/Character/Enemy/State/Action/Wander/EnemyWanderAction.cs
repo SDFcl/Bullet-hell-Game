@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class WanderAction : IAction<EnemyContext>
+public class EnemyWanderAction : IAction<EnemyContext>
 {
     private readonly float wanderRadius;
     private readonly float minWaitTime;
@@ -20,7 +20,7 @@ public class WanderAction : IAction<EnemyContext>
     private readonly float stuckCheckInterval = 0.2f;
     private readonly float reachedDestinationDistance = 1f;
 
-    public WanderAction(float wanderRadius, float minWaitTime, float maxWaitTime,float wanderMoveSpeed, LayerMask obstacleMask = default)
+    public EnemyWanderAction(float wanderRadius, float minWaitTime, float maxWaitTime,float wanderMoveSpeed, LayerMask obstacleMask = default)
     {
         this.wanderRadius = wanderRadius;
         this.minWaitTime = minWaitTime;

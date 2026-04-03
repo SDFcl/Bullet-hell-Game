@@ -1,5 +1,5 @@
 using UnityEngine;
-public class ChaseAction : IAction<EnemyContext>
+public class EnemyChaseAction : IAction<EnemyContext>
 {
     public void OnEnter(EnemyContext ctx)
     {

@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private RayInteract rayInteract;
     private HoldingWeapon holdingItem;
     private Inventory inventory;
+    private Attack attack;
 
     Vector2 dir;
 
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
         rayInteract = GetComponent<RayInteract>();
         holdingItem = GetComponentInChildren<HoldingWeapon>();
         inventory = GetComponentInChildren<Inventory>();
+        attack = GetComponent<Attack>();
 
         if (mainCamera == null)
             mainCamera = Camera.main;  
@@ -38,9 +40,11 @@ public class PlayerController : MonoBehaviour
     }
     public void OnFire(InputAction.CallbackContext context)
     {
+        if (!context.started) return;
+
         if (playerInput.currentControlScheme == "Keyboard&Mouse")
         {
-            //Attack
+            attack.TryAttack();
             return;
         }
 

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3227682f4a06603448b68bada9713a76, type: 3}
-  m_Name: EnemyChaseState
+  m_Name: EnemyAttackState
   m_EditorClassIdentifier: 
   actions:
-  - {fileID: 11400000, guid: 55cb65613d4e9c6429b0a889ad9def51, type: 2}
+  - {fileID: 11400000, guid: 6b3335fa92ae9c6419d05c423fe9bbfc, type: 2}
   transitions:
-  - condition: {fileID: 11400000, guid: c1d68ac3105d3ae468483e1893618868, type: 2}
-    targetState: {fileID: 11400000, guid: 00925a8ad29b50a43b8975641ab717b4, type: 2}
+  - condition: {fileID: 11400000, guid: a5bfe570d0f54694ba547d64b6e28410, type: 2}
+    targetState: {fileID: 11400000, guid: 6e5bc01a579c9184ab94f6cffcbf5513, type: 2}

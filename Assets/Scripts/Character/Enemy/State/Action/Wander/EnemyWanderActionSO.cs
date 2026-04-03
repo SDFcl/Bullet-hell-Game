@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "AI/UOP1 Style/Actions/Wander")]
-public class WanderActionSO : EnemyActionSO
+[CreateAssetMenu(menuName = "AI/UOP1 Style/Actions/EnemyWander")]
+public class EnemyWanderActionSO : EnemyActionSO
 {
     public float wanderRadius = 4f;
     public float minWaitTime = 1f;
@@ -11,6 +11,6 @@ public class WanderActionSO : EnemyActionSO
 
     public override IAction<EnemyContext> CreateAction()
     {
-        return new WanderAction(wanderRadius, minWaitTime, maxWaitTime, wanderMoveSpeed, obstacleMask);
+        return new EnemyWanderAction(wanderRadius, minWaitTime, maxWaitTime, wanderMoveSpeed, obstacleMask);
     }
 }   
