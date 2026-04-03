@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Item : MonoBehaviour
@@ -9,11 +10,12 @@ public class Item : MonoBehaviour
         itemData = data;
     }
 
-    public void Use(GameObject user)
+    public void Use(GameObject user, List<Item> Inventory)
     {
         foreach (var effect in itemData.effects)
         {
             effect.Apply(user);
         }
+        Inventory.Remove(this);
     }
 }
