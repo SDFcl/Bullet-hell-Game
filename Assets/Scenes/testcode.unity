@@ -1206,11 +1206,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d99230a637785bd4a8a31bdb1620051f, type: 3}
---- !u!4 &1697604619 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1473165036801002982, guid: 8f7871eaf1cc72949809ae0fa4d6551b, type: 3}
-  m_PrefabInstance: {fileID: 7580843314418324229}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1707342540
 GameObject:
   m_ObjectHideFlags: 0
@@ -1436,22 +1431,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &1782329253 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 710710642317668597, guid: 8f7871eaf1cc72949809ae0fa4d6551b, type: 3}
-  m_PrefabInstance: {fileID: 7580843314418324229}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e149856b005c4964b832d55645268044, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!70 &1782329264 stripped
-CapsuleCollider2D:
-  m_CorrespondingSourceObject: {fileID: 830325950164484544, guid: 8f7871eaf1cc72949809ae0fa4d6551b, type: 3}
-  m_PrefabInstance: {fileID: 7580843314418324229}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2073529567
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1568,22 +1547,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2240252014442532520, guid: 8f7871eaf1cc72949809ae0fa4d6551b, type: 3}
-      propertyPath: col
-      value: 
-      objectReference: {fileID: 1782329264}
-    - target: {fileID: 2814125803818193428, guid: 8f7871eaf1cc72949809ae0fa4d6551b, type: 3}
-      propertyPath: inventory
-      value: 
-      objectReference: {fileID: 1782329253}
-    - target: {fileID: 2814125803818193428, guid: 8f7871eaf1cc72949809ae0fa4d6551b, type: 3}
-      propertyPath: attackPoint
-      value: 
-      objectReference: {fileID: 1697604619}
-    - target: {fileID: 2814125803818193428, guid: 8f7871eaf1cc72949809ae0fa4d6551b, type: 3}
-      propertyPath: holdingItem
-      value: 
-      objectReference: {fileID: 1697604619}
     - target: {fileID: 5568298807833359445, guid: 8f7871eaf1cc72949809ae0fa4d6551b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1627,10 +1590,6 @@ PrefabInstance:
     - target: {fileID: 5741775601454878896, guid: 8f7871eaf1cc72949809ae0fa4d6551b, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8615293136240062905, guid: 8f7871eaf1cc72949809ae0fa4d6551b, type: 3}
-      propertyPath: m_Layer
-      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

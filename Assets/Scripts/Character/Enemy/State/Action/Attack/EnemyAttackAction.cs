@@ -4,9 +4,8 @@ public class EnemyAttackAction : IAction<EnemyContext>
 {
     public void OnEnter(EnemyContext ctx)
     {
-        Debug.Log("Enter Attack");
         ctx.Movement.StopMovement();
-        ctx.Attack.TryAttack();
+        ctx.PathToDir.ClearDestination();
     }
 
     public void OnUpdate(EnemyContext ctx)
@@ -16,6 +15,6 @@ public class EnemyAttackAction : IAction<EnemyContext>
 
     public void OnExit(EnemyContext ctx)
     {
-        
+        ctx.Attack.TryAttack();
     }
 }

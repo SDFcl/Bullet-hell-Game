@@ -20,7 +20,7 @@ public interface IWeapon
 
 public interface IMovement
 {
-    void SetmoveInput(Vector2 input);
+    void SetMoveInput(Vector2 input);
     Vector2 GetMoveInput();
 
     Vector2 GetDirection();

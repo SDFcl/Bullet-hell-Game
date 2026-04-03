@@ -4,12 +4,15 @@ public class Facing2D : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] private bool faceRight = true;
+    [SerializeField] private float directionThreshold = 0.1f;
 
     public bool IsFacingRight => faceRight;
 
     public void SetDirection(float direction)
     {
-        if (direction == 0) return;
+        // ถ้าแกน x น้อยเกินไป ให้ถือว่ายังไม่ต้องเปลี่ยนหน้า
+        if (Mathf.Abs(direction) < directionThreshold)
+            return;
 
         bool shouldFaceRight = direction > 0;
 
@@ -24,7 +27,7 @@ public class Facing2D : MonoBehaviour
         faceRight = !faceRight;
 
         Vector3 scale = transform.localScale;
-        scale.x *= -1;
+        scale.x *= -1f;
         transform.localScale = scale;
     }
 }

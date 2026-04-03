@@ -28,7 +28,7 @@ public class Movement : MonoBehaviour, IMovement
     {
         if (!canMove) return;
 
-        rb2d.MovePosition(rb2d.position + moveInput * moveSpeed * Time.fixedDeltaTime);
+        rb2d.linearVelocity = moveInput * moveSpeed;
     }
 
     #region Movement Control
@@ -38,7 +38,7 @@ public class Movement : MonoBehaviour, IMovement
     #endregion
 
     #region Input
-    public void SetmoveInput(Vector2 input)
+    public void SetMoveInput(Vector2 input)
     {
         moveInput = input;
 

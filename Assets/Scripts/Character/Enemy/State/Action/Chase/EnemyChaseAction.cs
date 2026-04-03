@@ -14,11 +14,12 @@ public class EnemyChaseAction : IAction<EnemyContext>
         ctx.PathToDir.SetDestination(ctx.Target.position);
 
         Vector2 dir = ctx.PathToDir.GetDirection();
+        Vector2 dirToTarget = (ctx.Target.position - ctx.Self.position).normalized;
 
-        ctx.Facing?.SetDirection(dir.x);
+        ctx.Facing?.SetDirection(dirToTarget.x);
 
         // เปลี่ยนบรรทัดนี้ตาม API ของ Movement จริง
-        ctx.Movement.SetmoveInput(dir.normalized);
+        ctx.Movement.SetMoveInput(dir.normalized);
     }
 
     public void OnExit(EnemyContext ctx)

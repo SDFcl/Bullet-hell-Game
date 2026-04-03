@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         Vector2 moveInput = context.ReadValue<Vector2>();
-        movement.SetmoveInput(moveInput);
+        movement.SetMoveInput(moveInput);
     }
     public void OnFire(InputAction.CallbackContext context)
     {

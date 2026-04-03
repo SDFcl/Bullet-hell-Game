@@ -8,6 +8,14 @@ public class EnemyWanderAction : IAction<EnemyContext>
     private readonly float wanderMoveSpeed;
     private readonly LayerMask obstacleMask;
 
+    private const float ClearanceRadius = 0.4f;
+    private const int MaxPickAttempts = 12;
+
+    private readonly float stuckCheckThreshold = 0.05f;
+    private readonly float stuckTimeToReroll = 0.8f;
+    private readonly float stuckCheckInterval = 0.2f;
+    private readonly float reachedDestinationDistance = 1f;
+
     private float waitTimer;
     private bool isWaiting;
 
@@ -15,12 +23,12 @@ public class EnemyWanderAction : IAction<EnemyContext>
     private float stuckTimer;
     private float stuckCheckTimer;
 
-    private readonly float stuckCheckThreshold = 0.05f;
-    private readonly float stuckTimeToReroll = 0.8f;
-    private readonly float stuckCheckInterval = 0.2f;
-    private readonly float reachedDestinationDistance = 1f;
-
-    public EnemyWanderAction(float wanderRadius, float minWaitTime, float maxWaitTime,float wanderMoveSpeed, LayerMask obstacleMask = default)
+    public EnemyWanderAction(
+        float wanderRadius,
+        float minWaitTime,
+        float maxWaitTime,
+        float wanderMoveSpeed,
+        LayerMask obstacleMask = default)
     {
         this.wanderRadius = wanderRadius;
         this.minWaitTime = minWaitTime;
@@ -33,12 +41,7 @@ public class EnemyWanderAction : IAction<EnemyContext>
     {
         Debug.Log("Enter Wander");
 
-        // DefaultSettings
-        isWaiting = false;
-        waitTimer = 0f;
-        stuckTimer = 0f;
-        stuckCheckTimer = 0f;
-        lastPosition = ctx.Self.position;
+        ResetRuntimeState(ctx);
 
         ctx.PathToDir.SetReachedDestinationDistance(reachedDestinationDistance);
         ctx.Movement.SetMoveSpeed(wanderMoveSpeed);
@@ -48,33 +51,18 @@ public class EnemyWanderAction : IAction<EnemyContext>
 
     public void OnUpdate(EnemyContext ctx)
     {
-        if (isWaiting)
-        {
-            waitTimer -= Time.deltaTime;
-            ctx.Movement.StopMovement();
-
-            if (waitTimer <= 0f)
-            {
-                isWaiting = false;
-                PickNewDestination(ctx);
-            }
-
+        if (HandleWaiting(ctx))
             return;
-        }
 
-        Vector2 dir = ctx.PathToDir.GetDirection();
-
-        ctx.Facing?.SetDirection(dir.x);
-        ctx.Movement.SetmoveInput(dir);
+        MoveAlongPath(ctx);
 
         if (ctx.PathToDir.ReachedDestination())
         {
             StartWaiting(ctx);
+            return;
         }
-        else
-        {
-            CheckStuck(ctx);
-        }
+
+        CheckStuck(ctx);
     }
 
     public void OnExit(EnemyContext ctx)
@@ -83,31 +71,49 @@ public class EnemyWanderAction : IAction<EnemyContext>
 
         ctx.PathToDir.ResetReachedDestinationDistance();
         ctx.Movement.ResetMoveSpeed();
-
         ctx.PathToDir.ClearDestination();
         ctx.Movement.StopMovement();
     }
 
+    private bool HandleWaiting(EnemyContext ctx)
+    {
+        if (!isWaiting)
+            return false;
+
+        waitTimer -= Time.deltaTime;
+        ctx.Movement.StopMovement();
+
+        if (waitTimer <= 0f)
+        {
+            isWaiting = false;
+            PickNewDestination(ctx);
+        }
+
+        return true;
+    }
+
+    private void MoveAlongPath(EnemyContext ctx)
+    {
+        Vector2 direction = ctx.PathToDir.GetDirection();
+
+        ctx.Facing?.SetDirection(direction.x);
+        ctx.Movement.SetMoveInput(direction);
+    }
+
     private void PickNewDestination(EnemyContext ctx)
     {
-        Vector2 center = ctx.Self.position;
-        float clearanceRadius = 0.4f;
+        Vector2 origin = ctx.Self.position;
 
-        for (int i = 0; i < 12; i++)
+        for (int i = 0; i < MaxPickAttempts; i++)
         {
-            Vector2 candidate = center + Random.insideUnitCircle * wanderRadius;
+            Vector2 candidate = origin + Random.insideUnitCircle * wanderRadius;
 
-            bool blocked = Physics2D.OverlapCircle(candidate, clearanceRadius, obstacleMask);
+            if (IsBlocked(candidate))
+                continue;
 
-            if (!blocked)
-            {
-                ctx.PathToDir.SetDestination(candidate, true);
-
-                stuckTimer = 0f;
-                stuckCheckTimer = 0f;
-                lastPosition = ctx.Self.position;
-                return;
-            }
+            ctx.PathToDir.SetDestination(candidate, true);
+            ResetStuckTracking(ctx);
+            return;
         }
 
         // fallback
@@ -115,15 +121,17 @@ public class EnemyWanderAction : IAction<EnemyContext>
         ctx.Movement.StopMovement();
     }
 
+    private bool IsBlocked(Vector2 position)
+    {
+        return Physics2D.OverlapCircle(position, ClearanceRadius, obstacleMask);
+    }
+
     private void StartWaiting(EnemyContext ctx)
     {
         isWaiting = true;
         waitTimer = Random.Range(minWaitTime, maxWaitTime);
 
-        stuckTimer = 0f;
-        stuckCheckTimer = 0f;
-        lastPosition = ctx.Self.position;
-
+        ResetStuckTracking(ctx);
         ctx.Movement.StopMovement();
     }
 
@@ -134,8 +142,8 @@ public class EnemyWanderAction : IAction<EnemyContext>
         if (stuckCheckTimer < stuckCheckInterval)
             return;
 
-        Vector2 currentPos = ctx.Self.position;
-        float movedDistance = Vector2.Distance(currentPos, lastPosition);
+        Vector2 currentPosition = ctx.Self.position;
+        float movedDistance = Vector2.Distance(currentPosition, lastPosition);
 
         if (movedDistance < stuckCheckThreshold)
         {
@@ -152,7 +160,21 @@ public class EnemyWanderAction : IAction<EnemyContext>
             stuckTimer = 0f;
         }
 
-        lastPosition = currentPos;
+        lastPosition = currentPosition;
         stuckCheckTimer = 0f;
+    }
+
+    private void ResetRuntimeState(EnemyContext ctx)
+    {
+        isWaiting = false;
+        waitTimer = 0f;
+        ResetStuckTracking(ctx);
+    }
+
+    private void ResetStuckTracking(EnemyContext ctx)
+    {
+        stuckTimer = 0f;
+        stuckCheckTimer = 0f;
+        lastPosition = ctx.Self.position;
     }
 }
