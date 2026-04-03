@@ -161,7 +161,19 @@ MonoBehaviour:
     m_ActionId: 42069e2c-9a18-4528-a7cb-75e0e2fc3651
     m_ActionName: 'Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8709628061743692171}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnAim
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: af6afe50-9f3e-4212-b79c-7004cb1df19d
     m_ActionName: 'Player/Look[/Mouse/delta,/Pen/delta]'
   - m_PersistentCalls:
@@ -282,8 +294,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: e39c8682-39d6-4f18-83d3-e338a3ac7243
-    m_ActionName: 'Player/UseConsumable[/Keyboard/q]'
+    m_ActionId: 876caa6d-5505-4545-884a-7f5c87bebca9
+    m_ActionName: 'Player/Use Consumalb[/Keyboard/q]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -505,7 +517,7 @@ MonoBehaviour:
   dodgeForce: 15
   cooldown: 0.2
   dodgeAnimation: {fileID: 7400000, guid: 2380f4432a8e9dd458a427fe5f0c84d4, type: 2}
-  col: {fileID: 6217277864140749007}
+  col: {fileID: 830325950164484544}
 --- !u!114 &2814125803818193428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,6 +530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6da7b72ce238f5743a4d89dc0321e3a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holdingItem: {fileID: 1473165036801002982}
 --- !u!114 &1629584317938209011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -724,7 +737,7 @@ GameObject:
   m_Component:
   - component: {fileID: 691998103562543529}
   - component: {fileID: 6217277864140749007}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RayInteract
   m_TagString: Untagged
   m_Icon: {fileID: 0}

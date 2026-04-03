@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Look",
+                    "name": "Aim",
                     "type": "Value",
                     "id": "af6afe50-9f3e-4212-b79c-7004cb1df19d",
                     "expectedControlType": "Vector2",
@@ -25,9 +25,9 @@
                 },
                 {
                     "name": "Fire",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "3c212dab-9cda-4314-8c13-11e823de2867",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -60,9 +60,9 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "UseConsumable",
+                    "name": "Use Consumalb",
                     "type": "Button",
-                    "id": "e39c8682-39d6-4f18-83d3-e338a3ac7243",
+                    "id": "876caa6d-5505-4545-884a-7f5c87bebca9",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -204,23 +204,12 @@
                 },
                 {
                     "name": "",
-                    "id": "8c8e490b-c610-4785-884f-f04217b23ca4",
-                    "path": "<Pointer>/delta",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse;Touch",
-                    "action": "Look",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "3e5f5442-8668-4b27-a940-df99bad7e831",
                     "path": "<Joystick>/{Hatswitch}",
                     "interactions": "",
                     "processors": "",
                     "groups": "Joystick",
-                    "action": "Look",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -229,9 +218,9 @@
                     "id": "c1f7a91b-d0fd-4a62-997e-7fb9b69bf235",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
-                    "processors": "StickDeadzone(min=0.2)",
+                    "processors": "",
                     "groups": ";Gamepad",
-                    "action": "Fire",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -348,7 +337,7 @@
                 {
                     "name": "Up",
                     "id": "56c1ead7-f98c-4a38-8e5b-df6cfa3285e8",
-                    "path": "<Gamepad>/rightTrigger",
+                    "path": "<Gamepad>/dpad/up",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
@@ -369,23 +358,34 @@
                 },
                 {
                     "name": "",
-                    "id": "327eb67e-02db-4ec0-abf5-cb0bf7a277e8",
-                    "path": "<Keyboard>/q",
+                    "id": "75e68bb9-d0af-4c3c-b606-2eed59178303",
+                    "path": "<Gamepad>/dpad",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "UseConsumable",
+                    "groups": ";Gamepad",
+                    "action": "Change Weapon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "26d78caf-c65f-4400-8b91-4aeb0e72b4af",
+                    "id": "bd058071-fcaf-4f24-9e19-cec2776adec0",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Use Consumalb",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e4edfeae-ec83-41f6-b998-2f3d199fc721",
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "UseConsumable",
+                    "action": "Use Consumalb",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

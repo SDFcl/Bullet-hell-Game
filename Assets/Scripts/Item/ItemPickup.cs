@@ -4,6 +4,7 @@ public class ItemPickup : MonoBehaviour
 {
     public ItemData itemData;
 
+
     public void Pickup(Inventory inventory)
     {
         if (itemData == null || inventory == null) return;
