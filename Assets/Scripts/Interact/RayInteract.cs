@@ -7,7 +7,8 @@ public class RayInteract : MonoBehaviour
     public float searchRadius = 5f;
     public LayerMask itemLayer;
 
-    private CircleCollider2D CircleCollider2D;
+    [Header("References")]
+    [SerializeField] private CircleCollider2D CircleCollider2D;
     Transform target;
 
     [Header("Draw Gizmos")]
@@ -15,7 +16,11 @@ public class RayInteract : MonoBehaviour
 
     private void Awake()
     {
-        CircleCollider2D = GetComponent<CircleCollider2D>();
+        if (CircleCollider2D == null)
+        {
+            CircleCollider2D = GetComponent<CircleCollider2D>();
+        }
+        
         if (CircleCollider2D != null)
         {
             CircleCollider2D.radius = searchRadius;

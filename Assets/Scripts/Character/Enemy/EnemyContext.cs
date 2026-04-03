@@ -14,9 +14,10 @@ public class EnemyContext
     public Seeker Seeker { get; }
     public PathToDir PathToDir { get; }
     public Timer Timer { get; } = new Timer();
+    public LineOfSight2D LineOfSight { get; }
     public EnemyContext(Transform self, Transform target,
      Health health, Mana mana, Movement movement, 
-     AimPivot2D aimPivot, Facing2D facing, PathToDir pathToDir)
+     AimPivot2D aimPivot, Facing2D facing, PathToDir pathToDir, LineOfSight2D lineOfSight)
     {
         Self = self;
         Target = target;
@@ -26,6 +27,8 @@ public class EnemyContext
         AimPivot = aimPivot;
         Facing = facing;
         PathToDir = pathToDir;
+        LineOfSight = lineOfSight;
+
     }
     public T Get<T>() where T : Component
     {

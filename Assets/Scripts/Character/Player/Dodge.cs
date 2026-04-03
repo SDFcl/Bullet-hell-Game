@@ -14,6 +14,19 @@ public class Dodge : MonoBehaviour
     public event Action OnDodge;
 
     private bool canDodge = true;
+    private Rigidbody2D rb;
+    [SerializeField] private Collider2D col;
+    private IMovement movement;
+
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        movement = GetComponent<IMovement>();
+        if(col == null)
+        {
+            col = GetComponent<Collider2D>();
+        }
+    }
 
     public void TryDodge()
     {
@@ -21,12 +34,21 @@ public class Dodge : MonoBehaviour
         StartCoroutine(dodge());
     }
 
-
     IEnumerator dodge()
     {
         canDodge = false;
         OnDodge?.Invoke();
-        yield return new WaitForSeconds(dodgeAnimation.length + cooldown);
+
+        movement.DisableMovement();
+        rb.linearVelocity = Vector2.zero;
+        rb.AddForce(movement.GetDirection() * dodgeForce, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(dodgeAnimation.length);
+        movement.EnableMovement();
+        
+        yield return new WaitForSeconds(cooldown);
         canDodge = true;
     }
+
+    public void EnableHitbox() => col.enabled = true;
+    public void DisableHitbox() => col.enabled = false;
 }

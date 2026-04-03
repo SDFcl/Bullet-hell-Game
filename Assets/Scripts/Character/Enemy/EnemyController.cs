@@ -19,7 +19,8 @@ public class EnemyController : MonoBehaviour
             movement: GetComponent<Movement>(),
             aimPivot: GetComponentInChildren<AimPivot2D>(),
             facing: GetComponent<Facing2D>(),
-            pathToDir: GetComponent<PathToDir>()
+            pathToDir: GetComponent<PathToDir>(),
+            lineOfSight: GetComponent<LineOfSight2D>()
         );
 
         stateMachine = new StateMachine<EnemyContext>(ctx);

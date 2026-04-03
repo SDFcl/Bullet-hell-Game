@@ -47,12 +47,14 @@ public class PlayerController : MonoBehaviour
         //Aim
         Vector2 aimInput = context.ReadValue<Vector2>();
         dir = aimInput;
-        Debug.Log("Aim Input: " + aimInput);   // äÇéàªç¤¤èÒÁÑ¹ smooth ÁÑéÂ
+        Debug.Log("Aim Input: " + aimInput);   // ï¿½ï¿½ï¿½ï¿½ç¤¤ï¿½ï¿½ï¿½Ñ¹ smooth ï¿½ï¿½ï¿½ï¿½
     }
     public void OnDodge(InputAction.CallbackContext context)
     {
-        Debug.Log("Dodge Button Pressed");   // äÇéàªç¤ÇèÒÁÑ¹ detect »ØèÁÁÑéÂ
+        if (!context.started) return;
+        Debug.Log("Dodge Button Pressed");   // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¹ detect ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (dodge.enabled == false) return;
+        Debug.Log("Try Dodge");
         dodge.TryDodge();
     }
 
@@ -65,7 +67,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private float scrollCooldown = 0.2f; // »ÃÑºä´é
+    private float scrollCooldown = 0.2f; // ï¿½ï¿½Ñºï¿½ï¿½
     private float lastScrollTime;
 
     public void OnHoldItem(InputAction.CallbackContext context)
@@ -75,7 +77,7 @@ public class PlayerController : MonoBehaviour
         if (Time.time - lastScrollTime < scrollCooldown) return;
 
         float scroll = context.ReadValue<Vector2>().y;
-        //Debug.Log("Scroll Input: " + scroll);   // äÇéàªç¤¤èÒÁÑ¹ smooth ÁÑéÂ
+        //Debug.Log("Scroll Input: " + scroll);   // ï¿½ï¿½ï¿½ï¿½ç¤¤ï¿½ï¿½ï¿½Ñ¹ smooth ï¿½ï¿½ï¿½ï¿½
         if (scroll > 0f)
         {
             holdingItem.SetHoldingWeapon(-2, 1, true);
@@ -96,11 +98,11 @@ public class PlayerController : MonoBehaviour
                 if (itemEffect != null)
                 {
                     itemEffect.Apply(gameObject);
-                    Debug.Log("Applied effect: " + itemEffect.name);   // äÇéàªç¤ÇèÒÁÑ¹ detect »ØèÁÁÑéÂ
+                    Debug.Log("Applied effect: " + itemEffect.name);   // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¹ detect ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 }
                 else
                 {
-                    Debug.Log("No effect found in the consumable item.");   // äÇéàªç¤ÇèÒÁÑ¹ detect »ØèÁÁÑéÂ
+                    Debug.Log("No effect found in the consumable item.");   // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¹ detect ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 }
             }
         }
@@ -113,7 +115,7 @@ public class PlayerController : MonoBehaviour
             Vector3 mouseWorld = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             mouseWorld.z = 0f;
             dir = mouseWorld - transform.position;
-            //Debug.Log("Mouse World Position: " + mouseWorld);   // äÇéàªç¤¤èÒÁÑ¹ smooth ÁÑéÂ
+            //Debug.Log("Mouse World Position: " + mouseWorld);   // ï¿½ï¿½ï¿½ï¿½ç¤¤ï¿½ï¿½ï¿½Ñ¹ smooth ï¿½ï¿½ï¿½ï¿½
         }
               
         facing.SetDirection(dir.x);
