@@ -24,6 +24,9 @@ public class LineOfSight2D : MonoBehaviour
 
     private void Awake()
     {
+        if (target == null)
+            target = GameObject.FindWithTag("Player")?.transform;
+
         if (viewOrigin == null)
             viewOrigin = transform;
     }

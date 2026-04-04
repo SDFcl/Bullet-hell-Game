@@ -15,6 +15,8 @@ public class ItemData : ScriptableObject
 
     public GameObject WorldPrefab;
 
+    public float Price;
+
     [Header("Item Type")]
     public ItemType itemType;
 

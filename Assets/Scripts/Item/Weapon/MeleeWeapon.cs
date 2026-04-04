@@ -16,7 +16,7 @@ public class MeleeWeapon : MonoBehaviour,IWeapon
 
     private void Awake()
     {
-        hitbox = GetComponentInChildren<Hitbox>();
+        hitbox = GetComponentInChildren<Hitbox>(true);
     }
     private void Start()
     {

@@ -60,8 +60,7 @@ public class RayInteract : MonoBehaviour
 
     public void PickUp()
     {
-        ItemPickup itemPickup = target.GetComponent<ItemPickup>();
-        if (itemPickup != null)
+        if (target.TryGetComponent(out ItemPickup itemPickup))
         {
             itemPickup.Pickup(GetComponent<Inventory>());
         }

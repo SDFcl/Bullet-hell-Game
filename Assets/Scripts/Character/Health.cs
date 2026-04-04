@@ -15,7 +15,7 @@ public class Health : MonoBehaviour, IDamageable
     protected void DeadEvent() => OnDead?.Invoke();
     protected void HealthChangedEvent() => OnHealthChanged?.Invoke(CurrentHP);
 
-    private void Start()
+    private void Awake()
     {
         CurrentHP = maxHealth;
     }
@@ -27,8 +27,10 @@ public class Health : MonoBehaviour, IDamageable
         CurrentHP -= damage;
         HealthChangedEvent();
 
+        Debug.Log($"{gameObject.name} took {damage} damage. Current HP: {CurrentHP}/{maxHealth}");
         if (CurrentHP <= 0)
         {
+            Debug.Log($"{gameObject.name} is dead.");
             CurrentHP = 0;
             DeadEvent();
         }

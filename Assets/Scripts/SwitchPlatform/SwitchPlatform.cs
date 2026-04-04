@@ -47,29 +47,24 @@ public class SwitchPlatform : MonoBehaviour
         string schemeName = (controlType == ControlType.Keyboard)
                                             ? "Keyboard&Mouse"
                                             : "Gamepad";
-        var devices = new System.Collections.Generic.List<InputDevice>();
+        InputDevice device = null;
         if (controlType == ControlType.Keyboard)
         {
-            var keyboard = Keyboard.current;
-            var mouse = Mouse.current;
-            if (keyboard != null) devices.Add(keyboard);
-            if (mouse != null) devices.Add(mouse);
-        }
+            device = Keyboard.current; // หรือ Keyboard.current ?? Mouse.current;
+        }
         else if (controlType == ControlType.Gamepad)
         {
-            var gamepad = Gamepad.current;
-            if (gamepad != null) devices.Add(gamepad);
+            device = Gamepad.current;
         }
-
-        if (devices.Count > 0)
+        if (device != null)
         {
-            playerInput.SwitchCurrentControlScheme(schemeName, devices.ToArray());
-            Debug.Log($"✓ Switched to {schemeName} with devices: {string.Join(", ", devices.Select(d => d.displayName))}");
+            playerInput.SwitchCurrentControlScheme(schemeName, device);
+            Debug.Log($"✓ Switched to {schemeName} with device: {device.displayName}");
         }
         else
         {
             Debug.LogWarning($"❌ No device found for {schemeName}!\n" +
-                $"Current devices: {string.Join(", ", InputSystem.devices.Select(d => d.displayName))}");
+            $"Current devices: {string.Join(", ", InputSystem.devices.Select(d => d.displayName))}");
         }
     }
 }

@@ -17,7 +17,6 @@ public class HoldingWeapon : MonoBehaviour
         inventory.OnWeaponChanged -= SetHoldingWeapon;
     }
 
-
     public void SetHoldingWeapon(int index = -2, int direction = 0, bool Check = true)
     {
         if (index == -2) index = currentIndex; // ถ้าไม่ได้ส่ง index มา ให้ใช้ currentIndex

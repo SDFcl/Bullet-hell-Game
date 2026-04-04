@@ -11,6 +11,8 @@ public class EnemyController : MonoBehaviour
 
     private void Awake()
     {
+        if (target == null)
+            target = GameObject.FindGameObjectWithTag("Player").transform;
         ctx = new EnemyContext(
             self: transform,
             target: target,
