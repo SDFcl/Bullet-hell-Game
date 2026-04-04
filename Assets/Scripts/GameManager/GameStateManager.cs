@@ -34,8 +34,11 @@ public class GameStateManager : MonoBehaviour
             case GameState.MainMenu:
                 // แสดงเมนูหลัก, รีเซ็ตเกม ฯลฯ
                 break;
-            case GameState.Playing:
+            case GameState.Exploration:
                 // เริ่มเกม, เปิด UI, เริ่มนับเวลา ฯลฯ
+                break;
+            case GameState.Combat:
+                // เริ่มการต่อสู้, เปิด UI ต่อสู้, หยุดเวลา ฯลฯ
                 break;
             case GameState.Paused:
                 // หยุดเวลา, แสดงเมนูหยุดเกม ฯลฯ

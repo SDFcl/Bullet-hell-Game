@@ -1,7 +1,8 @@
 public enum GameState
 {
     MainMenu,
-    Playing,
+    Exploration,
+    Combat,
     Paused,
     GameOver,
     Victory,
