@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83e922d4061294748afc679a6693dc04, type: 3}
-  m_Name: NotIdleRange
+  m_Script: {fileID: 11500000, guid: 2830d05f69ff0b24983bbf98d5ba87d8, type: 3}
+  m_Name: AttackRangeCondition
   m_EditorClassIdentifier: 
-  condition: {fileID: 11400000, guid: 11ef986bcc2c1ea4f99a48f892829317, type: 2}
+  range: 1.25
+  comparison: 2
