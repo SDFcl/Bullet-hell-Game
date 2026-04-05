@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 1872898421231478509}
   - component: {fileID: 8177065121567281754}
   - component: {fileID: 3787288551003797566}
+  - component: {fileID: 343537108506122768}
   m_Layer: 0
   m_Name: BasicEnemy
   m_TagString: Enemy
@@ -400,6 +401,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceSO: {fileID: 11400000, guid: 11ef986bcc2c1ea4f99a48f892829317, type: 2}
   showGizmo: 1
+--- !u!114 &343537108506122768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4764147975119969297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ebfa29b50032604aa8f3a7ea533d7af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  usePool: 1
+  poolTag: Coin
+  itemPrefab: {fileID: 7542025067976280394, guid: 08b5ded0dec3f8249821abf994010cc4, type: 3}
 --- !u!1 &8618897680076142067
 GameObject:
   m_ObjectHideFlags: 0

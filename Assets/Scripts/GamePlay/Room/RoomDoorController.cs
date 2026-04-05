@@ -6,7 +6,7 @@ public class RoomDoorController : MonoBehaviour
 
     private void Start()
     {
-        CloseDoors();
+        OpenDoors();
     }
 
     public void OpenDoors()
@@ -23,6 +23,7 @@ public class RoomDoorController : MonoBehaviour
     {
         foreach (var door in doors)
         {
+            Debug.Log("Setting door " + door.name + " active: " + state);
             door.SetActive(state);
         }
     }

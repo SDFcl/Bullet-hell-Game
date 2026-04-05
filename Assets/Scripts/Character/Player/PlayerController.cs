@@ -108,11 +108,11 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("Scroll Input: " + scroll);   // ����礤���ѹ smooth ����
         if (scroll.y > 0f)
         {
-            holdingItem.SetHoldingWeapon(-2, 1, true);
+            holdingItem.SetDirection(1);
         }
         else if (scroll.y < 0f)
         {
-            holdingItem.SetHoldingWeapon(-2, -1, true);
+            holdingItem.SetDirection(-1);
         }
         lastScrollTime = Time.time;
     }

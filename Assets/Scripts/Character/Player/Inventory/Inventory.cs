@@ -5,22 +5,29 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [Header("Weapons")]
-    public List<Item> Weapons = new List<Item>();
     public int maxWeapons = 5;
+    public List<Item> Weapons = new List<Item>();
 
     [Header("Consumables")]
-    public List<Item> Consumables = new List<Item>();
     public int maxConsumables = 1;
+    public List<Item> Consumables = new List<Item>();
 
-    // 🔥 Event
-    public Action<int,int,bool> OnWeaponChanged;
+    [Header("Currency")]
+    [SerializeField]
+    private int Coins = 0;
 
+    #region Events
+    public Action<int> OnWeaponChanged;
+    public Action<int> OnCoinsChanged;
+    #endregion
+
+    #region Weapon
     public void AddWeapon(Item item)
     {
         if (Weapons.Count == 0)
         {
             Weapons.Add(item);
-            OnWeaponChanged?.Invoke(0, 0, false);
+            OnWeaponChanged?.Invoke(0);
             Debug.Log("Added weapon: " + item.itemData.itemName + " at index 0");
             return;
         }
@@ -32,25 +39,13 @@ public class Inventory : MonoBehaviour
             DropWeapon(currentIndex);
             Weapons.Insert(currentIndex, item);
 
-            OnWeaponChanged?.Invoke(currentIndex, 0, false);
+            OnWeaponChanged?.Invoke(currentIndex);
             return;
         }
 
         Weapons.Add(item);
         int newIndex = Weapons.Count - 1;
-        OnWeaponChanged?.Invoke(newIndex, 0, false);
-    }
-
-    public void AddConsumable(Item item)
-    {
-        if (Consumables.Count >= maxConsumables)
-        {
-            DropConsumable(0);
-            Consumables.Insert(0, item);
-            return;
-        }
-
-        Consumables.Add(item);
+        OnWeaponChanged?.Invoke(newIndex);
     }
 
     public void DropWeapon(int index)
@@ -63,6 +58,19 @@ public class Inventory : MonoBehaviour
 
         Weapons.RemoveAt(index);
     }
+    #endregion
+    #region Consumable
+    public void AddConsumable(Item item)
+    {
+        if (Consumables.Count >= maxConsumables)
+        {
+            DropConsumable(0);
+            Consumables.Insert(0, item);
+            return;
+        }
+
+        Consumables.Add(item);
+    }
 
     public void DropConsumable(int index)
     {
@@ -71,4 +79,19 @@ public class Inventory : MonoBehaviour
         Instantiate(item.itemData.WorldPrefab, this.transform.position, Quaternion.identity);
         Consumables.RemoveAt(index);
     }
+    #endregion
+    #region Currency
+    public void AddCoins(int amount)
+    {
+        Coins += amount;
+        OnCoinsChanged?.Invoke(Coins);
+    }
+    public bool SpendCoins(int amount)
+    {
+        if (Coins < amount) return false;
+        Coins -= amount;
+        OnCoinsChanged.Invoke(Coins);
+        return true;
+    }
+    #endregion
 }

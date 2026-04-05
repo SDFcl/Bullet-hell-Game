@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3227682f4a06603448b68bada9713a76, type: 3}
-  m_Name: DeadState
+  m_Script: {fileID: 11500000, guid: c8aed66948b3b18499589f0089b48b18, type: 3}
+  m_Name: RateDropWeaponInShop
   m_EditorClassIdentifier: 
-  actions:
-  - {fileID: 11400000, guid: bd41e7fcf6ec2874aaed33b68f951683, type: 2}
-  transitions: []
+  NormalRate: 0.7
+  RareRate: 0.25
+  LegendaryRate: 0.05
