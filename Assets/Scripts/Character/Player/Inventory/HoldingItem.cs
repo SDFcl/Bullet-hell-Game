@@ -7,22 +7,66 @@ public class HoldingWeapon : MonoBehaviour
     public GameObject currentItem;
     public int currentIndex;
 
+    private int direction = 0;
+
+    private void Awake()
+    {
+        if (inventory == null)
+        {
+            inventory = GetComponentInParent<PlayerController>()?.GetComponentInChildren<Inventory>();
+        }
+
+        if (inventory == null)
+        {
+            inventory = GetComponentInParent<Inventory>();
+        }
+
+        /// ลองเช็ค item ที่อยู่ใน child ว่ามีไหม ถ้ามีก็ใส่เข้า inventory ไปเลย (กรณีที่มี item อยู่แล้วตอนเริ่มเกม)
+        Item item = GetComponentInChildren<Item>();
+        if (item != null)
+        {
+            inventory.AddWeapon(item);
+            Debug.Log("HoldingWeapon: Added item to inventory on Awake: " + item.itemData.itemName);
+        }
+    }
+
     private void OnEnable()
     {
-        inventory.OnWeaponChanged += SetHoldingWeapon;
+        if (inventory != null)
+        {
+            inventory.OnWeaponChanged += SetHoldingWeapon;
+        }
+        else
+        {
+            Debug.LogWarning("HoldingWeapon: Inventory reference is missing. Cannot subscribe to OnWeaponChanged.");
+        }
     }
 
     private void OnDisable()
     {
-        inventory.OnWeaponChanged -= SetHoldingWeapon;
+        if (inventory != null)
+        {
+            inventory.OnWeaponChanged -= SetHoldingWeapon;
+        }
+    }
+    public void SetDirection(int value)
+    {
+        direction = value;
+        SetHoldingWeapon(currentIndex);
     }
 
-    public void SetHoldingWeapon(int index = -2, int direction = 0, bool Check = true)
+    public void SetHoldingWeapon(int index)
     {
-        if (index == -2) index = currentIndex; // ถ้าไม่ได้ส่ง index มา ให้ใช้ currentIndex
-        Debug.Log("SetHoldingWeapon called with index: " + index + ", direction: " + direction + ", Check: " + Check);
+        if (inventory == null)
+        {
+            Debug.LogWarning("HoldingWeapon: Inventory reference is missing. Cannot set holding weapon.");
+            return;
+        }
 
-        if (Check)
+         // ถ้าไม่ได้ส่ง index มา ให้ใช้ currentIndex
+         Debug.Log("SetHoldingWeapon called with index: " + index + ", direction: " + direction);
+
+        if (index == currentIndex) 
         {
             int count = inventory.Weapons.Count;
 
@@ -33,11 +77,13 @@ public class HoldingWeapon : MonoBehaviour
             }
 
             // ทำให้ index อยู่ใน range ก่อน
+            Debug.Log("Current index before adjustment: " + (index + direction + count) % count);
             index = (index + direction + count) % count;
 
             int startIndex = index;
 
             // 🔥 วนหา item ที่ valid
+            Debug.Log("Searching for valid weapon starting at index: " + index);
             while (inventory.Weapons[index].itemData == null)
             {
                 index = (index + direction + count) % count;

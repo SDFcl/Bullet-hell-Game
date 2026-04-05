@@ -779,17 +779,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1030675249}
   m_CullTransparentMesh: 1
---- !u!114 &1094625633 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4436965421125966680, guid: 8f7871eaf1cc72949809ae0fa4d6551b, type: 3}
-  m_PrefabInstance: {fileID: 7580843314418324229}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1144940744
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,7 +898,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GamepadUI: {fileID: 2079884598}
   KeyboardAndMouseUI: {fileID: 1738910031}
-  playerInput: {fileID: 1094625633}
+  playerInput: {fileID: 0}
   isMobile: 0
 --- !u!1 &1287117890
 GameObject:
@@ -1792,6 +1781,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 710710642317668597, guid: 8f7871eaf1cc72949809ae0fa4d6551b, type: 3}
+      propertyPath: Weapons.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5568298807833359445, guid: 8f7871eaf1cc72949809ae0fa4d6551b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
