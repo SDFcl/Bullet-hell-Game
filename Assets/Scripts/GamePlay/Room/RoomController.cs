@@ -17,6 +17,7 @@ public class RoomController : MonoBehaviour
 
     public void PlayerEnterRoom()
     {
+        if (enemysController == null || doorController == null) return;
         playerInsideNeverBefore = true;
         doorController.CloseDoors();
         enemysController.SetEnemiesActive(true);

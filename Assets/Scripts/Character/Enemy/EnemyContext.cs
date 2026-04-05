@@ -36,4 +36,11 @@ public class EnemyContext
     {
         return Self.GetComponent<T>();
     }
+
+    public void MoveTo(Vector2 destination)
+    {
+        Facing?.SetDirection(destination.x);
+        AimPivot?.SetDirection(destination);
+        Movement.SetMoveInput(destination);
+    }
 }

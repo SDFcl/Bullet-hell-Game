@@ -76,8 +76,9 @@ public class EnemyPositioningAction : IAction<EnemyContext>
         ctx.Movement.SetMoveInput(ctx.PathToDir.GetDirection());
 
         // optional: facing ใช้ direction จาก path
-        float dirX = ctx.Target.position.x - ctx.Self.position.x;
+        Vector2 dir = (ctx.Target.position - ctx.Self.position).normalized;
 
-        ctx.Facing.SetDirection(dirX);
+        ctx.Facing.SetDirection(dir.x);
+        ctx.AimPivot.SetDirection(dir);
     }
 }

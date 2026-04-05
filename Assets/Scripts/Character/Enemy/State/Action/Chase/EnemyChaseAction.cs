@@ -17,6 +17,7 @@ public class EnemyChaseAction : IAction<EnemyContext>
         Vector2 dirToTarget = (ctx.Target.position - ctx.Self.position).normalized;
 
         ctx.Facing?.SetDirection(dirToTarget.x);
+        ctx.AimPivot?.SetDirection(dirToTarget);
 
         // เปลี่ยนบรรทัดนี้ตาม API ของ Movement จริง
         ctx.Movement.SetMoveInput(dir.normalized);

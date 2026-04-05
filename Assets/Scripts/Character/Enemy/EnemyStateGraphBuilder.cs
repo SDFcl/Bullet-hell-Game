@@ -54,11 +54,14 @@ public static class EnemyStateGraphBuilder
             stateMap[graph.entryState] = runtimeEntry;
         }
 
-        // 2) ต่อ transitions
+        // 2) ต่อ transitions ปกติของแต่ละ state
         foreach (var pair in stateMap)
         {
             EnemyStateSO fromSO = pair.Key;
             State<EnemyContext> fromRuntime = pair.Value;
+
+            if (fromSO.transitions == null)
+                continue;
 
             foreach (var transitionSO in fromSO.transitions)
             {
@@ -75,6 +78,36 @@ public static class EnemyStateGraphBuilder
                     transitionSO.condition.CreateCondition(),
                     targetRuntime
                 ));
+            }
+        }
+
+        // 3) ต่อ Any State transitions ให้ทุก state
+        if (graph.anyTransitions != null)
+        {
+            foreach (var pair in stateMap)
+            {
+                EnemyStateSO fromSO = pair.Key;
+                State<EnemyContext> fromRuntime = pair.Value;
+
+                foreach (var transitionSO in graph.anyTransitions)
+                {
+                    if (transitionSO == null || transitionSO.condition == null || transitionSO.targetState == null)
+                        continue;
+
+                    if (fromSO == transitionSO.targetState)
+                        continue;
+
+                    if (!stateMap.TryGetValue(transitionSO.targetState, out var targetRuntime))
+                    {
+                        Debug.LogError($"AnyTransition target state not found in graph: {transitionSO.targetState.name}");
+                        continue;
+                    }
+
+                    fromRuntime.AddGlobalTransition(new Transition<EnemyContext>(
+                        transitionSO.condition.CreateCondition(),
+                        targetRuntime
+                    ));
+                }
             }
         }
 

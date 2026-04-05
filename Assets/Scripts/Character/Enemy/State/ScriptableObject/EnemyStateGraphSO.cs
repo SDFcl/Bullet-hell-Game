@@ -6,4 +6,7 @@ public class EnemyStateGraphSO : ScriptableObject
 {
     public EnemyStateSO entryState;
     public List<EnemyStateSO> allStates = new();
+
+    [Header("Any State Transitions")]
+    public List<EnemyStateTransitionSO> anyTransitions = new();
 }

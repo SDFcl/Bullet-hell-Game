@@ -96,8 +96,7 @@ public class EnemyWanderAction : IAction<EnemyContext>
     {
         Vector2 direction = ctx.PathToDir.GetDirection();
 
-        ctx.Facing?.SetDirection(direction.x);
-        ctx.Movement.SetMoveInput(direction);
+        ctx.MoveTo(direction);
     }
 
     private void PickNewDestination(EnemyContext ctx)
