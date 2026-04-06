@@ -37,11 +37,11 @@ public class MagnetBehavior : MonoBehaviour
 
             float speed = Mathf.Lerp(0, maxSpeed, 1 - distance / triggerRadius);
 
-            rb.velocity = direction * speed;
+            rb.linearVelocity = direction * speed;
         }
         else
         {
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
         }
     }
 
