@@ -22,11 +22,13 @@ public class Hitbox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (!isTrigger) return;
         ProcessHit(other);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (isTrigger) return;
         ProcessHit(collision.collider);
     }
 

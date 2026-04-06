@@ -1,10 +1,6 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-/// <summary>
-/// ✓ Base class for interactive objects (doors, chests, NPCs, etc.)
-/// Shows how to implement IInteractive interface
-/// </summary>
-public abstract class InteractiveObject : MonoBehaviour, IInteractive
+public abstract class InteractiveSlotSellItem : MonoBehaviour, IInteractive
 {
     [SerializeField] protected string interactionName = "Interact";
 
@@ -15,18 +11,19 @@ public abstract class InteractiveObject : MonoBehaviour, IInteractive
 
     public virtual bool CanInteract(GameObject player)
     {
-        // Default implementation - can be overridden in derived classes
+        // ✓ Default implementation: always interactable
+        // Override this in derived classes for specific conditions (e.g., distance, player state, etc.)
         return true;
     }
 
     public void Interact(GameObject player)
     {
         Debug.Log($"[InteractiveObject] {interactionName}: {gameObject.name}");
-        ExecuteInteraction();
+        ExecuteInteraction(player);
     }
 
     /// <summary>
     /// ✓ Override this method in derived classes to implement specific interaction logic
     /// </summary>
-    protected abstract void ExecuteInteraction();
+    protected abstract void ExecuteInteraction(GameObject player);
 }
