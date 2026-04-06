@@ -127,9 +127,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 710710642317668597, guid: 8f7871eaf1cc72949809ae0fa4d6551b, type: 3}
+      propertyPath: Weapons.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5568298807833359445, guid: 8f7871eaf1cc72949809ae0fa4d6551b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 49.7
+      value: 9.56
       objectReference: {fileID: 0}
     - target: {fileID: 5568298807833359445, guid: 8f7871eaf1cc72949809ae0fa4d6551b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3273,7 +3277,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1524880419}
-  - component: {fileID: 1524880420}
   - component: {fileID: 1524880421}
   m_Layer: 0
   m_Name: Room - Shop
@@ -3298,20 +3301,6 @@ Transform:
   - {fileID: 1993821676}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1524880420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1524880416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de939f398139a394689dcb2b92bf3082, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listItem: {fileID: 11400000, guid: beabb1d4db01b31499b0a66b5ac1cffa, type: 2}
-  rateDrop: {fileID: 11400000, guid: 783893b00a98834459db6ef1ce3b8034, type: 2}
 --- !u!114 &1524880421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3324,6 +3313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad15e3015f4f5bc4da0e4a0bf447a9b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomItem: {fileID: 11400000, guid: 356fe6d04905f324288434655d33b550, type: 2}
   ItemSlot:
   - {fileID: 383801944}
   - {fileID: 761775388}
@@ -3766,6 +3756,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room - Combat (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3343277822213222030, guid: 7ae042dee8b84ff4a942427bff8853ea, type: 3}
+      propertyPath: randomItem
+      value: 
+      objectReference: {fileID: 11400000, guid: f0735f400ef7eb948998b944f76180a9, type: 2}
     - target: {fileID: 4699924789935090041, guid: 7ae042dee8b84ff4a942427bff8853ea, type: 3}
       propertyPath: m_SortingLayer
       value: 2
@@ -3796,11 +3790,15 @@ PrefabInstance:
       objectReference: {fileID: 1862792688}
     - target: {fileID: 6264903447015030675, guid: 7ae042dee8b84ff4a942427bff8853ea, type: 3}
       propertyPath: m_Size.x
-      value: 9
+      value: 8.39789
       objectReference: {fileID: 0}
     - target: {fileID: 6264903447015030675, guid: 7ae042dee8b84ff4a942427bff8853ea, type: 3}
       propertyPath: m_Size.y
       value: 10.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6264903447015030675, guid: 7ae042dee8b84ff4a942427bff8853ea, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.09162521
       objectReference: {fileID: 0}
     - target: {fileID: 6264903447015030675, guid: 7ae042dee8b84ff4a942427bff8853ea, type: 3}
       propertyPath: m_Offset.y
