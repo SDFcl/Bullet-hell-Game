@@ -7,55 +7,45 @@ public class PathToDir : MonoBehaviour
     private Seeker seeker;
     private Transform self;
 
-    [Header("Path Settings")]
-    [SerializeField] private float repathRate = 0.35f;
-    [SerializeField] private float nextWaypointDistance = 0.4f;
-    [SerializeField] private float reachedDestinationDistance = 0.4f;
+    [Header("Path")]
+    [SerializeField] private float repathRate = 0.5f;
+    [SerializeField] private float nextWaypointDistance = 0.6f;
+    [SerializeField] private float reachedDistance = 0.4f;
 
-    [Header("Direction Smoothing")]
+    [Header("Direction")]
     [SerializeField] private float directionSmoothSpeed = 12f;
-    [SerializeField] private float keepDirectionGraceTime = 0.08f;
 
-    private float defaultRepathRate;
-    private float defaultNextWaypointDistance;
-    private float defaultReachedDestinationDistance;
+    [Header("Clamp")]
+    [SerializeField] private bool clampToNearestNode = true;
+
+    [Header("Debug")]
+    [SerializeField] private bool showDebug = true;
+    [SerializeField] private bool showGizmos = true;
 
     private Path currentPath;
     private int currentWaypointIndex;
-    private Vector2 currentDestination;
+
+    private Vector2 destination;
     private bool hasDestination;
     private float repathTimer;
 
-    // smoothing state
-    private Vector2 smoothedDirection;
-    private Vector2 lastRawDirection;
-    private float lastNonZeroDirectionTime;
-
-    public bool HasDestination => hasDestination;
-    public bool HasPath => currentPath != null && currentPath.vectorPath != null && currentPath.vectorPath.Count > 0;
+    private Vector2 smoothDirection;
 
     private void Awake()
     {
         seeker = GetComponent<Seeker>();
         self = transform;
-
-        defaultRepathRate = repathRate;
-        defaultNextWaypointDistance = nextWaypointDistance;
-        defaultReachedDestinationDistance = reachedDestinationDistance;
     }
 
     private void Update()
     {
-        TickPathUpdate();
+        UpdatePath();
     }
 
-    public void SetDestination(Vector2 destination, bool forceRepath = false)
+    public void SetDestination(Vector2 newDestination)
     {
-        currentDestination = destination;
+        destination = ClampDestination(newDestination);
         hasDestination = true;
-
-        if (forceRepath)
-            repathTimer = 0f;
     }
 
     public void ClearDestination()
@@ -63,86 +53,23 @@ public class PathToDir : MonoBehaviour
         hasDestination = false;
         currentPath = null;
         currentWaypointIndex = 0;
-        smoothedDirection = Vector2.zero;
-        lastRawDirection = Vector2.zero;
-    }
-
-    private void TickPathUpdate()
-    {
-        if (!hasDestination)
-            return;
-
-        if (seeker == null)
-            return;
-
-        repathTimer -= Time.deltaTime;
-        if (repathTimer > 0f)
-            return;
-
-        repathTimer = repathRate;
-
-        if (!seeker.IsDone())
-            return;
-
-        seeker.StartPath(self.position, currentDestination, OnPathComplete);
+        smoothDirection = Vector2.zero;
     }
 
     public Vector2 GetDirection()
     {
-        Vector2 rawDirection = CalculateRawDirection();
+        Vector2 rawDirection = CalculateDirection();
 
-        // ถ้า raw เป็นศูนย์ชั่วคราวจากการสลับ path/waypoint
-        // ให้ค้างทิศเดิมไว้แป๊บหนึ่ง ลดอาการสะดุด
-        if (rawDirection != Vector2.zero)
-        {
-            lastRawDirection = rawDirection;
-            lastNonZeroDirectionTime = Time.time;
-        }
-        else if (Time.time - lastNonZeroDirectionTime <= keepDirectionGraceTime)
-        {
-            rawDirection = lastRawDirection;
-        }
-
-        // smooth ภายใน PathToDir เลย
-        smoothedDirection = Vector2.Lerp(
-            smoothedDirection,
+        smoothDirection = Vector2.Lerp(
+            smoothDirection,
             rawDirection,
             directionSmoothSpeed * Time.deltaTime
         );
 
-        if (smoothedDirection.sqrMagnitude <= 0.0001f)
+        if (smoothDirection.sqrMagnitude <= 0.0001f)
             return Vector2.zero;
 
-        return smoothedDirection.normalized;
-    }
-
-    private Vector2 CalculateRawDirection()
-    {
-        if (!HasPath)
-            return Vector2.zero;
-
-        if (currentWaypointIndex >= currentPath.vectorPath.Count)
-            return Vector2.zero;
-
-        Vector2 currentPos = self.position;
-        Vector2 waypoint = currentPath.vectorPath[currentWaypointIndex];
-
-        while (currentWaypointIndex < currentPath.vectorPath.Count - 1 &&
-               Vector2.Distance(currentPos, waypoint) <= nextWaypointDistance)
-        {
-            currentWaypointIndex++;
-            waypoint = currentPath.vectorPath[currentWaypointIndex];
-        }
-
-        int lookAheadIndex = Mathf.Min(currentWaypointIndex + 1, currentPath.vectorPath.Count - 1);
-        Vector2 targetPoint = currentPath.vectorPath[lookAheadIndex];
-
-        Vector2 dir = targetPoint - currentPos;
-
-        if (dir.sqrMagnitude <= 0.0001f)
-            return Vector2.zero;
-
-        return dir.normalized;
+        return smoothDirection.normalized;
     }
 
     public bool ReachedDestination()
@@ -150,7 +77,83 @@ public class PathToDir : MonoBehaviour
         if (!hasDestination)
             return true;
 
-        return Vector2.Distance(self.position, currentDestination) <= reachedDestinationDistance;
+        if (currentPath == null || currentPath.vectorPath == null || currentPath.vectorPath.Count == 0)
+            return true;
+
+        Vector2 endPoint = currentPath.vectorPath[currentPath.vectorPath.Count - 1];
+        return Vector2.Distance(self.position, endPoint) <= reachedDistance;
+    }
+
+    private void UpdatePath()
+    {
+        if (!hasDestination)
+            return;
+
+        if (!seeker.IsDone())
+            return;
+
+        repathTimer -= Time.deltaTime;
+        if (repathTimer > 0f)
+            return;
+
+        repathTimer = repathRate;
+        seeker.StartPath(self.position, destination, OnPathComplete);
+    }
+
+    private Vector2 ClampDestination(Vector2 target)
+    {
+        if (!clampToNearestNode || AstarPath.active == null)
+            return target;
+
+        NNInfo nearest = AstarPath.active.GetNearest(target);
+
+        if (nearest.node == null)
+            return target;
+
+        Vector2 clamped = (Vector3)nearest.position;
+
+        if (showDebug && Vector2.Distance(target, clamped) > 0.05f)
+        {
+            Debug.Log($"[PathToDir] Clamp {target} -> {clamped}", this);
+        }
+
+        return clamped;
+    }
+
+    private Vector2 CalculateDirection()
+    {
+        if (currentPath == null || currentPath.vectorPath == null)
+            return Vector2.zero;
+
+        if (currentPath.vectorPath.Count <= 1)
+            return Vector2.zero;
+
+        Vector2 currentPos = self.position;
+        Vector2 endPoint = currentPath.vectorPath[currentPath.vectorPath.Count - 1];
+
+        if (Vector2.Distance(currentPos, endPoint) <= reachedDistance)
+            return Vector2.zero;
+
+        while (currentWaypointIndex < currentPath.vectorPath.Count - 1)
+        {
+            Vector2 waypoint = currentPath.vectorPath[currentWaypointIndex];
+
+            if (Vector2.Distance(currentPos, waypoint) > nextWaypointDistance)
+                break;
+
+            currentWaypointIndex++;
+        }
+
+        if (currentWaypointIndex >= currentPath.vectorPath.Count)
+            return Vector2.zero;
+
+        Vector2 targetPoint = currentPath.vectorPath[currentWaypointIndex];
+        Vector2 dir = targetPoint - currentPos;
+
+        if (dir.sqrMagnitude <= 0.0001f)
+            return Vector2.zero;
+
+        return dir.normalized;
     }
 
     private void OnPathComplete(Path path)
@@ -160,35 +163,63 @@ public class PathToDir : MonoBehaviour
 
         if (path.error)
         {
-            Debug.LogWarning("Path error: " + path.errorLog, this);
+            Debug.LogWarning("[PathToDir] Path error: " + path.errorLog, this);
             currentPath = null;
             currentWaypointIndex = 0;
             return;
         }
 
         currentPath = path;
-        currentWaypointIndex = 0;
 
-        Vector2 currentPos = self.position;
-
-        while (currentWaypointIndex < currentPath.vectorPath.Count - 1 &&
-               Vector2.Distance(currentPos, currentPath.vectorPath[currentWaypointIndex]) <= nextWaypointDistance)
+        if (currentPath.vectorPath == null || currentPath.vectorPath.Count == 0)
         {
-            currentWaypointIndex++;
+            currentWaypointIndex = 0;
+            return;
+        }
+
+        currentWaypointIndex = FindClosestWaypointIndex();
+
+        if (showDebug)
+        {
+            Vector2 endPoint = currentPath.vectorPath[currentPath.vectorPath.Count - 1];
+            Debug.Log($"[PathToDir] Destination: {destination}, PathEnd: {endPoint}", this);
         }
     }
 
-    #region Basic API
-    public void SetRepathRate(float newRate) => repathRate = newRate;
-    public void SetNextWaypointDistance(float newDistance) => nextWaypointDistance = newDistance;
-    public void SetReachedDestinationDistance(float newDistance) => reachedDestinationDistance = newDistance;
+    private int FindClosestWaypointIndex()
+    {
+        int bestIndex = 0;
+        float bestDistance = float.MaxValue;
+        Vector2 currentPos = self.position;
 
-    public void ResetRepthRate() => repathRate = defaultRepathRate;
-    public void ResetNextWaypointDistance() => nextWaypointDistance = defaultNextWaypointDistance;
-    public void ResetReachedDestinationDistance() => reachedDestinationDistance = defaultReachedDestinationDistance;
+        for (int i = 0; i < currentPath.vectorPath.Count; i++)
+        {
+            float dist = ((Vector2)currentPath.vectorPath[i] - currentPos).sqrMagnitude;
+            if (dist < bestDistance)
+            {
+                bestDistance = dist;
+                bestIndex = i;
+            }
+        }
 
-    public float GetRepathRate() => repathRate;
-    public float GetNextWaypointDistance() => nextWaypointDistance;
-    public float GetReachedDestinationDistance() => reachedDestinationDistance;
-    #endregion
+        return bestIndex;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (!showGizmos)
+            return;
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(destination, 0.15f);
+
+        if (currentPath != null && currentPath.vectorPath != null)
+        {
+            Gizmos.color = Color.cyan;
+            for (int i = 0; i < currentPath.vectorPath.Count - 1; i++)
+            {
+                Gizmos.DrawLine(currentPath.vectorPath[i], currentPath.vectorPath[i + 1]);
+            }
+        }
+    }
 }

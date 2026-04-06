@@ -14,7 +14,6 @@ public class EnemyWanderAction : IAction<EnemyContext>
     private readonly float stuckCheckThreshold = 0.05f;
     private readonly float stuckTimeToReroll = 0.8f;
     private readonly float stuckCheckInterval = 0.2f;
-    private readonly float reachedDestinationDistance = 1f;
 
     private float waitTimer;
     private bool isWaiting;
@@ -43,7 +42,6 @@ public class EnemyWanderAction : IAction<EnemyContext>
 
         ResetRuntimeState(ctx);
 
-        ctx.PathToDir.SetReachedDestinationDistance(reachedDestinationDistance);
         ctx.Movement.SetMoveSpeed(wanderMoveSpeed);
 
         PickNewDestination(ctx);
@@ -69,7 +67,6 @@ public class EnemyWanderAction : IAction<EnemyContext>
     {
         Debug.Log("Exit Wander");
 
-        ctx.PathToDir.ResetReachedDestinationDistance();
         ctx.Movement.ResetMoveSpeed();
         ctx.PathToDir.ClearDestination();
         ctx.Movement.StopMovement();
@@ -110,7 +107,7 @@ public class EnemyWanderAction : IAction<EnemyContext>
             if (IsBlocked(candidate))
                 continue;
 
-            ctx.PathToDir.SetDestination(candidate, true);
+            ctx.PathToDir.SetDestination(candidate);
             ResetStuckTracking(ctx);
             return;
         }

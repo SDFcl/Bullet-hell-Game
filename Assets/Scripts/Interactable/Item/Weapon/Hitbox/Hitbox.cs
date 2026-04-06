@@ -36,7 +36,7 @@ public class Hitbox : MonoBehaviour
     {
         if (col.gameObject == owner|| col.gameObject.CompareTag(owner.tag)) return;
 
-        IDamageable damageable = col.GetComponentInParent<IDamageable>();
+        IDamageable damageable = col.GetComponent<IDamageable>();
 
         if (damageable != null)
         {
