@@ -18,18 +18,6 @@ public class Chest : InteractiveObject
         return isOpened ? "Chest (Opened)" : "Open Chest";
     }
 
-    public override bool CanInteract(GameObject player)
-    {
-        if (isOpened)
-        {
-            Debug.Log("Chest is already opened!");
-            return false;
-        }
-
-        // Check base conditions (distance, keys, etc.)
-        return base.CanInteract(player);
-    }
-
     protected override void ExecuteInteraction()
     {
         if (isOpened) return;
