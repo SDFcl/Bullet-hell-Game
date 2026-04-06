@@ -15,7 +15,17 @@ public class ShopController : MonoBehaviour
         {
             GameObject item = randomItem.GetRandomItem();
             Debug.Log("Spawning item: " + item.gameObject.name + " in slot: " + slot.name);
-            Instantiate(item, slot.position, Quaternion.identity, slot);
+            GameObject itemIns = Instantiate(item, slot.position, Quaternion.identity, slot);
+            
+            if (itemIns.TryGetComponent(out Collider2D collider2D))
+            {
+                collider2D.enabled = false;
+            }
+
+            if (slot.gameObject.TryGetComponent(out SlotSellItem slotSellItem))
+            {
+                slotSellItem.SetItem(itemIns);
+            }
         }
     }
 }
