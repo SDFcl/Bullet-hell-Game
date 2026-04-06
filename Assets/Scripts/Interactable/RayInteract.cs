@@ -9,7 +9,7 @@ public class RayInteract : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private CircleCollider2D CircleCollider2D;
-    Transform target;
+    public GameObject target;
 
     [Header("Draw Gizmos")]
     public Color SphereColor = Color.red;
@@ -27,7 +27,7 @@ public class RayInteract : MonoBehaviour
         }
     }
 
-    public Transform FindClosestItem()
+    public GameObject FindClosestItem()
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, searchRadius, itemLayer);
 
@@ -44,31 +44,24 @@ public class RayInteract : MonoBehaviour
                 closest = col.transform;
             }
         }
+        if (closest == null) return null;
 
-        return closest;
+        return closest.gameObject;
     }
 
     void Update()
     {
         target = FindClosestItem();
-
-        if (target != null)
-        {
-            Debug.DrawLine(transform.position, target.position, Color.yellow);
-        }
-    }
-
-    public void PickUp()
-    {
-        if (target.TryGetComponent(out ItemPickup itemPickup))
-        {
-            itemPickup.Pickup(GetComponent<Inventory>());
-        }
     }
 
     void OnDrawGizmosSelected()
     {
         Gizmos.color = SphereColor;
         Gizmos.DrawWireSphere(transform.position, searchRadius);
+
+        if (target != null)
+        {
+            Debug.DrawLine(transform.position, target.transform.position, Color.yellow);
+        }
     }
 }
