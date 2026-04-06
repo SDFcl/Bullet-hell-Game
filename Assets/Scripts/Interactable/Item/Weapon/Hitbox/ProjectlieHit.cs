@@ -29,7 +29,10 @@ public class ProjectlieHit : Hitbox,IPooledObject
     protected override void ProcessHit(Collider2D col)
     {
         base.ProcessHit(col);
-        gameObject.SetActive(false);
+        if (col.gameObject.CompareTag("obstacle") || col.GetComponentInParent<IDamageable>() != null)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     public void SetProjectlieSpeed(float value) => speed = value;
