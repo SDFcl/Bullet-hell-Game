@@ -3,14 +3,12 @@ using UnityEngine;
 
 public class ShopController : MonoBehaviour
 {
-    private RandomItem randomItem;
+    public RandomItem randomItem;
 
     public List<Transform> ItemSlot = new List<Transform>();
 
     private void Awake()
     {
-        randomItem = GetComponent<RandomItem>();
-
         foreach (Transform slot in ItemSlot)
         {
             GameObject item = randomItem.GetRandomItem();
