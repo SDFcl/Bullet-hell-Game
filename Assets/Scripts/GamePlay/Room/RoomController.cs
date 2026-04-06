@@ -25,6 +25,10 @@ public class RoomController : MonoBehaviour
         playerInsideNeverBefore = true;
         doorController.CloseDoors();
         enemysController.SetEnemiesActive(true);
+        if(TryGetComponent(out Collider2D collider))
+        {
+            collider.enabled = false; // Disable trigger after player enters
+        }
     }
 
     public void RoomCleared()
