@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.GraphicsBuffer;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private HoldingWeapon holdingItem;
     private Inventory inventory;
     private Attack attack;
+    private FilterInteract filterInteract;
 
     Vector2 dir;
     bool isfiring;
@@ -30,6 +32,7 @@ public class PlayerController : MonoBehaviour
         holdingItem = GetComponentInChildren<HoldingWeapon>();
         inventory = GetComponentInChildren<Inventory>();
         attack = GetComponent<Attack>();
+        filterInteract = new FilterInteract(gameObject);
 
         if (mainCamera == null)
             mainCamera = Camera.main;  
@@ -85,8 +88,11 @@ public class PlayerController : MonoBehaviour
     {
         if (context.started)
         {
-            if (rayInteract == null) return;
-            rayInteract.PickUp();
+            if (rayInteract == null || rayInteract.target == null) 
+                return;
+
+            // ✓ Use FilterInteract to automatically detect and execute interaction
+            filterInteract.FilterAndExecute(rayInteract.target);
         }
     }
 

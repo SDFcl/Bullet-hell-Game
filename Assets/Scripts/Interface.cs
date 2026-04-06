@@ -28,3 +28,28 @@ public interface IMovement
     void EnableMovement();
     void DisableMovement();
 }
+
+/// <summary>
+/// ✓ Base interface for all interactable objects
+/// </summary>
+public interface IInteractable
+{
+    void Interact(GameObject player);
+}
+
+/// <summary>
+/// ✓ For items that can be picked up (weapons, consumables, coins, etc.)
+/// </summary>
+public interface IPickable : IInteractable
+{
+    ItemData GetItemData();
+}
+
+/// <summary>
+/// ✓ For objects that have interactive actions (doors, chests, NPCs, etc.)
+/// </summary>
+public interface IInteractive : IInteractable
+{
+    string GetInteractionName();
+    bool CanInteract(GameObject player);
+}
