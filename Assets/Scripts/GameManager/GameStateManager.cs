@@ -1,7 +1,7 @@
 ﻿using Unity.VisualScripting;
 using UnityEngine;
 
-public class GameStateManager : MonoBehaviour
+public class GameStateManager : Singleton<GameStateManager>
 {
     public static GameState CurrentState { get; private set; } = GameState.MainMenu;
     private static GameState previousState;

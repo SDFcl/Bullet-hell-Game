@@ -34,6 +34,7 @@ public class Hitbox : MonoBehaviour
 
     protected virtual void ProcessHit(Collider2D col)
     {
+        if (owner == null) return; 
         if (col.gameObject == owner|| col.gameObject.CompareTag(owner.tag)) return;
 
         IDamageable damageable = col.GetComponent<IDamageable>();

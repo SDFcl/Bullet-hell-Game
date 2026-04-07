@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
         {
             scroll = context.ReadValue<Vector2>();
         }
-            Debug.Log("Scroll Input: " + scroll);   // ����礤���ѹ detect ��������
+        //Debug.Log("Scroll Input: " + scroll);   // ����礤���ѹ detect ��������
         //Debug.Log("Scroll Input: " + scroll);   // ����礤���ѹ smooth ����
         if (scroll.y > 0f)
         {

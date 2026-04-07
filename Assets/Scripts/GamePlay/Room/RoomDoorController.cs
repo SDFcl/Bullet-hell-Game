@@ -3,6 +3,10 @@ using UnityEngine;
 public class RoomDoorController : MonoBehaviour
 {
     [SerializeField] private GameObject[] doors;
+    private void Awake()
+    {
+        doors = GameObject.FindGameObjectsWithTag("Barrier");
+    }
 
     private void Start()
     {
@@ -23,7 +27,7 @@ public class RoomDoorController : MonoBehaviour
     {
         foreach (var door in doors)
         {
-            Debug.Log("Setting door " + door.name + " active: " + state);
+            //Debug.Log("Setting door " + door.name + " active: " + state);
             door.SetActive(state);
         }
     }

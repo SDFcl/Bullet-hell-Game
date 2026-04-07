@@ -53,3 +53,8 @@ public interface IInteractive : IInteractable
     string GetInteractionName();
     bool CanInteract(GameObject player);
 }
+
+public interface ILevel
+{
+    void Execute();
+}

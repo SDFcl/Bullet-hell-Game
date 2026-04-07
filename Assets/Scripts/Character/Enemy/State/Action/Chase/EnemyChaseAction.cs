@@ -3,7 +3,7 @@ public class EnemyChaseAction : IAction<EnemyContext>
 {
     public void OnEnter(EnemyContext ctx)
     {
-        Debug.Log("Enter Chase");
+        //Debug.Log("Enter Chase");
     }
 
     public void OnUpdate(EnemyContext ctx)
@@ -25,7 +25,7 @@ public class EnemyChaseAction : IAction<EnemyContext>
 
     public void OnExit(EnemyContext ctx)
     {
-        Debug.Log("Exit Chase");
+        //Debug.Log("Exit Chase");
         ctx.PathToDir.ClearDestination();
         ctx.Movement.StopMovement();
     }

@@ -38,7 +38,7 @@ public class EnemyWanderAction : IAction<EnemyContext>
 
     public void OnEnter(EnemyContext ctx)
     {
-        Debug.Log("Enter Wander");
+        //Debug.Log("Enter Wander");
 
         ResetRuntimeState(ctx);
 
@@ -65,7 +65,7 @@ public class EnemyWanderAction : IAction<EnemyContext>
 
     public void OnExit(EnemyContext ctx)
     {
-        Debug.Log("Exit Wander");
+        //Debug.Log("Exit Wander");
 
         ctx.Movement.ResetMoveSpeed();
         ctx.PathToDir.ClearDestination();

@@ -12,7 +12,7 @@ public class MeleeWeapon : MonoBehaviour,IWeapon
 
     public event Action OnAttack;
 
-    public void SetOwner(GameObject owner) => hitbox.SetOwner(owner);
+    
 
     private void Awake()
     {
@@ -34,6 +34,14 @@ public class MeleeWeapon : MonoBehaviour,IWeapon
         OnAttack?.Invoke();
         cooldownTimer = cooldown;
     }
+    public void SetOwner(GameObject owner)
+    {
+        if (hitbox == null)
+        {
+            hitbox = GetComponentInChildren<Hitbox>(true);
+        }
+        hitbox.SetOwner(owner);
+    } 
 
     // Animation event
     public void EnableHitbox() => hitbox.EnableCol(true);

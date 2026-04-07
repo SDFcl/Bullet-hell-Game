@@ -26,7 +26,7 @@ public class HoldingWeapon : MonoBehaviour
         if (item != null)
         {
             inventory.AddWeapon(item);
-            Debug.Log("HoldingWeapon: Added item to inventory on Awake: " + item.itemData.itemName);
+            //Debug.Log("HoldingWeapon: Added item to inventory on Awake: " + item.itemData.itemName);
         }
     }
 
@@ -64,7 +64,7 @@ public class HoldingWeapon : MonoBehaviour
         }
 
          // ถ้าไม่ได้ส่ง index มา ให้ใช้ currentIndex
-         Debug.Log("SetHoldingWeapon called with index: " + index + ", direction: " + direction);
+         //Debug.Log("SetHoldingWeapon called with index: " + index + ", direction: " + direction);
 
         if (index == currentIndex) 
         {
@@ -77,13 +77,13 @@ public class HoldingWeapon : MonoBehaviour
             }
 
             // ทำให้ index อยู่ใน range ก่อน
-            Debug.Log("Current index before adjustment: " + (index + direction + count) % count);
+            //Debug.Log("Current index before adjustment: " + (index + direction + count) % count);
             index = (index + direction + count) % count;
 
             int startIndex = index;
 
             // 🔥 วนหา item ที่ valid
-            Debug.Log("Searching for valid weapon starting at index: " + index);
+            //Debug.Log("Searching for valid weapon starting at index: " + index);
             while (inventory.Weapons[index].itemData == null)
             {
                 index = (index + direction + count) % count;
