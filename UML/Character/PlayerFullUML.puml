@@ -1,0 +1,84 @@
+@startuml
+title Player Full UML
+
+left to right direction
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam linetype polyline
+skinparam nodesep 45
+skinparam ranksep 45
+skinparam packageStyle rectangle
+
+package "Input" {
+  class PlayerInput
+  class Camera
+}
+
+package "Controller" {
+  class PlayerController {
+    + OnMove()
+    + OnAim()
+    + OnFire()
+    + OnDodge()
+    + OnInteract()
+    + OnHoldItem()
+    + UseConsumable()
+  }
+}
+
+package "Character Core" {
+  class Movement
+  class Facing2D
+  class AimPivot2D
+  class Attack
+  class Dodge
+  class PlayerHealth
+  class PlayerAnimations
+}
+
+package "Interaction" {
+  class RayInteract
+  class FilterInteract
+}
+
+package "Inventory" {
+  class HoldingWeapon
+  class Inventory
+  class Item
+  class ItemData
+}
+
+PlayerInput -right-> PlayerController : input
+Camera -right-> PlayerController : aim
+
+PlayerController -right-> Movement : move
+PlayerController -right-> Facing2D : face
+PlayerController -right-> AimPivot2D : look
+PlayerController -right-> Attack : fire
+PlayerController -right-> Dodge : roll
+
+PlayerController -down-> RayInteract : detect
+RayInteract -right-> FilterInteract : target
+
+PlayerController -down-> HoldingWeapon : switch
+HoldingWeapon -right-> Inventory : current weapon
+Inventory -down-> Item : holds
+Item -right-> ItemData : data
+
+PlayerController -down-> Inventory : consumable
+PlayerController -down-> PlayerHealth : hp
+PlayerAnimations -left-> Dodge : OnDodge
+
+PlayerInput -[hidden]right- Camera
+Camera -[hidden]right- PlayerController
+PlayerController -[hidden]right- Movement
+Movement -[hidden]right- Facing2D
+Facing2D -[hidden]right- AimPivot2D
+AimPivot2D -[hidden]right- Attack
+Attack -[hidden]right- Dodge
+RayInteract -[hidden]right- FilterInteract
+HoldingWeapon -[hidden]right- Inventory
+Item -[hidden]right- ItemData
+PlayerHealth -[hidden]right- PlayerAnimations
+
+@enduml

@@ -1,0 +1,165 @@
+@startuml
+title Combat UML
+
+left to right direction
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam linetype ortho
+skinparam nodesep 35
+skinparam ranksep 45
+
+package "Combat Core" {
+  class Attack {
+    - holdingItem
+    - holdingItemWatcher
+    - currentWeapon
+    + TryAttack()
+    + RefreshWeapon()
+  }
+
+  class Health {
+    # maxHealth
+    + CurrentHP
+    + IsDead
+    + OnDead
+    + OnHealthChanged
+    + TakeDamage()
+    + Kill()
+  }
+
+  class PlayerHealth {
+    + Heal()
+  }
+
+  class Mana {
+    + CurrentMana
+    + BoostMaxMana()
+    + BoostCurrentMana()
+    + BoostRegenRate()
+    + ConsumeMana()
+  }
+
+  class Dodge {
+    + OnDodge
+    + TryDodge()
+    + EnableHitbox()
+    + DisableHitbox()
+  }
+}
+
+package "Weapons" {
+  interface IWeapon {
+    + OnAttack
+    + SetOwner()
+    + ExecuteAttack()
+  }
+
+  class MeleeWeapon {
+    + OnAttack
+    + ExecuteAttack()
+    + SetOwner()
+    + EnableHitbox()
+    + DisableHitbox()
+  }
+
+  class ProjectileWeapon {
+    + OnAttack
+    + ExecuteAttack()
+    + SetOwner()
+    + SetProjectileTag()
+    + SetMana()
+  }
+}
+
+package "Damage Flow" {
+  class Hitbox {
+    + SetDamage()
+    + SetOwner()
+    + EnableCol()
+  }
+
+  class ProjectlieHit {
+    + OnObjectSpawn()
+    + SetProjectlieSpeed()
+  }
+}
+
+package "Contracts / Support" {
+  interface IDamageable {
+    + TakeDamage()
+  }
+
+  interface IHealable {
+    + Heal()
+  }
+
+  interface IMovement {
+    + GetDirection()
+    + EnableMovement()
+    + DisableMovement()
+  }
+
+  interface IPooledObject {
+    + OnObjectSpawn()
+  }
+
+  class ObjectPooler {
+    + Instance
+    + SpawnFromPool()
+  }
+
+  class HoldingItemWatcher {
+    + OnHoldingItemChanged
+  }
+}
+
+Health ..|> IDamageable
+PlayerHealth --|> Health
+PlayerHealth ..|> IHealable
+MeleeWeapon ..|> IWeapon
+ProjectileWeapon ..|> IWeapon
+ProjectlieHit --|> Hitbox
+ProjectlieHit ..|> IPooledObject
+
+Attack --> HoldingItemWatcher : observe weapon
+Attack --> IWeapon : use current weapon
+
+MeleeWeapon --> Hitbox : melee hit
+ProjectileWeapon --> ProjectlieHit : projectile
+ProjectileWeapon --> Mana : consume mana
+ProjectileWeapon --> ObjectPooler : spawn projectile
+
+Hitbox --> IDamageable : damage target
+Dodge --> IMovement : disable movement
+
+Attack -[hidden]right- IWeapon
+IWeapon -[hidden]right- MeleeWeapon
+MeleeWeapon -[hidden]right- ProjectileWeapon
+Hitbox -[hidden]down- ProjectlieHit
+Health -[hidden]down- PlayerHealth
+IDamageable -[hidden]right- IHealable
+IMovement -[hidden]right- IPooledObject
+
+note top of Attack
+Main combat entry point.
+Looks for the currently held weapon
+and calls ExecuteAttack().
+end note
+
+note right of Hitbox
+Damage is applied here by checking
+for IDamageable on the target.
+end note
+
+note bottom of ProjectileWeapon
+Ranged combat flow:
+ProjectileWeapon -> ObjectPooler -> ProjectlieHit -> Hitbox -> IDamageable
+end note
+
+note bottom of Dodge
+Dodge is part of combat feel because it gives
+temporary movement burst and invulnerability window behavior.
+end note
+
+@enduml

@@ -1,0 +1,114 @@
+@startuml
+title Core Loop Bootstrapping UML
+
+left to right direction
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam linetype ortho
+skinparam nodesep 35
+skinparam ranksep 45
+
+package "Bootstrapping" {
+  class GameFacade {
+    - pathfinder
+    - levelManager
+    + GameLoad()
+    + GameStart()
+  }
+
+  class LevelManager {
+    - levelData
+    - pool
+    - lastRandomIndex
+    - currentLevel
+    + LoadLevel()
+    + SpawnLevel()
+    + GetRandomPrefab()
+  }
+
+  class AstarPath {
+    + Scan()
+  }
+}
+
+package "Level Data" {
+  class LevelDataBaseSO {
+    + levelDatas
+    + GetLevelData()
+  }
+
+  class LevelDataSO {
+    + levelID
+    + mapName
+    + levelPrefabs
+  }
+
+  class LevelID {
+    + map
+    + stage
+    + GetNextStage()
+  }
+
+  enum Stage {
+    Stage1
+    Stage2
+    BossStage
+  }
+
+  class GameSession {
+    + currentLevel
+    + lastRandomIndex
+  }
+}
+
+package "Level Transition" {
+  interface ILevel {
+    + Execute()
+  }
+
+  class SelectLevel {
+    + Execute()
+  }
+
+  class NextLevel {
+    + Execute()
+  }
+}
+
+GameFacade --> LevelManager : boot level
+GameFacade --> AstarPath : scan graph
+
+LevelManager --> GameSession : read session
+LevelManager --> LevelDataBaseSO : load level
+LevelDataBaseSO --> LevelDataSO : contains
+LevelDataSO --> LevelID : identify level
+LevelID --> Stage : use stage
+
+SelectLevel ..|> ILevel
+NextLevel ..|> ILevel
+SelectLevel --> GameSession : set current level
+NextLevel --> GameSession : update stage
+NextLevel --> LevelID : get next stage
+
+GameFacade -[hidden]right- LevelManager
+LevelManager -[hidden]down- LevelDataBaseSO
+LevelDataBaseSO -[hidden]down- LevelDataSO
+LevelDataSO -[hidden]down- LevelID
+LevelID -[hidden]down- Stage
+SelectLevel -[hidden]right- NextLevel
+
+note top of GameFacade
+Main startup flow:
+1. Load level data from GameSession
+2. Spawn selected level prefab
+3. Scan A* graph for navigation
+end note
+
+note bottom of LevelManager
+LevelManager is the runtime bridge
+between saved session state and
+spawned level prefabs.
+end note
+
+@enduml

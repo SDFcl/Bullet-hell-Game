@@ -1,0 +1,154 @@
+@startuml
+title Room Level Progression Shop UML
+
+left to right direction
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam linetype ortho
+skinparam nodesep 35
+skinparam ranksep 45
+
+package "Room System" {
+  class RoomController {
+    - enemysController
+    - doorController
+    - chest
+    + PlayerEnterRoom()
+    + RoomCleared()
+  }
+
+  class RoomEnemysController {
+    + enemies
+    + OnRoomCleared
+    + SetEnemiesActive()
+  }
+
+  class RoomDoorController {
+    + OpenDoors()
+    + CloseDoors()
+  }
+
+  class Startpoint {
+    + MovePlayerToStartpoint()
+  }
+}
+
+package "Level Progression" {
+  interface ILevel {
+    + Execute()
+  }
+
+  class EndPointInterectable {
+    + GetInteractionName()
+  }
+
+  class LevelManager {
+    - levelData
+    - pool
+    - currentLevel
+    + LoadLevel()
+    + SpawnLevel()
+    + GetRandomPrefab()
+  }
+
+  class LevelDataBaseSO {
+    + levelDatas
+    + GetLevelData()
+  }
+
+  class LevelDataSO {
+    + levelID
+    + mapName
+    + levelPrefabs
+  }
+
+  class GameSession {
+    + currentLevel
+    + lastRandomIndex
+  }
+
+  class SelectLevel {
+    + Execute()
+  }
+
+  class NextLevel {
+    + Execute()
+  }
+}
+
+package "Shop / Reward" {
+  class ShopController {
+    + randomItem
+    + ItemSlot
+  }
+
+  class SlotSellItem {
+    + SetItem(item)
+    + GetInteractionName()
+  }
+
+  class Chest {
+    + GetInteractionName()
+  }
+
+  class RandomItem {
+    + GetRandomItem()
+  }
+
+  class ItemPickup
+  class Inventory
+}
+
+package "Shared Interfaces" {
+  class InteractiveObject
+}
+
+EndPointInterectable --|> InteractiveObject
+Chest --|> InteractiveObject
+SelectLevel ..|> ILevel
+NextLevel ..|> ILevel
+
+RoomController --> RoomEnemysController : enemy flow
+RoomController --> RoomDoorController : door flow
+RoomController --> Chest : enable reward
+RoomEnemysController --> RoomController : OnRoomCleared
+
+EndPointInterectable --> ILevel : execute
+LevelManager --> LevelDataBaseSO : load
+LevelDataBaseSO --> LevelDataSO : contains
+LevelManager --> GameSession : read session
+SelectLevel --> GameSession : set level
+NextLevel --> GameSession : advance stage
+
+ShopController --> RandomItem : choose item
+ShopController --> SlotSellItem : assign slot
+SlotSellItem --> ItemPickup : sold object
+SlotSellItem --> Inventory : spend coins
+Chest --> RandomItem : spawn reward
+
+RoomController -[hidden]right- EndPointInterectable
+EndPointInterectable -[hidden]right- LevelManager
+LevelManager -[hidden]down- LevelDataBaseSO
+LevelDataBaseSO -[hidden]down- LevelDataSO
+ShopController -[hidden]down- SlotSellItem
+SlotSellItem -[hidden]down- ItemPickup
+
+note top of RoomController
+Main room flow:
+enter room -> close doors -> enable enemies
+room cleared -> open doors -> enable chest
+end note
+
+note bottom of LevelManager
+Level data is chosen from GameSession,
+then a random room prefab is spawned
+from the selected LevelDataSO.
+end note
+
+note bottom of ShopController
+Shop creates item pickups from RandomItem
+and assigns them to SlotSellItem for purchase.
+end note
+
+@enduml

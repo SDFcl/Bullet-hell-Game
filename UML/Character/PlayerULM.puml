@@ -1,0 +1,35 @@
+@startuml
+left to right direction
+
+class PlayerController
+class PlayerInput
+class Camera
+class Movement
+class Attack
+class Dodge
+class RayInteract
+class FilterInteract
+class HoldingWeapon
+class Inventory
+class Item
+class PlayerAnimations
+class PlayerHealth
+
+PlayerController --> PlayerInput
+PlayerController --> Camera
+PlayerController --> Movement
+PlayerController --> Attack
+PlayerController --> Dodge
+PlayerController --> RayInteract
+PlayerController --> FilterInteract
+PlayerController --> HoldingWeapon
+PlayerController --> Inventory
+PlayerController --> PlayerHealth
+
+HoldingWeapon --> Inventory
+Inventory --> Item
+RayInteract --> FilterInteract
+PlayerAnimations --> Dodge
+Dodge --> Movement
+
+@enduml

@@ -1,0 +1,112 @@
+@startuml
+title Character Core UML
+
+left to right direction
+skinparam classAttributeIconSize 0
+skinparam monochrome true
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam linetype ortho
+skinparam nodesep 30
+skinparam ranksep 40
+
+package "Character Core" {
+  class Movement {
+    + SetMoveInput(input : Vector2)
+    + GetMoveInput() : Vector2
+    + GetDirection() : Vector2
+    + StopMovement()
+    + EnableMovement()
+    + DisableMovement()
+  }
+
+  class Attack {
+    + TryAttack()
+  }
+
+  class Health {
+    # maxHealth : float
+    + CurrentHP : float
+    + IsDead : bool
+    + OnDead : Action
+    + OnHealthChanged : Action<float>
+    + TakeDamage(damage : float)
+    + Kill()
+  }
+
+  class Mana {
+    + CurrentMana : float
+    + BoostMaxMana(value : float)
+    + BoostCurrentMana(value : float)
+    + BoostRegenRate(value : float)
+    + ConsumeMana(amount : float)
+  }
+
+  class Facing2D {
+    + IsFacingRight : bool
+    + SetDirection(direction : float)
+  }
+
+  class AimPivot2D {
+    + SetDirection(direction : Vector2)
+    + ResetRotation()
+  }
+
+  class HoldingItemWatcher {
+    + OnHoldingItemChanged : Action
+  }
+}
+
+package "Contracts" {
+  interface IDamageable {
+    + TakeDamage(damage : float)
+  }
+
+  interface IHealable {
+    + Heal(amount : float)
+  }
+
+  interface IMovement {
+    + SetMoveInput(input : Vector2)
+    + GetMoveInput() : Vector2
+    + GetDirection() : Vector2
+    + EnableMovement()
+    + DisableMovement()
+  }
+}
+
+package "Specialization" {
+  class PlayerHealth {
+    + Heal(amount : float)
+  }
+}
+
+Movement ..|> IMovement
+Health ..|> IDamageable
+PlayerHealth --|> Health
+PlayerHealth ..|> IHealable
+
+Attack --> HoldingItemWatcher : observe child change
+
+Movement -[hidden]right- Attack
+Attack -[hidden]right- Health
+Health -[hidden]right- Mana
+Mana -[hidden]right- Facing2D
+Facing2D -[hidden]right- AimPivot2D
+
+note bottom of Movement
+Used by both Player and Enemy
+as the shared movement component.
+end note
+
+note bottom of Attack
+Shared attack entry point.
+end note
+
+note bottom of Health
+Base HP system used by both sides.
+Enemy uses Health directly.
+Player extends it with PlayerHealth.
+end note
+
+@enduml

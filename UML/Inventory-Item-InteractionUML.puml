@@ -1,0 +1,153 @@
+@startuml
+title Inventory Item Interaction UML
+
+left to right direction
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam linetype ortho
+skinparam nodesep 35
+skinparam ranksep 45
+
+package "Interaction Core" {
+  interface IInteractable {
+    + Interact(player)
+  }
+
+  interface IPickable {
+    + GetItemData()
+  }
+
+  interface IInteractive {
+    + GetInteractionName()
+    + CanInteract(player)
+  }
+
+  class RayInteract {
+    + target
+    + FindClosestItem()
+  }
+
+  class FilterInteract {
+    + FilterAndExecute()
+    + GetInteractionType()
+  }
+}
+
+package "Inventory" {
+  class Inventory {
+    + Weapons
+    + Consumables
+    + Coins
+    + AddWeapon()
+    + DropWeapon()
+    + AddConsumable()
+    + DropConsumable()
+    + AddCoins()
+    + SpendCoins()
+  }
+
+  class HoldingWeapon {
+    + currentItem
+    + currentIndex
+    + SetDirection()
+    + SetHoldingWeapon()
+    + HoldWeapon()
+  }
+}
+
+package "Item System" {
+  class Item {
+    + itemData
+    + Use()
+  }
+
+  class ItemData {
+    + itemName
+    + itemType
+    + Price
+    + WorldPrefab
+    + HoldingPrefab
+    + effects
+  }
+
+  class ItemPickup {
+    + itemData
+    + GetItemData()
+    + Interact(player)
+    + Pickup(inventory)
+  }
+
+  class ItemEffect
+}
+
+package "Interactive Objects" {
+  class InteractiveObject {
+    + interactionName
+    + GetInteractionName()
+    + CanInteract(player)
+    + Interact(player)
+  }
+
+  class Chest {
+    + GetInteractionName()
+  }
+
+  class SlotSellItem {
+    + GetInteractionName()
+    + SetItem(item)
+  }
+
+  class RandomItem {
+    + GetRandomItem()
+  }
+}
+
+IPickable --|> IInteractable
+IInteractive --|> IInteractable
+
+ItemPickup ..|> IPickable
+InteractiveObject ..|> IInteractive
+Chest --|> InteractiveObject
+SlotSellItem ..|> IInteractive
+
+RayInteract --> IInteractable : nearest target
+FilterInteract --> IPickable : pickup path
+FilterInteract --> IInteractive : interact path
+RayInteract --> FilterInteract : selected target
+
+ItemPickup --> ItemData : world item data
+ItemPickup --> Inventory : add on pickup
+Inventory --> Item : store
+HoldingWeapon --> Inventory : read weapons
+Item --> ItemData : reference data
+Item --> ItemEffect : use effects
+
+Chest --> RandomItem : reward source
+SlotSellItem --> ItemPickup : sold item
+SlotSellItem --> Inventory : spend coins
+
+RayInteract -[hidden]down- FilterInteract
+Inventory -[hidden]right- HoldingWeapon
+Item -[hidden]down- ItemData
+InteractiveObject -[hidden]down- Chest
+Chest -[hidden]down- SlotSellItem
+
+note top of FilterInteract
+Main interaction router.
+It decides whether the target is
+pickable or interactive.
+end note
+
+note bottom of Inventory
+Inventory stores runtime Item objects,
+not ItemData directly.
+end note
+
+note bottom of ItemPickup
+Pickup converts a world object
+into a runtime Item and inserts it
+into Inventory.
+end note
+
+@enduml

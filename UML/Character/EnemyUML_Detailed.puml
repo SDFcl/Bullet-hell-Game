@@ -1,0 +1,317 @@
+@startuml
+title Enemy UML Detailed
+
+left to right direction
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam linetype ortho
+skinparam nodesep 35
+skinparam ranksep 45
+
+package "Enemy Controller" {
+  class EnemyController {
+    - target
+    - stateGraph
+    - ctx
+    - stateMachine
+    + Update()
+    + HandleStateChanged()
+  }
+
+  class EnemyContext {
+    + Self
+    + Target
+    + Health
+    + Mana
+    + Movement
+    + AimPivot
+    + Facing
+    + PathToDir
+    + LineOfSight
+    + Attack
+    + Timer
+    + Get()
+    + MoveTo()
+  }
+
+  class Timer {
+    + TimeElapsed
+    + Tick()
+    + ResetTimer()
+  }
+}
+
+package "Navigation / Sensing" {
+  class PathToDir {
+    + SetDestination()
+    + ClearDestination()
+    + GetDirection()
+    + ReachedDestination()
+  }
+
+  class LineOfSight2D {
+    + DetectRange()
+    + FOVAngle()
+    + RaycastCheck()
+    + CanSeeTarget()
+  }
+}
+
+package "Runtime State Machine" {
+  interface IState {
+    + OnEnter()
+    + OnUpdate()
+    + OnExit()
+  }
+
+  interface IAction {
+    + OnEnter()
+    + OnUpdate()
+    + OnExit()
+  }
+
+  interface ICondition {
+    + IsMet()
+  }
+
+  class Transition {
+    + Condition
+    + TargetState
+  }
+
+  class State {
+    + AddAction()
+    + AddTransition()
+    + AddGlobalTransition()
+    + GetNextState()
+    + OnEnter()
+    + OnUpdate()
+    + OnExit()
+  }
+
+  class StateMachine {
+    + CurrentState
+    + Initialize()
+    + ChangeState()
+    + Tick()
+  }
+}
+
+package "State Assets" {
+  abstract class EnemyActionSO {
+    + CreateAction()
+  }
+
+  abstract class EnemyConditionSO {
+    + CreateCondition()
+  }
+
+  class EnemyStateTransitionSO {
+    + condition
+    + targetState
+  }
+
+  class EnemyStateSO {
+    + actions
+    + transitions
+  }
+
+  class EnemyStateGraphSO {
+    + entryState
+    + allStates
+    + anyTransitions
+  }
+
+  class EnemyStateGraphBuilder {
+    + Build()
+  }
+}
+
+package "Concrete Actions" {
+  class EnemyIdleAction {
+    + OnEnter()
+    + OnUpdate()
+    + OnExit()
+  }
+
+  class EnemyChaseAction {
+    + OnEnter()
+    + OnUpdate()
+    + OnExit()
+  }
+
+  class EnemyWanderAction {
+    - wanderRadius
+    - minWaitTime
+    - maxWaitTime
+    - wanderMoveSpeed
+    - obstacleMask
+    + OnEnter()
+    + OnUpdate()
+    + OnExit()
+    + PickNewDestination()
+  }
+
+  class EnemyPositioningAction {
+    - preferredDistance
+    - repathInterval
+    + OnEnter()
+    + OnUpdate()
+    + OnExit()
+  }
+
+  class EnemyAttackAction {
+    + OnEnter()
+    + OnUpdate()
+    + OnExit()
+  }
+
+  class EnemyDeadAction {
+    + OnEnter()
+    + OnUpdate()
+    + OnExit()
+  }
+}
+
+package "Concrete Conditions" {
+  class EnemySeeTargetCondition {
+    + IsMet()
+  }
+
+  class EnemyDistanceCondition {
+    - range
+    - comparison
+    + IsMet()
+  }
+
+  class EnemyWaitTimeCondition {
+    - waitTime
+    + IsMet()
+  }
+
+  class EnemyOnDeadCondition {
+    + IsMet()
+  }
+
+  class EnemyAndCondition {
+    - conditions
+    + IsMet()
+  }
+
+  class EnemyNotCondition {
+    - innerCondition
+    + IsMet()
+  }
+
+  class EnemyNullCondition {
+    + IsMet()
+  }
+
+  class EnemyPressKeyCondition {
+    - key
+    + IsMet()
+  }
+}
+
+EnemyController --> EnemyContext : owns
+EnemyController --> StateMachine : updates
+EnemyController --> EnemyStateGraphSO : reads graph
+EnemyController --> EnemyStateGraphBuilder : build runtime
+EnemyContext --> PathToDir : navigation
+EnemyContext --> LineOfSight2D : sensing
+EnemyContext --> Timer : timer
+
+IState <|.. State
+State --> IAction : runs
+State --> Transition : checks
+Transition --> ICondition : guard
+Transition --> IState : target
+StateMachine --> IState : current
+StateMachine --> EnemyContext : uses
+
+EnemyStateGraphBuilder --> EnemyStateGraphSO : input
+EnemyStateGraphBuilder --> EnemyStateSO : build states
+EnemyStateGraphBuilder --> EnemyActionSO : create action
+EnemyStateGraphBuilder --> EnemyConditionSO : create condition
+EnemyStateGraphSO --> EnemyStateSO : contains
+EnemyStateSO --> EnemyActionSO : action list
+EnemyStateSO --> EnemyStateTransitionSO : transitions
+EnemyStateTransitionSO --> EnemyConditionSO : condition
+EnemyStateTransitionSO --> EnemyStateSO : target
+
+IAction <|.. EnemyIdleAction
+IAction <|.. EnemyChaseAction
+IAction <|.. EnemyWanderAction
+IAction <|.. EnemyPositioningAction
+IAction <|.. EnemyAttackAction
+IAction <|.. EnemyDeadAction
+
+ICondition <|.. EnemySeeTargetCondition
+ICondition <|.. EnemyDistanceCondition
+ICondition <|.. EnemyWaitTimeCondition
+ICondition <|.. EnemyOnDeadCondition
+ICondition <|.. EnemyAndCondition
+ICondition <|.. EnemyNotCondition
+ICondition <|.. EnemyNullCondition
+ICondition <|.. EnemyPressKeyCondition
+
+EnemyChaseAction --> EnemyContext : use target/path
+EnemyWanderAction --> EnemyContext : move and wait
+EnemyPositioningAction --> EnemyContext : reposition
+EnemyAttackAction --> EnemyContext : stop and attack
+EnemyDeadAction --> EnemyContext : stop and drop
+
+EnemySeeTargetCondition --> EnemyContext : line of sight
+EnemyDistanceCondition --> EnemyContext : target distance
+EnemyWaitTimeCondition --> EnemyContext : timer
+EnemyOnDeadCondition --> EnemyContext : health state
+EnemyAndCondition --> ICondition : combine
+EnemyNotCondition --> ICondition : invert
+
+EnemyController -[hidden]right- EnemyContext
+EnemyContext -[hidden]right- PathToDir
+PathToDir -[hidden]down- LineOfSight2D
+StateMachine -[hidden]down- State
+State -[hidden]down- Transition
+IState -[hidden]right- IAction
+IAction -[hidden]right- ICondition
+EnemyStateGraphBuilder -[hidden]right- EnemyStateGraphSO
+EnemyStateGraphSO -[hidden]down- EnemyStateSO
+EnemyStateSO -[hidden]down- EnemyStateTransitionSO
+EnemyIdleAction -[hidden]right- EnemyChaseAction
+EnemyChaseAction -[hidden]right- EnemyWanderAction
+EnemyWanderAction -[hidden]right- EnemyPositioningAction
+EnemyPositioningAction -[hidden]right- EnemyAttackAction
+EnemyAttackAction -[hidden]right- EnemyDeadAction
+EnemySeeTargetCondition -[hidden]right- EnemyDistanceCondition
+EnemyDistanceCondition -[hidden]right- EnemyWaitTimeCondition
+EnemyWaitTimeCondition -[hidden]right- EnemyOnDeadCondition
+EnemyOnDeadCondition -[hidden]right- EnemyAndCondition
+EnemyAndCondition -[hidden]right- EnemyNotCondition
+EnemyNotCondition -[hidden]right- EnemyNullCondition
+
+note top of EnemyController
+Enemy side is driven by AI state updates,
+not by direct player input.
+end note
+
+note right of EnemyContext
+This class is the dependency bag for enemy logic.
+It connects AI, navigation, sensing,
+and shared character components.
+end note
+
+note bottom of EnemyStateGraphBuilder
+ScriptableObject state assets are converted
+into runtime State and Transition objects here.
+end note
+
+note bottom
+Shared character core classes such as
+Movement, Attack, Health, Mana,
+Facing2D, and AimPivot2D are referenced
+through EnemyContext and are documented separately.
+end note
+
+@enduml

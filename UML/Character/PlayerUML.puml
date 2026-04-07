@@ -1,0 +1,171 @@
+@startuml
+title Player UML
+
+left to right direction
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam linetype ortho
+skinparam nodesep 45
+skinparam ranksep 55
+
+package "Player Core" {
+  class PlayerController {
+    - movement
+    - facing
+    - aimPivot
+    - playerInput
+    - dodge
+    - rayInteract
+    - holdingItem
+    - inventory
+    - attack
+    - filterInteract
+    - dir
+    - isfiring
+    + OnMove()
+    + OnAim()
+    + OnFire()
+    + OnDodge()
+    + OnInteract()
+    + OnHoldItem()
+    + UseConsumable()
+  }
+
+  class Movement {
+    + SetMoveInput()
+    + GetMoveInput()
+    + GetDirection()
+    + StopMovement()
+    + EnableMovement()
+    + DisableMovement()
+  }
+
+  class Facing2D {
+    + IsFacingRight
+    + SetDirection()
+  }
+
+  class AimPivot2D {
+    + SetDirection()
+    + ResetRotation()
+  }
+
+  class Attack {
+    + TryAttack()
+    + RefreshWeapon()
+  }
+
+  class Dodge {
+    + OnDodge
+    + TryDodge()
+  }
+
+  class PlayerHealth {
+    + Heal()
+  }
+}
+
+package "Interaction" {
+  class RayInteract {
+    + target
+    + FindClosestItem()
+  }
+
+  class FilterInteract {
+    + FilterAndExecute()
+    + GetInteractionType()
+  }
+}
+
+package "Inventory" {
+  class HoldingWeapon {
+    + currentItem
+    + currentIndex
+    + SetDirection()
+    + SetHoldingWeapon()
+  }
+
+  class Inventory {
+    + Weapons
+    + Consumables
+    + Coins
+    + AddWeapon()
+    + DropWeapon()
+    + AddConsumable()
+    + DropConsumable()
+    + AddCoins()
+    + SpendCoins()
+  }
+
+  class Item {
+    + itemData
+    + Use()
+  }
+}
+
+package "Input / Support" {
+  class PlayerInput
+  class Camera
+  class PlayerAnimations {
+    + TriggerDodgeAnimation()
+  }
+}
+
+PlayerInput -left-> PlayerController : input
+Camera -left-> PlayerController : mouse aim
+
+PlayerController -right-> Movement : move
+PlayerController -right-> Facing2D : face
+PlayerController -right-> AimPivot2D : aim
+PlayerController -right-> Attack : fire
+PlayerController -right-> Dodge : dodge
+PlayerController -right-> PlayerHealth : hp
+
+PlayerController -down-> RayInteract : detect target
+RayInteract -right-> FilterInteract : pass target
+
+PlayerController --> HoldingWeapon : switch weapon
+PlayerController --> Inventory : use consumable
+
+HoldingWeapon --> Inventory : read weapons
+Inventory --> Item : contains
+PlayerAnimations --> Dodge : subscribe OnDodge
+Dodge --> Movement : temporary disable
+
+PlayerInput -[hidden]down- Camera
+Camera -[hidden]right- PlayerController
+PlayerController -[hidden]right- Movement
+Movement -[hidden]down- Facing2D
+Facing2D -[hidden]down- AimPivot2D
+AimPivot2D -[hidden]down- Attack
+Attack -[hidden]down- Dodge
+Dodge -[hidden]down- PlayerHealth
+RayInteract -[hidden]right- FilterInteract
+HoldingWeapon -[hidden]right- Inventory
+Inventory -[hidden]down- Item
+PlayerAnimations -[hidden]left- Camera
+
+note top of PlayerController
+Main orchestrator of the player.
+Receives input and delegates work
+to movement, combat, interaction,
+inventory, and health systems.
+end note
+
+note right of RayInteract
+Searches the closest
+interactable target.
+end note
+
+note right of HoldingWeapon
+Chooses the current weapon
+from Inventory.
+end note
+
+note bottom of Dodge
+Works together with Movement
+and PlayerAnimations for roll flow.
+end note
+
+@enduml
