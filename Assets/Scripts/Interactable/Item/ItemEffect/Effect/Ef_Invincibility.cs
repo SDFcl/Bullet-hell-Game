@@ -11,7 +11,7 @@ public class Ef_Invincibility : ItemEffect
         var player = target.GetComponent<Health>();
         if (player != null)
         {
-            //player.SetInvincibility(true);
+            player.EnableIgnoreDamage(true);
             EffectCoroutineRunner.Run(RemoveAfterTime(player));
         }
     }
@@ -21,7 +21,7 @@ public class Ef_Invincibility : ItemEffect
         yield return new WaitForSeconds(duration); // ����ʱ��
         if (player != null)
         {
-            //player.SetInvincibility(false);
+            player.EnableIgnoreDamage(false);
         }
     }
 }

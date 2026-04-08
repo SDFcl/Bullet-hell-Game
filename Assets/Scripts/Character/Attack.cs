@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
+    [SerializeField] private float baseDamage = 0f;
     [SerializeField] private Transform holdingItem;
     private HoldingItemWatcher holdingItemWatcher;
     private IWeapon currentWeapon;
@@ -55,22 +56,56 @@ public class Attack : MonoBehaviour
         currentWeapon = holdingItem.GetComponentInChildren<IWeapon>();
 
         if (currentWeapon != null)
+        {
             currentWeapon.SetOwner(gameObject);
+            currentWeapon.AddFlatDamage(baseDamage);
+        }
+            
     }
 
-    public void BoostWeaponDamage(float multiplier)
+    #region AdjustDamage API
+    public void AddDamagePercent(float percent)
     {
         if (currentWeapon != null)
         {
-            currentWeapon.BoostDamage(multiplier);
+            currentWeapon.AddDamagePercent(percent);
         }
     }
 
-    public void ResetWeaponDamage()
+    public void RemoveDamagePercent(float percent)
     {
         if (currentWeapon != null)
         {
-            currentWeapon.ResetDamage();
+            currentWeapon.RemoveDamagePercent(percent);
         }
     }
+    public void ResetDamagePercent()
+    {
+        if (currentWeapon != null)
+        {
+            currentWeapon.ResetDamagePercent();
+        }
+    }
+    public void AddFlatDamage(float amount)
+    {
+        if (currentWeapon != null)
+        {
+            currentWeapon.AddFlatDamage(amount);
+        }
+    }
+    public void RemoveFlatDamage(float amount)
+    {
+        if (currentWeapon != null)
+        {
+            currentWeapon.RemoveFlatDamage(amount);
+        }
+    }
+    public void ResetFlatDamage()
+    {
+        if (currentWeapon != null)
+        {
+            currentWeapon.ResetFlatDamage();
+        }
+    }
+    #endregion
 }

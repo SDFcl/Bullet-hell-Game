@@ -15,10 +15,17 @@ public interface IWeapon
     event Action OnAttack;
 
     void SetOwner(GameObject owner);
-    void BoostDamage(float multiplier);
-    void ResetDamage();
+    
     float GetDamage();
     void ExecuteAttack();
+    #region AdjustDamage API
+    void AddDamagePercent(float multiplier);
+    void RemoveDamagePercent(float multiplier);
+    void ResetDamagePercent();
+    void AddFlatDamage(float amount);
+    void RemoveFlatDamage(float amount);
+    void ResetFlatDamage();
+    #endregion
 }
 
 public interface IMovement

@@ -8,6 +8,7 @@ public class Health : MonoBehaviour, IDamageable
     [field: SerializeField]
     public float CurrentHP { get; protected set; }
     public bool IsDead => CurrentHP <= 0;
+    private bool ignoreDamage = false;
 
     public event Action OnDead;
     public event Action<float> OnHealthChanged;
@@ -22,7 +23,7 @@ public class Health : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
-        if (IsDead) return;
+        if (IsDead || ignoreDamage) return;
 
         CurrentHP -= damage;
         HealthChangedEvent();
@@ -44,4 +45,10 @@ public class Health : MonoBehaviour, IDamageable
         HealthChangedEvent();
         DeadEvent();
     }
+
+    public void EnableIgnoreDamage(bool enable)
+    {
+        ignoreDamage = enable;
+    }
+
 }

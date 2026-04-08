@@ -4,6 +4,7 @@ public class Mana : MonoBehaviour
 {
     [SerializeField] private float maxMana = 100f;
     [SerializeField] private float manaRegenRate = 1f;
+    private bool ignoreManaCost = false;
 
     [field: SerializeField]
     public float CurrentMana { get; private set; }
@@ -24,21 +25,9 @@ public class Mana : MonoBehaviour
             CurrentMana = Mathf.Min(CurrentMana, maxMana);
         }
     }
-    public void BoostMaxMana(float value)
-    {
-        maxMana += value;
-    }
-    public void BoostCurrentMana(float value)
-    {
-        CurrentMana += value;
-        CurrentMana = Mathf.Min(CurrentMana, maxMana);
-    }
-    public void BoostRegenRate(float value)
-    {
-        manaRegenRate += value;
-    }
     public void ConsumeMana(float amount)
     {
+        if (ignoreManaCost) return;
         if (CurrentMana >= amount)
         {
             CurrentMana -= amount;
@@ -48,4 +37,11 @@ public class Mana : MonoBehaviour
             Debug.LogWarning("Not enough mana!");
         }
     }
+    #region Mana Adjustment API
+    public void EnableIgnoreManaCost(bool enable)
+    {
+        CurrentMana = maxMana;
+        ignoreManaCost = enable;
+    }
+    #endregion
 }
