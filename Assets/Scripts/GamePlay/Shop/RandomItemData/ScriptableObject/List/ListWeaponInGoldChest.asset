@@ -10,11 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4046c7a8a1868b14b903203639162765, type: 3}
-  m_Name: ListWeaponInShop
+  m_Name: ListWeaponInGoldChest
   m_EditorClassIdentifier: 
+  NormalRate: 20
   Normal:
   - {fileID: 5378594280538970245, guid: d99230a637785bd4a8a31bdb1620051f, type: 3}
+  RareRate: 70
   Rare:
   - {fileID: 8466529053637702775, guid: 06eba236d0fe1a34896ecd9648c1ecd9, type: 3}
+  LegendaryRate: 10
   Legendary:
   - {fileID: 8466529053637702775, guid: b37a5e8795ba609419e8c9a2cbd04140, type: 3}

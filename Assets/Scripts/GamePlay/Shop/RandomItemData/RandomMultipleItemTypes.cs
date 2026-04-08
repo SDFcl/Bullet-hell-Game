@@ -1,45 +1,14 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Random Item/RandomItem")]
-public class RandomItem : ScriptableObject
+[CreateAssetMenu(menuName = "Random Item/RandomMultipleItemTypes")]
+public class RandomMultipleItemTypes : ClassRandom
 {
-    //สุ่มแต่ประเภทไอเทมเดียว
-    [Header("สุ่มแต่ประเภทไอเทมเดียว")]
-    public ListRateDropItem listRateDropItem;
-
-    //สุ่มหลายประเภทไอเทม
     [Header("สุ่มหลายประเภทไอเทม")]
     public List<int> RateDropItems = new List<int>();
     public List<ListRateDropItem> listRateDropItems = new List<ListRateDropItem>();
 
-    public GameObject GetRandomItem()
-    {
-        if (listRateDropItem == null)
-        {
-            GameObject randomitem = GetRandomMultiItemType();
-            if (randomitem != null)
-            {
-                return randomitem;
-            }
-            return null;
-        }
-        float randomValue = Random.value;
-        if (randomValue < listRateDropItem.NormalRate)
-        {
-            return listRateDropItem.Normal[Random.Range(0, listRateDropItem.Normal.Count)];
-        }
-        else if (randomValue < listRateDropItem.NormalRate + listRateDropItem.RareRate)
-        {
-            return listRateDropItem.Rare[Random.Range(0, listRateDropItem.Rare.Count)];
-        }
-        else
-        {
-            return listRateDropItem.Legendary[Random.Range(0, listRateDropItem.Legendary.Count)];
-        }
-    }
-
-    public GameObject GetRandomMultiItemType()
+    public override GameObject GetRandomItem()
     {
         // เช็คก่อน
         if (RateDropItems.Count == 0 || listRateDropItems.Count == 0)
@@ -96,5 +65,4 @@ public class RandomItem : ScriptableObject
             return selectedType.Legendary[Random.Range(0, selectedType.Legendary.Count)];
         }
     }
-
 }

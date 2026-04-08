@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Item Effects/Heal")]
-public class HealEffect : ItemEffect
+public class Ef_HealEffect : ItemEffect
 {
     public int healAmount;
 

@@ -5,7 +5,7 @@ public class RoomController : MonoBehaviour
 {
     private RoomEnemysController enemysController;
     private RoomDoorController doorController;
-    public GameObject chest;
+    private RoomRewardController rewardController;
 
     private bool playerInsideNeverBefore = false;
 
@@ -16,7 +16,7 @@ public class RoomController : MonoBehaviour
 
         if (TryGetComponent(out RoomDoorController door)) doorController = door;
 
-        if (chest != null) chest.SetActive(false);
+        if (TryGetComponent(out RoomRewardController reward)) rewardController = reward;
     }
 
     public void PlayerEnterRoom()
@@ -25,7 +25,8 @@ public class RoomController : MonoBehaviour
         playerInsideNeverBefore = true;
         doorController.CloseDoors();
         enemysController.SetEnemiesActive(true);
-        if(TryGetComponent(out Collider2D collider))
+        rewardController.SetRewardActive(false);
+        if (TryGetComponent(out Collider2D collider))
         {
             collider.enabled = false; // Disable trigger after player enters
         }
@@ -34,7 +35,7 @@ public class RoomController : MonoBehaviour
     public void RoomCleared()
     {
         doorController.OpenDoors();
-        chest.SetActive(true);
+        rewardController.SetRewardActive(true);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

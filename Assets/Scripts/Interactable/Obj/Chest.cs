@@ -6,7 +6,7 @@ using UnityEngine;
 public class Chest : InteractiveObject
 {
     [Header("Chest Settings")]
-    [SerializeField] private RandomItem randomItem;
+    [SerializeField] private StartRandomItem randomItem;
     [SerializeField] private bool isOpened = false;
 
     [Header("Visual Feedback")]
@@ -32,7 +32,7 @@ public class Chest : InteractiveObject
 
         // Give random rewards
        
-        SpawnReward(randomItem.GetRandomItem());
+        SpawnReward(randomItem.Start());
 
         if(TryGetComponent(out BoxCollider2D collider))
         {

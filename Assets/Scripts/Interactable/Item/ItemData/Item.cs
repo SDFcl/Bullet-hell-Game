@@ -12,6 +12,13 @@ public class Item : MonoBehaviour
 
     public void Use(GameObject user, List<Item> Inventory)
     {
+        // Check if this consumable can be used
+        if (itemData.consumableType != ConsumableType.Useable)
+        {
+            Debug.LogWarning($"[Item.Use] Cannot use {itemData.itemName} - it's not a Useable consumable.");
+            return;
+        }
+
         foreach (var effect in itemData.effects)
         {
             effect.Apply(user);
