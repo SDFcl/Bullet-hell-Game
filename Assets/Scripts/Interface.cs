@@ -15,6 +15,9 @@ public interface IWeapon
     event Action OnAttack;
 
     void SetOwner(GameObject owner);
+    void BoostDamage(float multiplier);
+    void ResetDamage();
+    float GetDamage();
     void ExecuteAttack();
 }
 

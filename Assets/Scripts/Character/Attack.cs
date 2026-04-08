@@ -57,4 +57,20 @@ public class Attack : MonoBehaviour
         if (currentWeapon != null)
             currentWeapon.SetOwner(gameObject);
     }
+
+    public void BoostWeaponDamage(float multiplier)
+    {
+        if (currentWeapon != null)
+        {
+            currentWeapon.BoostDamage(multiplier);
+        }
+    }
+
+    public void ResetWeaponDamage()
+    {
+        if (currentWeapon != null)
+        {
+            currentWeapon.ResetDamage();
+        }
+    }
 }

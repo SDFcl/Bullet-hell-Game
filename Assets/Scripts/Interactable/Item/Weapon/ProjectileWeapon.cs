@@ -1,12 +1,7 @@
-using System;
 using UnityEngine;
 
-public class ProjectileWeapon : MonoBehaviour, IWeapon
+public class ProjectileWeapon : WeaponBase
 {
-    [Header("Combat")]
-    [SerializeField] private int damage = 10;
-    [SerializeField] private float cooldown = 0.5f;
-
     [Header("Projectile")]
     [SerializeField] private float projectileSpeed = 10f;
     [SerializeField] private string projectilePoolTag = "BlueProjectile";
@@ -17,10 +12,6 @@ public class ProjectileWeapon : MonoBehaviour, IWeapon
     [Header("References")]
     [SerializeField] private Transform shootPoint;
 
-    public event Action OnAttack;
-
-    private float cooldownTimer;
-    private GameObject owner;
     private Mana mana;
 
     private void Awake()
@@ -31,39 +22,46 @@ public class ProjectileWeapon : MonoBehaviour, IWeapon
         }
     }
 
-    private void Update()
+    public void SetProjectileTag(string tag)
     {
-        if (cooldownTimer > 0f)
-            cooldownTimer -= Time.deltaTime;
+        projectilePoolTag = tag;
     }
 
-    public void ExecuteAttack()
+    public override void SetOwner(GameObject owner)
     {
-        Shoot();
+        base.SetOwner(owner);
+
+        if (owner != null)
+            mana = owner.GetComponent<Mana>();
+        else
+            mana = null;
     }
 
-    private void Shoot()
+    protected override bool CanAttack()
     {
-        if (cooldownTimer > 0f) return;
-
         if (mana != null && mana.CurrentMana < manaCost)
         {
             Debug.LogWarning("Not enough mana to shoot!");
-            return;
+            return false;
         }
 
         if (shootPoint == null)
         {
             Debug.LogWarning("shootPoint is null");
-            return;
+            return false;
         }
 
         if (ObjectPooler.Instance == null)
         {
             Debug.LogError("ObjectPooler.Instance is null");
-            return;
+            return false;
         }
 
+        return true;
+    }
+
+    protected override void PerformAttack()
+    {
         GameObject projectile = ObjectPooler.Instance.SpawnFromPool(
             projectilePoolTag,
             shootPoint.position,
@@ -73,7 +71,7 @@ public class ProjectileWeapon : MonoBehaviour, IWeapon
                 var projHit = obj.GetComponent<ProjectlieHit>();
                 if (projHit != null)
                 {
-                    projHit.SetDamage(damage);
+                    projHit.SetDamage(GetDamage());
                     projHit.SetProjectlieSpeed(projectileSpeed);
                     projHit.SetOwner(owner);
                 }
@@ -84,25 +82,9 @@ public class ProjectileWeapon : MonoBehaviour, IWeapon
             Debug.LogWarning("Failed to spawn projectile from pool");
             return;
         }
-        
+
         if (mana != null)
             mana.ConsumeMana(manaCost);
-        
-        cooldownTimer = cooldown;
-        OnAttack?.Invoke();
-    }
-
-    public void SetProjectileTag(string tag)
-    {
-        projectilePoolTag = tag;
-    }
-
-    public void SetOwner(GameObject owner)
-    {
-        this.owner = owner;
-
-        if (owner != null)
-            mana = owner.GetComponent<Mana>();
     }
 
     public void SetMana(Mana mana)
