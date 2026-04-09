@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ProjectileWeapon : WeaponBase
+public class ProjectileWeapon : BaseWeapon
 {
     [Header("Projectile")]
     [SerializeField] private float projectileSpeed = 10f;

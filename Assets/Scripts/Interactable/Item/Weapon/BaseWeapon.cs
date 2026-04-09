@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public abstract class WeaponBase : MonoBehaviour, IWeapon
+public abstract class BaseWeapon : MonoBehaviour, IWeapon
 {
     [Header("Combat")]
     [SerializeField] protected float baseDamage = 10f;

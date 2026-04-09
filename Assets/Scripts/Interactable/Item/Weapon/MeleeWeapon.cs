@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MeleeWeapon : WeaponBase
+public class MeleeWeapon : BaseWeapon
 {
     private Hitbox hitbox;
 
