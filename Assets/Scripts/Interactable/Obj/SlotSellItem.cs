@@ -5,6 +5,7 @@ public class SlotSellItem : InteractiveSlotSellItem
 {
     [Header("Slot Sell Item Settings")]
     [SerializeField] private bool IsSold = false;
+    public int Price;
     [SerializeField] private GameObject ItemGameObject;
 
     private BoxCollider2D boxCollider;
@@ -32,20 +33,20 @@ public class SlotSellItem : InteractiveSlotSellItem
         if (player.TryGetComponent(out Inventory inventory) && ItemGameObject.TryGetComponent(out ItemPickup itemPickup))
         {
             ItemData itemData = itemPickup.GetItemData();
-            if (inventory.Coins >= itemData.Price)
+            if (inventory.Coins >= Price)
             {
-                inventory.Coins -= itemData.Price;
+                inventory.Coins -= Price;
                 IsSold = true;
                 if (ItemGameObject.TryGetComponent(out Collider2D itemCollider))
                 {
                     itemCollider.enabled = true; // Disable collider after selling
                 }
                 boxCollider.enabled = false; // Disable collider after selling
-                Debug.Log($"[SlotSellItem] Sold {itemData.itemName} for {itemData.Price} coins.");
+                Debug.Log($"[SlotSellItem] Sold {itemData.itemName} for {Price} coins.");
             }
             else
             {
-                Debug.Log($"[SlotSellItem] Not enough coins to sell {itemData.itemName}. Required: {itemData.Price}, Available: {inventory.Coins}");
+                Debug.Log($"[SlotSellItem] Not enough coins to sell {itemData.itemName}. Required: {Price}, Available: {inventory.Coins}");
             }
         }
         else

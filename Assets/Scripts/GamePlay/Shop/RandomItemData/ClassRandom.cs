@@ -6,4 +6,9 @@ public abstract class ClassRandom : ScriptableObject
     {
         return null;
     }
+
+    public virtual int GetRandomInt(RareType rareType)
+    {
+        return 0;
+    }
 }

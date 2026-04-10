@@ -4,6 +4,7 @@ using UnityEngine;
 public class ShopController : MonoBehaviour
 {
     public RandomItem randomItem;
+    public RandomPrice randomPrice;
 
     public List<Transform> ItemSlot = new List<Transform>();
 
@@ -23,6 +24,8 @@ public class ShopController : MonoBehaviour
             if (slot.gameObject.TryGetComponent(out SlotSellItem slotSellItem))
             {
                 slotSellItem.SetItem(itemIns);
+                ItemData itemData = itemIns.GetComponent<ItemPickup>().GetItemData();
+                slotSellItem.Price = randomPrice.GetRandomInt(itemData.rareType);
             }
         }
     }
