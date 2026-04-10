@@ -20,7 +20,7 @@ public class ItemData : ScriptableObject
 
     public GameObject WorldPrefab;
 
-    public int Price;
+    public RareType rareType;
 
     [Header("Item Type")]
     public ItemType itemType;
