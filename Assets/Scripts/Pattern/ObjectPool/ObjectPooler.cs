@@ -22,22 +22,22 @@ public class ObjectPooler : MonoBehaviour
 
 	#endregion
     public List<Pool> pools;
-    public Dictionary<string, Queue<GameObject>> poolDictionary;
+    public Dictionary<string, List<GameObject>> poolDictionary;
 
     // Use this for initialization
     void Start()
     {
-        poolDictionary = new Dictionary<string, Queue<GameObject>>();
+        poolDictionary = new Dictionary<string, List<GameObject>>();
 
         foreach (Pool pool in pools)
         {
-            Queue<GameObject> objectPool = new Queue<GameObject>();
+            List<GameObject> objectPool = new List<GameObject>();
 
             for (int i = 0; i < pool.size; i++)
             {
                 GameObject obj = Instantiate(pool.prefab);
                 obj.SetActive(false);
-                objectPool.Enqueue(obj);
+                objectPool.Add(obj);
             }
 
             poolDictionary.Add(pool.tag, objectPool);
@@ -52,8 +52,37 @@ public class ObjectPooler : MonoBehaviour
 			return null;
 		}
 
-		GameObject objectToSpawn = poolDictionary[tag].Dequeue();
-		
+		List<GameObject> pool = poolDictionary[tag];
+
+		GameObject objectToSpawn = null;
+
+		foreach (GameObject obj in pool)
+		{
+			if (!obj.activeInHierarchy)
+			{
+				objectToSpawn = obj;
+				break;
+			}
+		}
+
+		if (objectToSpawn == null)
+		{
+			if (objectToSpawn == null)
+			{
+				Pool poolConfig = pools.Find(p => p.tag == tag);
+
+				if (poolConfig == null)
+				{
+					Debug.LogWarning("No pool config found for tag: " + tag);
+					return null;
+				}
+
+				objectToSpawn = Instantiate(poolConfig.prefab);
+				objectToSpawn.SetActive(false);
+				pool.Add(objectToSpawn);
+			}
+		}
+
 		objectToSpawn.transform.position = position;
 		objectToSpawn.transform.rotation = rotation;
 
@@ -62,12 +91,10 @@ public class ObjectPooler : MonoBehaviour
 		objectToSpawn.SetActive(true);
 
 		IPooledObject pooledObj = objectToSpawn.GetComponent<IPooledObject>();
-		if(pooledObj != null)
+		if (pooledObj != null)
 		{
 			pooledObj.OnObjectSpawn();
 		}
-
-		poolDictionary[tag].Enqueue(objectToSpawn);
 
 		return objectToSpawn;
 	}
