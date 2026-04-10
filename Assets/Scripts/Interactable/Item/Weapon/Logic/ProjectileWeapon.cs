@@ -47,7 +47,7 @@ public class ProjectileWeapon : BaseWeapon
     {
         if (mana != null && mana.CurrentMana < manaCost)
         {
-            Debug.LogWarning("Not enough mana to shoot!");
+            Debug.Log("Not enough mana to shoot!");
             return false;
         }
 
