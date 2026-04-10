@@ -31,9 +31,17 @@ public class Movement : MonoBehaviour, IMovement
         rb2d.linearVelocity = moveInput * moveSpeed;
     }
 
-    #region Movement Control
+    #region IMovement
+    public void ResetVelocity() => rb2d.linearVelocity = Vector2.zero;
+    public void ApplyImpulse(Vector2 direction, float magnitude)
+     {
+        Vector2 finalDirection = direction.sqrMagnitude > 0.0001f
+            ? direction.normalized
+            : lastMoveDir;
+            
+         rb2d.AddForce(finalDirection * magnitude, ForceMode2D.Impulse);
+     }
     public void EnableMovement() => canMove = true;
-
     public void DisableMovement() => canMove = false;
     #endregion
 

@@ -37,6 +37,9 @@ public interface IMovement
 
     void EnableMovement();
     void DisableMovement();
+
+    void ResetVelocity();
+    void ApplyImpulse(Vector2 direction, float magnitude);
 }
 
 /// <summary>
@@ -67,4 +70,10 @@ public interface IInteractive : IInteractable
 public interface ILevel
 {
     void Execute();
+}
+
+public interface IImpulseMover
+{
+    void Play(Vector2 direction, float force, float duration);
+    void StopCurrent();
 }

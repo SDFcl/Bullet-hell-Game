@@ -64,48 +64,12 @@ public class Attack : MonoBehaviour
     }
 
     #region AdjustDamage API
-    public void AddDamagePercent(float percent)
-    {
-        if (currentWeapon != null)
-        {
-            currentWeapon.AddDamagePercent(percent);
-        }
-    }
+    public void AddDamagePercent(float percent) => currentWeapon?.AddDamagePercent(percent);
+    public void RemoveDamagePercent(float percent) => currentWeapon?.RemoveDamagePercent(percent);
+    public void ResetDamagePercent() => currentWeapon?.ResetDamagePercent();
 
-    public void RemoveDamagePercent(float percent)
-    {
-        if (currentWeapon != null)
-        {
-            currentWeapon.RemoveDamagePercent(percent);
-        }
-    }
-    public void ResetDamagePercent()
-    {
-        if (currentWeapon != null)
-        {
-            currentWeapon.ResetDamagePercent();
-        }
-    }
-    public void AddFlatDamage(float amount)
-    {
-        if (currentWeapon != null)
-        {
-            currentWeapon.AddFlatDamage(amount);
-        }
-    }
-    public void RemoveFlatDamage(float amount)
-    {
-        if (currentWeapon != null)
-        {
-            currentWeapon.RemoveFlatDamage(amount);
-        }
-    }
-    public void ResetFlatDamage()
-    {
-        if (currentWeapon != null)
-        {
-            currentWeapon.ResetFlatDamage();
-        }
-    }
+    public void AddFlatDamage(float amount) => currentWeapon?.AddFlatDamage(amount);
+    public void RemoveFlatDamage(float amount) => currentWeapon?.RemoveFlatDamage(amount);
+    public void ResetFlatDamage() => currentWeapon?.ResetFlatDamage();
     #endregion
 }

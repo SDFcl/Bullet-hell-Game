@@ -17,6 +17,7 @@ public class Dodge : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] private Collider2D col;
     private IMovement movement;
+    private IImpulseMover burstMove;
 
     void Awake()
     {
@@ -26,25 +27,21 @@ public class Dodge : MonoBehaviour
         {
             col = GetComponent<Collider2D>();
         }
+        burstMove = GetComponent<IImpulseMover>();
     }
 
     public void TryDodge()
     {
         if (!canDodge) return;
-        StartCoroutine(dodge());
-    }
-
-    IEnumerator dodge()
-    {
         canDodge = false;
         OnDodge?.Invoke();
 
-        movement.DisableMovement();
-        rb.linearVelocity = Vector2.zero;
-        rb.AddForce(movement.GetDirection() * dodgeForce, ForceMode2D.Impulse);
-        yield return new WaitForSeconds(dodgeAnimation.length);
-        movement.EnableMovement();
-        
+        burstMove.Play(movement.GetDirection(), dodgeForce, dodgeAnimation.length);
+        StartCoroutine(CooldownRoutine());
+    }
+
+    private IEnumerator CooldownRoutine()
+    {
         yield return new WaitForSeconds(cooldown);
         canDodge = true;
     }
