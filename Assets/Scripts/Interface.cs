@@ -77,3 +77,5 @@ public interface IImpulseMover
     void Play(Vector2 direction, float force, float duration);
     void StopCurrent();
 }
+
+public interface IProjectileBlocker{}

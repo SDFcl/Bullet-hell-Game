@@ -18,7 +18,6 @@ public class LineOfSight2D : MonoBehaviour
 
     [Header("Direction")]
     [SerializeField] private Transform viewOrigin;
-    [SerializeField] private bool useRightAsForward = true;
 
     public Transform Target => target;
 

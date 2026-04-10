@@ -3,6 +3,10 @@ using UnityEngine;
 
 public abstract class BaseWeapon : MonoBehaviour, IWeapon
 {
+    [Header("Scriptable Object Data")]
+    [SerializeField] protected bool useSOData = true;
+    [SerializeField] protected WeaponDataSO weaponData;
+
     [Header("Combat")]
     [SerializeField] protected float baseDamage = 10f;
     [SerializeField] protected float currentDamage;
@@ -14,6 +18,15 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     protected GameObject owner;
     protected float damagePercent = 0f;
     protected float flatDamage = 0f;
+
+    protected virtual void Awake()
+    {
+        if (useSOData && weaponData != null)
+        {
+            baseDamage = weaponData.GetBaseData().baseDamage;
+            cooldown = weaponData.GetFireRateValue();
+        }
+    }
 
     protected virtual void Update()
     {

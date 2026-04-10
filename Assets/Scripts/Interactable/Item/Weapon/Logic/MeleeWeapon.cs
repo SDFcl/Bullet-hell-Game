@@ -1,11 +1,13 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MeleeWeapon : BaseWeapon
 {
     private Hitbox hitbox;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         hitbox = GetComponentInChildren<Hitbox>(true);
     }
 

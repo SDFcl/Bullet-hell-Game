@@ -14,8 +14,14 @@ public class ProjectileWeapon : BaseWeapon
 
     private Mana mana;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+        if(useSOData && weaponData != null)
+        {
+            projectileSpeed = weaponData.rangedData.projectileSpeed;
+            manaCost = weaponData.GetManaCostValue();
+        }
         if (shootPoint == null)
         {
             Debug.LogWarning("Shooting point not found!");
