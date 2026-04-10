@@ -29,7 +29,17 @@ public class ProjectlieHit : Hitbox,IPooledObject
     protected override void ProcessHit(Collider2D col)
     {
         base.ProcessHit(col);
-        if (col.gameObject.CompareTag("obstacle") || col.GetComponentInParent<IDamageable>() != null)
+
+        /*
+        if (col.GetComponent<IProjectileBlocker>() != null)
+        {
+            Debug.Log($"{col.gameObject.name} blocked the projectile!");
+        }
+        */
+        
+        if (col.gameObject.layer == LayerMask.NameToLayer("Obstacle") ||
+         col.GetComponent<IDamageable>() != null||
+         col.GetComponent<IProjectileBlocker>() != null)
         {
             gameObject.SetActive(false);
         }
