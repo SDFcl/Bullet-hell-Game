@@ -62,7 +62,7 @@ public class FilterInteract
     private void ExecutePickup(IPickable pickable)
     {
         pickable.Interact(player);
-        Debug.Log($"[FilterInteract] Picked up item");
+        //Debug.Log($"[FilterInteract] Picked up item");
     }
 
     /// <summary>
