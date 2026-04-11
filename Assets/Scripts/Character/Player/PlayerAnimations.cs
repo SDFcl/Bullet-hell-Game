@@ -1,35 +1,24 @@
 using UnityEngine;
 
-public class PlayerAnimations : MonoBehaviour
+public class PlayerAnimations : CharacterAnimations
 {
-    private Animator animator;
     private Dodge dodge;
 
-    private void Awake()
+    protected override void Awake()
     {
-        animator = GetComponent<Animator>();
+        base.Awake();
         dodge = GetComponent<Dodge>();
     }
-
-    private void OnEnable()
+    protected override void OnEnable()
     {
-        if (dodge != null)
-        {
-            //subscribe
-            dodge.OnDodge += TriggerDodgeAnimation;
-        }
+        base.OnEnable();
+        dodge.OnDodge += TriggerDodgeAnimation;
     }
-
-    private void OnDisable()
+    protected override void OnDisable()
     {
-        if (dodge != null)
-        {
-            //unsubscribe
-            dodge.OnDodge -= TriggerDodgeAnimation;
-        }
+        base.OnDisable();
+        dodge.OnDodge -= TriggerDodgeAnimation;
     }
-
-    //Play Dodge Animation
     public void TriggerDodgeAnimation()
     {
         animator.SetTrigger("Dodge");

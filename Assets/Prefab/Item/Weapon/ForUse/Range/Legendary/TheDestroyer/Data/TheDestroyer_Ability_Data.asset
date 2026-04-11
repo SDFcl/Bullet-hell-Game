@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 016d0a90ce589f64793bf3e3a204e0f9, type: 3}
   m_Name: TheDestroyer_Ability_Data
   m_EditorClassIdentifier: 
-  weaponType: 0
+  weaponType: 1
   meleeData:
     baseData:
       weaponName: TheDestroyer
@@ -22,10 +22,10 @@ MonoBehaviour:
   rangedData:
     baseData:
       weaponName: TheDestroyer
-      baseDamage: 0
-      fireRate: 3
+      baseDamage: 150
+      fireRate: 1
       weaponType: 1
-    projectileTag: 
-    manaCostType: 0
-    projectileSpeed: 0
-  statTable: {fileID: 0}
+    projectileTag: TheDestroyerBL
+    manaCostType: 3
+    projectileSpeed: 2
+  statTable: {fileID: 11400000, guid: a79cb71f417133f4bb60f44ba3f8217f, type: 2}

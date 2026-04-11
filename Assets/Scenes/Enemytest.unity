@@ -487,6 +487,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6161866243694476481, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
+      propertyPath: directionThreshold
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8177065121567281754, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
       propertyPath: target
       value: 
@@ -537,7 +541,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 0000000001fee38e19d8c975f37e1de5
+  m_ApplyToSortingLayers: 3b689ae30000000001fee38ef37e1de5e50831d819d8c975adaf087e
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -945,6 +949,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3004905628110562045, guid: 8f7871eaf1cc72949809ae0fa4d6551b, type: 3}
+      propertyPath: directionThreshold
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5568298807833359445, guid: 8f7871eaf1cc72949809ae0fa4d6551b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.24

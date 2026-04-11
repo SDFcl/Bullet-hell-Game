@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private Inventory inventory;
     private Attack attack;
     private FilterInteract filterInteract;
+    private Health health;
 
     private Vector2 dir;
 
@@ -40,9 +41,18 @@ public class PlayerController : MonoBehaviour
         inventory = GetComponentInChildren<Inventory>();
         attack = GetComponent<Attack>();
         filterInteract = new FilterInteract(gameObject);
+        health = GetComponent<Health>();
 
         if (mainCamera == null)
             mainCamera = Camera.main;  
+    }
+    void OnEnable()
+    {
+        health.OnDead += OnDeadHandle;
+    }
+    void OnDisable()
+    {
+        health.OnDead -= OnDeadHandle;
     }
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -167,5 +177,9 @@ public class PlayerController : MonoBehaviour
         {
             attack.TryAttack();
         }
-        }
+    }
+    private void OnDeadHandle()
+    {
+        playerInput.enabled = false;
+    }
 }

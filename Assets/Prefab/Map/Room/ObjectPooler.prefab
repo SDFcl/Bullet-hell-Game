@@ -44,10 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7771655ff7be15749ac1682bd77e7cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poolTable: {fileID: 11400000, guid: f7fdecc10ba7159469dffe3ebfb51149, type: 2}
+  useScriptableObject: 1
   pools:
   - tag: BlueProjectile
     prefab: {fileID: 100461728543499293, guid: 89bb8762c77fe6c43b723384c991613a, type: 3}
-    size: 10
+    size: 0
   - tag: Coin
     prefab: {fileID: 7542025067976280394, guid: 08b5ded0dec3f8249821abf994010cc4, type: 3}
-    size: 5
+    size: 0
