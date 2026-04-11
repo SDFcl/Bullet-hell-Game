@@ -323,9 +323,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1122772779109127267}
   - component: {fileID: 2233658900959183944}
-  - component: {fileID: 3831613093774258436}
+  - component: {fileID: 6564316243768067325}
   - component: {fileID: 4169214481900157068}
   - component: {fileID: 833604567011127496}
+  - component: {fileID: 642453886574471609}
   m_Layer: 0
   m_Name: H_Carnage
   m_TagString: Untagged
@@ -371,7 +372,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3831613093774258436
+--- !u!114 &6564316243768067325
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -380,16 +381,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5107576992462874832}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b80458073851b4aa4e0e3ad8cfd9a9, type: 3}
+  m_Script: {fileID: 11500000, guid: 42efa676adfd69e41973d67f1cdb0f45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   useSOData: 1
   weaponData: {fileID: 11400000, guid: 8d58190c0530c0e48b78105e0440b8a2, type: 2}
-  baseDamage: 68
+  baseDamage: 10
   currentDamage: 0
-  cooldown: 1
-  lungeForce: 15
-  lungeDuration: 0.075
+  cooldown: 0.5
 --- !u!114 &4169214481900157068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,3 +414,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: af43f07425656a447b43b4cbd1fe112f, type: 2}
+--- !u!114 &642453886574471609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5107576992462874832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 452447bcc347b1d41a0ae0d002d56968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impulseForce: 15
+  impulseDuration: 0.075
+  directionMode: 0

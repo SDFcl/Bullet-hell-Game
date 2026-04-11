@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4686450668509520197}
   - component: {fileID: 2964901248936369403}
-  - component: {fileID: 2622923570423264718}
+  - component: {fileID: 3407684502018258602}
   - component: {fileID: 2666929356030408498}
   - component: {fileID: 678052335018572243}
+  - component: {fileID: 3235077484168306887}
   m_Layer: 0
   m_Name: H_IronSword
   m_TagString: Untagged
@@ -58,7 +59,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2622923570423264718
+--- !u!114 &3407684502018258602
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -67,7 +68,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1708246291836080847}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b80458073851b4aa4e0e3ad8cfd9a9, type: 3}
+  m_Script: {fileID: 11500000, guid: 42efa676adfd69e41973d67f1cdb0f45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   useSOData: 1
@@ -75,8 +76,6 @@ MonoBehaviour:
   baseDamage: 10
   currentDamage: 0
   cooldown: 0.5
-  lungeForce: 15
-  lungeDuration: 0.075
 --- !u!114 &2666929356030408498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,6 +101,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: f5269cc6a83cb4d41b42e1e40b50c707, type: 2}
+--- !u!114 &3235077484168306887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708246291836080847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 452447bcc347b1d41a0ae0d002d56968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impulseForce: 15
+  impulseDuration: 0.075
+  directionMode: 0
 --- !u!1 &4759002203248846892
 GameObject:
   m_ObjectHideFlags: 0

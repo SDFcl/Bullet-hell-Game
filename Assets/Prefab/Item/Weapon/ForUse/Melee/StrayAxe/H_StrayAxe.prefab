@@ -235,9 +235,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2834235828896370599}
   - component: {fileID: 2456836319299487819}
-  - component: {fileID: 2132356200858415624}
+  - component: {fileID: 7107283197345414115}
   - component: {fileID: 6863915510077145337}
   - component: {fileID: 1365455914952980111}
+  - component: {fileID: 585370981364660516}
   m_Layer: 0
   m_Name: H_StrayAxe
   m_TagString: Untagged
@@ -283,7 +284,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2132356200858415624
+--- !u!114 &7107283197345414115
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -292,16 +293,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8895384739210990976}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b80458073851b4aa4e0e3ad8cfd9a9, type: 3}
+  m_Script: {fileID: 11500000, guid: 42efa676adfd69e41973d67f1cdb0f45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   useSOData: 1
   weaponData: {fileID: 11400000, guid: a44836d491116ff44945088345c4c3c0, type: 2}
-  baseDamage: 15
+  baseDamage: 10
   currentDamage: 0
   cooldown: 0.5
-  lungeForce: 15
-  lungeDuration: 0.075
 --- !u!114 &6863915510077145337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,3 +326,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 4386cad19f4902e4b90b986d040602f9, type: 2}
+--- !u!114 &585370981364660516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8895384739210990976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 452447bcc347b1d41a0ae0d002d56968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impulseForce: 15
+  impulseDuration: 0.075
+  directionMode: 0
