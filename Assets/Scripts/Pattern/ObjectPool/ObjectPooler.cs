@@ -34,41 +34,44 @@ public class ObjectPooler : MonoBehaviour
     {
 		finalPools = new List<Pool>();
 
-    if (pools != null)
-        finalPools.AddRange(pools);
+		if (pools != null)
+			finalPools.AddRange(pools);
 
-    if (useScriptableObject && poolTable != null && poolTable.pools != null)
-    {
-        foreach (Pool tablePool in poolTable.pools)
-        {
-            Pool existingPool = finalPools.Find(p => p.tag == tablePool.tag);
+		if (useScriptableObject && poolTable != null && poolTable.poolTableList != null)
+		{
+			foreach (var listSO in poolTable.poolTableList)
+			{
+				if (listSO == null || listSO.pools == null)
+					continue;
 
-            if (existingPool == null)
-            {
-                finalPools.Add(tablePool);
-            }
-            else
-            {
-                existingPool.size += tablePool.size;
-            }
-        }
-    }
+				foreach (var tablePool in listSO.pools)
+				{
+					var existing = finalPools.Find(p => p.tag == tablePool.tag);
 
-    poolDictionary = new Dictionary<string, List<GameObject>>();
+					if (existing == null)
+						finalPools.Add(tablePool);
+					else
+						existing.size += tablePool.size;
+				}
+			}
+		}
 
-    foreach (Pool pool in finalPools)
-    {
-        List<GameObject> objectPool = new List<GameObject>();
 
-        for (int i = 0; i < pool.size; i++)
-        {
-            GameObject obj = Instantiate(pool.prefab);
-            obj.SetActive(false);
-            objectPool.Add(obj);
-        }
+		poolDictionary = new Dictionary<string, List<GameObject>>();
 
-        poolDictionary.Add(pool.tag, objectPool);
-    }
+		foreach (Pool pool in finalPools)
+		{
+			List<GameObject> objectPool = new List<GameObject>();
+
+			for (int i = 0; i < pool.size; i++)
+			{
+				GameObject obj = Instantiate(pool.prefab);
+				obj.SetActive(false);
+				objectPool.Add(obj);
+			}
+
+			poolDictionary.Add(pool.tag, objectPool);
+		}
     }
 
 	public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation, System.Action<GameObject> beforeSpawn = null)

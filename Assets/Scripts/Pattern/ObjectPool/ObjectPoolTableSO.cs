@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "ObjectPooler/ObjectPoolTable")]
+[CreateAssetMenu(menuName = "ObjectPooler/ObjectPoolTableSO")]
 public class ObjectPoolTableSO : ScriptableObject
 {
-    public List<Pool> pools;
+    public List<ObjectPoolListSO> poolTableList;
 }

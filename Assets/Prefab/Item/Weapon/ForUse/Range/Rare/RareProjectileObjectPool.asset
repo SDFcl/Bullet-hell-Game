@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 061658edc1d6f2e44acf119d5fc4e490, type: 3}
+  m_Name: RareProjectileObjectPool
+  m_EditorClassIdentifier: 
+  pools:
+  - tag: FlowerStaffBL
+    prefab: {fileID: 4724621888225785807, guid: b043531e4056d474bbce4e88d01381c0, type: 3}
+    size: 0
+  - tag: Myr'rorBL
+    prefab: {fileID: 2396894123249562570, guid: c2366782828f84041a19ab933a6e0513, type: 3}
+    size: 0
+  - tag: ArcanePulseBL
+    prefab: {fileID: 9161473085736657241, guid: 64a3f17ead2989548ab7dbff02bfd135, type: 3}
+    size: 0
+  - tag: MagicalFishBL
+    prefab: {fileID: 5264649831640098532, guid: c86cef868b1bc2d4b9b59168f77831dc, type: 3}
+    size: 0
+  - tag: GrandStaffBL
+    prefab: {fileID: 5581271519172677727, guid: d80daf1354b0b134da99f24ac27c9861, type: 3}
+    size: 0
+  - tag: Vel'crithTomeBL
+    prefab: {fileID: 3584476442567717744, guid: 187ab4fbcebdd9440aabcea8e8cd0126, type: 3}
+    size: 0
+  - tag: NightStarBL
+    prefab: {fileID: 1543683285673390757, guid: c8ab649ae32ef2a4eaf8a9958c4f6d6d, type: 3}
+    size: 0
+  - tag: CrimsonveilBL
+    prefab: {fileID: 668368827909463220, guid: fa16485af837bfe499a0c824338dc966, type: 3}
+    size: 0
