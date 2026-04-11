@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 783156420952dd74c99b2eda144f8286
+guid: bbc058258364afe439c98f932f673279
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -93,11 +93,24 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Field Mage B_0
+      name: CandleGuy_Idle
       rect:
         serializedVersion: 2
         x: 0
@@ -105,21 +118,21 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8388927fc354b794399f1ba03ba019f8
-      internalID: -728791704
+      spriteID: 0b058c0dad393874b92ef9396e8caada
+      internalID: -1444030461
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Field Mage B_1
+      name: CandleGuy_Idle1
       rect:
         serializedVersion: 2
         x: 32
@@ -127,21 +140,21 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be99ad3653fdc5348b8b598dbaf73217
-      internalID: -1192953463
+      spriteID: 96c74ca9b8e51604bb896284ba4d35d8
+      internalID: 2143834738
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Field Mage B_2
+      name: CandleGuy_Idle2
       rect:
         serializedVersion: 2
         x: 64
@@ -149,21 +162,21 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb67be2148334f94e9d1e57f5d3e4e6b
-      internalID: -1708945928
+      spriteID: bf9a8bf627d9bda46a974e0fa5ad6bc5
+      internalID: 1624517209
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Field Mage B_3
+      name: CandleGuy_Idle3
       rect:
         serializedVersion: 2
         x: 96
@@ -171,21 +184,21 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77394bcea1758834ebc2ee05931b313d
-      internalID: -1456051010
+      spriteID: 63c40e57dc1709e429dfca7abdb607f8
+      internalID: 1989876058
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Field Mage B_4
+      name: CandleGuy_Walk
       rect:
         serializedVersion: 2
         x: 0
@@ -193,21 +206,21 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b53a3de6aefdf9d458083b1f4ce4acd8
-      internalID: -551552224
+      spriteID: 520c363665441a840bd1516b64ffad06
+      internalID: 402924409
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Field Mage B_5
+      name: CandleGuy_Walk1
       rect:
         serializedVersion: 2
         x: 32
@@ -215,21 +228,21 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 230a5288cbe1b2945b62daabf7140e51
-      internalID: -2095682448
+      spriteID: 070f62a0614791e4088af560f8ac6e24
+      internalID: 25943449
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Field Mage B_6
+      name: CandleGuy_Walk2
       rect:
         serializedVersion: 2
         x: 64
@@ -237,21 +250,21 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a9df2bb69b026b458561585c086fd8b
-      internalID: -1107127565
+      spriteID: f41078516632231409167fd1bce917df
+      internalID: -490410314
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Field Mage B_7
+      name: CandleGuy_Walk3
       rect:
         serializedVersion: 2
         x: 96
@@ -259,21 +272,21 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b04c5c8dad4d7a4429bb70215c89880c
-      internalID: 199410338
+      spriteID: 67f0e920790615849984ee9d9dfabe1c
+      internalID: 610367237
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Field Mage B_8
+      name: CandleGuy_Dead
       rect:
         serializedVersion: 2
         x: 0
@@ -281,15 +294,15 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f85bd516fe86fb94a921eb6226723033
-      internalID: 1209026060
+      spriteID: 65e761c20dbac9947b04ab8fb12cbfe3
+      internalID: -602819050
       vertices: []
       indices: 
       edges: []
@@ -298,7 +311,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: b3ed68cdcbc2add4badc958c71a33baa
+    spriteID: ed471ee64e72a5449891a652a018f740
     internalID: 0
     vertices: []
     indices: 
@@ -308,15 +321,15 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Field Mage B_0: -728791704
-      Field Mage B_1: -1192953463
-      Field Mage B_2: -1708945928
-      Field Mage B_3: -1456051010
-      Field Mage B_4: -551552224
-      Field Mage B_5: -2095682448
-      Field Mage B_6: -1107127565
-      Field Mage B_7: 199410338
-      Field Mage B_8: 1209026060
+      CandleGuy_Dead: -602819050
+      CandleGuy_Idle: -1444030461
+      CandleGuy_Idle1: 2143834738
+      CandleGuy_Idle2: 1624517209
+      CandleGuy_Idle3: 1989876058
+      CandleGuy_Walk: 402924409
+      CandleGuy_Walk1: 25943449
+      CandleGuy_Walk2: -490410314
+      CandleGuy_Walk3: 610367237
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

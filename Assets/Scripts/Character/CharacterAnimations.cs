@@ -20,7 +20,6 @@ public class CharacterAnimations : MonoBehaviour
 
     protected virtual void OnDisable()
     {
-        
         health.OnDead -= OnDeadAnimation;
     }
 
