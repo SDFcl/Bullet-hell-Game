@@ -6,6 +6,8 @@ public class EnemyAttackAction : IAction<EnemyContext>
     {
         ctx.Movement.StopMovement();
         ctx.PathToDir.ClearDestination();
+
+        ctx.Attack.TryAttack();
     }
 
     public void OnUpdate(EnemyContext ctx)
@@ -15,6 +17,6 @@ public class EnemyAttackAction : IAction<EnemyContext>
 
     public void OnExit(EnemyContext ctx)
     {
-        ctx.Attack.TryAttack();
+        
     }
 }

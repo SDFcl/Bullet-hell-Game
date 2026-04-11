@@ -1,9 +1,14 @@
 using UnityEngine;
 public class EnemyChaseAction : IAction<EnemyContext>
 {
+    private readonly float _facingThreshold = 0.5f;
+    public EnemyChaseAction(float facingThreshold)
+    {
+        _facingThreshold = facingThreshold;
+    }
     public void OnEnter(EnemyContext ctx)
     {
-        //Debug.Log("Enter Chase");
+        ctx.Facing.SetThreshold(_facingThreshold);
     }
 
     public void OnUpdate(EnemyContext ctx)
@@ -26,6 +31,7 @@ public class EnemyChaseAction : IAction<EnemyContext>
     public void OnExit(EnemyContext ctx)
     {
         //Debug.Log("Exit Chase");
+        ctx.Facing.ResetThers();
         ctx.PathToDir.ClearDestination();
         ctx.Movement.StopMovement();
     }
