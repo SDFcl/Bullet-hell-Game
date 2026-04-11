@@ -16,8 +16,15 @@ public class PlayerController : MonoBehaviour
     private Attack attack;
     private FilterInteract filterInteract;
 
-    Vector2 dir;
-    bool isfiring;
+    private Vector2 dir;
+
+    private bool isAiming;
+    private bool isFireHeld;
+    private bool firePressedThisFrame;
+    private bool holdTriggered;
+
+    private float firePressedTime;
+    private float holdThreshold = 0.1f;
 
     [SerializeField] private Camera mainCamera;
 
@@ -44,23 +51,19 @@ public class PlayerController : MonoBehaviour
     }
     public void OnAim(InputAction.CallbackContext context)
     {
-        if (context.started)
-        {
-            isfiring = true; // set firing state when button is pressed
-        }
         if (context.performed)
         {
             Vector2 aimInput = context.ReadValue<Vector2>();
+
             if (aimInput.sqrMagnitude > 0.0001f)
             {
+                isAiming = true;
                 dir = aimInput.normalized;
             }
-            Debug.Log("Aim Input: " + aimInput);
         }
         else if (context.canceled)
         {
-            // stick released; optionally stop aiming
-            isfiring = false;
+            isAiming = false;
             dir = Vector2.zero;
         }
     }
@@ -68,11 +71,15 @@ public class PlayerController : MonoBehaviour
     {
         if (context.started)
         {
-            isfiring = true; // set firing state when button is pressed
+            isFireHeld = true;
+            firePressedThisFrame = true;
+            holdTriggered = false;
+            firePressedTime = Time.time;
         }
         else if (context.canceled)
         {
-            isfiring = false; // reset firing state when button is released
+            isFireHeld = false;
+            holdTriggered = false;
         }
     }
     public void OnDodge(InputAction.CallbackContext context)
@@ -145,9 +152,20 @@ public class PlayerController : MonoBehaviour
         facing.SetDirection(dir.x);
         aimPivot.SetDirection(dir);
 
-        if (isfiring)
+        if (firePressedThisFrame)
+        {
+            attack.TryAttack();
+            firePressedThisFrame = false;
+        }
+
+        if (isFireHeld && Time.time - firePressedTime >= holdThreshold)
+        {
+            holdTriggered = true;
+        }
+
+        if (holdTriggered || isAiming)
         {
             attack.TryAttack();
         }
-    }
+        }
 }

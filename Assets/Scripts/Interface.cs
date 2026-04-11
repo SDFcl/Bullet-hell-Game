@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 public interface IDamageable
 {
@@ -15,6 +16,7 @@ public interface IWeapon
     event Action OnAttack;
 
     void SetOwner(GameObject owner);
+    GameObject GetOwner();
     
     float GetDamage();
     void ExecuteAttack();
@@ -79,3 +81,8 @@ public interface IImpulseMover
 }
 
 public interface IProjectileBlocker{}
+
+public interface IFirePattern
+{
+    void Execute(ProjectileWeapon weapon);
+}

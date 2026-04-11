@@ -1,0 +1,15 @@
+using UnityEngine;
+public class DaulSideFire : BasePatternFire
+{
+    [SerializeField] private float sideOffset = 0.3f;
+
+    public override void Execute(ProjectileWeapon weapon)
+    {
+        Quaternion rotation = weapon.ShootPoint.rotation;
+        Vector3 origin = weapon.ShootPoint.position;
+        Vector3 sideDirection = rotation * Vector3.up;
+
+        Shoot(weapon, origin - sideDirection * sideOffset, rotation);
+        Shoot(weapon, origin + sideDirection * sideOffset, rotation);
+    }
+}

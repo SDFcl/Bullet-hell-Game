@@ -19,6 +19,8 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     protected float damagePercent = 0f;
     protected float flatDamage = 0f;
 
+    private float minimumCooldown = 0f;
+
     protected virtual void Awake()
     {
         if (useSOData && weaponData != null)
@@ -35,6 +37,10 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
 
         // Debug for testing damage adjustments
         currentDamage = GetDamage();
+    }
+    public virtual GameObject GetOwner()
+    {
+        return owner;
     }
 
     public virtual void SetOwner(GameObject owner)
@@ -56,7 +62,7 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
             return;
 
         PerformAttack();
-        cooldownTimer = cooldown;
+        cooldownTimer = Mathf.Max(cooldown, minimumCooldown);
         OnAttack?.Invoke();
     }
 

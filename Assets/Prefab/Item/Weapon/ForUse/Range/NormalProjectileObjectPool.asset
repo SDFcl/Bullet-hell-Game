@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 061658edc1d6f2e44acf119d5fc4e490, type: 3}
+  m_Name: NormalProjectileObjectPool
+  m_EditorClassIdentifier: 
+  pools:
+  - tag: HollowStaffBL
+    prefab: {fileID: 6987771563098641921, guid: 423d9862157587940be260a19478b11d, type: 3}
+    size: 0
+  - tag: WoodenBowBL
+    prefab: {fileID: 1427755180527119830, guid: 294c19211e22155468b04945604fd7e6, type: 3}
+    size: 0
+  - tag: AzureStaffBL
+    prefab: {fileID: 8491687581174552765, guid: 0cf793536356c754c84d00f676ce9a92, type: 3}
+    size: 0
+  - tag: VoidStaffBL
+    prefab: {fileID: 5782698137950688692, guid: 5275c91c8c471da42867a8bf943b12fc, type: 3}
+    size: 0
+  - tag: LineageBL
+    prefab: {fileID: 1805991432805665257, guid: 3372ab50f67d0db48b519f6d0a41fc2e, type: 3}
+    size: 0
+  - tag: GraceStaffBL
+    prefab: {fileID: 4815573906067161748, guid: 71e1539bcacec85459c2889ae244f733, type: 3}
+    size: 0
+  - tag: ElvenBowBL
+    prefab: {fileID: 8133499342184646943, guid: e7fbe2e8916271c44ba9cc0d5e187b5f, type: 3}
+    size: 0
+  - tag: RedRibbonBL
+    prefab: {fileID: 4137700930344838411, guid: 47dcc5e9c7a70e2419006e74d9847f12, type: 3}
+    size: 0
+  - tag: CrescentStaffBL
+    prefab: {fileID: 7874434876335064034, guid: 59592ac19b5f0dd48a3ddebb1c8f2ced, type: 3}
+    size: 0
+  - tag: GreenStaffBL
+    prefab: {fileID: 5718124397368327149, guid: b134d1c19f78f9643b14f9d0cbe62a98, type: 3}
+    size: 0

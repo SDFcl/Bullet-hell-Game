@@ -40,6 +40,7 @@ public struct MeleeWeaponData
 public struct RangedWeaponData
 {
     public BaseWeaponData baseData;
+    public string projectileTag;
     public ManaCostType manaCostType;
     public float projectileSpeed;
 }

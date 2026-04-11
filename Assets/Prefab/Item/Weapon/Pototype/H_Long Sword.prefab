@@ -212,6 +212,37 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.6517775, y: 0.5}
   m_EdgeRadius: 0
+--- !u!1 &5686199996798169211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7551677481465115874}
+  m_Layer: 0
+  m_Name: ShootingPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7551677481465115874
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5686199996798169211}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.39, y: 0.35, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6929009571854135057}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7717985876617809036
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,9 +341,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6929009571854135057}
   - component: {fileID: 4006731509045340779}
-  - component: {fileID: 7709842634888138449}
   - component: {fileID: 5186068100738623379}
   - component: {fileID: 8787936273032940201}
+  - component: {fileID: 1279745640750834843}
   m_Layer: 0
   m_Name: H_Long Sword
   m_TagString: Untagged
@@ -333,6 +364,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7551677481465115874}
   - {fileID: 1385222565857956237}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -358,20 +390,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7709842634888138449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8466529053637702775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42efa676adfd69e41973d67f1cdb0f45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  cooldown: 0.25
 --- !u!114 &5186068100738623379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,4 +414,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d27eb4b1ecf9e41a5111feabcc0a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: 6f1d4d4ba84919d4388e0f108edf3849, type: 2}
+  itemData: {fileID: 11400000, guid: 4be5e2ddafe48264ba32c8adc750d42b, type: 2}
+--- !u!114 &1279745640750834843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8466529053637702775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7185c948c7b796d498e52f70ab51b2ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useSOData: 0
+  weaponData: {fileID: 0}
+  baseDamage: 10
+  currentDamage: 0
+  cooldown: 0.5
+  projectileSpeed: 10
+  projectilePoolTag: BlueProjectile
+  manaCost: 8
+  shootPoint: {fileID: 7551677481465115874}

@@ -3,10 +3,10 @@ using UnityEngine;
 public class TestProjectile : MonoBehaviour
 {
     public float damage = 10f;
-    private ProjectlieHit projectileHit;
+    private ProjectileHit projectileHit;
     private void Awake()
     {
-        projectileHit = GetComponent<ProjectlieHit>();
+        projectileHit = GetComponent<ProjectileHit>();
         if (projectileHit == null)
         {
             Debug.LogError("ProjectileHit component not found on " + gameObject.name);

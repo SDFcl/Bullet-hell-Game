@@ -34,8 +34,7 @@ public class Hitbox : MonoBehaviour
 
     protected virtual void ProcessHit(Collider2D col)
     {
-        if (owner == null) return; 
-        if (col.gameObject == owner|| col.gameObject.CompareTag(owner.tag)) return;
+        if(CheckOwner(col)) return;
 
         IDamageable damageable = col.GetComponent<IDamageable>();
 
@@ -44,5 +43,18 @@ public class Hitbox : MonoBehaviour
             Debug.Log($"Hit {col.name} with damage {damage}");
             damageable.TakeDamage(damage);
         }
+    }
+
+    protected virtual bool CheckOwner(Collider2D col)
+    {
+        if (owner == null) return false; 
+        if (col.gameObject == owner|| col.gameObject.CompareTag(owner.tag)) return true;
+
+        GameObject hitRoot = col.transform.root.gameObject;
+
+        if (hitRoot == owner) return true;
+        if (hitRoot.CompareTag(owner.tag)) return true;
+
+        return false;
     }
 }

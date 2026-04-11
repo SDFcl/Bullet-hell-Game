@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class Pool
+{
+    public string tag;
+    public GameObject prefab;
+    public int size;
+}
+
 public class ObjectPooler : MonoBehaviour
 {
-    [System.Serializable]
-    public class Pool
-    {
-        public string tag;
-        public GameObject prefab;
-        public int size;
-    }
+    
 	#region Singleton
 
 	public static ObjectPooler Instance;
@@ -21,27 +23,52 @@ public class ObjectPooler : MonoBehaviour
 	}
 
 	#endregion
-    public List<Pool> pools;
+    public ObjectPoolTableSO poolTable;
+	public bool useScriptableObject = true;
+	public List<Pool> pools;
+	private List<Pool> finalPools;
     public Dictionary<string, List<GameObject>> poolDictionary;
 
     // Use this for initialization
     void Start()
     {
-        poolDictionary = new Dictionary<string, List<GameObject>>();
+		finalPools = new List<Pool>();
 
-        foreach (Pool pool in pools)
+    if (pools != null)
+        finalPools.AddRange(pools);
+
+    if (useScriptableObject && poolTable != null && poolTable.pools != null)
+    {
+        foreach (Pool tablePool in poolTable.pools)
         {
-            List<GameObject> objectPool = new List<GameObject>();
+            Pool existingPool = finalPools.Find(p => p.tag == tablePool.tag);
 
-            for (int i = 0; i < pool.size; i++)
+            if (existingPool == null)
             {
-                GameObject obj = Instantiate(pool.prefab);
-                obj.SetActive(false);
-                objectPool.Add(obj);
+                finalPools.Add(tablePool);
             }
-
-            poolDictionary.Add(pool.tag, objectPool);
+            else
+            {
+                existingPool.size += tablePool.size;
+            }
         }
+    }
+
+    poolDictionary = new Dictionary<string, List<GameObject>>();
+
+    foreach (Pool pool in finalPools)
+    {
+        List<GameObject> objectPool = new List<GameObject>();
+
+        for (int i = 0; i < pool.size; i++)
+        {
+            GameObject obj = Instantiate(pool.prefab);
+            obj.SetActive(false);
+            objectPool.Add(obj);
+        }
+
+        poolDictionary.Add(pool.tag, objectPool);
+    }
     }
 
 	public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation, System.Action<GameObject> beforeSpawn = null)
@@ -69,7 +96,7 @@ public class ObjectPooler : MonoBehaviour
 		{
 			if (objectToSpawn == null)
 			{
-				Pool poolConfig = pools.Find(p => p.tag == tag);
+				Pool poolConfig = finalPools.Find(p => p.tag == tag);
 
 				if (poolConfig == null)
 				{
