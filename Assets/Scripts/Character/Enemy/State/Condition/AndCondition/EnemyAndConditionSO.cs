@@ -3,7 +3,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "AI/UOP1 Style/Conditions/And")]
 public class EnemyAndConditionSO : EnemyConditionSO
 {
-    public EnemyAndMode mode = EnemyAndMode.All;
     public EnemyConditionSO[] conditions;
 
     public override ICondition<EnemyContext> CreateCondition()
@@ -15,6 +14,6 @@ public class EnemyAndConditionSO : EnemyConditionSO
             runtimeConditions[i] = conditions[i].CreateCondition();
         }
 
-        return new EnemyAndCondition(mode, runtimeConditions);
+        return new EnemyAndCondition(runtimeConditions);
     }
 }

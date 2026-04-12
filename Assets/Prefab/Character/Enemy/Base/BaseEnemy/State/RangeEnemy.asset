@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 099ebe250625a5f41b5c1aba10c536cd, type: 3}
+  m_Name: RangeEnemy
+  m_EditorClassIdentifier: 
+  entryState: {fileID: 11400000, guid: d3a182a1b06200b469a46b81241dafa7, type: 2}
+  allStates:
+  - {fileID: 11400000, guid: d3a182a1b06200b469a46b81241dafa7, type: 2}
+  - {fileID: 11400000, guid: 7f5fea599d291154da4d228fc7880fea, type: 2}
+  - {fileID: 11400000, guid: ce64fd1ced73d0844b7ea7764afb50f2, type: 2}
+  - {fileID: 11400000, guid: 92d0d67445a13464abc8d592273ea1fd, type: 2}
+  - {fileID: 11400000, guid: fef87e969a66c2b4ca17bf0197a597cf, type: 2}
+  - {fileID: 11400000, guid: bf629153ba240dc479754a1fd68f53a2, type: 2}
+  - {fileID: 11400000, guid: 7c70d552788b66541bc919c2207f8810, type: 2}
+  anyTransitions:
+  - condition: {fileID: 11400000, guid: b63458a4dd2095645abfe89d9fc3a789, type: 2}
+    targetState: {fileID: 11400000, guid: 7c70d552788b66541bc919c2207f8810, type: 2}

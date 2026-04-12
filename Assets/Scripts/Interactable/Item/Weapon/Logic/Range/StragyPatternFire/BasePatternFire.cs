@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class BasePatternFire : MonoBehaviour, IFirePattern
+public abstract class BasePatternFire : MonoBehaviour, IFireStrategy
 {
     public abstract void Execute(ProjectileWeapon weapon);
 

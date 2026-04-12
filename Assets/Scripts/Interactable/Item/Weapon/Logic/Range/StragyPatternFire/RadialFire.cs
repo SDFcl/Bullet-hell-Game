@@ -2,7 +2,6 @@ using UnityEngine;
 public class RadialFire : BasePatternFire
 {
     [SerializeField] private int numberOfProjectiles = 8;
-    [SerializeField] private float spawnOffset = 1;
 
 
     public override void Execute(ProjectileWeapon weapon)
@@ -16,7 +15,7 @@ public class RadialFire : BasePatternFire
             Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
 
             Vector3 direction = rotation * Vector3.right;
-            Vector3 spawnPosition = center + direction * spawnOffset;
+            Vector3 spawnPosition = center + direction;
 
             Shoot(weapon, spawnPosition, rotation);
         }

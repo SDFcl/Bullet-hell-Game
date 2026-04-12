@@ -82,7 +82,13 @@ public interface IImpulseMover
 
 public interface IProjectileBlocker{}
 
-public interface IFirePattern
+public interface IFireStrategy
 {
     void Execute(ProjectileWeapon weapon);
 }
+public interface IProjectileHitStrategy
+{
+    void OnSpawn(ProjectileHit projectile);
+    void OnDespawn(ProjectileHit projectile);
+}
+

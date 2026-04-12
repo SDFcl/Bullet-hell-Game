@@ -4,6 +4,8 @@ public class EnemyIdleAction : IAction<EnemyContext>
 {
     public void OnEnter(EnemyContext ctx)
     {
+        Debug.Log("Enter IdleAction");
+        ctx.PathToDir.ClearDestination();
         ctx.Movement.StopMovement();
     }
 

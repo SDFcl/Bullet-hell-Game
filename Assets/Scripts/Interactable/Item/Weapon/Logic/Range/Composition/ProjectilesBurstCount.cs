@@ -7,12 +7,12 @@ public class ProjectilesBurstCount : MonoBehaviour
     [SerializeField] private int burstCount = 1;
     [SerializeField] private float burstInterval = 0.1f;
 
-    private IFirePattern firePattern;
+    private IFireStrategy firePattern;
     private ProjectileWeapon projectileWeapon;
 
     void Awake()
     {
-        firePattern = GetComponent<IFirePattern>();
+        firePattern = GetComponent<IFireStrategy>();
         projectileWeapon = GetComponent<ProjectileWeapon>();
     }
     void OnEnable()

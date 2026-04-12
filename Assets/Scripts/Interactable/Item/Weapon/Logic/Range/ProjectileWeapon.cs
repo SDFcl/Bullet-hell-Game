@@ -19,13 +19,13 @@ public class ProjectileWeapon : BaseWeapon
     public Transform ShootPoint => shootPoint;
 
     // Stragy pattern for firing
-    private IFirePattern firePattern;
+    private IFireStrategy firePattern;
 
     protected override void Awake()
     {
         base.Awake();
 
-        firePattern = GetComponent<IFirePattern>();
+        firePattern = GetComponent<IFireStrategy>();
 
         if(useSOData && weaponData != null)
         {

@@ -57,4 +57,8 @@ public class Hitbox : MonoBehaviour
 
         return false;
     }
+
+    //API
+    public float GetDamage() => damage;
+    public GameObject GetOwner() => owner;
 }

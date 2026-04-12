@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class ProjectileHit : Hitbox,IPooledObject
+public class ProjectileHit : Hitbox, IPooledObject
 {
     [SerializeField] private float lifeTime = 0f;
     [SerializeField] private float bulletHealth = 1f;
@@ -10,11 +10,13 @@ public class ProjectileHit : Hitbox,IPooledObject
     
     private Rigidbody2D rb;
     private PureHealth health;
+    private IProjectileHitStrategy lifetimeStrategy;
     protected override void Awake()
     {
         base.Awake();
         rb = GetComponent<Rigidbody2D>();
         health = new PureHealth(bulletHealth);
+        lifetimeStrategy = GetComponent<IProjectileHitStrategy>();
     }   
 
     public void OnObjectSpawn()
@@ -22,12 +24,13 @@ public class ProjectileHit : Hitbox,IPooledObject
         health.ResetHP();
         rb.linearVelocity = (Vector2)transform.right * speed;
         StartCoroutine(Disable());
+        lifetimeStrategy?.OnSpawn(this);
     }
 
     private IEnumerator Disable()
 	{
 		yield return new WaitForSeconds(lifeTime);
-		gameObject.SetActive(false);
+		lifetimeStrategy?.OnDespawn(this);
 	}
 
     protected override void ProcessHit(Collider2D col)
@@ -48,12 +51,12 @@ public class ProjectileHit : Hitbox,IPooledObject
             health.TakeDamage(1);
             if (health.IsDead)
             {
-                gameObject.SetActive(false);
+                lifetimeStrategy?.OnDespawn(this);
             }
         }
         if (col.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
         {
-            gameObject.SetActive(false);
+            lifetimeStrategy?.OnDespawn(this);
         }
     }
 

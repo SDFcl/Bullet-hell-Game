@@ -4,7 +4,7 @@ public class Facing2D : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] private bool faceRight = true;
-    [SerializeField] private float directionThreshold = 0.1f;
+    private float directionThreshold = 0f;
     private float defaultThres;
 
     public bool IsFacingRight => faceRight;

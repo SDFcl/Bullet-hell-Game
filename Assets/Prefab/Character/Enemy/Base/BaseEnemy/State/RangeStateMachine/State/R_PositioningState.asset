@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3227682f4a06603448b68bada9713a76, type: 3}
+  m_Name: R_PositioningState
+  m_EditorClassIdentifier: 
+  actions:
+  - {fileID: 11400000, guid: cec034243cdfa4d45b80e70e60ee5eec, type: 2}
+  transitions:
+  - condition: {fileID: 11400000, guid: 0804fa4c17c06db42a30bc2a410b6754, type: 2}
+    targetState: {fileID: 11400000, guid: 92d0d67445a13464abc8d592273ea1fd, type: 2}
+  - condition: {fileID: 11400000, guid: 58bdccb70b2096f40a9263388b8dcb83, type: 2}
+    targetState: {fileID: 11400000, guid: ce64fd1ced73d0844b7ea7764afb50f2, type: 2}

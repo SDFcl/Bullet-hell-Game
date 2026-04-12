@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3445864385630114975}
   - component: {fileID: 7563008217592561425}
   - component: {fileID: 8953548802256766409}
+  - component: {fileID: 5873706773106443843}
   m_Layer: 0
   m_Name: BlueProjectlie
   m_TagString: Untagged
@@ -122,6 +123,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTrigger: 1
   lifeTime: 5
+  bulletHealth: 1
+--- !u!114 &5873706773106443843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100461728543499293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6604b5164e25f654bbe371670cddc664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4816674006900607091
 GameObject:
   m_ObjectHideFlags: 0
