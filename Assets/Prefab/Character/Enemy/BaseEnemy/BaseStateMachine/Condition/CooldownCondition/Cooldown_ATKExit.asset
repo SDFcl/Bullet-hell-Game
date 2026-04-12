@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f326e08482ba01a4e9016c8ec86a8fa4, type: 3}
-  m_Name: And_WanderCooldown_&_IdleRange
+  m_Script: {fileID: 11500000, guid: 5193d5817c46ab04d99e08860484a93a, type: 3}
+  m_Name: Cooldown_ATKExit
   m_EditorClassIdentifier: 
-  conditions:
-  - {fileID: 11400000, guid: a5bfe570d0f54694ba547d64b6e28410, type: 2}
-  - {fileID: 11400000, guid: 8d8b88cfbbe8616428092662d32c66bd, type: 2}
+  cooldown: 5

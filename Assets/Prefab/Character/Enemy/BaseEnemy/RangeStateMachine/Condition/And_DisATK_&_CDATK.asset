@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5193d5817c46ab04d99e08860484a93a, type: 3}
-  m_Name: WaitTimeWander
+  m_Script: {fileID: 11500000, guid: f326e08482ba01a4e9016c8ec86a8fa4, type: 3}
+  m_Name: And_DisATK_&_CDATK
   m_EditorClassIdentifier: 
-  waitTime: 5
+  conditions:
+  - {fileID: 11400000, guid: 065fb4363f045624dbfe4cec112c3fa5, type: 2}
+  - {fileID: 11400000, guid: 85d113926e0c0d6409395badadb0c571, type: 2}

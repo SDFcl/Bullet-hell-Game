@@ -16,6 +16,11 @@ public interface ICondition<T>
 {
     bool IsMet(T ctx);
 }
+public interface IResettableCondition<T> : ICondition<T>
+{
+    void Reset(T ctx);
+}
+
 public class Transition<T>
 {
     public ICondition<T> Condition { get; }

@@ -1,9 +1,10 @@
 using UnityEngine;
 
-public class EnemyCooldownCondition : ICondition<EnemyContext>
+public class EnemyStateCooldownCondition : ICondition<EnemyContext>
 {
     private readonly float _waitTime;
-    public EnemyCooldownCondition(float waitTime)
+
+    public EnemyStateCooldownCondition(float waitTime)
     {
         _waitTime = waitTime;
     }
