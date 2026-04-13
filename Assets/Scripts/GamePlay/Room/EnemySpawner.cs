@@ -34,15 +34,15 @@ public class EnemySpawner : MonoBehaviour
     // =========================
     public void SpawnEnemies()
     {
-        int budget = CalculateBudget();
-        List<EnemyData> toSpawn = GenerateByBudget(budget);
+        // int budget = CalculateBudget();
+        // List<EnemyData> toSpawn = GenerateByBudget(budget);
 
-        foreach (var enemy in toSpawn)
-        {
-            Vector3 pos = FindValidSpawnPosition();
+        // foreach (var enemy in toSpawn)
+        // {
+        //     Vector3 pos = FindValidSpawnPosition();
 
-            Instantiate(enemy.prefab, pos, Quaternion.identity);
-        }
+        //     Instantiate(enemy.prefab, pos, Quaternion.identity);
+        // }
     }
 
     // =========================
