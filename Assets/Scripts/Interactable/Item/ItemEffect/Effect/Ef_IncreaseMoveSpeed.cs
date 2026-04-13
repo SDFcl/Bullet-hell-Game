@@ -8,16 +8,32 @@ public class Ef_IncreaseMoveSpeed : ItemEffect
     public float speedIncreaseAmount = 0f; // �ӹǹ���������������
     public float speedIncreaseMultiplier = 1.5f; // �����������������
 
+    public bool IsActive = false;
+
     public override void Apply(GameObject target)
     {
         var player = target.GetComponent<Movement>();
         if (player != null)
         {
             float originalSpeed = player.GetMoveSpeed();
-            player.SetMoveSpeed((originalSpeed + speedIncreaseAmount) * speedIncreaseMultiplier);
-            EffectCoroutineRunner.Run(RemoveAfterTime(player, originalSpeed));
+            if (!IsActive)
+            {
+
+                player.SetMoveSpeed((originalSpeed + speedIncreaseAmount) * speedIncreaseMultiplier);
+                IsActive = true;
+                EffectCoroutineRunner.Run(RemoveAfterTime(player, originalSpeed));
+            }
+            else
+            {
+                if (player != null)
+                {
+                    player.SetMoveSpeed((originalSpeed / speedIncreaseMultiplier) - speedIncreaseAmount);
+                    IsActive = false;
+                }
+            }
         }
     }
+    
 
     private IEnumerator RemoveAfterTime(Movement player, float originalSpeed)
     {
