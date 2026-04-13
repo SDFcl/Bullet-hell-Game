@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dd39291919798104fa83929a6ab28a71
+guid: 97a81f45bd868644cb36f26c63c8104d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 26
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -93,348 +93,313 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 4096
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TheNecromancer_Idle
+      name: 01_Forest_0
       rect:
         serializedVersion: 2
         x: 0
+        y: 159
+        width: 97
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6e2148e8915ca870800000000000000
+      internalID: 8695414697719049839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Forest_1
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 159
+        width: 98
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b0a254f5d8fe6310800000000000000
+      internalID: 1400330131969581238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Forest_2
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 159
+        width: 97
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f0b94ffefc6764b0800000000000000
+      internalID: -5447265381820813066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Forest_3
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 0
+        width: 78
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ba81d50ffc77af10800000000000000
+      internalID: 2280929171042568887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Forest_4
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 0
+        width: 78
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2787e4675984eda90800000000000000
+      internalID: -7287307340266702734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Forest_5
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 96
+        width: 30
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b361ad73441be390800000000000000
+      internalID: -7788108850504047695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Forest_6
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 108
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1ada8683d320a5f0800000000000000
+      internalID: -747558146741183973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Forest_7
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 100
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b28ebd07c4052cd50800000000000000
+      internalID: 6756050680250361899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Forest_8
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 111
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0da9cf41f0231d270800000000000000
+      internalID: 8273449030814309072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_Forest_9
+      rect:
+        serializedVersion: 2
+        x: 258
         y: 64
-        width: 64
-        height: 64
+        width: 61
+        height: 27
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 6635fb61edb8fd541ad1b2ed80d9bbbc
-      internalID: 556877525
+      spriteID: 1419136294ccd9520800000000000000
+      internalID: 2710547165292368193
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TheNecromancer_Idle1
+      name: 01_Forest_10
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
-        width: 64
-        height: 64
+        x: 327
+        y: 73
+        width: 18
+        height: 13
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 54a722d211c92484c9df6ed2c1dcf7a6
-      internalID: 137568448
+      spriteID: 143ca55e81407a410800000000000000
+      internalID: 1488162706842895169
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TheNecromancer_Idle2
+      name: 01_Forest_11
       rect:
         serializedVersion: 2
-        x: 128
-        y: 64
-        width: 64
-        height: 64
+        x: 261
+        y: 38
+        width: 18
+        height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: bee24c9a90d442d42a4feb125ab46726
-      internalID: 169451961
+      spriteID: 68ffdf6aa3b722380800000000000000
+      internalID: -8997493613692846202
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TheNecromancer_Idle3
+      name: 01_Forest_12
       rect:
         serializedVersion: 2
-        x: 192
-        y: 64
-        width: 64
-        height: 64
+        x: 291
+        y: 39
+        width: 27
+        height: 21
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 93f6b582f3475944685cad5ce0adecdd
-      internalID: 606270474
+      spriteID: cd7d1c12353171630800000000000000
+      internalID: 3897605250282018780
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TheNecromancer_Idle4
+      name: 01_Forest_13
       rect:
         serializedVersion: 2
-        x: 256
-        y: 64
-        width: 64
-        height: 64
+        x: 328
+        y: 42
+        width: 17
+        height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 2aa512e2587ce1440ad8ef09497903a9
-      internalID: -1312814749
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TheNecromancer_Idle5
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 82045aae625fad34d83fe8294af3dc47
-      internalID: -2076406981
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TheNecromancer_Dead
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 711ce1b5c569c7a4782cf43281ad4649
-      internalID: -2062047740
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TheNecromancer_Dead1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e69f00029b23769489f2f04ac5c85f02
-      internalID: -893421341
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TheNecromancer_Dead2
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e0c79f2a7b2e3ab48b36e6db98674a7d
-      internalID: 18601912
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TheNecromancer_Dead3
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2ae063b095764764bb1f3782fad21959
-      internalID: -999160157
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TheNecromancer_Dead4
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b6dc70b5b3231c04cb1ae624997a7ba5
-      internalID: -801665919
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TheNecromancer_Dead5
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e2d8bec3e701b924da8f1ba9714ae3bc
-      internalID: 150833654
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TheNecromancer_Dead6
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e41e8c378c0b88343ae9bef0e8ce0b94
-      internalID: -525247025
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TheNecromancer_Dead7
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 048d3d18d3c242a40a4dbeff2f95c798
-      internalID: 1784162903
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TheNecromancer_Dead8
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fb73db414d4083a4aa6308b594c38238
-      internalID: -1994307692
+      spriteID: 11d3fc4c8f5516e80800000000000000
+      internalID: -8187168120640684783
       vertices: []
       indices: 
       edges: []
@@ -443,7 +408,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 3c1ceae0b58b9ca46aeb5fa052ffc20e
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -453,21 +418,20 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      TheNecromancer_Dead: -2062047740
-      TheNecromancer_Dead1: -893421341
-      TheNecromancer_Dead2: 18601912
-      TheNecromancer_Dead3: -999160157
-      TheNecromancer_Dead4: -801665919
-      TheNecromancer_Dead5: 150833654
-      TheNecromancer_Dead6: -525247025
-      TheNecromancer_Dead7: 1784162903
-      TheNecromancer_Dead8: -1994307692
-      TheNecromancer_Idle: 556877525
-      TheNecromancer_Idle1: 137568448
-      TheNecromancer_Idle2: 169451961
-      TheNecromancer_Idle3: 606270474
-      TheNecromancer_Idle4: -1312814749
-      TheNecromancer_Idle5: -2076406981
+      01_Forest_0: 8695414697719049839
+      01_Forest_1: 1400330131969581238
+      01_Forest_10: 1488162706842895169
+      01_Forest_11: -8997493613692846202
+      01_Forest_12: 3897605250282018780
+      01_Forest_13: -8187168120640684783
+      01_Forest_2: -5447265381820813066
+      01_Forest_3: 2280929171042568887
+      01_Forest_4: -7287307340266702734
+      01_Forest_5: -7788108850504047695
+      01_Forest_6: -747558146741183973
+      01_Forest_7: 6756050680250361899
+      01_Forest_8: 8273449030814309072
+      01_Forest_9: 2710547165292368193
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
