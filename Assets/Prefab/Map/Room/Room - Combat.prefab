@@ -236,6 +236,8 @@ GameObject:
   - component: {fileID: 7834610976403471157}
   - component: {fileID: 5257234233130094715}
   - component: {fileID: 6861699123642311512}
+  - component: {fileID: 1776480674367223955}
+  - component: {fileID: 5627052746191189654}
   m_Layer: 0
   m_Name: Room - Combat
   m_TagString: Untagged
@@ -389,6 +391,39 @@ MonoBehaviour:
   ExploredColor: {r: 1, g: 0, b: 0, a: 1}
   state: 0
   roomConnectors: []
+--- !u!114 &1776480674367223955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2974832537384977926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1f5a243f17db7c4f840c9fe1b295c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  checkRadius: 1.2
+  spawnRange: 10
+  floorLevel: 1
+  spawnOnStart: 1
+  roomCollider: {fileID: 0}
+--- !u!114 &5627052746191189654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2974832537384977926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f481fc0e8d0165448050d785a0e33fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomItem: {fileID: 11400000, guid: a78bc26b199c14c48bc742eaf86b54b4, type: 2}
 --- !u!1 &4485315856700096308
 GameObject:
   m_ObjectHideFlags: 0
