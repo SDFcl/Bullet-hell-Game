@@ -40,7 +40,7 @@ public class Hitbox : MonoBehaviour
 
         if (damageable != null)
         {
-            //Debug.Log($"Hit {col.name} with damage {damage}");
+            Debug.Log($"Hit {col.name} with damage {damage}");
             damageable.TakeDamage(damage);
         }
     }

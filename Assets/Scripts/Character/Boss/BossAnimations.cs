@@ -3,21 +3,18 @@ using UnityEngine;
 public class BossAnimations : CharacterAnimations
 {
     private EnemyAttackSelector attackSelector;
-    private Attack attack;
-    private AimPivot2D aimPivot2D;
+    private AnimationEvent animEvent;
 
     protected override void Awake()
     {
         base.Awake();
         attackSelector = GetComponent<EnemyAttackSelector>();
-        attack = GetComponent<Attack>();
-        aimPivot2D = GetComponent<AimPivot2D>();
+        animEvent = GetComponent<AnimationEvent>();
     }
     protected override void OnEnable()
     {
         base.OnEnable();
         attackSelector.OnSelected += SetIndexSelector;
-        attack.OnAttacked += PlayAttackAfterReset;
     }
     protected override void OnDisable()
     {
@@ -28,8 +25,8 @@ public class BossAnimations : CharacterAnimations
     {
         animator.SetInteger("AttackSelected",index);
     }
-    public void PlayAttackAfterReset()
+    private void HandlePrepareAttack()
     {
-        aimPivot2D.ResetRotation(()=> {animator.SetTrigger("Attack");});
+        animator.SetTrigger("PrepareAttack");
     }
 }

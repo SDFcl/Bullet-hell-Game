@@ -28,7 +28,7 @@ public class Health : MonoBehaviour, IDamageable
         CurrentHP -= damage;
         HealthChangedEvent();
 
-        //Debug.Log($"{gameObject.name} took {damage} damage. Current HP: {CurrentHP}/{maxHealth}");
+        Debug.Log($"{gameObject.name} took {damage} damage. Current HP: {CurrentHP}/{maxHealth}");
         if (CurrentHP <= 0)
         {
             Debug.Log($"{gameObject.name} is dead.");
