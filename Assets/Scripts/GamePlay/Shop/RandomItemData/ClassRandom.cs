@@ -11,4 +11,9 @@ public abstract class ClassRandom : ScriptableObject
     {
         return 0;
     }
+
+    public virtual GameObject GetRandomGameObj()
+    {
+        return null;
+    }
 }
