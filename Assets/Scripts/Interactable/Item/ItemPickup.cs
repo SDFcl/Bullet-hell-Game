@@ -37,6 +37,7 @@ public class ItemPickup : MonoBehaviour, IPickable
                 {
                     effect.Apply(player);
                 }
+                inventory.AddConsumable(newItem);
                 Debug.Log($"[ItemPickup] Applied passive effect: {itemData.itemName}");
             }
             else

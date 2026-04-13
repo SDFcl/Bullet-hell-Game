@@ -76,6 +76,10 @@ public class Inventory : MonoBehaviour
     {
         if (index < 0 || index >= Consumables.Count) return;
         Item item = Consumables[index];
+        foreach (var effect in item.itemData.effects)
+        {
+            effect.Apply(this.gameObject);
+        }
         Instantiate(item.itemData.WorldPrefab, this.transform.position, Quaternion.identity);
         Consumables.RemoveAt(index);
     }
