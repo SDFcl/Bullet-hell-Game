@@ -3,9 +3,21 @@ using UnityEngine;
 public class AimPivot2D : MonoBehaviour
 {
     [SerializeField] private Transform aimPivot;
+    [SerializeField] private float rotationLerpSpeed = 12f;
 
     private Vector2 currentDirection = Vector2.right;
+    private Quaternion initialLocalRotation;
+    private Vector3 initialLocalScale;
+
     public Vector2 CurrentDirection => currentDirection;
+
+    private void Awake()
+    {
+        if (aimPivot == null) return;
+
+        initialLocalRotation = aimPivot.localRotation;
+        initialLocalScale = aimPivot.localScale;
+    }
 
     public void SetDirection(Vector2 direction)
     {
@@ -15,13 +27,19 @@ public class AimPivot2D : MonoBehaviour
         currentDirection = direction.normalized;
 
         float angle = Mathf.Atan2(currentDirection.y, currentDirection.x) * Mathf.Rad2Deg;
-        aimPivot.rotation = Quaternion.Euler(0f, 0f, angle);
+        Quaternion targetRotation = Quaternion.Euler(0f, 0f, angle);
+
+        aimPivot.rotation = Quaternion.Lerp(
+            aimPivot.rotation,
+            targetRotation,
+            Time.deltaTime * rotationLerpSpeed
+        );
 
         bool isLeftSide = angle > 90f || angle < -90f;
 
         Vector3 scale = aimPivot.localScale;
-        float absX = Mathf.Abs(scale.x);
-        float absY = Mathf.Abs(scale.y);
+        float absX = Mathf.Abs(initialLocalScale.x);
+        float absY = Mathf.Abs(initialLocalScale.y);
 
         if (isLeftSide)
         {
@@ -37,9 +55,12 @@ public class AimPivot2D : MonoBehaviour
         aimPivot.localScale = scale;
     }
 
+
     public void ResetRotation()
     {
         if (aimPivot == null) return;
-        aimPivot.localRotation = Quaternion.identity;
+
+        aimPivot.localRotation = initialLocalRotation;
+        aimPivot.localScale = initialLocalScale;
     }
 }

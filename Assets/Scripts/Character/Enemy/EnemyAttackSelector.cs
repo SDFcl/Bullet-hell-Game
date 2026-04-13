@@ -39,6 +39,7 @@ public class EnemyAttackSelector : MonoBehaviour
 
         if (currentAttackObject != null)
         {
+            currentAttackObject.SetActive(false);
             Destroy(currentAttackObject);
         }
 
@@ -63,6 +64,9 @@ public class EnemyAttackSelector : MonoBehaviour
         if (availableIndices.Count == 0) return false;
 
         int randomIndex = availableIndices[Random.Range(0, availableIndices.Count)];
+        
         return SelectAttack(randomIndex);
     }
+
+    public int Currentindex => currentIndex;
 }

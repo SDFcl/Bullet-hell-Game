@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 061658edc1d6f2e44acf119d5fc4e490, type: 3}
+  m_Name: Enemy_Spawn
+  m_EditorClassIdentifier: 
+  pools:
+  - tag: CandleMeleeMN
+    prefab: {fileID: 3417344509775020481, guid: 9a746efb63cf5104baf63e656647cd8c, type: 3}
+    size: 0
+  - tag: CandleRangeMN
+    prefab: {fileID: 7677895373350445972, guid: c360d02878394e24c819341187dc5e48, type: 3}
+    size: 0
