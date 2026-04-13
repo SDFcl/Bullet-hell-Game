@@ -9,6 +9,7 @@ public class LineOfSight2D : MonoBehaviour
     [SerializeField] private float detectRange = 10f;
 
     [Header("Field Of View")]
+    [SerializeField] private float fovAngleOffset = 0f;
     [SerializeField] private float viewAngle = 90f;
     [SerializeField] private bool enableFOV = true;
 
@@ -90,7 +91,20 @@ public class LineOfSight2D : MonoBehaviour
 
     private Vector2 GetForward2D()
     {
-        return viewOrigin.lossyScale.x < 0 ? Vector2.left : Vector2.right;
+        Vector2 baseForward = viewOrigin.lossyScale.x < 0 ? Vector2.left : Vector2.right;
+        return RotateVector(baseForward, fovAngleOffset);
+    }
+
+    private Vector2 RotateVector(Vector2 direction, float angleDeg)
+    {
+        float rad = angleDeg * Mathf.Deg2Rad;
+        float cos = Mathf.Cos(rad);
+        float sin = Mathf.Sin(rad);
+
+        return new Vector2(
+            direction.x * cos - direction.y * sin,
+            direction.x * sin + direction.y * cos
+        ).normalized;
     }
 
     private Vector2 DirFromAngle2D(float angleDeg)

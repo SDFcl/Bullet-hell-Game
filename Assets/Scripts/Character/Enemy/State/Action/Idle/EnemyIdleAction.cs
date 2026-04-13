@@ -15,6 +15,6 @@ public class EnemyIdleAction : IAction<EnemyContext>
 
     public void OnExit(EnemyContext ctx)
     {
-        //Debug.Log("Exit Idle");
+        Debug.Log("Exit Idle");
     }
 }

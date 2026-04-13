@@ -13,7 +13,7 @@ public class SummonWeapon : BaseWeapon
 
     [Header("Minion")]
     [SerializeField] private SummonSpawnPoint[] spawnPoints;
-    
+     
     private Mana mana;
 
     public override void SetOwner(GameObject owner)
@@ -37,7 +37,14 @@ public class SummonWeapon : BaseWeapon
 
         return true;
     }
+    
     protected override void PerformAttack()
+    {
+        
+    }
+
+    //Animaiton Event
+    public void ExecuteSommon()
     {
         foreach (SummonSpawnPoint spawnPoint in spawnPoints)
         {

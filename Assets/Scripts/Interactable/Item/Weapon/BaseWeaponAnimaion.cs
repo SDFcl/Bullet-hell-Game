@@ -1,16 +1,16 @@
 using UnityEngine;
 
-public class WeaponAnimaion : MonoBehaviour
+public class BaseWeaponAnimaion : MonoBehaviour
 {
-    private Animator animator;
-    private IWeapon weapon;
+    protected Animator animator;
+    protected IWeapon weapon;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         animator = GetComponent<Animator>();
         weapon = GetComponent<IWeapon>();
     }
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         if (weapon != null)
         {
@@ -18,7 +18,7 @@ public class WeaponAnimaion : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    protected virtual void OnDestroy()
     {
         if (weapon != null)
         {
@@ -26,7 +26,7 @@ public class WeaponAnimaion : MonoBehaviour
         }
     }
 
-    private void TriggerAttackAnimation()
+    protected virtual void TriggerAttackAnimation()
     {
         animator.SetTrigger("Attack");
     }

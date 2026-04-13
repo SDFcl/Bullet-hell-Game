@@ -217,8 +217,7 @@ GameObject:
   - component: {fileID: 2376282986049723883}
   - component: {fileID: 5087004979194578289}
   - component: {fileID: -8963773754865198336}
-  - component: {fileID: -6660499902155029054}
-  - component: {fileID: -4610709297757953199}
+  - component: {fileID: 2066312567867135802}
   m_Layer: 0
   m_Name: H_Gun
   m_TagString: Untagged
@@ -260,7 +259,7 @@ MonoBehaviour:
   baseDamage: 10
   currentDamage: 0
   cooldown: 0.2
-  projectileSpeed: 20
+  projectileSpeed: 4
   projectilePoolTag: BlueProjectile
   manaCost: 1
   shootPoint: {fileID: 1196912440096043568}
@@ -277,7 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: cd1572a47bb1b15418aced2bb8b82c3f, type: 2}
---- !u!114 &-6660499902155029054
+--- !u!114 &2066312567867135802
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -286,21 +285,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5378594280538970245}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 600d5c5cc81e0e04c87fffc27ec8f18e, type: 3}
+  m_Script: {fileID: 11500000, guid: 29e863034133e9a4db0e74ff0c01da32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sideOffset: 0.3
---- !u!114 &-4610709297757953199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5378594280538970245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afde8a6cfad49e247a08ca9f3c661ab2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  burstCount: 2
-  burstInterval: 0.05
+  scatterProjectileTag: Enemy_BulletABL
+  scatterCount: 6
+  spreadAngle: 15
+  minSpawnOffset: 0.2
+  maxSpawnOffset: 1
+  minSpeedMultiplier: 0.8
+  maxSpeedMultiplier: 1.4

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class Attack : MonoBehaviour
 {
@@ -6,6 +7,8 @@ public class Attack : MonoBehaviour
     [SerializeField] private Transform holdingItem;
     private HoldingItemWatcher holdingItemWatcher;
     private IWeapon currentWeapon;
+
+    public Action OnAttacked;
 
     private void Awake()
     {
@@ -43,6 +46,7 @@ public class Attack : MonoBehaviour
     {
         if (currentWeapon == null) return;
         currentWeapon.ExecuteAttack();
+        OnAttacked?.Invoke();
     }
 
     public void RefreshWeapon()

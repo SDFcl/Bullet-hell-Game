@@ -7,6 +7,7 @@ public class EnemyPositioningAction : IAction<EnemyContext>
 
     private float repathTimer;
     private Vector2 currentPositionTarget;
+    private float sideSign = 1f;
 
     public EnemyPositioningAction(
         float preferredDistance = 2f,
@@ -18,67 +19,77 @@ public class EnemyPositioningAction : IAction<EnemyContext>
 
     public void OnEnter(EnemyContext ctx)
     {
+        if (ctx.Target == null) return;
+
         repathTimer = 0f;
+
+        // เลือกว่าจะยืนฝั่งซ้ายหรือขวาของเป้าหมายครั้งเดียวต่อการเข้า state
+        sideSign = Random.value < 0.5f ? -1f : 1f;
         currentPositionTarget = CalculatePositionTarget(ctx);
     }
 
     public void OnUpdate(EnemyContext ctx)
     {
-        if (ctx.Target == null || ctx.Movement == null) return;
+        if (ctx.Target == null || ctx.Movement == null || ctx.PathToDir == null)
+            return;
 
-        // รีคำนวณตำแหน่งเป็นช่วง ๆ
         repathTimer -= Time.deltaTime;
         if (repathTimer <= 0f)
         {
             repathTimer = repathInterval;
             currentPositionTarget = CalculatePositionTarget(ctx);
+            ctx.PathToDir.SetDestination(currentPositionTarget);
         }
 
-        MoveToPosition(ctx, currentPositionTarget);
+        MoveToPosition(ctx);
+        UpdateFacing(ctx);
     }
 
     public void OnExit(EnemyContext ctx)
     {
-        if (ctx.Movement != null)
-            ctx.Movement.StopMovement();
+        ctx.Movement?.StopMovement();
+        ctx.PathToDir?.ClearDestination();
     }
 
-    // 🔥 หาตำแหน่งด้านข้าง player
     private Vector2 CalculatePositionTarget(EnemyContext ctx)
     {
         Vector2 enemyPos = ctx.Self.position;
         Vector2 targetPos = ctx.Target.position;
 
-        Vector2 toEnemy = (enemyPos - targetPos).normalized;
-
-        if (toEnemy == Vector2.zero)
+        Vector2 toEnemy = enemyPos - targetPos;
+        if (toEnemy.sqrMagnitude <= 0.0001f)
+        {
             toEnemy = Vector2.right;
+        }
 
-        Vector2 sideDir = Vector2.Perpendicular(toEnemy).normalized;
-
-        // กัน flip ซ้ายขวาแปลก ๆ
-        float sideSign = Vector2.Dot(sideDir, enemyPos - targetPos) >= 0f ? 1f : -1f;
-        sideDir *= sideSign;
-
+        Vector2 sideDir = Vector2.Perpendicular(toEnemy.normalized) * sideSign;
         return targetPos + sideDir * preferredDistance;
     }
 
-    private void MoveToPosition(EnemyContext ctx, Vector2 targetPos)
+    private void MoveToPosition(EnemyContext ctx)
     {
-        if (ctx.PathToDir == null) return;
-
-        ctx.PathToDir.SetDestination(targetPos);
         if (ctx.PathToDir.ReachedDestination())
         {
             ctx.Movement.StopMovement();
             return;
         }
-        ctx.Movement.SetMoveInput(ctx.PathToDir.GetDirection());
 
-        // optional: facing ใช้ direction จาก path
-        Vector2 dir = (ctx.Target.position - ctx.Self.position).normalized;
+        Vector2 moveDirection = ctx.PathToDir.GetDirection();
+        ctx.Movement.SetMoveInput(moveDirection);
+    }
 
-        ctx.Facing.SetDirection(dir.x);
-        ctx.AimPivot.SetDirection(dir);
+    private void UpdateFacing(EnemyContext ctx)
+    {
+        Vector2 lookDir = (ctx.Target.position - ctx.Self.position).normalized;
+
+        if (ctx.Facing != null)
+        {
+            ctx.Facing.SetDirection(lookDir.x);
+        }
+
+        if (ctx.AimPivot != null)
+        {
+            ctx.AimPivot.SetDirection(lookDir);
+        }
     }
 }

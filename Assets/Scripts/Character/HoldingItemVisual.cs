@@ -7,7 +7,6 @@ public class HoldingItemVisual : MonoBehaviour
 
     private void Awake()
     {
-        spriteRenderers = GetComponentsInChildren<SpriteRenderer>(true);
         health = GetComponentInParent<Health>();
     }
 
@@ -32,6 +31,7 @@ public class HoldingItemVisual : MonoBehaviour
 
     private void SetVisible(bool visible)
     {
+        spriteRenderers = GetComponentsInChildren<SpriteRenderer>(true);
         if (spriteRenderers == null || spriteRenderers.Length == 0)
             return;
 

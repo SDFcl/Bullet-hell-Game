@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 [System.Serializable]
 public class AttackEntry
@@ -19,6 +20,13 @@ public class EnemyAttackSelector : MonoBehaviour
 
     private GameObject currentAttackObject;
     private int currentIndex = -1;
+
+    public Action<int> OnSelected;
+    private void Start()
+    {
+        int random = UnityEngine.Random.Range(1, 3);
+        SelectAttack(random);
+    }
 
     private void Update()
     {
@@ -46,6 +54,7 @@ public class EnemyAttackSelector : MonoBehaviour
         currentIndex = index;
         currentAttackObject = Instantiate(attacks[index].prefab, holdingItemPoint);
         attacks[index].cooldownTimer = attacks[index].cooldown;
+        OnSelected?.Invoke(index);
         return true;
     }
 
@@ -63,7 +72,7 @@ public class EnemyAttackSelector : MonoBehaviour
 
         if (availableIndices.Count == 0) return false;
 
-        int randomIndex = availableIndices[Random.Range(0, availableIndices.Count)];
+        int randomIndex = availableIndices[UnityEngine.Random.Range(0, availableIndices.Count)];
         
         return SelectAttack(randomIndex);
     }

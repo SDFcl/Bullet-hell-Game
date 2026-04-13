@@ -20,7 +20,9 @@ public class EnemyAttackAction : IAction<EnemyContext>
 
     public void OnUpdate(EnemyContext ctx)
     {
-        
+        Vector2 dirToTarget = (ctx.Target.position - ctx.Self.position).normalized;
+        ctx.AimPivot?.SetDirection(dirToTarget);
+        ctx.Facing.SetDirection(dirToTarget.x);
     }
 
     public void OnExit(EnemyContext ctx)
