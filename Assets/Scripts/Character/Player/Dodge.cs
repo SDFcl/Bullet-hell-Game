@@ -8,6 +8,13 @@ public class Dodge : MonoBehaviour
     public float dodgeForce;
     public float cooldown;
 
+    [Header("Dodge Distance")]
+    public float dodgeDistanceMultiplier = 1f;
+
+    [Header("I-Frame Settings")]
+    [SerializeField] private float iFrameDelay = 0.0f;
+    [SerializeField] private float iFrameDuration = 0.3f;
+
     [Header("Dodge Animation")]
     public AnimationClip dodgeAnimation;
 
@@ -33,19 +40,32 @@ public class Dodge : MonoBehaviour
     public void TryDodge()
     {
         if (!canDodge) return;
+        StartCoroutine(DodgeRoutine());
+    }
+
+    private IEnumerator DodgeRoutine()
+    {
         canDodge = false;
         OnDodge?.Invoke();
 
-        burstMove.Play(movement.GetDirection(), dodgeForce, dodgeAnimation.length);
-        StartCoroutine(CooldownRoutine());
-    }
+        burstMove.Play(movement.GetDirection(), dodgeForce * dodgeDistanceMultiplier, dodgeAnimation.length);
 
-    private IEnumerator CooldownRoutine()
-    {
+        yield return new WaitForSeconds(iFrameDelay);
+        DisableHitbox();
+
+        yield return new WaitForSeconds(iFrameDuration);
+        EnableHitbox();
+
         yield return new WaitForSeconds(cooldown);
         canDodge = true;
     }
 
     public void EnableHitbox() => col.enabled = true;
     public void DisableHitbox() => col.enabled = false;
+
+    public void AddDistanceMultiplier(float multiplier) => dodgeDistanceMultiplier += multiplier;
+    public void RemoveDistanceMultiplier(float multiplier) => dodgeDistanceMultiplier -= multiplier;
+
+    public void AddIFrameDuration(float amount) => iFrameDuration += amount;
+    public void RemoveIFrameDuration(float amount) => iFrameDuration -= amount;
 }

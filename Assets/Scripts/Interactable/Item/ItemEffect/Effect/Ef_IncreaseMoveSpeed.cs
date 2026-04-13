@@ -5,7 +5,6 @@ using UnityEngine;
 public class Ef_IncreaseMoveSpeed : ItemEffect
 {
     public float Duration = 15f; // ����ʱ��
-    public float speedIncreaseAmount = 0f; // �ӹǹ���������������
     public float speedIncreaseMultiplier = 1.5f; // �����������������
 
     public bool IsActive = false;
@@ -19,7 +18,7 @@ public class Ef_IncreaseMoveSpeed : ItemEffect
             if (!IsActive)
             {
 
-                player.SetMoveSpeed((originalSpeed + speedIncreaseAmount) * speedIncreaseMultiplier);
+                player.SetMoveSpeed(originalSpeed * speedIncreaseMultiplier);
                 IsActive = true;
                 EffectCoroutineRunner.Run(RemoveAfterTime(player, originalSpeed));
             }
@@ -27,7 +26,7 @@ public class Ef_IncreaseMoveSpeed : ItemEffect
             {
                 if (player != null)
                 {
-                    player.SetMoveSpeed((originalSpeed / speedIncreaseMultiplier) - speedIncreaseAmount);
+                    player.SetMoveSpeed(originalSpeed / speedIncreaseMultiplier);
                     IsActive = false;
                 }
             }
