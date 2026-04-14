@@ -4,7 +4,7 @@ public class StartRandomItem : MonoBehaviour
 {
     public ClassRandom randomItem;
 
-    public GameObject Start()
+    public GameObject GetRandomItem()
     {
         return randomItem.GetRandomItem();
     }

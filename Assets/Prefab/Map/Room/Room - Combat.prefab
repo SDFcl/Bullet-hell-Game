@@ -408,7 +408,9 @@ MonoBehaviour:
     m_Bits: 8
   checkRadius: 1.2
   spawnRange: 10
-  floorLevel: 1
+  startRandomItem: {fileID: 5627052746191189654}
+  MinEnemies: 3
+  MaxEnemies: 5
   spawnOnStart: 1
   roomCollider: {fileID: 0}
 --- !u!114 &5627052746191189654

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2047071720675481425}
   - component: {fileID: 6701002907643120051}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -739,8 +739,8 @@ MonoBehaviour:
   dodgeForce: 18
   cooldown: 0.3
   dodgeDistanceMultiplier: 1.4
-  iFrameDelay: 0
-  iFrameDuration: 0.3
+  iFrameDelay: 0.1
+  iFrameDuration: 0.1
   dodgeAnimation: {fileID: 7400000, guid: 2380f4432a8e9dd458a427fe5f0c84d4, type: 2}
   col: {fileID: 830325950164484544}
 --- !u!114 &2814125803818193428
@@ -930,7 +930,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -476420037
   m_SortingLayer: -1
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.053194284, g: 1, b: 0, a: 1}
   m_FlipX: 0
@@ -1157,7 +1157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1127568666206413333}
   - component: {fileID: 8193645735547738551}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1286,6 +1286,10 @@ PrefabInstance:
     - target: {fileID: 4181912444886382184, guid: f61d69c1f45bdb9429e27389269299e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6777364906338858911, guid: f61d69c1f45bdb9429e27389269299e0, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
