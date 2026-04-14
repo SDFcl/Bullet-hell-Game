@@ -39,7 +39,7 @@ public class MeleeWeapon : BaseWeapon
             hitbox.SetDamage(GetDamage());
     }
 
-    protected override void PerformAttack() { }
+    protected override void ExecuteWeaponAction() { }
 
     // Animation event
     public void EnableHitbox() => hitbox.EnableCol(true);

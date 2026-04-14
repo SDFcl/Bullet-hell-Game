@@ -9,7 +9,7 @@ public class DaulSideFire : BasePatternFire
         Vector3 origin = weapon.ShootPoint.position;
         Vector3 sideDirection = rotation * Vector3.up;
 
-        Shoot(weapon, origin - sideDirection * sideOffset, rotation);
-        Shoot(weapon, origin + sideDirection * sideOffset, rotation);
+        SpawnProjectile(weapon, origin - sideDirection * sideOffset, rotation);
+        SpawnProjectile(weapon, origin + sideDirection * sideOffset, rotation);
     }
 }

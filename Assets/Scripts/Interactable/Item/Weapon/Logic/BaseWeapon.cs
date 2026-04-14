@@ -12,6 +12,9 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     [SerializeField] protected float currentDamage;
     [SerializeField] protected float cooldown = 0.5f;
 
+    [Header("Animation Setting")]
+    [SerializeField] protected bool useAnimationEvent = false;
+
     public event Action OnAttack;
 
     protected float cooldownTimer;
@@ -68,9 +71,21 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
 
     protected virtual bool CanAttack() => true;
 
+    protected virtual void PerformAttack()
+    {
+        if (useAnimationEvent) return;
+        ExecuteWeaponAction();
+    }
+
+    // Animation Event
+    public void ExecuteFromAnimationEvent()
+    {
+        ExecuteWeaponAction();
+    }
+
     protected virtual void OnDamageChanged() { }
 
-    protected abstract void PerformAttack();
+    protected abstract void ExecuteWeaponAction();
 
     #region AdjustDamage API
     public void AddDamagePercent(float percent)

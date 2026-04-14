@@ -38,13 +38,7 @@ public class SummonWeapon : BaseWeapon
         return true;
     }
     
-    protected override void PerformAttack()
-    {
-        
-    }
-
-    //Animaiton Event
-    public void ExecuteSommon()
+    protected override void ExecuteWeaponAction()
     {
         foreach (SummonSpawnPoint spawnPoint in spawnPoints)
         {

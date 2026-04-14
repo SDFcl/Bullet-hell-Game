@@ -17,7 +17,7 @@ public class RadialFire : BasePatternFire
             Vector3 direction = rotation * Vector3.right;
             Vector3 spawnPosition = center + direction;
 
-            Shoot(weapon, spawnPosition, rotation);
+            SpawnProjectile(weapon, spawnPosition, rotation);
         }
     }
 

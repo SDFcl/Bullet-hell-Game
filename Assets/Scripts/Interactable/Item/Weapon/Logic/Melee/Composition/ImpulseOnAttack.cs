@@ -13,6 +13,9 @@ public class ImpulseOnAttack : MonoBehaviour
     [SerializeField] private float impulseDuration = 0.075f;
     [SerializeField] private ImpulseDirectionMode directionMode = ImpulseDirectionMode.Forward;
 
+    [Header("Animation Setting")]
+    [SerializeField] private bool useAnimationEvent = false; 
+
     private AimPivot2D ownerAimPivot;
     private IImpulseMover impulseMover;
     private IWeapon weapon;
@@ -38,10 +41,8 @@ public class ImpulseOnAttack : MonoBehaviour
 
     public void PerformEffect()
     {
-        if (impulseMover == null)
-            return;
-
-        impulseMover.Play(GetImpulseDirection().normalized, impulseForce, impulseDuration);
+        if(useAnimationEvent) return;
+        ImpulsMover();
     }
 
     private Vector2 GetImpulseDirection()
@@ -57,5 +58,13 @@ public class ImpulseOnAttack : MonoBehaviour
             default:
                 return Vector2.zero;
         }
+    }
+
+    public void ImpulsMover()
+    {
+        if (impulseMover == null)
+            return;
+
+        impulseMover.Play(GetImpulseDirection().normalized, impulseForce, impulseDuration);
     }
 }

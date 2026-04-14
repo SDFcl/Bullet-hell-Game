@@ -5,6 +5,7 @@ public class Attack : MonoBehaviour
 {
     [SerializeField] private float baseDamage = 0f;
     [SerializeField] private Transform holdingItem;
+
     private HoldingItemWatcher holdingItemWatcher;
     private IWeapon currentWeapon;
 
@@ -30,27 +31,31 @@ public class Attack : MonoBehaviour
             Debug.LogWarning("HoldingItemWatcher component not found on HoldingItem. Adding one.");
             holdingItemWatcher = holdingItem.gameObject.AddComponent<HoldingItemWatcher>();
         }
+
         RefreshWeapon();
     }
-    void OnEnable()
+
+    private void OnEnable()
     {
         holdingItemWatcher.OnHoldingItemChanged += RefreshWeapon;
     }
 
-    void OnDisable()
+    private void OnDisable()
     {
         holdingItemWatcher.OnHoldingItemChanged -= RefreshWeapon;
+        UnsubscribeCurrentWeapon();
     }
 
     public void TryAttack()
     {
         if (currentWeapon == null) return;
         currentWeapon.ExecuteAttack();
-        OnAttacked?.Invoke();
     }
 
     public void RefreshWeapon()
     {
+        UnsubscribeCurrentWeapon();
+
         if (holdingItem == null)
         {
             currentWeapon = null;
@@ -63,8 +68,21 @@ public class Attack : MonoBehaviour
         {
             currentWeapon.SetOwner(gameObject);
             currentWeapon.AddFlatDamage(baseDamage);
+            currentWeapon.OnAttack += HandleWeaponAttack;
         }
-            
+    }
+
+    private void HandleWeaponAttack()
+    {
+        OnAttacked?.Invoke();
+    }
+
+    private void UnsubscribeCurrentWeapon()
+    {
+        if (currentWeapon != null)
+        {
+            currentWeapon.OnAttack -= HandleWeaponAttack;
+        }
     }
 
     #region AdjustDamage API

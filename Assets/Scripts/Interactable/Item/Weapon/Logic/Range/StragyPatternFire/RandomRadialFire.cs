@@ -8,8 +8,8 @@ public class RandomRadialFire : BasePatternFire
     [SerializeField] private float minSpawnOffset = 0.5f;
     [SerializeField] private float maxSpawnOffset = 1.5f;
 
-    [SerializeField] private float minSpeedMultiplier = 0.7f;
-    [SerializeField] private float maxSpeedMultiplier = 1.3f;
+    [SerializeField] private float minSpeedMultiplier = 0.15f;
+    [SerializeField] private float maxSpeedMultiplier = 1f;
 
     public override void Execute(IProjectileWeapon weapon)
     {
@@ -30,7 +30,7 @@ public class RandomRadialFire : BasePatternFire
             Vector3 direction = rotation * Vector3.right;
             Vector3 spawnPosition = center + direction * randomOffset;
 
-            Shoot(weapon, spawnPosition, rotation, randomSpeed);
+            SpawnProjectile(weapon, spawnPosition, rotation, randomSpeed);
         }
     }
 }

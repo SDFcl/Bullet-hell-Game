@@ -12,9 +12,6 @@ public class MeleeProjectileWeapon : MeleeWeapon, IProjectileWeapon
     [Header("References")]
     [SerializeField] private Transform shootPoint;
 
-    [Header("Animation Setting")]
-    [SerializeField] private bool useAnimationEvent = false;
-
     private Mana mana;
     private IFireStrategy firePattern;
 
@@ -78,13 +75,11 @@ public class MeleeProjectileWeapon : MeleeWeapon, IProjectileWeapon
     }
 
 
-    protected override void PerformAttack()
+    protected override void ExecuteWeaponAction()
     {
-        if(!useAnimationEvent) return;
         Shoot();
     }
 
-    //Animation Event
     public void Shoot()
     {
         firePattern?.Execute(this);

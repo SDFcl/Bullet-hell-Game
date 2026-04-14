@@ -12,9 +12,6 @@ public class ProjectileWeapon : BaseWeapon, IProjectileWeapon
     [Header("References")]
     [SerializeField] private Transform shootPoint;
 
-    [Header("Animation Setting")]
-    [SerializeField] private bool useAnimationEvent = false;
-
     private Mana mana;
 
     public float ProjectileSpeed => projectileSpeed;
@@ -82,19 +79,19 @@ public class ProjectileWeapon : BaseWeapon, IProjectileWeapon
         return true;
     }
 
-    protected override void PerformAttack()
+    protected override void ExecuteWeaponAction()
     {
-        if(!useAnimationEvent) return;
         Shoot();
     }
 
-    //Animation Event
     public void Shoot()
     {
         firePattern?.Execute(this);
         if (mana != null)
             mana.ConsumeMana(manaCost);
     }
+
+    //API
     public void SetMana(Mana mana)
     {
         this.mana = mana;
