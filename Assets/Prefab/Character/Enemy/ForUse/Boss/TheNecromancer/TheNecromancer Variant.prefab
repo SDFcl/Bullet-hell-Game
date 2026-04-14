@@ -208,7 +208,8 @@ PrefabInstance:
       propertyPath: stateGraph
       value: 
       objectReference: {fileID: 11400000, guid: 6bab5bcd382e1e8409d47e59ba3ec207, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8848896720626759596, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7866826553244663882, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
     m_AddedGameObjects: []
@@ -216,6 +217,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4764147975119969297, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1295278269675129279}
+    - targetCorrespondingSourceObject: {fileID: 4764147975119969297, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -7926959709660145634}
   m_SourcePrefab: {fileID: 100100000, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
 --- !u!1 &8601641729579575177 stripped
 GameObject:
@@ -248,6 +252,18 @@ MonoBehaviour:
     prefab: {fileID: 8662065881461174648, guid: a11f1c7666cac9a488b25b1070a19cf2, type: 3}
     cooldown: 0
     cooldownTimer: 0
+--- !u!114 &-7926959709660145634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8601641729579575177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8fa76ec18eb726468f0572682a01fb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8991366167430043471 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5297696783387487447, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}

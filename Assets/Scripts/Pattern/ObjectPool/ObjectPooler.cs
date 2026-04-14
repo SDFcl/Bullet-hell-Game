@@ -13,25 +13,20 @@ public class Pool
 public class ObjectPooler : MonoBehaviour
 {
     
-	#region Singleton
-
 	public static ObjectPooler Instance;
 
-	private void Awake()
-	{
-		Instance = this;
-	}
 
-	#endregion
     public ObjectPoolTableSO poolTable;
 	public bool useScriptableObject = true;
 	public List<Pool> pools;
 	private List<Pool> finalPools;
     public Dictionary<string, List<GameObject>> poolDictionary;
 
-    // Use this for initialization
-    void Start()
-    {
+
+	private void Awake()
+	{
+		Instance = this;
+
 		finalPools = new List<Pool>();
 
 		if (pools != null)
@@ -72,8 +67,7 @@ public class ObjectPooler : MonoBehaviour
 
 			poolDictionary.Add(pool.tag, objectPool);
 		}
-    }
-
+	}
 	public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation, System.Action<GameObject> beforeSpawn = null)
 	{
 		if (!poolDictionary.ContainsKey(tag))

@@ -230,6 +230,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 33d69a24dcd887941ad586ef0e5fadfe, type: 2}
     m_RemovedComponents:
     - {fileID: 5008803227342585709, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
+    - {fileID: 8848896720626759596, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7866826553244663882, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
     m_AddedGameObjects: []
@@ -240,6 +241,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4764147975119969297, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1732896654573322636}
+    - targetCorrespondingSourceObject: {fileID: 4764147975119969297, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3162550842861226949}
   m_SourcePrefab: {fileID: 100100000, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
 --- !u!4 &1198569146148487076 stripped
 Transform:
@@ -323,6 +327,18 @@ MonoBehaviour:
     prefab: {fileID: 7700847891156544314, guid: 1b142d0144e3c7b41a1b044da353563e, type: 3}
     cooldown: 0
     cooldownTimer: 0
+--- !u!114 &3162550842861226949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962083145663254370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8fa76ec18eb726468f0572682a01fb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2505323285775556792 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8927169303875990475, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
