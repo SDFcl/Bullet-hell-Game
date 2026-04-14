@@ -34,7 +34,7 @@ public class GameStateManager : Singleton<GameStateManager>
             case GameState.MainMenu:
                 // แสดงเมนูหลัก, รีเซ็ตเกม ฯลฯ
                 break;
-            case GameState.Exploration:
+            case GameState.GamePlay:
                 // เริ่มเกม, เปิด UI, เริ่มนับเวลา ฯลฯ
                 break;
             case GameState.Combat:
@@ -58,5 +58,10 @@ public class GameStateManager : Singleton<GameStateManager>
     public void ExitState(GameState newState)
     {
         // ทำความสะอาดหรือรีเซ็ตข้อมูลก่อนเปลี่ยนไปยังสถานะใหม่
+    }
+
+    public void ChangeGamePlayState()
+    {
+        ChangeState(GameState.GamePlay);
     }
 }
