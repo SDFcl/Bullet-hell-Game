@@ -13,7 +13,7 @@ public class ClusterSpreadFire : BasePatternFire
     [SerializeField] private float minSpeedMultiplier = 0.8f;
     [SerializeField] private float maxSpeedMultiplier = 1.4f;
 
-    public override void Execute(ProjectileWeapon weapon)
+    public override void Execute(IProjectileWeapon weapon)
     {
         Vector3 center = weapon.ShootPoint.position;
         Quaternion forwardRotation = weapon.ShootPoint.rotation;
@@ -58,7 +58,7 @@ public class ClusterSpreadFire : BasePatternFire
 
     private void SpawnProjectile(
         string projectileTag,
-        ProjectileWeapon weapon,
+        IProjectileWeapon weapon,
         Vector3 position,
         Quaternion rotation,
         float speed)

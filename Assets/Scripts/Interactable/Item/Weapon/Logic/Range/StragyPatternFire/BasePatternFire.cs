@@ -2,9 +2,9 @@ using UnityEngine;
 
 public abstract class BasePatternFire : MonoBehaviour, IFireStrategy
 {
-    public abstract void Execute(ProjectileWeapon weapon);
+    public abstract void Execute(IProjectileWeapon weapon);
 
-    protected void Shoot(ProjectileWeapon weapon, Vector3 position, Quaternion rotation)
+    protected void Shoot(IProjectileWeapon weapon, Vector3 position, Quaternion rotation)
     {
         GameObject projectile = ObjectPooler.Instance.SpawnFromPool(
             weapon.ProjectilePoolTag,
@@ -28,7 +28,7 @@ public abstract class BasePatternFire : MonoBehaviour, IFireStrategy
         }
     }
 
-    protected void Shoot(ProjectileWeapon weapon, Vector3 position, Quaternion rotation, float speed)
+    protected void Shoot(IProjectileWeapon weapon, Vector3 position, Quaternion rotation, float speed)
     {
         GameObject projectile = ObjectPooler.Instance.SpawnFromPool(
             weapon.ProjectilePoolTag,

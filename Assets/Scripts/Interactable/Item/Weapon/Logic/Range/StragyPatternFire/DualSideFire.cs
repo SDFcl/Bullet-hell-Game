@@ -3,7 +3,7 @@ public class DaulSideFire : BasePatternFire
 {
     [SerializeField] private float sideOffset = 0.3f;
 
-    public override void Execute(ProjectileWeapon weapon)
+    public override void Execute(IProjectileWeapon weapon)
     {
         Quaternion rotation = weapon.ShootPoint.rotation;
         Vector3 origin = weapon.ShootPoint.position;

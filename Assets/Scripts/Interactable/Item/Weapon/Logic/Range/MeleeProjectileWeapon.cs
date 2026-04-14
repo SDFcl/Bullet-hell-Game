@@ -1,10 +1,10 @@
 using UnityEngine;
-public class MeleeProjectileWeapon : MeleeWeapon
+public class MeleeProjectileWeapon : MeleeWeapon, IProjectileWeapon
 {
     [Header("Projectile")]
     [SerializeField] private float projectileDamage = 5f;
     [SerializeField] private float projectileSpeed = 10f;
-    [SerializeField] private string projectilePoolTag = "BlueProjectile";
+    [SerializeField] private string projectilePoolTag = "";
 
     [Header("Mana")]
     [SerializeField] private float manaCost = 20f;
@@ -12,7 +12,11 @@ public class MeleeProjectileWeapon : MeleeWeapon
     [Header("References")]
     [SerializeField] private Transform shootPoint;
 
+    [Header("Animation Setting")]
+    [SerializeField] private bool useAnimationEvent = false;
+
     private Mana mana;
+    private IFireStrategy firePattern;
 
     public float ProjectileSpeed => projectileSpeed;
     public string ProjectilePoolTag => projectilePoolTag;
@@ -22,6 +26,7 @@ public class MeleeProjectileWeapon : MeleeWeapon
     protected override void Awake()
     {
         base.Awake();
+        firePattern = GetComponent<IFireStrategy>();
 
         if(useSOData && weaponData != null)
         {
@@ -75,26 +80,14 @@ public class MeleeProjectileWeapon : MeleeWeapon
 
     protected override void PerformAttack()
     {
-        GameObject projectile = ObjectPooler.Instance.SpawnFromPool(
-            ProjectilePoolTag,
-            shootPoint.position,
-            shootPoint.rotation,
-            obj =>
-            {
-                var projHit = obj.GetComponent<ProjectileHit>();
-                if (projHit != null)
-                {
-                    projHit.SetDamage(projectileDamage);
-                    projHit.SetProjectlieSpeed(projectileSpeed);
-                    projHit.SetOwner(GetOwner());
-                }
-            });
+        if(!useAnimationEvent) return;
+        Shoot();
+    }
 
-        if (projectile == null)
-        {
-            Debug.LogWarning("Failed to spawn projectile from pool");
-            return;
-        }
+    //Animation Event
+    public void Shoot()
+    {
+        firePattern?.Execute(this);
         if (mana != null)
             mana.ConsumeMana(manaCost);
     }

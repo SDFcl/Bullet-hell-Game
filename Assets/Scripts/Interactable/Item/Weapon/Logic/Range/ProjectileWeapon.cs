@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ProjectileWeapon : BaseWeapon
+public class ProjectileWeapon : BaseWeapon, IProjectileWeapon
 {
     [Header("Projectile")]
     [SerializeField] private float projectileSpeed = 10f;
@@ -11,6 +11,9 @@ public class ProjectileWeapon : BaseWeapon
 
     [Header("References")]
     [SerializeField] private Transform shootPoint;
+
+    [Header("Animation Setting")]
+    [SerializeField] private bool useAnimationEvent = false;
 
     private Mana mana;
 
@@ -81,11 +84,17 @@ public class ProjectileWeapon : BaseWeapon
 
     protected override void PerformAttack()
     {
+        if(!useAnimationEvent) return;
+        Shoot();
+    }
+
+    //Animation Event
+    public void Shoot()
+    {
         firePattern?.Execute(this);
         if (mana != null)
             mana.ConsumeMana(manaCost);
     }
-
     public void SetMana(Mana mana)
     {
         this.mana = mana;

@@ -11,7 +11,7 @@ public class RandomRadialFire : BasePatternFire
     [SerializeField] private float minSpeedMultiplier = 0.7f;
     [SerializeField] private float maxSpeedMultiplier = 1.3f;
 
-    public override void Execute(ProjectileWeapon weapon)
+    public override void Execute(IProjectileWeapon weapon)
     {
         Vector3 center = weapon.GetOwner().transform.position;
         float baseSpeed = weapon.ProjectileSpeed;

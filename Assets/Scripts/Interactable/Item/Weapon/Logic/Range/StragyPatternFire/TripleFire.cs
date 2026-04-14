@@ -3,7 +3,7 @@ using UnityEngine;
 public class TripleFire : BasePatternFire
 {
     [SerializeField] private float spreadAngle = 15f;
-    public override void Execute(ProjectileWeapon weapon)
+    public override void Execute(IProjectileWeapon weapon)
     {
         Shoot(weapon, weapon.ShootPoint.position, 
         weapon.ShootPoint.rotation);

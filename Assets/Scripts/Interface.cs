@@ -30,6 +30,15 @@ public interface IWeapon
     #endregion
 }
 
+public interface IProjectileWeapon : IWeapon
+{
+    float ProjectileSpeed { get; }
+    string ProjectilePoolTag { get; }
+    Transform ShootPoint { get; }
+
+    void SetProjectileTag(string tag);
+}
+
 public interface IMovement
 {
     void SetMoveInput(Vector2 input);
@@ -84,7 +93,7 @@ public interface IProjectileBlocker{}
 
 public interface IFireStrategy
 {
-    void Execute(ProjectileWeapon weapon);
+    void Execute(IProjectileWeapon weapon);
 }
 public interface IProjectileHitStrategy
 {
