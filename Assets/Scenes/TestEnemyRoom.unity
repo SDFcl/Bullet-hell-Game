@@ -841,17 +841,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1732896654573322636, guid: d554c809694433449a6637748060c75b, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1962083145663254370, guid: d554c809694433449a6637748060c75b, type: 3}
       propertyPath: m_Name
       value: TheAbomination Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1962083145663254370, guid: d554c809694433449a6637748060c75b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2224431181875664490, guid: d554c809694433449a6637748060c75b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -893,12 +889,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5923671791483812054, guid: d554c809694433449a6637748060c75b, type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1732896654573322636, guid: d554c809694433449a6637748060c75b, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2073,7 +2064,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4295015619766733789, guid: 95ffb9949f96377408e271cdc2760471, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4503187951046955733, guid: 95ffb9949f96377408e271cdc2760471, type: 3}
       propertyPath: m_LocalPosition.x

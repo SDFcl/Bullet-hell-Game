@@ -256,6 +256,7 @@ MonoBehaviour:
   baseDamage: 15
   currentDamage: 0
   cooldown: 0.5
+  useAnimationEvent: 0
   projectileDamage: 5
   projectileSpeed: 10
   projectilePoolTag: BlueProjectile
@@ -322,7 +323,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5647106461903270758}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.38268343, w: 0.92387956}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -330,7 +331,7 @@ Transform:
   - {fileID: 4650158863647153082}
   - {fileID: 8611548370903484836}
   m_Father: {fileID: 353969793781901885}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &7465957629696886672
 GameObject:
   m_ObjectHideFlags: 0

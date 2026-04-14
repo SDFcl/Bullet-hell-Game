@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2392203158718115912, guid: 4a62dd549864f804a847e2958a7632cc, type: 3}
       propertyPath: lifeTime
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6635133572033008516, guid: 4a62dd549864f804a847e2958a7632cc, type: 3}
       propertyPath: m_Size.x
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72aa1c1194a897f46a3fca717d583d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileCount: 4
+  projectileCount: 8
   angleOffset: 45
   childProjectileTag: Enemy_BulletABL
   childProjectileSpeed: 6
