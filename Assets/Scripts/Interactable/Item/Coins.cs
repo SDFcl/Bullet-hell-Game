@@ -12,7 +12,7 @@ public class Coins : MonoBehaviour
             if (inventory != null)
             {
                 inventory.AddCoins(coinValue);
-                Destroy(this.gameObject);
+                gameObject.SetActive(false);
             }
         }
     }

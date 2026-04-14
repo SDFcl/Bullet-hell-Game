@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Health : MonoBehaviour, IDamageable
@@ -12,6 +13,7 @@ public class Health : MonoBehaviour, IDamageable
 
     public event Action OnDead;
     public event Action<float> OnHealthChanged;
+    public event Action Onhit;
 
     protected void DeadEvent() => OnDead?.Invoke();
     protected void HealthChangedEvent() => OnHealthChanged?.Invoke(CurrentHP);
@@ -21,18 +23,20 @@ public class Health : MonoBehaviour, IDamageable
         CurrentHP = maxHealth;
     }
 
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         if (IsDead || ignoreDamage) return;
 
         CurrentHP -= damage;
         HealthChangedEvent();
+        Onhit?.Invoke();
 
         Debug.Log($"{gameObject.name} took {damage} damage. Current HP: {CurrentHP}/{maxHealth}");
         if (CurrentHP <= 0)
         {
             Debug.Log($"{gameObject.name} is dead.");
             CurrentHP = 0;
+            GetComponent<Collider2D>().enabled = false;
             DeadEvent();
         }
     }
