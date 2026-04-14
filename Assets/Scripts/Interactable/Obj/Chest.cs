@@ -32,7 +32,7 @@ public class Chest : InteractiveObject
 
         // Give random rewards
        
-        SpawnReward(randomItem.Start());
+        SpawnReward(randomItem.GetRandomItem());
 
         if(TryGetComponent(out BoxCollider2D collider))
         {

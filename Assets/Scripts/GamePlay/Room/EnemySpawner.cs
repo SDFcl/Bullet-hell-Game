@@ -5,13 +5,11 @@ using Pathfinding;
 
 public class EnemySpawner : MonoBehaviour
 {
-    /*[Header("Enemy List")]
-    public List<EnemyData> enemyList;*/
-
     [Header("Spawn Settings")]
     public LayerMask obstacleLayer;
     public float checkRadius = 1.2f;
     public float spawnRange = 10f;
+    public StartRandomItem startRandomItem;
 
     [Header("Budget Settings")]
     private int EnemyCount;
@@ -21,28 +19,29 @@ public class EnemySpawner : MonoBehaviour
     [Header("Debug")]
     public bool spawnOnStart = true;
 
-    public Collider roomCollider;
+    public Collider2D roomCollider;
 
-    void Start()
-    {
-        if (spawnOnStart)
-            SpawnEnemies();
-    }
 
     // =========================
     // 🎯 MAIN
     // =========================
-    public void SpawnEnemies()
+    public void SpawnEnemies(Collider2D collider2D,Transform TargetIns = null)
     {
-        // int budget = CalculateBudget();
-        // List<EnemyData> toSpawn = GenerateByBudget(budget);
+        TargetIns ??= this.transform; // If TargetIns is null, use the spawner's own transform as the target
+        roomCollider = collider2D;
+        int enemyCount = CalculateBudget();
+        Debug.Log($"[EnemySpawner] Enemy count: {enemyCount}");
 
-        // foreach (var enemy in toSpawn)
-        // {
-        //     Vector3 pos = FindValidSpawnPosition();
+        for (int i = 0; i < enemyCount; i++)
+        {
+            GameObject enemyPrefab = GetRandomEnemyPrefab();
+            if (enemyPrefab == null)
+                continue;
 
-        //     Instantiate(enemy.prefab, pos, Quaternion.identity);
-        // }
+            Vector3 spawnPos = FindValidSpawnPosition();
+            Debug.Log($"[EnemySpawner] Spawning enemy at: {spawnPos}");
+            Instantiate(enemyPrefab, spawnPos, Quaternion.identity, TargetIns);
+        }
     }
 
     // =========================
@@ -52,56 +51,27 @@ public class EnemySpawner : MonoBehaviour
     {
         if (EnemyCount > 0)
             return EnemyCount;
+
         EnemyCount = Random.Range(MinEnemies, MaxEnemies + 1);
-        
         return EnemyCount;
     }
 
-    /*List<EnemyData> GenerateByBudget(int budget)
+    GameObject GetRandomEnemyPrefab()
     {
-        List<EnemyData> result = new List<EnemyData>();
-
-        int safety = 50;
-
-        while (budget > 0 && safety-- > 0)
+        if (startRandomItem == null)
         {
-            EnemyData enemy = GetRandomEnemy();
-
-            if (enemy.cost <= budget)
-            {
-                result.Add(enemy);
-                budget -= enemy.cost;
-            }
-            else
-            {
-                break;
-            }
+            Debug.LogWarning("[EnemySpawner] startRandomItem is not assigned.");
+            return null;
         }
 
-        return result;
-    }*/
-
-   /* EnemyData GetRandomEnemy()
-    {
-        float total = 0;
-
-        foreach (var e in enemyList)
-            total += e.spawnWeight;
-
-        float rand = Random.Range(0, total);
-
-        float current = 0;
-
-        foreach (var e in enemyList)
+        GameObject enemyPrefab = startRandomItem.GetRandomItem();
+        if (enemyPrefab == null)
         {
-            current += e.spawnWeight;
-
-            if (rand <= current)
-                return e;
+            Debug.LogWarning("[EnemySpawner] StartRandomItem returned null enemy prefab.");
         }
 
-        return enemyList[0];
-    }*/
+        return enemyPrefab;
+    }
 
     // =========================
     // 📍 Spawn Position (A*)
@@ -109,27 +79,36 @@ public class EnemySpawner : MonoBehaviour
     Vector3 FindValidSpawnPosition()
     {
         Vector3 center = GetCenter();
+        Bounds roomBounds = roomCollider.bounds;
 
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 50; i++)
         {
-            Vector3 random = center + new Vector3(
-                Random.Range(-spawnRange, spawnRange),
-                0,
-                Random.Range(-spawnRange, spawnRange)
+            Vector3 random = new Vector3(
+                Random.Range(roomBounds.min.x, roomBounds.max.x),
+                center.y,
+                Random.Range(roomBounds.min.z, roomBounds.max.z)
             );
 
-            var node = AstarPath.active.GetNearest(random);
-
-            if (node.node != null && node.node.Walkable)
+            if (AstarPath.active != null)
             {
-                Vector3 pos = (Vector3)node.position;
-
-                if (IsValidPosition(pos))
-                    return pos;
+                var node = AstarPath.active.GetNearest(random);
+                if (node.node != null && node.node.Walkable)
+                {
+                    Vector3 pos = (Vector3)node.position;
+                    if (IsValidPosition(pos))
+                        return pos;
+                }
+            }
+            else if (IsValidPosition(random))
+            {
+                return random;
             }
         }
 
-        return center;
+        if (IsValidPosition(center))
+            return center;
+
+        return center + Vector3.up * (checkRadius + 0.1f);
     }
 
     // =========================

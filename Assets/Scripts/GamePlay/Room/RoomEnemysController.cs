@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class RoomEnemysController : MonoBehaviour
 {
+    [Header("Room Enemies")]
     [Tooltip("List of enemies in the room. This will be populated automatically at runtime.")]
     public List<GameObject> enemies = new List<GameObject>();
+    public Transform goEnemyGroup;
 
+    private EnemySpawner enemySpawner;
     private Collider2D roomArea;
+    private int enemyCount;
+
 
     public System.Action OnRoomCleared;
 
-    private int enemyCount;
 
     private void Awake()
     {
+        if (TryGetComponent(out EnemySpawner spawner)) enemySpawner = spawner;
         if (roomArea == null)
         {
             if (TryGetComponent(out Collider2D collider))
@@ -24,11 +29,16 @@ public class RoomEnemysController : MonoBehaviour
             }
             Debug.LogError("Room area collider is not assigned!");
         }
+
     }
 
     private void Start()
     {
-        FindEnemiesInRoom();
+        if (enemySpawner != null)
+        {
+            enemySpawner.SpawnEnemies(roomArea, goEnemyGroup);
+            FindEnemiesInRoom(); // Refresh the enemy list after spawning
+        }
         SetEnemiesActive(false);
     }
 

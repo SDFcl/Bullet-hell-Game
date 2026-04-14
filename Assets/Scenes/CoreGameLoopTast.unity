@@ -2037,6 +2037,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &1308561273 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5947095463844886318, guid: a7c62b4fb39ef9f4b8279373c0332fdb, type: 3}
+  m_PrefabInstance: {fileID: 1714060366}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1373063140
 GameObject:
   m_ObjectHideFlags: 0
@@ -2496,7 +2501,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 800111261640336418, guid: a7c62b4fb39ef9f4b8279373c0332fdb, type: 3}
       propertyPath: m_ColliderPaths.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 945193975057609240, guid: a7c62b4fb39ef9f4b8279373c0332fdb, type: 3}
       propertyPath: MinimapIconGroup
@@ -2512,7 +2517,7 @@ PrefabInstance:
       objectReference: {fileID: 11788203}
     - target: {fileID: 1373546637291820912, guid: a7c62b4fb39ef9f4b8279373c0332fdb, type: 3}
       propertyPath: m_ColliderPaths.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1524758813999485549, guid: a7c62b4fb39ef9f4b8279373c0332fdb, type: 3}
       propertyPath: MinimapIconGroup
@@ -2526,6 +2531,10 @@ PrefabInstance:
       propertyPath: SpriteRoomRenderer
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2515547314209900678, guid: a7c62b4fb39ef9f4b8279373c0332fdb, type: 3}
+      propertyPath: goEnemyGroup
+      value: 
+      objectReference: {fileID: 1308561273}
     - target: {fileID: 2579952621315012597, guid: a7c62b4fb39ef9f4b8279373c0332fdb, type: 3}
       propertyPath: m_LocalScale.x
       value: 7.7057447
@@ -2562,6 +2571,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -2.53
       objectReference: {fileID: 0}
+    - target: {fileID: 2948378255163591339, guid: a7c62b4fb39ef9f4b8279373c0332fdb, type: 3}
+      propertyPath: goEnemyGroup
+      value: 
+      objectReference: {fileID: 1308561273}
     - target: {fileID: 3389195787305492357, guid: a7c62b4fb39ef9f4b8279373c0332fdb, type: 3}
       propertyPath: m_LocalScale.x
       value: 14.323216
@@ -2582,6 +2595,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_Map1Layout_A
       objectReference: {fileID: 0}
+    - target: {fileID: 5458092014383665003, guid: a7c62b4fb39ef9f4b8279373c0332fdb, type: 3}
+      propertyPath: goEnemyGroup
+      value: 
+      objectReference: {fileID: 1308561273}
     - target: {fileID: 5502660141648386629, guid: a7c62b4fb39ef9f4b8279373c0332fdb, type: 3}
       propertyPath: m_LocalScale.x
       value: 9.790002
@@ -2646,15 +2663,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9072566368798731019, guid: a7c62b4fb39ef9f4b8279373c0332fdb, type: 3}
+      propertyPath: goEnemyGroup
+      value: 
+      objectReference: {fileID: 1308561273}
     - target: {fileID: 9095471976476427822, guid: a7c62b4fb39ef9f4b8279373c0332fdb, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1524758813999485549, guid: a7c62b4fb39ef9f4b8279373c0332fdb, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2146855552466749308, guid: a7c62b4fb39ef9f4b8279373c0332fdb, type: 3}
     - {fileID: 239652953934417605, guid: a7c62b4fb39ef9f4b8279373c0332fdb, type: 3}
+    - {fileID: 8325819024066885750, guid: a7c62b4fb39ef9f4b8279373c0332fdb, type: 3}
+    - {fileID: 1932014995020029275, guid: a7c62b4fb39ef9f4b8279373c0332fdb, type: 3}
+    - {fileID: 5970962532279710168, guid: a7c62b4fb39ef9f4b8279373c0332fdb, type: 3}
+    - {fileID: 2956829518276044485, guid: a7c62b4fb39ef9f4b8279373c0332fdb, type: 3}
+    - {fileID: 1059232750660637906, guid: a7c62b4fb39ef9f4b8279373c0332fdb, type: 3}
+    - {fileID: 282424783736920592, guid: a7c62b4fb39ef9f4b8279373c0332fdb, type: 3}
+    - {fileID: 1016682514657874038, guid: a7c62b4fb39ef9f4b8279373c0332fdb, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3300548089390125568, guid: a7c62b4fb39ef9f4b8279373c0332fdb, type: 3}
       insertIndex: -1
