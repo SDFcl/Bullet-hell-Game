@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 5774502654587586431}
   - component: {fileID: 7394079766398780012}
   - component: {fileID: -2837308146939356880}
+  - component: {fileID: -2838527265675085930}
   m_Layer: 0
   m_Name: H_VoidStaff
   m_TagString: Untagged
@@ -206,6 +207,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab30cc6909233d54eab4523d6dce764b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-2838527265675085930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4878789634811786703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 452447bcc347b1d41a0ae0d002d56968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impulseForce: 5
+  impulseDuration: 0.075
+  directionMode: 1
+  useAnimationEvent: 0
 --- !u!1 &8380343423665848760
 GameObject:
   m_ObjectHideFlags: 0
