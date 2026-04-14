@@ -127,10 +127,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4073183381040820132, guid: 8f7871eaf1cc72949809ae0fa4d6551b, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     - target: {fileID: 5568298807833359445, guid: 8f7871eaf1cc72949809ae0fa4d6551b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.375
@@ -175,17 +171,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8615293136240062905, guid: 8f7871eaf1cc72949809ae0fa4d6551b, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 8709628061743692171, guid: 8f7871eaf1cc72949809ae0fa4d6551b, type: 3}
-      propertyPath: holdThreshold
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8732901674683905273, guid: 8f7871eaf1cc72949809ae0fa4d6551b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 8270400359032394410, guid: 8f7871eaf1cc72949809ae0fa4d6551b, type: 3}
+      propertyPath: maxMana
+      value: 292.8
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 508285795505796230, guid: 8f7871eaf1cc72949809ae0fa4d6551b, type: 3}
@@ -3679,15 +3667,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4287364612708009698, guid: 3763851fd8224764da647b06a3d7f7ec, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4287364612708009698, guid: 3763851fd8224764da647b06a3d7f7ec, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4287364612708009698, guid: 3763851fd8224764da647b06a3d7f7ec, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4287364612708009698, guid: 3763851fd8224764da647b06a3d7f7ec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -9597,6 +9585,7 @@ MonoBehaviour:
   baseDamage: 10
   currentDamage: 0
   cooldown: 0.2
+  useAnimationEvent: 0
   projectileSpeed: 20
   projectilePoolTag: HollowStaffBL
   manaCost: 1
