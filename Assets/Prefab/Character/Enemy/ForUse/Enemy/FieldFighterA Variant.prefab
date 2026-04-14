@@ -8,14 +8,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4337797970782911500}
     m_Modifications:
-    - target: {fileID: 6128282032587103440, guid: 1f35213cc2a7fff409c7efbcbc069ae5, type: 3}
-      propertyPath: m_Size.x
-      value: 0.7157979
-      objectReference: {fileID: 0}
-    - target: {fileID: 6128282032587103440, guid: 1f35213cc2a7fff409c7efbcbc069ae5, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.102858916
-      objectReference: {fileID: 0}
     - target: {fileID: 6929009571854135057, guid: 1f35213cc2a7fff409c7efbcbc069ae5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -55,22 +47,6 @@ PrefabInstance:
     - target: {fileID: 6929009571854135057, guid: 1f35213cc2a7fff409c7efbcbc069ae5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7709842634888138449, guid: 1f35213cc2a7fff409c7efbcbc069ae5, type: 3}
-      propertyPath: useSOData
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7924832819364378742, guid: 1f35213cc2a7fff409c7efbcbc069ae5, type: 3}
-      propertyPath: m_Size.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7924832819364378742, guid: 1f35213cc2a7fff409c7efbcbc069ae5, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 16c816e3f8028bf4199f28a2c25e08d9, type: 3}
-    - target: {fileID: 7924832819364378742, guid: 1f35213cc2a7fff409c7efbcbc069ae5, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8466529053637702775, guid: 1f35213cc2a7fff409c7efbcbc069ae5, type: 3}
       propertyPath: m_Name
@@ -111,6 +87,18 @@ PrefabInstance:
       value: FieldFighterA Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5186417453158515993, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186417453158515993, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186417453158515993, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186417453158515993, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -149,6 +137,30 @@ PrefabInstance:
     - target: {fileID: 5186417453158515993, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186417453158515993, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5297696783387487447, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5297696783387487447, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5297696783387487447, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5297696783387487447, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.021
+      objectReference: {fileID: 0}
+    - target: {fileID: 5297696783387487447, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8482359702682925280, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
       propertyPath: m_Controller

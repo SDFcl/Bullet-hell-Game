@@ -576,8 +576,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.03, y: 0}
-  m_Size: {x: 0.6, y: 1}
+  m_Offset: {x: 0.07399131, y: -0.021488935}
+  m_Size: {x: 0.48078904, y: 0.7539322}
   m_Direction: 0
 --- !u!50 &2677865918281709796
 Rigidbody2D:
@@ -661,6 +661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aimPivot: {fileID: 1473165036801002982}
+  resetLerpSpeed: 10
 --- !u!114 &3004905628110562045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -735,8 +736,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d80592e6dac4b3942ba82fb611c46f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dodgeForce: 15
-  cooldown: 0.2
+  dodgeForce: 18
+  cooldown: 0.3
+  dodgeDistanceMultiplier: 1.4
+  iFrameDelay: 0
+  iFrameDuration: 0.3
   dodgeAnimation: {fileID: 7400000, guid: 2380f4432a8e9dd458a427fe5f0c84d4, type: 2}
   col: {fileID: 830325950164484544}
 --- !u!114 &2814125803818193428

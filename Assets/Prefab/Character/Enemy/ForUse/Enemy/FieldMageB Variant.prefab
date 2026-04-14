@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FieldMagaBStaff
       objectReference: {fileID: 0}
+    - target: {fileID: 6361842490613243919, guid: 64e7e98baa967a744a8dca0f9015ceb9, type: 3}
+      propertyPath: projectileSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361842490613243919, guid: 64e7e98baa967a744a8dca0f9015ceb9, type: 3}
+      propertyPath: projectilePoolTag
+      value: Enemy_BulletCBL
+      objectReference: {fileID: 0}
     - target: {fileID: 6658056950937958730, guid: 64e7e98baa967a744a8dca0f9015ceb9, type: 3}
       propertyPath: m_Size.x
       value: 1.5
@@ -125,6 +133,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5186417453158515993, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186417453158515993, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186417453158515993, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186417453158515993, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -163,6 +183,10 @@ PrefabInstance:
     - target: {fileID: 5186417453158515993, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186417453158515993, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8482359702682925280, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
       propertyPath: m_Controller
