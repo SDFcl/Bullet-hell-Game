@@ -26,6 +26,8 @@ public class Dodge : MonoBehaviour
     private IMovement movement;
     private IImpulseMover burstMove;
 
+    private Vector2 dir;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -48,7 +50,7 @@ public class Dodge : MonoBehaviour
         canDodge = false;
         OnDodge?.Invoke();
 
-        burstMove.Play(movement.GetDirection(), dodgeForce * dodgeDistanceMultiplier, dodgeAnimation.length);
+        burstMove.Play(dir, dodgeForce * dodgeDistanceMultiplier, dodgeAnimation.length);
 
         yield return new WaitForSeconds(iFrameDelay);
         DisableHitbox();
@@ -58,6 +60,11 @@ public class Dodge : MonoBehaviour
 
         yield return new WaitForSeconds(cooldown);
         canDodge = true;
+    }
+
+    public void SetDirection(Vector2 dir)
+    {
+        this.dir = dir;
     }
 
     public void EnableHitbox() => col.enabled = true;

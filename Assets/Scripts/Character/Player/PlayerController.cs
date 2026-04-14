@@ -161,6 +161,7 @@ public class PlayerController : MonoBehaviour
               
         facing.SetDirection(dir.x);
         aimPivot.SetDirection(dir);
+        dodge.SetDirection(dir);
 
         if (firePressedThisFrame)
         {
