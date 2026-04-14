@@ -40,9 +40,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6942181013476098894}
+  - component: {fileID: -8625640082387392424}
   - component: {fileID: 5032959831157944127}
   - component: {fileID: 2618594306014942290}
   - component: {fileID: 4389816976097480893}
+  - component: {fileID: 2251540303727374215}
   m_Layer: 0
   m_Name: H_ArcanePulse
   m_TagString: Untagged
@@ -67,6 +69,28 @@ Transform:
   - {fileID: 1018285714095225476}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &-8625640082387392424
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3078954963109233242}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ba3520b199b0e7941a5849e59bcfd53e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &5032959831157944127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,6 +108,7 @@ MonoBehaviour:
   baseDamage: 10
   currentDamage: 0
   cooldown: 0.2
+  useAnimationEvent: 0
   projectileSpeed: 20
   projectilePoolTag: HollowStaffBL
   manaCost: 1
@@ -101,7 +126,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfProjectiles: 8
-  spawnOffset: 1
 --- !u!114 &4389816976097480893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,6 +139,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 70d7581e2056a76448e757a60a355c06, type: 2}
+--- !u!114 &2251540303727374215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3078954963109233242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab30cc6909233d54eab4523d6dce764b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8601944887359983084
 GameObject:
   m_ObjectHideFlags: 0

@@ -127,9 +127,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4200315602188030697}
+  - component: {fileID: 6449540687807022535}
   - component: {fileID: 8813355307369224487}
   - component: {fileID: 1804087213958269841}
   - component: {fileID: 4296064535908162394}
+  - component: {fileID: 6942408861959757883}
   m_Layer: 0
   m_Name: H_RedRibbon
   m_TagString: Untagged
@@ -154,6 +156,28 @@ Transform:
   - {fileID: 1048814043890216310}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &6449540687807022535
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5480964821873323078}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ba3520b199b0e7941a5849e59bcfd53e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &8813355307369224487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +195,7 @@ MonoBehaviour:
   baseDamage: 10
   currentDamage: 0
   cooldown: 0.2
+  useAnimationEvent: 1
   projectileSpeed: 20
   projectilePoolTag: HollowStaffBL
   manaCost: 1
@@ -200,3 +225,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: dc7f22e4a2981dd489da20dd11df4dc3, type: 2}
+--- !u!114 &6942408861959757883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5480964821873323078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab30cc6909233d54eab4523d6dce764b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
