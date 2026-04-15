@@ -10,6 +10,7 @@ public class SelectLevel : MonoBehaviour, ILevel
     {
         GameSession.currentLevel = levelToEnter;
         GameSession.lastRandomIndex = -1;
+        GameSession.savedInventory = new SavedInventory();
         SceneManager.LoadScene(sceneName);
     }
 }

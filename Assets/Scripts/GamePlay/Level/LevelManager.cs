@@ -49,4 +49,14 @@ public class LevelManager : MonoBehaviour
 
         return pool[randomIndex];
     }
+
+    public int GetMetaCurrencyReward()
+    {
+        LevelDataSO data = levelData.GetLevelData(GameSession.currentLevel);
+        if (data != null)
+        {
+            return data.metaCurrencyReward;
+        }
+        return 0;
+    }
 }

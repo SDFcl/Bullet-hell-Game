@@ -26,5 +26,12 @@ public class GameFacade : MonoBehaviour
     {
         levelManager?.SpawnLevel();
         pathfinder?.Scan();
+
+        // Load player inventory after spawning level
+        Inventory playerInventory = GameObject.FindGameObjectWithTag("Player")?.GetComponentInChildren<Inventory>();
+        if (playerInventory != null && GameSession.savedInventory.weapons != null)
+        {
+            playerInventory.LoadInventory();
+        }
     }
 }

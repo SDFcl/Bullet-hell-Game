@@ -29,6 +29,7 @@ public class Inventory : MonoBehaviour
             Weapons.Add(item);
             OnWeaponChanged?.Invoke(0);
             Debug.Log("Added weapon: " + item.itemData.itemName + " at index 0");
+            SaveInventory();
             return;
         }
 
@@ -40,12 +41,14 @@ public class Inventory : MonoBehaviour
             Weapons.Insert(currentIndex, item);
 
             OnWeaponChanged?.Invoke(currentIndex);
+            SaveInventory();
             return;
         }
 
         Weapons.Add(item);
         int newIndex = Weapons.Count - 1;
         OnWeaponChanged?.Invoke(newIndex);
+        SaveInventory();
     }
 
     public void DropWeapon(int index)
@@ -66,9 +69,10 @@ public class Inventory : MonoBehaviour
         {
             DropConsumable(0);
             Consumables.Insert(0, item);
+            SaveInventory();
             return;
         }
-
+        SaveInventory();
         Consumables.Add(item);
     }
 
@@ -96,6 +100,43 @@ public class Inventory : MonoBehaviour
         Coins -= amount;
         OnCoinsChanged.Invoke(Coins);
         return true;
+    }
+    #endregion
+    #region Save/Load
+    public void SaveInventory()
+    {
+        GameSession.savedInventory.weapons = new List<Item>();
+        foreach (var item in Weapons)
+        {
+            GameSession.savedInventory.weapons.Add(item);
+        }
+        GameSession.savedInventory.consumables = new List<Item>();
+        foreach (var item in Consumables)
+        {
+            GameSession.savedInventory.consumables.Add(item);
+        }
+        GameSession.savedInventory.coins = Coins;
+    }
+
+    public void LoadInventory()
+    {
+        Weapons.Clear();
+        foreach (var item in GameSession.savedInventory.weapons)
+        {
+            Weapons.Add(item);
+        }
+        Consumables.Clear();
+        foreach (var item in GameSession.savedInventory.consumables)
+        {
+            Consumables.Add(item);
+        }
+        Coins = GameSession.savedInventory.coins;
+        OnCoinsChanged?.Invoke(Coins);
+        // Trigger weapon changed for first weapon if any
+        if (Weapons.Count > 0)
+        {
+            OnWeaponChanged?.Invoke(0);
+        }
     }
     #endregion
 }
