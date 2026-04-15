@@ -8,5 +8,5 @@ public class LevelDataSO : ScriptableObject
     public LevelID levelID;
     public string mapName;
     public List<GameObject> levelPrefabs;
-    
+    public int metaCurrencyReward = 10; // Default reward amount
 }

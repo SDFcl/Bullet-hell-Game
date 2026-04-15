@@ -25,6 +25,12 @@ public class HoldingWeapon : MonoBehaviour
         Item item = GetComponentInChildren<Item>();
         if (item != null)
         {
+            Debug.Log(GameSession.savedInventory.weapons);
+            if(GameSession.savedInventory.weapons != null && GameSession.savedInventory.weapons.Count > 0)
+            {
+                Debug.Log("HoldingWeapon: Found item in child on Awake, but inventory already has saved weapons. Skipping adding item to inventory: " + item.itemData.itemName);
+                return;
+            }
             inventory.AddWeapon(item);
             //Debug.Log("HoldingWeapon: Added item to inventory on Awake: " + item.itemData.itemName);
         }
