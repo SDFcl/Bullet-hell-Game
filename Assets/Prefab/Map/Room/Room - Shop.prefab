@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7366010161529999089}
   - component: {fileID: 6073643192684293953}
   - component: {fileID: 9181301114334582339}
-  - component: {fileID: 7276419263159703555}
   - component: {fileID: 7436163577202010686}
   m_Layer: 0
   m_Name: Room - Shop
@@ -67,27 +66,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98cac53f45321804c99aa74cef44bc8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7276419263159703555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2304527730190917837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83e77da961f82784985c0b38e0c3daaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MinimapIconGroup: {fileID: 4968051443891050781}
-  SpriteRoomRenderer: {fileID: 7381082420536113240}
-  SpriteIconRenderer: {fileID: 5875551554312316558}
-  DiscoverIcon: {fileID: -951197695, guid: 25b166570b2cc0e47a791aee5b154dcf, type: 3}
-  DiscoverColor: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 1}
-  ExploredIcon: {fileID: 21300000, guid: 6cc6965908abd324cb8be897d2b5c21d, type: 3}
-  ExploredColor: {r: 1, g: 0, b: 0, a: 1}
-  state: 0
-  roomConnectors: []
 --- !u!61 &7436163577202010686
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -681,20 +659,5 @@ PrefabInstance:
 --- !u!4 &1247464505311051233 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5633456577124039558, guid: 112fa9f91fcfc2044a5a84423d7540e4, type: 3}
-  m_PrefabInstance: {fileID: 6873034761731425895}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4968051443891050781 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1987209779597533050, guid: 112fa9f91fcfc2044a5a84423d7540e4, type: 3}
-  m_PrefabInstance: {fileID: 6873034761731425895}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &5875551554312316558 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 1075176898665799913, guid: 112fa9f91fcfc2044a5a84423d7540e4, type: 3}
-  m_PrefabInstance: {fileID: 6873034761731425895}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &7381082420536113240 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 4111562063720398399, guid: 112fa9f91fcfc2044a5a84423d7540e4, type: 3}
   m_PrefabInstance: {fileID: 6873034761731425895}
   m_PrefabAsset: {fileID: 0}
