@@ -23,7 +23,6 @@ public class Dodge : MonoBehaviour
     private bool canDodge = true;
     private Rigidbody2D rb;
     [SerializeField] private Collider2D col;
-    private IMovement movement;
     private IImpulseMover burstMove;
 
     private Vector2 dir;
@@ -31,7 +30,6 @@ public class Dodge : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        movement = GetComponent<IMovement>();
         if(col == null)
         {
             col = GetComponent<Collider2D>();

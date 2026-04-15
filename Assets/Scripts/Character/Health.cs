@@ -9,7 +9,7 @@ public class Health : MonoBehaviour, IDamageable
     [field: SerializeField]
     public float CurrentHP { get; protected set; }
     public bool IsDead => CurrentHP <= 0;
-    private bool ignoreDamage = false;
+    protected bool ignoreDamage = false;
 
     public event Action OnDead;
     public event Action<float> OnHealthChanged;
