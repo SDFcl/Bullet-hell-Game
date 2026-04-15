@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 27c2a9d3b2331a8429ee84cf50fcc046
+guid: b529bf80222577d47bcdd07f62779e6b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,309 +110,287 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 01_Forest_0
+      name: CBUI_ManaBar_Back
       rect:
         serializedVersion: 2
-        x: 0
-        y: 159
-        width: 97
-        height: 97
+        x: 3
+        y: 106
+        width: 11
+        height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f6e2148e8915ca870800000000000000
-      internalID: 8695414697719049839
+      spriteID: 24b49c518aa678042b043ad1e001cdd0
+      internalID: 715592342
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 01_Forest_1
-      rect:
-        serializedVersion: 2
-        x: 127
-        y: 159
-        width: 98
-        height: 97
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6b0a254f5d8fe6310800000000000000
-      internalID: 1400330131969581238
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 01_Forest_2
-      rect:
-        serializedVersion: 2
-        x: 255
-        y: 159
-        width: 97
-        height: 97
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6f0b94ffefc6764b0800000000000000
-      internalID: -5447265381820813066
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 01_Forest_3
+      name: CBUI_ManaBar_Middle
       rect:
         serializedVersion: 2
         x: 19
-        y: 0
-        width: 78
-        height: 129
+        y: 106
+        width: 11
+        height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7ba81d50ffc77af10800000000000000
-      internalID: 2280929171042568887
+      spriteID: 2987949671526824992242ee623b08d2
+      internalID: -39251354
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 01_Forest_4
+      name: CBUI_ManaBar_Front
       rect:
         serializedVersion: 2
-        x: 127
-        y: 0
-        width: 78
-        height: 129
+        x: 35
+        y: 106
+        width: 11
+        height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2787e4675984eda90800000000000000
-      internalID: -7287307340266702734
+      spriteID: 3e0a7fdae55ae5c449ab14a952e6bd22
+      internalID: 375067640
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 01_Forest_5
+      name: combatUI_Element_3
       rect:
         serializedVersion: 2
-        x: 258
-        y: 96
-        width: 30
-        height: 27
+        x: 68
+        y: 138
+        width: 7
+        height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1b361ad73441be390800000000000000
-      internalID: -7788108850504047695
+      spriteID: 5936ae6f29ba9ad409031be8535e2677
+      internalID: -601259266
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 01_Forest_6
+      name: combatUI_Element_4
       rect:
         serializedVersion: 2
-        x: 296
-        y: 108
-        width: 14
-        height: 16
+        x: 82
+        y: 137
+        width: 11
+        height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b1ada8683d320a5f0800000000000000
-      internalID: -747558146741183973
+      spriteID: e55f1fb5ead3d2e4cb8a31ced30af6a9
+      internalID: 1545299545
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 01_Forest_7
+      name: combatUI_Element_5
       rect:
         serializedVersion: 2
-        x: 308
-        y: 100
-        width: 12
-        height: 12
+        x: 98
+        y: 137
+        width: 11
+        height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b28ebd07c4052cd50800000000000000
-      internalID: 6756050680250361899
+      spriteID: dbcfc91dce0c03246a5eca14669f05de
+      internalID: -822409587
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 01_Forest_8
+      name: CBUI_MiniMap
       rect:
         serializedVersion: 2
-        x: 327
-        y: 111
-        width: 12
-        height: 10
+        x: 253
+        y: 104
+        width: 64
+        height: 45
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0da9cf41f0231d270800000000000000
-      internalID: 8273449030814309072
+      spriteID: 3554e47988333c9478f2fe958b6e55cb
+      internalID: -1706876388
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 01_Forest_9
+      name: CBUI_BossBar_Front
       rect:
         serializedVersion: 2
-        x: 258
-        y: 64
-        width: 61
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1419136294ccd9520800000000000000
-      internalID: 2710547165292368193
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 01_Forest_10
-      rect:
-        serializedVersion: 2
-        x: 327
-        y: 73
-        width: 18
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 143ca55e81407a410800000000000000
-      internalID: 1488162706842895169
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 01_Forest_11
-      rect:
-        serializedVersion: 2
-        x: 261
-        y: 38
-        width: 18
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 68ffdf6aa3b722380800000000000000
-      internalID: -8997493613692846202
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 01_Forest_12
-      rect:
-        serializedVersion: 2
-        x: 291
-        y: 39
-        width: 27
+        x: 63
+        y: 78
+        width: 180
         height: 21
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: cd7d1c12353171630800000000000000
-      internalID: 3897605250282018780
+      spriteID: 91a224c727c1f8f4d84111e0639d0736
+      internalID: -2073926984
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 01_Forest_13
+      name: CBUI_Special skill
       rect:
         serializedVersion: 2
-        x: 328
-        y: 42
-        width: 17
-        height: 16
+        x: 3
+        y: 39
+        width: 24
+        height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 11d3fc4c8f5516e80800000000000000
-      internalID: -8187168120640684783
+      spriteID: 235fbe3ea879e0848b9d1cd7464f81ad
+      internalID: 1425247548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CBUI_BossBar_Middle
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 40
+        width: 178
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b8576fc136d2a44fadfa7d11843adee
+      internalID: 739991421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CBUI_Consumable
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 3
+        width: 44
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba9ed60e54e8eec4690ccc25d177524b
+      internalID: -1961973383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CBUI_BossBar_Black
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 8
+        width: 178
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cadac3e6540cb0c4d87c6746635a2123
+      internalID: -1038217282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CBUI_Weapon
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 4
+        width: 53
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6343a716bcbfa77439d7318530159605
+      internalID: 1794427769
       vertices: []
       indices: 
       edges: []
@@ -421,7 +399,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 79d5022301c2ee440becd6137111e156
     internalID: 0
     vertices: []
     indices: 
@@ -431,20 +409,19 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      01_Forest_0: 8695414697719049839
-      01_Forest_1: 1400330131969581238
-      01_Forest_10: 1488162706842895169
-      01_Forest_11: -8997493613692846202
-      01_Forest_12: 3897605250282018780
-      01_Forest_13: -8187168120640684783
-      01_Forest_2: -5447265381820813066
-      01_Forest_3: 2280929171042568887
-      01_Forest_4: -7287307340266702734
-      01_Forest_5: -7788108850504047695
-      01_Forest_6: -747558146741183973
-      01_Forest_7: 6756050680250361899
-      01_Forest_8: 8273449030814309072
-      01_Forest_9: 2710547165292368193
+      CBUI_BossBar_Black: -1038217282
+      CBUI_BossBar_Front: -2073926984
+      CBUI_BossBar_Middle: 739991421
+      CBUI_Consumable: -1961973383
+      CBUI_ManaBar_Back: 715592342
+      CBUI_ManaBar_Front: 375067640
+      CBUI_ManaBar_Middle: -39251354
+      CBUI_MiniMap: -1706876388
+      CBUI_Special skill: 1425247548
+      CBUI_Weapon: 1794427769
+      combatUI_Element_3: -601259266
+      combatUI_Element_4: 1545299545
+      combatUI_Element_5: -822409587
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
