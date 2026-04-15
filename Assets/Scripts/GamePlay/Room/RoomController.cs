@@ -21,7 +21,8 @@ public class RoomController : MonoBehaviour
         if (TryGetComponent(out RoomDoorController door)) doorController = door;
 
         if (TryGetComponent(out RoomRewardController reward)) rewardController = reward;
-        if (TryGetComponent(out RoomMiniMapController miniMap)) miniMapController = miniMap;
+
+        miniMapController = GetComponentInChildren<RoomMiniMapController>();
     }
 
     public void PlayerEnterRoom()

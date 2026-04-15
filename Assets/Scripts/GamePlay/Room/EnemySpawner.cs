@@ -84,9 +84,9 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < 50; i++)
         {
             Vector3 random = new Vector3(
-                Random.Range(roomBounds.min.x, roomBounds.max.x),
-                center.y,
-                Random.Range(roomBounds.min.z, roomBounds.max.z)
+            Random.Range(roomBounds.min.x, roomBounds.max.x),
+            Random.Range(roomBounds.min.y, roomBounds.max.y),
+             0f
             );
 
             if (AstarPath.active != null)
@@ -116,7 +116,7 @@ public class EnemySpawner : MonoBehaviour
     // =========================
     bool IsValidPosition(Vector3 pos)
     {
-        return !Physics.CheckSphere(pos, checkRadius, obstacleLayer);
+        return !Physics2D.OverlapCircle(pos, checkRadius, obstacleLayer);
     }
 
     
@@ -129,6 +129,6 @@ public class EnemySpawner : MonoBehaviour
     public float GetSize()
     {
         Vector3 size = roomCollider.bounds.size;
-        return size.x * size.z;
+        return size.x * size.y;
     }
 }

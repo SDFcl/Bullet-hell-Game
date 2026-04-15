@@ -16,7 +16,7 @@ public class RoomConnector : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapAreaAll(boxCollider.bounds.min, boxCollider.bounds.max);
         foreach (Collider2D collider in colliders)
         {
-            RoomMiniMapController controller = collider.GetComponent<RoomMiniMapController>();
+            RoomMiniMapController controller = collider.gameObject.GetComponentInChildren<RoomMiniMapController>();
             if (controller != null)
             {
                 controller.roomConnectors.Add(this); // Add this connector to the room's list
