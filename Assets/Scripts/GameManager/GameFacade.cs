@@ -9,7 +9,6 @@ public class GameFacade : MonoBehaviour
     {
         levelManager = GetComponentInChildren<LevelManager>();
         pathfinder = GetComponentInChildren<AstarPath>();
-        cursor = GetComponentInChildren<CursorManager>();
     }
     private void Start()
     {
@@ -19,7 +18,6 @@ public class GameFacade : MonoBehaviour
 
     public void GameLoad()
     {
-        cursor?.UpdateCursor();
         levelManager?.LoadLevel();
     }
     public void GameStart()
