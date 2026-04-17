@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 355202cbf83c4824697b387a91186730, type: 3}
+  m_Name: Cave_stage1
+  m_EditorClassIdentifier: 
+  levelID:
+    map: 2
+    stage: 0
+  mapName: Cave
+  levelPrefabs:
+  - {fileID: 8336625981029590515, guid: 020cecc6073cdbf46b88541081a8f811, type: 3}
+  - {fileID: 7470763095448458193, guid: dfefe69feb11f9741b5218fe841d78bc, type: 3}
+  - {fileID: 7390235361763840530, guid: 02a7b430c6cc95f4698656107954962d, type: 3}
+  metaCurrencyReward: 10
