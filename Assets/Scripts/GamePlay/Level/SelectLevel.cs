@@ -13,4 +13,13 @@ public class SelectLevel : MonoBehaviour, ILevel
         GameSession.savedInventory = new SavedInventory();
         SceneManager.LoadScene(sceneName);
     }
+
+    public void setLevelMap(int map)
+    {
+        levelToEnter.map = map;
+    }
+    public int getLevelMap()
+    {
+        return levelToEnter.map;
+    }
 }
