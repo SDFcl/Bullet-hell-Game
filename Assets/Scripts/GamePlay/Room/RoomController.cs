@@ -21,14 +21,25 @@ public class RoomController : MonoBehaviour
         if (TryGetComponent(out RoomDoorController door)) doorController = door;
 
         if (TryGetComponent(out RoomRewardController reward)) rewardController = reward;
-
+        
         miniMapController = GetComponentInChildren<RoomMiniMapController>();
+    }
+
+    private void Start()
+    {
+        if (enemysController == null)
+        {
+            rewardController.SetRewardActive(true);
+        }
     }
 
     public void PlayerEnterRoom()
     {
         miniMapController.ChangeRoomState(RoomMiniMapState.Explored);
-        if (enemysController == null || doorController == null) return;
+        if (enemysController == null || doorController == null) 
+        {
+            return;
+        }
         playerInsideNeverBefore = true;
         doorController.CloseDoors();
         enemysController.SetEnemiesActive(true);

@@ -29,6 +29,7 @@ public class InteractiveFountain : MonoBehaviour , IInteractive
         if (playerHealth != null)
         {
             playerHealth.Heal(HealAmount); // Restore 50 health points
+            gameObject.layer = LayerMask.NameToLayer("Default");
             Debug.Log($"[InteractiveFountain] Restored health to player!");
         }
         else
