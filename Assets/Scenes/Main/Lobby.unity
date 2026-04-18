@@ -1807,6 +1807,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1666625371}
   - component: {fileID: 1666625370}
+  - component: {fileID: 1666625373}
   - component: {fileID: 1666625372}
   m_Layer: 0
   m_Name: GameManager
@@ -1855,6 +1856,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GuildCoin: 0
+--- !u!114 &1666625373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666625369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1735de4be5958e4087104d5d10e27c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuCursor: {fileID: 2800000, guid: 841ed41636b734245a7f24089fea5fcc, type: 3}
+  gameplayCursor: {fileID: 2800000, guid: 48280f61fb8849347af8a5ad834f7b06, type: 3}
+  hotspot: {x: 0, y: 0}
 --- !u!1 &1710152969
 GameObject:
   m_ObjectHideFlags: 0
