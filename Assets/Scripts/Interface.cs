@@ -102,3 +102,8 @@ public interface IProjectileHitStrategy
     void OnDespawn(ProjectileHit projectile);
 }
 
+public interface IPlayerStats
+{
+    float MaxHealth { get; }
+}
+

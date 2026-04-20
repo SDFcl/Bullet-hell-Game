@@ -19,4 +19,9 @@ public class MetaCurrency : Singleton<MetaCurrency>
         Debug.Log($"MetaCurrency decreased by {amount}. Total: {GuildCoin}");
         return true;
     }
+
+    public bool CanAfford(int amount)
+    {
+        return GuildCoin >= amount;
+    }
 }

@@ -31,7 +31,7 @@ public class EnemySpawner : MonoBehaviour
             TargetIns = this.gameObject.transform; // If TargetIns is null, use the spawner's own transform as the target
         roomCollider = collider2D;
         int enemyCount = CalculateBudget();
-        Debug.Log($"[EnemySpawner] Enemy count: {enemyCount}");
+        //Debug.Log($"[EnemySpawner] Enemy count: {enemyCount}");
 
         for (int i = 0; i < enemyCount; i++)
         {
@@ -40,7 +40,7 @@ public class EnemySpawner : MonoBehaviour
                 continue;
 
             Vector3 spawnPos = FindValidSpawnPosition();
-            Debug.Log($"{this.gameObject.name} Spawning enemy at: {spawnPos}");
+            //Debug.Log($"{this.gameObject.name} Spawning enemy at: {spawnPos}");
             Instantiate(enemyPrefab, spawnPos, Quaternion.identity, TargetIns);
         }
     }

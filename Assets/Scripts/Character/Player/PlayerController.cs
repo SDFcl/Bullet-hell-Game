@@ -27,6 +27,9 @@ public class PlayerController : MonoBehaviour
     private float firePressedTime;
     private float holdThreshold = 0.1f;
 
+    private IPlayerStats Stats;
+    public PlayerUpgradeManager PlayerUpgradeManager;
+
     [SerializeField] private Camera mainCamera;
 
     void Awake()
@@ -42,6 +45,21 @@ public class PlayerController : MonoBehaviour
         attack = GetComponent<Attack>();
         filterInteract = new FilterInteract(gameObject);
         health = GetComponent<Health>();
+        PlayerUpgradeManager =  FindObjectOfType<PlayerUpgradeManager>();
+        if (PlayerUpgradeManager != null)
+        {
+            Stats = PlayerUpgradeManager.GetFinalStats();
+            if (health != null)
+            {
+                PlayerHealth playerHealth = health.GetComponent<PlayerHealth>();
+                Debug.Log("PlayerController: Found Health component, trying to set PlayerHealth MaxHealth to " + Stats.MaxHealth);
+                if (playerHealth != null)
+                {
+                    playerHealth.MaxHealth = Stats.MaxHealth;
+                    Debug.Log("PlayerController: Set PlayerHealth MaxHealth to " + Stats.MaxHealth);
+                }
+            }
+        }
 
         if (mainCamera == null)
             mainCamera = Camera.main;  

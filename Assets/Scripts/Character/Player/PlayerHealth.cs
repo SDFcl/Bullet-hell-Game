@@ -8,6 +8,17 @@ public class PlayerHealth : Health, IHealable
     private Coroutine iFrameRoutine;
     public Action<bool> OnIFrame;
 
+    public float MaxHealth
+    {
+        get => maxHealth;
+        set
+        {
+            //ตั้งค่า MaxHealth ใหม่และปรับ CurrentHP ให้เท่ากับ MaxHealth
+            maxHealth = value;
+            CurrentHP = maxHealth;
+        }
+    }
+
     public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);

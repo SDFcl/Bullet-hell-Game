@@ -1,63 +1,74 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LevelSelectController : MonoBehaviour
 {
-    [Header("For test")]
-    public int MaxLevel;
-    public TextMeshProUGUI TextMapCurrent;
-    public Toggle toggle;
+    [Header("Stage")]
+    public GameObject[] stageObjects;
 
-    private SelectLevel SelectLevel;
-    private CanvasGroup CanvasGroup;
+    [Header("Dot Indicator")]
+    public Image[] dots;
+    public Color activeColor = Color.white;
+    public Color inactiveColor = Color.gray;
+    public float activeScale = 1.2f;
+
+    [Header("UI Control")]
+    public Toggle toggle;
+    private CanvasGroup canvasGroup;
+
+    private SelectLevel selectLevel;
 
     public int currentIndex;
+    private int MaxLevel => stageObjects.Length;
 
     private void Awake()
     {
-        SelectLevel = GetComponent<SelectLevel>();
-        currentIndex = SelectLevel.getLevelMap();
-        CanvasGroup = GetComponent<CanvasGroup>();
+        selectLevel = GetComponent<SelectLevel>();
+        canvasGroup = GetComponent<CanvasGroup>();
 
+        currentIndex = selectLevel.getLevelMap();
+        UpdateUI();
         ChangeState();
     }
 
     public void Next()
     {
-        currentIndex = (currentIndex + 1) % (MaxLevel+1);
-        if (currentIndex <= 0)
-        {
-            currentIndex++;
-        }
+        currentIndex = currentIndex % MaxLevel + 1;
         UpdateUI();
     }
 
     public void Prev()
     {
         currentIndex--;
-        if (currentIndex <= 0)
-            currentIndex = MaxLevel;
-
+        if (currentIndex < 1) currentIndex = MaxLevel;
         UpdateUI();
     }
 
     private void UpdateUI()
     {
-        SelectLevel.setLevelMap(currentIndex);
-        TextMapCurrent.text = "Map " + currentIndex;
+        selectLevel.setLevelMap(currentIndex);
+
+        for (int i = 0; i < stageObjects.Length; i++)
+        {
+            stageObjects[i].SetActive(i == currentIndex - 1);
+        }
+
+        UpdateDots();
+    }
+
+    private void UpdateDots()
+    {
+        for (int i = 0; i < dots.Length; i++)
+        {
+            bool isActive = (i == currentIndex - 1);
+
+            dots[i].color = isActive ? activeColor : inactiveColor;
+            dots[i].transform.localScale = isActive ? Vector3.one * activeScale : Vector3.one;
+        }
     }
 
     public void ChangeState()
     {
-        switch (toggle.isOn)
-        {
-            case false:
-                CanvasGroup.alpha = 0.0f; 
-                break;
-            case true:
-                CanvasGroup.alpha = 1.0f;
-                break;
-        }
+        canvasGroup.alpha = toggle.isOn ? 1f : 0f;
     }
 }
