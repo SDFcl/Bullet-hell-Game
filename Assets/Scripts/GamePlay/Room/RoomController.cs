@@ -27,7 +27,7 @@ public class RoomController : MonoBehaviour
 
     private void Start()
     {
-        if (enemysController == null)
+        if (enemysController == null && rewardController != null)
         {
             rewardController.SetRewardActive(true);
         }
@@ -43,7 +43,8 @@ public class RoomController : MonoBehaviour
         playerInsideNeverBefore = true;
         doorController.CloseDoors();
         enemysController.SetEnemiesActive(true);
-        rewardController.SetRewardActive(false);
+        if (rewardController != null)
+            rewardController.SetRewardActive(false);
         if (TryGetComponent(out Collider2D collider))
         {
             collider.enabled = false; // Disable trigger after player enters
