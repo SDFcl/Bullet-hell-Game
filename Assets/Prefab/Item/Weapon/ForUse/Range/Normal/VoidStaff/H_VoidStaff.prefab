@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 7394079766398780012}
   - component: {fileID: -2837308146939356880}
   - component: {fileID: -2838527265675085930}
+  - component: {fileID: 3371173415802336216}
   m_Layer: 0
   m_Name: H_VoidStaff
   m_TagString: Untagged
@@ -223,6 +224,20 @@ MonoBehaviour:
   impulseDuration: 0.075
   directionMode: 1
   useAnimationEvent: 0
+--- !u!114 &3371173415802336216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4878789634811786703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6f0240538c4c8d4caa66993d71bcf7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useAnimationEvent: 0
+  soundID: {fileID: 11400000, guid: 506ff607fc0d6a14bb2bf628bbf4e147, type: 2}
 --- !u!1 &8380343423665848760
 GameObject:
   m_ObjectHideFlags: 0

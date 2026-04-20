@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 285123c42b81afb4bb8a12b41da865db, type: 3}
+  m_Name: BaseWeaponSFX
+  m_EditorClassIdentifier: 
+  sounds:
+  - idName: BaseWeapon_OnAttack_Sword
+    id: {fileID: 11400000, guid: 10afb42ac66235f48934eec002c04076, type: 2}
+    clip: {fileID: 8300000, guid: 10531009252744a4a83808b1efb11611, type: 3}
+    volume: 1
+  - idName: BaseWeapon_OnAttack_Staff
+    id: {fileID: 11400000, guid: 506ff607fc0d6a14bb2bf628bbf4e147, type: 2}
+    clip: {fileID: 8300000, guid: 77e089a94bb725149ae07c340d0a487c, type: 3}
+    volume: 1
+  - idName: BaseWeapon_OnAttack_Bow
+    id: {fileID: 11400000, guid: 1bab63aca8c69f74bb2ccfe999d23d60, type: 2}
+    clip: {fileID: 8300000, guid: 57e2a3a6574d1cd4aa187ac094b91feb, type: 3}
+    volume: 1
+  - idName: BaseWeapon_OnHit_Sword
+    id: {fileID: 11400000, guid: 86ebc1e7f3c5ae246b43943690e67d4b, type: 2}
+    clip: {fileID: 8300000, guid: 43ffc3b0727110148a76a0a14970e41e, type: 3}
+    volume: 1
+  - idName: BaseWeapon_OnHit_Staff
+    id: {fileID: 11400000, guid: 6c63f57ad209eb241ba7cabfb6f29764, type: 2}
+    clip: {fileID: 8300000, guid: 65cbd1a6308e16d439417e1c79d8cbf4, type: 3}
+    volume: 1
+  - idName: BaseWeapon_OnHit_Bow
+    id: {fileID: 11400000, guid: 7c9df0dd585ce5a4b8f9e5431cfc5fcc, type: 2}
+    clip: {fileID: 8300000, guid: 5fbbc9e67baf39f438d182e47db73fd3, type: 3}
+    volume: 1

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
@@ -8,6 +9,7 @@ public class Hitbox : MonoBehaviour
     [SerializeField] private bool isTrigger;
 
     private GameObject owner;
+    public Action OnHit;
 
     public void SetDamage(float damage) => this.damage = damage;
     public void SetOwner(GameObject owner) => this.owner = owner;
@@ -41,7 +43,10 @@ public class Hitbox : MonoBehaviour
         if (damageable != null)
         {
             Debug.Log($"Hit {col.name} with damage {damage}");
+            
             damageable.TakeDamage(damage);
+            if(InvokeOnDealDamage())
+                OnHit?.Invoke();
         }
     }
 
@@ -57,6 +62,8 @@ public class Hitbox : MonoBehaviour
 
         return false;
     }
+
+    protected virtual bool InvokeOnDealDamage() => true;
 
     //API
     public float GetDamage() => damage;

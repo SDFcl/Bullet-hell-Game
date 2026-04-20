@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 198863366042975165}
   - component: {fileID: 6748350581072183873}
   - component: {fileID: -2680659925730572648}
+  - component: {fileID: -3087997780215361323}
   m_Layer: 0
   m_Name: BL_NightStar
   m_TagString: Untagged
@@ -136,6 +137,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6604b5164e25f654bbe371670cddc664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3087997780215361323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543683285673390757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f696945056177894288852a4d3a7ade0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundID: {fileID: 11400000, guid: 6c63f57ad209eb241ba7cabfb6f29764, type: 2}
 --- !u!1 &8270557348484835424
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5496469133087777805}
   - component: {fileID: 1640884258401554400}
   - component: {fileID: -7586291053103345657}
+  - component: {fileID: -8426011644072346882}
   m_Layer: 0
   m_Name: H_TheDestroyer
   m_TagString: Untagged
@@ -136,6 +137,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab30cc6909233d54eab4523d6dce764b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-8426011644072346882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305801468703707646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6f0240538c4c8d4caa66993d71bcf7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useAnimationEvent: 0
+  soundID: {fileID: 11400000, guid: 506ff607fc0d6a14bb2bf628bbf4e147, type: 2}
 --- !u!1 &2422695322476627255
 GameObject:
   m_ObjectHideFlags: 0

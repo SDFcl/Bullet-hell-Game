@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 3882555126851934677}
   - component: {fileID: 4554241045631880333}
   - component: {fileID: 4316247808898329883}
+  - component: {fileID: 8552664261524470208}
   m_Layer: 0
   m_Name: H_Vel'crithTome
   m_TagString: Untagged
@@ -84,6 +85,7 @@ MonoBehaviour:
   baseDamage: 10
   currentDamage: 0
   cooldown: 0.2
+  useAnimationEvent: 0
   projectileSpeed: 20
   projectilePoolTag: HollowStaffBL
   manaCost: 1
@@ -113,6 +115,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: bcbfa276aa482ab46a348550147ab6e0, type: 2}
+--- !u!114 &8552664261524470208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2645458631363722669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6f0240538c4c8d4caa66993d71bcf7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useAnimationEvent: 0
+  soundID: {fileID: 11400000, guid: 506ff607fc0d6a14bb2bf628bbf4e147, type: 2}
 --- !u!1 &3596981793259978625
 GameObject:
   m_ObjectHideFlags: 0

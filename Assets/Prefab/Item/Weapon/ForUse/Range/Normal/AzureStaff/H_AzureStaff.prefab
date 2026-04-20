@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3287501405139795398}
   - component: {fileID: 1895200157497750393}
   - component: {fileID: -5198290659910840055}
+  - component: {fileID: 9202312029657116357}
   m_Layer: 0
   m_Name: H_AzureStaff
   m_TagString: Untagged
@@ -119,6 +120,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab30cc6909233d54eab4523d6dce764b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9202312029657116357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810782050035678893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6f0240538c4c8d4caa66993d71bcf7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useAnimationEvent: 0
+  soundID: {fileID: 11400000, guid: 506ff607fc0d6a14bb2bf628bbf4e147, type: 2}
 --- !u!1 &5413534303826367131
 GameObject:
   m_ObjectHideFlags: 0

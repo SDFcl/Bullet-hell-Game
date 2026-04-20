@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 2477657086730053411}
   - component: {fileID: 1423151695878395292}
   - component: {fileID: 8016218491834112452}
+  - component: {fileID: 8900393289872816106}
   m_Layer: 0
   m_Name: H_ElvenBow
   m_TagString: Untagged
@@ -84,6 +85,7 @@ MonoBehaviour:
   baseDamage: 10
   currentDamage: 0
   cooldown: 0.2
+  useAnimationEvent: 0
   projectileSpeed: 20
   projectilePoolTag: ElvenBowBL
   manaCost: 1
@@ -113,6 +115,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 3f8cfb7680fbacd42b738e9b9e4f7dd5, type: 2}
+--- !u!114 &8900393289872816106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4945338506724446994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6f0240538c4c8d4caa66993d71bcf7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useAnimationEvent: 0
+  soundID: {fileID: 11400000, guid: 1bab63aca8c69f74bb2ccfe999d23d60, type: 2}
 --- !u!1 &7939958009480844779
 GameObject:
   m_ObjectHideFlags: 0

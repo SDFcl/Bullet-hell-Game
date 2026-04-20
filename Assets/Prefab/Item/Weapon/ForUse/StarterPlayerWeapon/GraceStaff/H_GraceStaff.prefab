@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 5359260232141529213}
   - component: {fileID: 2168882196701068483}
   - component: {fileID: 7725235121974064890}
+  - component: {fileID: -8361285268207577802}
   m_Layer: 0
   m_Name: H_GraceStaff
   m_TagString: Untagged
@@ -84,6 +85,7 @@ MonoBehaviour:
   baseDamage: 10
   currentDamage: 0
   cooldown: 0.2
+  useAnimationEvent: 0
   projectileSpeed: 20
   projectilePoolTag: HollowStaffBL
   manaCost: 1
@@ -113,6 +115,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 2d18e6a4aa4c54643af6988cd0e056ce, type: 2}
+--- !u!114 &-8361285268207577802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4096024061974053134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6f0240538c4c8d4caa66993d71bcf7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useAnimationEvent: 0
+  soundID: {fileID: 11400000, guid: 506ff607fc0d6a14bb2bf628bbf4e147, type: 2}
 --- !u!1 &6192763994163552743
 GameObject:
   m_ObjectHideFlags: 0

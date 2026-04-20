@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 945713352081475153}
   - component: {fileID: 2036135344614643797}
   - component: {fileID: -6197635346874573973}
+  - component: {fileID: 8992239761531521315}
   m_Layer: 0
   m_Name: H_CrescentStaff
   m_TagString: Untagged
@@ -120,6 +121,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab30cc6909233d54eab4523d6dce764b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8992239761531521315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2244481533794485732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6f0240538c4c8d4caa66993d71bcf7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useAnimationEvent: 0
+  soundID: {fileID: 11400000, guid: 506ff607fc0d6a14bb2bf628bbf4e147, type: 2}
 --- !u!1 &3262561266061355058
 GameObject:
   m_ObjectHideFlags: 0

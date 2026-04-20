@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 2618594306014942290}
   - component: {fileID: 4389816976097480893}
   - component: {fileID: 2251540303727374215}
+  - component: {fileID: 4525997971065313811}
   m_Layer: 0
   m_Name: H_ArcanePulse
   m_TagString: Untagged
@@ -151,6 +152,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab30cc6909233d54eab4523d6dce764b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4525997971065313811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3078954963109233242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6f0240538c4c8d4caa66993d71bcf7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useAnimationEvent: 0
+  soundID: {fileID: 11400000, guid: 506ff607fc0d6a14bb2bf628bbf4e147, type: 2}
 --- !u!1 &8601944887359983084
 GameObject:
   m_ObjectHideFlags: 0

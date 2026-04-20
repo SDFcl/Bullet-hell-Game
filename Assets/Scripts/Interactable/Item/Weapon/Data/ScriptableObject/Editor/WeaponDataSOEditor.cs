@@ -12,6 +12,9 @@ public class WeaponDataSOEditor : Editor
         SerializedProperty rangedDataProp = serializedObject.FindProperty("rangedData");
         SerializedProperty statTableProp = serializedObject.FindProperty("statTable");
 
+        SerializedProperty onAttackSoundIDProp = serializedObject.FindProperty("onAttackSoundID");
+        SerializedProperty onHitSoundIDProp = serializedObject.FindProperty("onHitSoundID");
+
         EditorGUILayout.PropertyField(weaponTypeProp);
         EditorGUILayout.PropertyField(statTableProp);
 
@@ -37,5 +40,11 @@ public class WeaponDataSOEditor : Editor
         }
 
         serializedObject.ApplyModifiedProperties();
+
+        EditorGUILayout.Space();
+        EditorGUILayout.LabelField("Sound", EditorStyles.boldLabel);
+        EditorGUILayout.PropertyField(onAttackSoundIDProp);
+        EditorGUILayout.PropertyField(onHitSoundIDProp);
+
     }
 }

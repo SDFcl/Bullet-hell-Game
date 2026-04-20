@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 6029904875238137820}
   - component: {fileID: 3845390127866211892}
   - component: {fileID: 3890872838148311207}
+  - component: {fileID: 4163195000735541747}
   m_Layer: 0
   m_Name: H_WoodenBow
   m_TagString: Untagged
@@ -84,6 +85,7 @@ MonoBehaviour:
   baseDamage: 10
   currentDamage: 0
   cooldown: 0.2
+  useAnimationEvent: 0
   projectileSpeed: 20
   projectilePoolTag: WoodenBowBL
   manaCost: 1
@@ -113,6 +115,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: c23c91755e32b234c9d2c1d0e9792782, type: 2}
+--- !u!114 &4163195000735541747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5621187790418492668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6f0240538c4c8d4caa66993d71bcf7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useAnimationEvent: 0
+  soundID: {fileID: 11400000, guid: 1bab63aca8c69f74bb2ccfe999d23d60, type: 2}
 --- !u!1 &6601051243697862104
 GameObject:
   m_ObjectHideFlags: 0

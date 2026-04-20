@@ -51,14 +51,18 @@ public class ProjectileHit : Hitbox, IPooledObject
             health.TakeDamage(1);
             if (health.IsDead)
             {
+                OnHit?.Invoke();
                 lifetimeStrategy?.OnDespawn(this);
             }
         }
         if (col.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
         {
+            OnHit?.Invoke();
             lifetimeStrategy?.OnDespawn(this);
         }
     }
+
+    protected override bool InvokeOnDealDamage() => false;
 
     public void SetProjectlieSpeed(float value) => speed = value;
 }

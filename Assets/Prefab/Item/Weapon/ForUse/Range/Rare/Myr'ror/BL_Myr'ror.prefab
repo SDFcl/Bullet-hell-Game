@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 958221688535408516}
   - component: {fileID: 6382513332524561238}
   - component: {fileID: 8077443778608428060}
+  - component: {fileID: 1352265529521508416}
   m_Layer: 0
   m_Name: BL_Myr'ror
   m_TagString: Untagged
@@ -159,6 +160,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6604b5164e25f654bbe371670cddc664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1352265529521508416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2396894123249562570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f696945056177894288852a4d3a7ade0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundID: {fileID: 11400000, guid: 6c63f57ad209eb241ba7cabfb6f29764, type: 2}
 --- !u!1 &4052412941069758181
 GameObject:
   m_ObjectHideFlags: 0

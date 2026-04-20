@@ -193,6 +193,7 @@ GameObject:
   - component: {fileID: 2113957091011018712}
   - component: {fileID: 2717729221768036762}
   - component: {fileID: 5682561509980801637}
+  - component: {fileID: 394191945701660650}
   m_Layer: 0
   m_Name: H_Crimsonveil
   m_TagString: Untagged
@@ -299,6 +300,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: ebf502d87ff00a342bec36a7bed79318, type: 2}
+--- !u!114 &394191945701660650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5104695943621066586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6f0240538c4c8d4caa66993d71bcf7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useAnimationEvent: 0
+  soundID: {fileID: 11400000, guid: 10afb42ac66235f48934eec002c04076, type: 2}
 --- !u!1 &5647106461903270758
 GameObject:
   m_ObjectHideFlags: 0

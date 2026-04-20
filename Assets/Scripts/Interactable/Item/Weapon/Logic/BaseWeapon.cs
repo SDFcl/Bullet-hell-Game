@@ -16,6 +16,7 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     [SerializeField] protected bool useAnimationEvent = false;
 
     public event Action OnAttack;
+    public WeaponDataSO WeaponDataSO => weaponData;
 
     protected float cooldownTimer;
     protected GameObject owner;

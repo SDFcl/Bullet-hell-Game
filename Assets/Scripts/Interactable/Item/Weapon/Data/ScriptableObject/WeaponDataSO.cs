@@ -34,4 +34,7 @@ public class WeaponDataSO : ScriptableObject
             _ => default
         };
     }
+
+    public SoundID onAttackSoundID;
+    public SoundID onHitSoundID;
 }

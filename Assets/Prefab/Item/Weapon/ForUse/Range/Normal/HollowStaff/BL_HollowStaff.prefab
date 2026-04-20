@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 3894664955079342677}
   - component: {fileID: 9215477062428781011}
   - component: {fileID: 7168080598059698088}
+  - component: {fileID: -9015208798893596348}
   m_Layer: 0
   m_Name: BL_HollowStaff
   m_TagString: Untagged
@@ -223,3 +224,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6604b5164e25f654bbe371670cddc664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-9015208798893596348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6987771563098641921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f696945056177894288852a4d3a7ade0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundID: {fileID: 11400000, guid: 6c63f57ad209eb241ba7cabfb6f29764, type: 2}

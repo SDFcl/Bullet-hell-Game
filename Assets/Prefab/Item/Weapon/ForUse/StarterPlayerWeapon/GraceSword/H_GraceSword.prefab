@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1319243121512177381}
   - component: {fileID: 4922781557694731112}
+  - component: {fileID: 3405279224866775325}
   - component: {fileID: 1093779059283461545}
   m_Layer: 0
   m_Name: Hitbox
@@ -46,6 +47,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTrigger: 1
+--- !u!114 &3405279224866775325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383389371476877031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f696945056177894288852a4d3a7ade0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundID: {fileID: 11400000, guid: 86ebc1e7f3c5ae246b43943690e67d4b, type: 2}
 --- !u!61 &1093779059283461545
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -105,6 +119,7 @@ GameObject:
   - component: {fileID: 3521594247783520168}
   - component: {fileID: 2150881403827125994}
   - component: {fileID: 2581951486942467024}
+  - component: {fileID: -3383862739296562778}
   m_Layer: 0
   m_Name: H_GraceSword
   m_TagString: Untagged
@@ -193,6 +208,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 7740bc74348354844b18ac0049926e93, type: 2}
+--- !u!114 &-3383862739296562778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3413391076227034382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6f0240538c4c8d4caa66993d71bcf7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useAnimationEvent: 0
+  soundID: {fileID: 11400000, guid: 10afb42ac66235f48934eec002c04076, type: 2}
 --- !u!1 &6777364906338858911
 GameObject:
   m_ObjectHideFlags: 0

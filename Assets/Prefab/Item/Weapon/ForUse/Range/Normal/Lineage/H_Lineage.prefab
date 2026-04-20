@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 5406406082156986451}
   - component: {fileID: 8361907374810448358}
   - component: {fileID: 3526760862258553860}
+  - component: {fileID: -2450400909833696248}
   m_Layer: 0
   m_Name: H_Lineage
   m_TagString: Untagged
@@ -171,6 +172,7 @@ MonoBehaviour:
   baseDamage: 10
   currentDamage: 0
   cooldown: 0.2
+  useAnimationEvent: 0
   projectileSpeed: 20
   projectilePoolTag: HollowStaffBL
   manaCost: 1
@@ -200,3 +202,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: c3c4b3a4133acc3459e61ccca6c67166, type: 2}
+--- !u!114 &-2450400909833696248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8543067948389093420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6f0240538c4c8d4caa66993d71bcf7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useAnimationEvent: 0
+  soundID: {fileID: 11400000, guid: 506ff607fc0d6a14bb2bf628bbf4e147, type: 2}

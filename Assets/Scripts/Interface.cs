@@ -13,6 +13,7 @@ public interface IHealable
 
 public interface IWeapon
 {
+    WeaponDataSO WeaponDataSO{get;}
     event Action OnAttack;
 
     void SetOwner(GameObject owner);

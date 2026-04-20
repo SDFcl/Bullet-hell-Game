@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BaseWeaponAnimaion : MonoBehaviour
+public class WeaponAnimaion : MonoBehaviour
 {
     protected Animator animator;
     protected IWeapon weapon;

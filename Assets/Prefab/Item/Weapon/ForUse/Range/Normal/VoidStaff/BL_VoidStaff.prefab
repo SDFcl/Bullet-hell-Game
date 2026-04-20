@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 8641247262612463093}
   - component: {fileID: 6946133005536374230}
   - component: {fileID: -102384297105316179}
+  - component: {fileID: 1970970201500125499}
   m_Layer: 0
   m_Name: BL_VoidStaff
   m_TagString: Untagged
@@ -246,3 +247,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6604b5164e25f654bbe371670cddc664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1970970201500125499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5782698137950688692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f696945056177894288852a4d3a7ade0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundID: {fileID: 11400000, guid: 6c63f57ad209eb241ba7cabfb6f29764, type: 2}
