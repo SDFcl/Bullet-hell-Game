@@ -152,6 +152,7 @@ GameObject:
   - component: {fileID: 343537108506122768}
   - component: {fileID: 3787288551003797566}
   - component: {fileID: 8848896720626759596}
+  - component: {fileID: 8319214156291515363}
   m_Layer: 0
   m_Name: BaseEnemy
   m_TagString: Enemy
@@ -485,6 +486,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   portalTag: Portal
+--- !u!114 &8319214156291515363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4764147975119969297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d24663414fc65014bb278b96f1ebabbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitID: {fileID: 11400000, guid: db9e5bed1e216884f8b81196e78fa322, type: 2}
+  useDeadAnimationEvent: 0
+  dieID: {fileID: 11400000, guid: 08289b16f9205f14ca18cd26b4cbe5c9, type: 2}
 --- !u!1 &7866826553244663882
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,7 +3,7 @@ using UnityEngine;
 public class CharacterSound : MonoBehaviour
 {
     [Header("BaseID")]
-    [SerializeField] SoundID hurtID;
+    [SerializeField] SoundID hitID;
     [SerializeField] private bool useDeadAnimationEvent = false;
     [SerializeField] SoundID dieID;
     private Health health;
@@ -26,7 +26,7 @@ public class CharacterSound : MonoBehaviour
 
     void PlaySoundOnHit()
     {
-        SoundManager.Instance.PlaySFX(hurtID,transform.position);
+        SoundManager.Instance.PlaySFX(hitID,transform.position);
     }
     public void PlaySoundOnDead()
     {

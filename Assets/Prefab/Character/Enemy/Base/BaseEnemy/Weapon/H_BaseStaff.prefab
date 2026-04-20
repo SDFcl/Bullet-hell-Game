@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6941751302337139505}
   - component: {fileID: 6361842490613243919}
   - component: {fileID: 4110428570445005194}
+  - component: {fileID: -6870492347874388881}
   m_Layer: 0
   m_Name: H_BaseStaff
   m_TagString: Untagged
@@ -52,6 +53,7 @@ MonoBehaviour:
   baseDamage: 1
   currentDamage: 0
   cooldown: 0
+  useAnimationEvent: 0
   projectileSpeed: 4
   projectilePoolTag: Enemy_BulletABL
   manaCost: 0
@@ -68,6 +70,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bf9faa0ade8316449bb552720e9cea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6870492347874388881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63836094722377855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6f0240538c4c8d4caa66993d71bcf7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useAnimationEvent: 0
+  soundID: {fileID: 11400000, guid: 0431cd1a2c2b3c246a4983a6fbd22dd2, type: 2}
 --- !u!1 &5308770438016197560
 GameObject:
   m_ObjectHideFlags: 0
