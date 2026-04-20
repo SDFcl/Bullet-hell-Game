@@ -10,12 +10,11 @@ public class Pool
     public int size;
 }
 
-public class ObjectPooler : MonoBehaviour
+public class ObjectPooler : Singleton<ObjectPooler>
 {
-    
-	public static ObjectPooler Instance;
 
-
+    protected override bool UseDontDestroyOnLoad => false;
+	
     public ObjectPoolTableSO poolTable;
 	public bool useScriptableObject = true;
 	public List<Pool> pools;
@@ -23,9 +22,9 @@ public class ObjectPooler : MonoBehaviour
     public Dictionary<string, List<GameObject>> poolDictionary;
 
 
-	private void Awake()
+	protected override void Awake()
 	{
-		Instance = this;
+		base.Awake();
 
 		finalPools = new List<Pool>();
 
