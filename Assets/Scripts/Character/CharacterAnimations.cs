@@ -18,13 +18,13 @@ public class CharacterAnimations : MonoBehaviour
     protected virtual void OnEnable()
     {
         health.OnDead += OnDeadAnimation;
-        attack.OnAttacked += OnAttackAnimation;
+        attack.OnAttack += OnAttackAnimation;
     }
 
     protected virtual void OnDisable()
     {
         health.OnDead -= OnDeadAnimation;
-        attack.OnAttacked -= OnAttackAnimation;
+        attack.OnAttack -= OnAttackAnimation;
     }
 
     protected virtual void Update()

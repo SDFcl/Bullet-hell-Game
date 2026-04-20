@@ -9,7 +9,7 @@ public class Attack : MonoBehaviour
     private HoldingItemWatcher holdingItemWatcher;
     private IWeapon currentWeapon;
 
-    public Action OnAttacked;
+    public Action OnAttack;
 
     private void Awake()
     {
@@ -74,7 +74,7 @@ public class Attack : MonoBehaviour
 
     private void HandleWeaponAttack()
     {
-        OnAttacked?.Invoke();
+        OnAttack?.Invoke();
     }
 
     private void UnsubscribeCurrentWeapon()

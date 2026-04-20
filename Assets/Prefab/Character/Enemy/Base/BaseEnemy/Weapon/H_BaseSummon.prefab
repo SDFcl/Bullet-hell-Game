@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8599427463080068349}
   - component: {fileID: 8633908575739796121}
+  - component: {fileID: -7984183540362250826}
   m_Layer: 0
   m_Name: H_BaseSummon
   m_TagString: Untagged
@@ -60,6 +61,20 @@ MonoBehaviour:
     point: {fileID: 6427788143073687596}
   - summonPoolTags: []
     point: {fileID: 2253937938594893248}
+--- !u!114 &-7984183540362250826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479419224247310238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6f0240538c4c8d4caa66993d71bcf7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useAnimationEvent: 0
+  soundID: {fileID: 11400000, guid: ee615171ea503cc46ac00354ca0c3eb1, type: 2}
 --- !u!1 &2639931301489570180
 GameObject:
   m_ObjectHideFlags: 0
