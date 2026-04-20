@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 285123c42b81afb4bb8a12b41da865db, type: 3}
+  m_Name: PlayerSFX
+  m_EditorClassIdentifier: 
+  sounds:
+  - idName: PlayerDie
+    id: {fileID: 11400000, guid: b3e9136d3d425004aaac5a8d1cf4c1a9, type: 2}
+    clip: {fileID: 8300000, guid: c714daacc2db7354cb9393e985c42f9d, type: 3}
+    volume: 1
+    loop: 0
+  - idName: PlayerHurt
+    id: {fileID: 11400000, guid: 91bb2cd09acb8684690e0740b6fb2119, type: 2}
+    clip: {fileID: 8300000, guid: eacca72f06cbff247a8583d3a957e30b, type: 3}
+    volume: 1
+    loop: 0
+  - idName: PlayerRoll
+    id: {fileID: 11400000, guid: 0ba3b0379ed03a84a8c410f41608c46a, type: 2}
+    clip: {fileID: 0}
+    volume: 1
+    loop: 0
