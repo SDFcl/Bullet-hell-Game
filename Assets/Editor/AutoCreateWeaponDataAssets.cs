@@ -1,101 +1,101 @@
-using System.IO;
-using UnityEditor;
-using UnityEngine;
+// using System.IO;
+// using UnityEditor;
+// using UnityEngine;
 
-public class AutoCreateWeaponDataAssets : AssetPostprocessor
-{
-    private const string TargetRoot = "Assets/Prefab/Item/Weapon/ForUse";
+// public class AutoCreateWeaponDataAssets : AssetPostprocessor
+// {
+//     private const string TargetRoot = "Assets/Prefab/Item/Weapon/ForUse";
 
-    static void OnPostprocessAllAssets(
-        string[] importedAssets,
-        string[] deletedAssets,
-        string[] movedAssets,
-        string[] movedFromAssetPaths)
-    {
-        foreach (string path in importedAssets)
-        {
-            if (!AssetDatabase.IsValidFolder(path))
-                continue;
+//     static void OnPostprocessAllAssets(
+//         string[] importedAssets,
+//         string[] deletedAssets,
+//         string[] movedAssets,
+//         string[] movedFromAssetPaths)
+//     {
+//         foreach (string path in importedAssets)
+//         {
+//             if (!AssetDatabase.IsValidFolder(path))
+//                 continue;
 
-            if (!IsTargetDataFolder(path))
-                continue;
+//             if (!IsTargetDataFolder(path))
+//                 continue;
 
-            CreateDataAssetsIfMissing(path);
-        }
-    }
+//             CreateDataAssetsIfMissing(path);
+//         }
+//     }
 
-    private static bool IsTargetDataFolder(string folderPath)
-    {
-        if (!folderPath.StartsWith(TargetRoot))
-            return false;
+//     private static bool IsTargetDataFolder(string folderPath)
+//     {
+//         if (!folderPath.StartsWith(TargetRoot))
+//             return false;
 
-        string folderName = Path.GetFileName(folderPath);
-        return folderName == "Data";
-    }
+//         string folderName = Path.GetFileName(folderPath);
+//         return folderName == "Data";
+//     }
 
-    private static void CreateDataAssetsIfMissing(string dataFolderPath)
-    {
-        string weaponFolderPath = Path.GetDirectoryName(dataFolderPath)?.Replace("\\", "/");
-        if (string.IsNullOrEmpty(weaponFolderPath))
-            return;
+//     private static void CreateDataAssetsIfMissing(string dataFolderPath)
+//     {
+//         string weaponFolderPath = Path.GetDirectoryName(dataFolderPath)?.Replace("\\", "/");
+//         if (string.IsNullOrEmpty(weaponFolderPath))
+//             return;
 
-        string weaponFolderName = Path.GetFileName(weaponFolderPath);
+//         string weaponFolderName = Path.GetFileName(weaponFolderPath);
 
-        string weaponDataPath = $"{dataFolderPath}/{weaponFolderName}_Ability_Data.asset";
-        string itemDataPath = $"{dataFolderPath}/{weaponFolderName}_Interection_Data.asset";
+//         string weaponDataPath = $"{dataFolderPath}/{weaponFolderName}_Ability_Data.asset";
+//         string itemDataPath = $"{dataFolderPath}/{weaponFolderName}_Interaction_Data.asset";
 
-        bool createdAnything = false;
+//         bool createdAnything = false;
 
-        if (AssetDatabase.LoadAssetAtPath<WeaponDataSO>(weaponDataPath) == null)
-        {
-            WeaponDataSO weaponData = ScriptableObject.CreateInstance<WeaponDataSO>();
+//         if (AssetDatabase.LoadAssetAtPath<WeaponDataSO>(weaponDataPath) == null)
+//         {
+//             WeaponDataSO weaponData = ScriptableObject.CreateInstance<WeaponDataSO>();
 
-            weaponData.weaponType = WeaponType.Melee;
-            weaponData.meleeData = new MeleeWeaponData
-            {
-                baseData = new BaseWeaponData
-                {
-                    weaponName = weaponFolderName,
-                    baseDamage = 0f,
-                    fireRate = FireRateType.Normal,
-                    weaponType = WeaponType.Melee
-                }
-            };
+//             weaponData.weaponType = WeaponType.Melee;
+//             weaponData.meleeData = new MeleeWeaponData
+//             {
+//                 baseData = new BaseWeaponData
+//                 {
+//                     weaponName = weaponFolderName,
+//                     baseDamage = 0f,
+//                     fireRate = FireRateType.Normal,
+//                     weaponType = WeaponType.Melee
+//                 }
+//             };
 
-            weaponData.rangedData = new RangedWeaponData
-            {
-                baseData = new BaseWeaponData
-                {
-                    weaponName = weaponFolderName,
-                    baseDamage = 0f,
-                    fireRate = FireRateType.Normal,
-                    weaponType = WeaponType.Ranged
-                },
-                projectileTag = string.Empty,
-                manaCostType = ManaCostType.None,
-                projectileSpeed = 0f
-            };
+//             weaponData.rangedData = new RangedWeaponData
+//             {
+//                 baseData = new BaseWeaponData
+//                 {
+//                     weaponName = weaponFolderName,
+//                     baseDamage = 0f,
+//                     fireRate = FireRateType.Normal,
+//                     weaponType = WeaponType.Ranged
+//                 },
+//                 projectileTag = string.Empty,
+//                 manaCostType = ManaCostType.None,
+//                 projectileSpeed = 0f
+//             };
 
-            AssetDatabase.CreateAsset(weaponData, weaponDataPath);
-            createdAnything = true;
-        }
+//             AssetDatabase.CreateAsset(weaponData, weaponDataPath);
+//             createdAnything = true;
+//         }
 
-        if (AssetDatabase.LoadAssetAtPath<ItemData>(itemDataPath) == null)
-        {
-            ItemData itemData = ScriptableObject.CreateInstance<ItemData>();
+//         if (AssetDatabase.LoadAssetAtPath<ItemData>(itemDataPath) == null)
+//         {
+//             ItemData itemData = ScriptableObject.CreateInstance<ItemData>();
 
-            itemData.itemName = weaponFolderName;
-            itemData.itemType = ItemType.Weapon;
+//             itemData.itemName = weaponFolderName;
+//             itemData.itemType = ItemType.Weapon;
 
-            AssetDatabase.CreateAsset(itemData, itemDataPath);
-            createdAnything = true;
-        }
+//             AssetDatabase.CreateAsset(itemData, itemDataPath);
+//             createdAnything = true;
+//         }
 
-        if (createdAnything)
-        {
-            AssetDatabase.SaveAssets();
-            AssetDatabase.Refresh();
-            Debug.Log($"Auto-created data assets in: {dataFolderPath}");
-        }
-    }
-}
+//         if (createdAnything)
+//         {
+//             AssetDatabase.SaveAssets();
+//             AssetDatabase.Refresh();
+//             Debug.Log($"Auto-created data assets in: {dataFolderPath}");
+//         }
+//     }
+// }

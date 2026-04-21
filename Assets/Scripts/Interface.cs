@@ -107,3 +107,8 @@ public interface IPlayerStats
     float MaxHealth { get; }
 }
 
+public interface ICollectEvent
+{
+    event Action<GameObject> OnCollected;
+
+}

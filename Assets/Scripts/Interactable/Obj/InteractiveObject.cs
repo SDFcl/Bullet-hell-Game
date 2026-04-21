@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -7,6 +8,7 @@ using UnityEngine;
 public abstract class InteractiveObject : MonoBehaviour, IInteractive
 {
     [SerializeField] protected string interactionName = "Interact";
+    public Action OnInteraction;
 
     public virtual string GetInteractionName()
     {
@@ -22,6 +24,7 @@ public abstract class InteractiveObject : MonoBehaviour, IInteractive
     public void Interact(GameObject player)
     {
         Debug.Log($"[InteractiveObject] {interactionName}: {gameObject.name}");
+        OnInteraction?.Invoke();
         ExecuteInteraction();
     }
 

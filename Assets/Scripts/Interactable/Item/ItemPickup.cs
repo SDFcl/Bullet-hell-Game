@@ -1,9 +1,10 @@
+using System;
 using UnityEngine;
 
-public class ItemPickup : MonoBehaviour, IPickable
+public class ItemPickup : MonoBehaviour, IPickable,ICollectEvent
 {
     public ItemData itemData;
-
+    public event Action<GameObject> OnCollected;
     public ItemData GetItemData()
     {
         return itemData;
@@ -46,6 +47,7 @@ public class ItemPickup : MonoBehaviour, IPickable
                 inventory.AddConsumable(newItem);
             }
         }
+        OnCollected?.Invoke(gameObject);
         Destroy(gameObject);
     }
 }
