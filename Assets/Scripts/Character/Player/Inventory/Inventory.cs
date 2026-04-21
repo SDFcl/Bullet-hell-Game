@@ -23,7 +23,7 @@ public class Inventory : MonoBehaviour
     #endregion
 
     #region Weapon
-    public void AddWeapon(InventoryItem item)
+    public bool AddWeapon(InventoryItem item)
     {
         if (Weapons.Count == 0)
         {
@@ -31,25 +31,31 @@ public class Inventory : MonoBehaviour
             OnWeaponChanged?.Invoke(0);
             // Debug.Log("Added weapon: " + item.itemData.itemName + " at index 0");
             SaveInventory();
-            return;
+            return true;
         }
 
         if (Weapons.Count >= maxWeapons)
         {
             HoldingWeapon holdingWeapon = FindObjectOfType<HoldingWeapon>();
             int currentIndex = holdingWeapon.currentIndex;
+            if (currentIndex == 0)
+            {
+                Debug.Log("Cannot add weapon: " + item.itemData.itemName + " because current holding weapon index is 0 and max weapons reached.");
+                return false;
+            }
             DropWeapon(currentIndex);
             Weapons.Insert(currentIndex, item);
 
             OnWeaponChanged?.Invoke(currentIndex);
             SaveInventory();
-            return;
+            return true;
         }
 
         Weapons.Add(item);
         int newIndex = Weapons.Count - 1;
         OnWeaponChanged?.Invoke(newIndex);
         SaveInventory();
+        return true;
     }
 
     public void DropWeapon(int index)
