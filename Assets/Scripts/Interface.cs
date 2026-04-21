@@ -1,6 +1,7 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections;
 public interface IDamageable
 {
     void TakeDamage(float damage);
@@ -114,4 +115,8 @@ public interface ICollectEvent
 {
     event Action<GameObject> OnCollected;
 
+}
+public interface ISceneExitTask
+{
+    IEnumerator Execute();
 }
