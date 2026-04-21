@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
 public class InventoryItem
 {
+    public Action OnUse;
     public ItemData itemData;
 
     public InventoryItem(ItemData data)
@@ -27,6 +29,7 @@ public class InventoryItem
             effect.Apply(user);
         }
 
+        OnUse?.Invoke();
         inventory.Remove(this);
     }
 }

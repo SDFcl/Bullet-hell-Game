@@ -18,6 +18,7 @@ public class Inventory : MonoBehaviour
 
     #region Events
     public Action<int> OnWeaponChanged;
+    public Action OnConsumableChanged;
     public Action<int> OnCoinsChanged;
     #endregion
 
@@ -73,6 +74,7 @@ public class Inventory : MonoBehaviour
             return;
         }
         Consumables.Add(item);
+        OnConsumableChanged?.Invoke();
         SaveInventory();
 
     }
@@ -120,6 +122,7 @@ public class Inventory : MonoBehaviour
             GameSession.savedInventory.consumables.Add(item);
         }
 
+        GameSession.savedInventory.coins = Coins;
     }
 
     public void LoadInventory()
@@ -138,6 +141,13 @@ public class Inventory : MonoBehaviour
             Consumables.Add(item);
         }
 
+        Coins = GameSession.savedInventory.coins;
+        OnCoinsChanged?.Invoke(Coins);
+
+        if(Weapons.Count > 0)
+        {
+            OnWeaponChanged?.Invoke(0);
+        }
     }
     #endregion
 }
