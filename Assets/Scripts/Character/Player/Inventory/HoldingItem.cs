@@ -25,13 +25,14 @@ public class HoldingWeapon : MonoBehaviour
         Item item = GetComponentInChildren<Item>();
         if (item != null)
         {
-            Debug.Log(GameSession.savedInventory.weapons);
+            // Debug.Log(GameSession.savedInventory.weapons);
             if(GameSession.savedInventory.weapons != null && GameSession.savedInventory.weapons.Count > 0)
             {
                 Debug.Log("HoldingWeapon: Found item in child on Awake, but inventory already has saved weapons. Skipping adding item to inventory: " + item.itemData.itemName);
                 return;
             }
-            inventory.AddWeapon(item);
+            
+            inventory.AddWeapon(new InventoryItem(item.itemData));
             //Debug.Log("HoldingWeapon: Added item to inventory on Awake: " + item.itemData.itemName);
         }
     }
@@ -113,10 +114,11 @@ public class HoldingWeapon : MonoBehaviour
 
         currentIndex = index;
 
-        Item item = inventory.Weapons[index];
+        InventoryItem item = inventory.Weapons[index];
+
 
         currentItem = Instantiate(item.itemData.HoldingPrefab, transform);
-        Debug.Log("Holding weapon: " + item.itemData.itemName + " at index " + index);
+        // Debug.Log("Holding weapon: " + item.itemData.itemName + " at index " + index);
     }
 
     public void HoldWeapon(int value)

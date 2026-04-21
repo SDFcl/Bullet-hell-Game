@@ -6,11 +6,11 @@ public class Inventory : MonoBehaviour
 {
     [Header("Weapons")]
     public int maxWeapons = 5;
-    public List<Item> Weapons = new List<Item>();
+    public List<InventoryItem> Weapons = new List<InventoryItem>();
 
     [Header("Consumables")]
     public int maxConsumables = 1;
-    public List<Item> Consumables = new List<Item>();
+    public List<InventoryItem> Consumables = new List<InventoryItem>();
 
     [Header("Currency")]
     [SerializeField]
@@ -22,13 +22,13 @@ public class Inventory : MonoBehaviour
     #endregion
 
     #region Weapon
-    public void AddWeapon(Item item)
+    public void AddWeapon(InventoryItem item)
     {
         if (Weapons.Count == 0)
         {
             Weapons.Add(item);
             OnWeaponChanged?.Invoke(0);
-            Debug.Log("Added weapon: " + item.itemData.itemName + " at index 0");
+            // Debug.Log("Added weapon: " + item.itemData.itemName + " at index 0");
             SaveInventory();
             return;
         }
@@ -55,7 +55,7 @@ public class Inventory : MonoBehaviour
     {
         if (index < 0 || index >= Weapons.Count) return;
 
-        Item item = Weapons[index];
+        InventoryItem item = Weapons[index];
 
         Instantiate(item.itemData.WorldPrefab, this.transform.position, Quaternion.identity);
 
@@ -63,7 +63,7 @@ public class Inventory : MonoBehaviour
     }
     #endregion
     #region Consumable
-    public void AddConsumable(Item item)
+    public void AddConsumable(InventoryItem item)
     {
         if (Consumables.Count >= maxConsumables)
         {
@@ -72,14 +72,15 @@ public class Inventory : MonoBehaviour
             SaveInventory();
             return;
         }
-        SaveInventory();
         Consumables.Add(item);
+        SaveInventory();
+
     }
 
     public void DropConsumable(int index)
     {
         if (index < 0 || index >= Consumables.Count) return;
-        Item item = Consumables[index];
+        InventoryItem item = Consumables[index];
         foreach (var effect in item.itemData.effects)
         {
             effect.Apply(this.gameObject);
@@ -105,38 +106,38 @@ public class Inventory : MonoBehaviour
     #region Save/Load
     public void SaveInventory()
     {
-        GameSession.savedInventory.weapons = new List<Item>();
+        GameSession.savedInventory.weapons = new List<InventoryItem>();
+
         foreach (var item in Weapons)
         {
             GameSession.savedInventory.weapons.Add(item);
         }
-        GameSession.savedInventory.consumables = new List<Item>();
+
+        GameSession.savedInventory.consumables = new List<InventoryItem>();
+
         foreach (var item in Consumables)
         {
             GameSession.savedInventory.consumables.Add(item);
         }
-        GameSession.savedInventory.coins = Coins;
+
     }
 
     public void LoadInventory()
     {
         Weapons.Clear();
+
         foreach (var item in GameSession.savedInventory.weapons)
         {
             Weapons.Add(item);
         }
+
         Consumables.Clear();
+
         foreach (var item in GameSession.savedInventory.consumables)
         {
             Consumables.Add(item);
         }
-        Coins = GameSession.savedInventory.coins;
-        OnCoinsChanged?.Invoke(Coins);
-        // Trigger weapon changed for first weapon if any
-        if (Weapons.Count > 0)
-        {
-            OnWeaponChanged?.Invoke(0);
-        }
+
     }
     #endregion
 }

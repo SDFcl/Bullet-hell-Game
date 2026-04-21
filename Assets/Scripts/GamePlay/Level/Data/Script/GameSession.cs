@@ -4,8 +4,9 @@ using UnityEngine;
 [System.Serializable]
 public struct SavedInventory
 {
-    public List<Item> weapons;
-    public List<Item> consumables;
+    public List<InventoryItem> weapons;
+    public List<InventoryItem> consumables;
+
     public int coins;
 }
 

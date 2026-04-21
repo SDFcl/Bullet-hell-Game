@@ -17,37 +17,37 @@ public class ItemPickup : MonoBehaviour, IPickable,ICollectEvent
     }
 
     public void Pickup(Inventory inventory)
+{
+    if (itemData == null || inventory == null) return;
+
+    InventoryItem newItem = new InventoryItem(itemData);
+
+    if (itemData.itemType == ItemType.Weapon)
     {
-        if (itemData == null || inventory == null) return;
-
-        Item newItem = new Item(itemData);
-
-        // Depending on the item type, add it to the appropriate inventory list
-        if (itemData.itemType == ItemType.Weapon)
-        {
-            inventory.AddWeapon(newItem);
-        }
-        else if (itemData.itemType == ItemType.Consumable)
-        {
-            // Check if it's a passive effect or useable
-            if (itemData.consumableType == ConsumableType.passive)
-            {
-                // Apply passive effect immediately without storing
-                GameObject player = inventory.GetComponentInParent<PlayerController>()?.gameObject ?? inventory.gameObject;
-                foreach (var effect in itemData.effects)
-                {
-                    effect.Apply(player);
-                }
-                inventory.AddConsumable(newItem);
-                Debug.Log($"[ItemPickup] Applied passive effect: {itemData.itemName}");
-            }
-            else
-            {
-                // Useable consumable - store in inventory
-                inventory.AddConsumable(newItem);
-            }
-        }
-        OnCollected?.Invoke(gameObject);
-        Destroy(gameObject);
+        inventory.AddWeapon(newItem);
     }
+    else if (itemData.itemType == ItemType.Consumable)
+    {
+        if (itemData.consumableType == ConsumableType.passive)
+        {
+            GameObject player = inventory.GetComponentInParent<PlayerController>()?.gameObject ?? inventory.gameObject;
+
+            foreach (var effect in itemData.effects)
+            {
+                effect.Apply(player);
+            }
+
+            inventory.AddConsumable(newItem);
+            Debug.Log($"[ItemPickup] Applied passive effect: {itemData.itemName}");
+        }
+        else
+        {
+            inventory.AddConsumable(newItem);
+        }
+    }
+
+    OnCollected?.Invoke(gameObject);
+    Destroy(gameObject);
+}
+
 }
