@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 285123c42b81afb4bb8a12b41da865db, type: 3}
-  m_Name: InteractableSFX
+  m_Name: BaseInteractableSFX
   m_EditorClassIdentifier: 
   sounds:
   - idName: BasePickup
@@ -32,4 +32,8 @@ MonoBehaviour:
   - idName: Fountain
     id: {fileID: 11400000, guid: 8f509ad02b180d14c88083e54a21caa9, type: 2}
     clip: {fileID: 8300000, guid: e9c5b297be9b7b843a06c8a3194dddeb, type: 3}
+    volume: 1
+  - idName: BaseChest
+    id: {fileID: 11400000, guid: 76d5083661f929447a847855810f7ba8, type: 2}
+    clip: {fileID: 8300000, guid: 279dcfe219e4dd44bba1a420f50ed302, type: 3}
     volume: 1

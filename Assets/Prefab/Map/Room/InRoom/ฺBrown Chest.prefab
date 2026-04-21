@@ -27,8 +27,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2887110070639269224}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: -1897660927
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.31132078, g: 0.1744235, b: 0.09251513, a: 1}
+  m_Sprite: {fileID: 589774470, guid: 545e8b755f2c4e14ca2fa62784f64b42, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -167,7 +167,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &5104412275391761676
 MonoBehaviour:
@@ -184,8 +184,7 @@ MonoBehaviour:
   interactionName: Interact
   randomItem: {fileID: -7110447018414506428}
   isOpened: 0
-  animator: {fileID: 0}
-  openAnimationTrigger: Open
+  sprite: {fileID: 1457517696, guid: 545e8b755f2c4e14ca2fa62784f64b42, type: 3}
 --- !u!114 &-7110447018414506428
 MonoBehaviour:
   m_ObjectHideFlags: 0
