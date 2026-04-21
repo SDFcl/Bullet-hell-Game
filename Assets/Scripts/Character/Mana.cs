@@ -8,6 +8,7 @@ public class Mana : MonoBehaviour
 
     [field: SerializeField]
     public float CurrentMana { get; private set; }
+    public float MaxMana => maxMana;
 
     private void Awake()
     {
