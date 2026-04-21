@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b0fd00893483d6f4d894a40b168e887f
+guid: 2c9a56d192b75f84aabb32067dceab30
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -93,11 +93,24 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Artifact B_0
+      name: WorldrootLantern
       rect:
         serializedVersion: 2
         x: 0
@@ -105,21 +118,21 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec0a0eb8f4f55bf47ac75bd2d7e02e5d
-      internalID: -1198780761
+      spriteID: 929b641fc9d52874a900a13d3cb676c1
+      internalID: -961552928
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Artifact B_1
+      name: WorldrootLantern_1
       rect:
         serializedVersion: 2
         x: 32
@@ -127,15 +140,15 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ce1c6ce4c8cae974ba3a17d205f9f261
-      internalID: 995356303
+      spriteID: 076d4ca4b63a4334897b34dda8929ca1
+      internalID: 562507601
       vertices: []
       indices: 
       edges: []
@@ -144,7 +157,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 923fe12c327f7b1429b2a0754888215c
+    spriteID: 478cf19acbbe92e4c8cdc3c08b1d4b9f
     internalID: 0
     vertices: []
     indices: 
@@ -154,8 +167,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Artifact B_0: -1198780761
-      Artifact B_1: 995356303
+      WorldrootLantern: -961552928
+      WorldrootLantern_1: 562507601
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
