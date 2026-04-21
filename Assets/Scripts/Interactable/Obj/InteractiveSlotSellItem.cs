@@ -1,8 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public abstract class InteractiveSlotSellItem : MonoBehaviour, IInteractive
 {
     [SerializeField] protected string interactionName = "Interact";
+
+    public event Action OnInteract;
 
     public virtual string GetInteractionName()
     {
@@ -19,6 +22,7 @@ public abstract class InteractiveSlotSellItem : MonoBehaviour, IInteractive
     public void Interact(GameObject player)
     {
         Debug.Log($"[InteractiveObject] {interactionName}: {gameObject.name}");
+        OnInteract?.Invoke();
         ExecuteInteraction(player);
     }
 

@@ -10,7 +10,7 @@ public abstract class InteractiveObject : MonoBehaviour, IInteractive
 
     [SerializeField] protected string interactionName = "Interact";
 
-    public Action OnInteract;
+    public event Action OnInteract;
 
     public virtual string GetInteractionName()
     {
