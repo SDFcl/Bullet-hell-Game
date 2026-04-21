@@ -24,7 +24,7 @@ public class WeaponSound : MonoBehaviour
     }
     void Start()
     {
-        if(weapon.WeaponDataSO.onAttackSoundID != null && weapon != null)
+        if(weapon != null && weapon.WeaponDataSO != null && weapon.WeaponDataSO.onAttackSoundID != null)
         {
             soundID = weapon.WeaponDataSO.onAttackSoundID;
         }
