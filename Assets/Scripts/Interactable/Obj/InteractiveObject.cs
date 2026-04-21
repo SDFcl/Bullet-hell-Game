@@ -5,10 +5,11 @@ using UnityEngine;
 /// ✓ Base class for interactive objects (doors, chests, NPCs, etc.)
 /// Shows how to implement IInteractive interface
 /// </summary>
-public abstract class InteractiveObject : MonoBehaviour, IInteractive
+public abstract class InteractiveObject : MonoBehaviour, IInteractive, ICollectEvent
 {
+    public event Action<GameObject> OnCollected;
+
     [SerializeField] protected string interactionName = "Interact";
-    public Action OnInteraction;
 
     public virtual string GetInteractionName()
     {
@@ -24,7 +25,7 @@ public abstract class InteractiveObject : MonoBehaviour, IInteractive
     public void Interact(GameObject player)
     {
         Debug.Log($"[InteractiveObject] {interactionName}: {gameObject.name}");
-        OnInteraction?.Invoke();
+        OnCollected?.Invoke(gameObject);
         ExecuteInteraction();
     }
 

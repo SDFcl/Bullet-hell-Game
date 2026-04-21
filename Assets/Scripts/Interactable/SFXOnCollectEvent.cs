@@ -1,6 +1,6 @@
 using UnityEngine;
 using System;
-public class PlaySFXOnDisable : MonoBehaviour
+public class SFXOnCollectEvent : MonoBehaviour
 {
     [SerializeField] private SoundID soundID;
     private ICollectEvent collectEvent;
