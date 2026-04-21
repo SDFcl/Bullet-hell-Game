@@ -19,9 +19,9 @@ public class StatUpgradeDecorator : PlayerStatDecorator
     {
         get
         {
-            if (data.upgradeType == UpgradeType.Health)
+            if (data.upgradeType == UpgradeType.IncrementalDamage)
             {
-                int level = upgradeLevels.ContainsKey(UpgradeType.Health) ? upgradeLevels[UpgradeType.Health] : 0;
+                int level = upgradeLevels.ContainsKey(UpgradeType.IncrementalDamage) ? upgradeLevels[UpgradeType.IncrementalDamage] : 0;
                 if (level > 0 && level <= data.upgradeValues.Length)
                 {
                     int index = level;

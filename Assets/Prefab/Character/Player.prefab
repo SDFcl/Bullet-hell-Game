@@ -310,6 +310,7 @@ GameObject:
   - component: {fileID: 8437990372232590375}
   - component: {fileID: 3558495607015853056}
   - component: {fileID: 7497996768805550071}
+  - component: {fileID: 1914432539701490768}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -516,6 +517,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 876caa6d-5505-4545-884a-7f5c87bebca9
     m_ActionName: 'Player/Use Consumalb[/Keyboard/q]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8709628061743692171}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: UseSpecialAbility
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a23af2f5-d27c-4163-8a69-a8f80f6ec39d
+    m_ActionName: 'Player/Use Ability[/Keyboard/f]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -803,6 +820,21 @@ MonoBehaviour:
   dieID: {fileID: 11400000, guid: b3e9136d3d425004aaac5a8d1cf4c1a9, type: 2}
   useDodgeAnimationEvent: 1
   DodgeID: {fileID: 11400000, guid: 0ba3b0379ed03a84a8c410f41608c46a, type: 2}
+--- !u!114 &1914432539701490768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5741775601454878896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c81560ac7119da4d99d7146a38a3757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageMultiplier: 1.5
+  duration: 3
+  cooldownTime: 5
 --- !u!1 &6152634586871185684
 GameObject:
   m_ObjectHideFlags: 0

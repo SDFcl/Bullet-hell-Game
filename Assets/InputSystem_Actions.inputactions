@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Use Ability",
+                    "type": "Button",
+                    "id": "a23af2f5-d27c-4163-8a69-a8f80f6ec39d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -386,6 +395,28 @@
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "Use Consumalb",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "693e5215-f519-462a-b9d3-db4c8db9cd41",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Use Ability",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d26f5ac3-6d9f-41a2-8aba-b3bc791651df",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Use Ability",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

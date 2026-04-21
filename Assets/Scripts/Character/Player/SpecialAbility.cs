@@ -17,6 +17,7 @@ public class SpecialAbility : MonoBehaviour
         {
             IPlayerStats stats = upgradeManager.GetFinalStats();
             damageMultiplier += stats.IncreaseDamage/100; // เพิ่มความเสียหายจากอัพเกรด
+            Debug.Log($"[SpecialAbility] Damage multiplier after applying upgrades: {damageMultiplier}. {stats.IncreaseDamage}");
         }
     }
 
@@ -25,7 +26,10 @@ public class SpecialAbility : MonoBehaviour
         if (Attack == null) return;
 
         // เพิ่มความเสียหายชั่วคราว
-        Attack.AddDamagePercent(damageMultiplier - 1); // เพิ่มเป็น damageMultiplier เท่า
+        Attack.AddDamagePercent(damageMultiplier); // เพิ่มเป็น damageMultiplier เท่า
+
+        //Animation หรือ VFX สำหรับสกิลพิเศษสามารถใส่ตรงนี้ได้
+
 
         // เริ่มคูลดาวน์
         Invoke(nameof(ResetDamage), duration);
@@ -35,6 +39,9 @@ public class SpecialAbility : MonoBehaviour
     {
         if (Attack == null) return;
         // รีเซ็ตความเสียหายกลับเป็นปกติ
-        Attack.AddDamagePercent(1 - damageMultiplier); // ลดกลับเป็น 1 เท่า
+        Attack.RemoveDamagePercent(damageMultiplier); // ลดกลับเป็น 1 เท่า
+        //Animation หรือ VFX สำหรับรีเซ็ตสกิลพิเศษสามารถใส่ตรงนี้ได้
+
+
     }
 }

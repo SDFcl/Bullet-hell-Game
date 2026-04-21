@@ -21,7 +21,7 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
 
     protected float cooldownTimer;
     protected GameObject owner;
-    protected float damagePercent = 0f;
+    public float damagePercent = 0f;
     protected float flatDamage = 0f;
 
     private float minimumCooldown = 0f;
