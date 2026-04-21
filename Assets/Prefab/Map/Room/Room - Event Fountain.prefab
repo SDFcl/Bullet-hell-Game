@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 8066073695657230024}
   - component: {fileID: 1200540141126679003}
   - component: {fileID: 2771308049208225988}
+  - component: {fileID: 5529990299964152058}
   m_Layer: 6
   m_Name: Fountain
   m_TagString: Untagged
@@ -184,7 +185,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b41f5fa968857054ea48359a9bf7f507, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionName: Interact
   HealAmount: 2
+--- !u!114 &5529990299964152058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8252412422980057084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99a3df722d43e134d94199e479f9aa7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundID: {fileID: 11400000, guid: 8f509ad02b180d14c88083e54a21caa9, type: 2}
 --- !u!1001 &3447737461235617829
 PrefabInstance:
   m_ObjectHideFlags: 0

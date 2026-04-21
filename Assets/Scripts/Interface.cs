@@ -78,6 +78,7 @@ public interface IInteractive : IInteractable
 {
     string GetInteractionName();
     bool CanInteract(GameObject player);
+    event Action OnInteract;
 }
 
 public interface ILevel

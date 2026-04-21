@@ -9,26 +9,26 @@ public class Chest : InteractiveObject
     [SerializeField] private StartRandomItem randomItem;
     [SerializeField] private bool isOpened = false;
 
-    [Header("Visual Feedback")]
-    [SerializeField] private Animator animator;
-    [SerializeField] private string openAnimationTrigger = "Open";
+    [SerializeField] Sprite sprite;
+    private SpriteRenderer spriteRenderer;
+    void Awake()
+    {
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+    }
 
     public override string GetInteractionName()
     {
         return isOpened ? "Chest (Opened)" : "Open Chest";
     }
 
-    protected override void ExecuteInteraction()
+    protected override void ExecuteInteraction(GameObject player)
     {
         if (isOpened) return;
 
         isOpened = true;
 
         // Play open animation
-        if (animator != null)
-        {
-            animator.SetTrigger(openAnimationTrigger);
-        }
+        spriteRenderer.sprite = sprite;
 
         // Give random rewards
        

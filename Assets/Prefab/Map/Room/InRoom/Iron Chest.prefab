@@ -27,8 +27,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2887110070639269224}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: -1897660927
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.8018868, g: 0.8018868, b: 0.8018868, a: 1}
+  m_Sprite: {fileID: -2093990359, guid: 545e8b755f2c4e14ca2fa62784f64b42, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 7881708505390749687}
   - component: {fileID: 5104412275391761676}
   - component: {fileID: 6857533539513568828}
+  - component: {fileID: 7147497484090455176}
   m_Layer: 6
   m_Name: Iron Chest
   m_TagString: Untagged
@@ -166,7 +167,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &5104412275391761676
 MonoBehaviour:
@@ -183,8 +184,7 @@ MonoBehaviour:
   interactionName: Interact
   randomItem: {fileID: 6857533539513568828}
   isOpened: 0
-  animator: {fileID: 0}
-  openAnimationTrigger: Open
+  sprite: {fileID: -598116783, guid: 545e8b755f2c4e14ca2fa62784f64b42, type: 3}
 --- !u!114 &6857533539513568828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,3 +198,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomItem: {fileID: 11400000, guid: f0735f400ef7eb948998b944f76180a9, type: 2}
+--- !u!114 &7147497484090455176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8363852714490161410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99a3df722d43e134d94199e479f9aa7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundID: {fileID: 11400000, guid: 76d5083661f929447a847855810f7ba8, type: 2}
