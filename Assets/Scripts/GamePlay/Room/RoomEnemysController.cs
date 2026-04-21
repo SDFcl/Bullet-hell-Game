@@ -29,7 +29,6 @@ public class RoomEnemysController : MonoBehaviour
             }
             Debug.LogError("Room area collider is not assigned!");
         }
-
     }
 
     private void Start()

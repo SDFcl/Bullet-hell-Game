@@ -7,7 +7,6 @@ public class UpgradeShop : MonoBehaviour
 {
     [Header("References")]
     public PlayerUpgradeManager manager;
-    public int currency;
 
     [Header("UI")]
     public Toggle toggle;
@@ -44,17 +43,17 @@ public class UpgradeShop : MonoBehaviour
         int cost = data.upgradeValues[nextLevel].cost;
 
         // 🔒 เช็คเงินทีหลัง (ปลอดภัยกว่า)
-        if (currency < cost)
+        if (!MetaCurrency.Instance.CanAfford(cost))
         {
             Debug.Log("เงินไม่พอ");
             return;
         }
 
-        currency -= cost;
+        MetaCurrency.Instance.SpendMetaCurrency(cost);
         manager.ApplyUpgrade(data);
         OnUpgradePurchased?.Invoke(data,nextLevel);
 
-        Debug.Log($"[UpgradeShop] Bought {data.upgradeName} level {nextLevel}. Remaining currency: {currency}. {data.upgradeValues[nextLevel].value}");
+        Debug.Log($"[UpgradeShop] Bought {data.upgradeName} level {nextLevel}. {data.upgradeValues[nextLevel].value}");
     }
     public void ChangeState()
     {

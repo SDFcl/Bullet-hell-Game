@@ -52,6 +52,10 @@ public class GameStateManager : Singleton<GameStateManager>
             case GameState.Loading:
                 // แสดงหน้าจอโหลด, เตรียมข้อมูล ฯลฯ
                 break;
+            case GameState.Quit:
+                // ปิดเกม, บันทึกข้อมูล ฯลฯ
+                Application.Quit();
+                break;
         }
     }
 
@@ -63,5 +67,9 @@ public class GameStateManager : Singleton<GameStateManager>
     public void ChangeGamePlayState()
     {
         ChangeState(GameState.GamePlay);
+    }
+    public void ChangeQuitGameState()
+    {
+        ChangeState(GameState.Quit);
     }
 }

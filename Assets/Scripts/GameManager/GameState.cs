@@ -1,3 +1,4 @@
+[System.Serializable]
 public enum GameState
 {
     MainMenu,
@@ -6,5 +7,6 @@ public enum GameState
     Paused,
     GameOver,
     Victory,
-    Loading
+    Loading,
+    Quit,
 }

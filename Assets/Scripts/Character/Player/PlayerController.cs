@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private Attack attack;
     private FilterInteract filterInteract;
     private Health health;
+    private SpecialAbility specialAbility;
 
     private Vector2 dir;
 
@@ -45,6 +46,8 @@ public class PlayerController : MonoBehaviour
         attack = GetComponent<Attack>();
         filterInteract = new FilterInteract(gameObject);
         health = GetComponent<Health>();
+        specialAbility = GetComponent<SpecialAbility>();
+
         PlayerUpgradeManager =  FindObjectOfType<PlayerUpgradeManager>();
         if (PlayerUpgradeManager != null)
         {
@@ -57,11 +60,6 @@ public class PlayerController : MonoBehaviour
                 {
                     playerHealth.MaxHealth += Stats.MaxHealth;
                     Debug.Log("PlayerController: Set PlayerHealth MaxHealth to " + playerHealth.MaxHealth);
-                }
-                if (attack != null)
-                {
-                    attack.AddDamagePercent(Stats.IncreaseDamage);
-                    Debug.Log("PlayerController: Added " + Stats.IncreaseDamage + "% damage to Attack component");
                 }
             }
         }
@@ -171,6 +169,15 @@ public class PlayerController : MonoBehaviour
         {
             if (inventory.Consumables.Count == 0) return;
             inventory.Consumables[0].Use(gameObject, inventory.Consumables);
+        }
+    }
+
+    public void UseSpecialAbility(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            if (specialAbility == null) return;
+            specialAbility.TryUse();
         }
     }
 

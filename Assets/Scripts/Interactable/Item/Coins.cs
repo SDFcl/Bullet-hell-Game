@@ -14,7 +14,7 @@ public class Coins : MonoBehaviour
         {
             Stats = playerUpgradeManager.GetFinalStats();
             multiplier += Stats.BonusCoin / 100;
-            Debug.Log($"Coins: Multiplier updated to {multiplier} based on player stats (BonusCoin: {Stats.BonusCoin}%)");
+            //Debug.Log($"Coins: Multiplier updated to {multiplier} based on player stats (BonusCoin: {Stats.BonusCoin}%)");
         }
     }
 
@@ -27,7 +27,7 @@ public class Coins : MonoBehaviour
             {
                 int coinValue = Random.Range(minValue, maxValue + 1);
                 coinValue = Mathf.RoundToInt(coinValue * multiplier);
-                Debug.Log($"Coins: Player collected coins worth {coinValue} (base value: {coinValue / multiplier}, multiplier: {multiplier})");
+                //Debug.Log($"Coins: Player collected coins worth {coinValue} (base value: {coinValue / multiplier}, multiplier: {multiplier})");
                 inventory.AddCoins(coinValue);
                 gameObject.SetActive(false);
             }
