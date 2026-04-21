@@ -18,7 +18,7 @@ public class Chest : InteractiveObject
         return isOpened ? "Chest (Opened)" : "Open Chest";
     }
 
-    protected override void ExecuteInteraction()
+    protected override void ExecuteInteraction(GameObject player)
     {
         if (isOpened) return;
 

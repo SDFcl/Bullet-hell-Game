@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 150491014794545562}
   - component: {fileID: 2524201100276278829}
   - component: {fileID: 6055516340626140229}
+  - component: {fileID: 7532428237575381629}
   m_Layer: 6
   m_Name: Gold Chest
   m_TagString: Untagged
@@ -198,3 +199,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomItem: {fileID: 11400000, guid: 320f825386e0a7c42959a2725660317e, type: 2}
+--- !u!114 &7532428237575381629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3828300978552533573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99a3df722d43e134d94199e479f9aa7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundID: {fileID: 11400000, guid: 76d5083661f929447a847855810f7ba8, type: 2}

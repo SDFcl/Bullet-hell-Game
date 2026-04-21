@@ -6,7 +6,7 @@ public class EndPointInterectable : InteractiveObject
     {
         return "End Point";
     }
-    protected override void ExecuteInteraction()
+    protected override void ExecuteInteraction(GameObject player)
     {
         // Award MetaCurrency based on current level
         LevelManager levelManager = FindObjectOfType<LevelManager>();

@@ -5,11 +5,12 @@ using UnityEngine;
 /// ✓ Base class for interactive objects (doors, chests, NPCs, etc.)
 /// Shows how to implement IInteractive interface
 /// </summary>
-public abstract class InteractiveObject : MonoBehaviour, IInteractive, ICollectEvent
+public abstract class InteractiveObject : MonoBehaviour, IInteractive
 {
-    public event Action<GameObject> OnCollected;
 
     [SerializeField] protected string interactionName = "Interact";
+
+    public Action OnInteract;
 
     public virtual string GetInteractionName()
     {
@@ -25,12 +26,12 @@ public abstract class InteractiveObject : MonoBehaviour, IInteractive, ICollectE
     public void Interact(GameObject player)
     {
         Debug.Log($"[InteractiveObject] {interactionName}: {gameObject.name}");
-        OnCollected?.Invoke(gameObject);
-        ExecuteInteraction();
+        OnInteract?.Invoke();
+        ExecuteInteraction(player);
     }
 
     /// <summary>
     /// ✓ Override this method in derived classes to implement specific interaction logic
     /// </summary>
-    protected abstract void ExecuteInteraction();
+    protected abstract void ExecuteInteraction(GameObject player);
 }
