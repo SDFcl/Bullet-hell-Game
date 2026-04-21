@@ -39,12 +39,11 @@ public class WeaponDataSOEditor : Editor
                 break;
         }
 
-        serializedObject.ApplyModifiedProperties();
-
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Sound", EditorStyles.boldLabel);
         EditorGUILayout.PropertyField(onAttackSoundIDProp);
         EditorGUILayout.PropertyField(onHitSoundIDProp);
 
+        serializedObject.ApplyModifiedProperties();
     }
 }

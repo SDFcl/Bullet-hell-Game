@@ -9,6 +9,12 @@ public class MeleeWeapon : BaseWeapon
     {
         base.Awake();
         hitbox = GetComponentInChildren<Hitbox>(true);
+        if (hitbox != null)
+        {
+            hitbox.SetDamage(GetDamage());
+            hitbox.SetWeaponData(weaponData);
+            hitbox.SetUseSOData(useSOData);
+        }
     }
 
     private void Start()
@@ -16,7 +22,6 @@ public class MeleeWeapon : BaseWeapon
         if (hitbox != null)
         {
             hitbox.EnableCol(false);
-            hitbox.SetDamage(GetDamage());
         }
     }
 

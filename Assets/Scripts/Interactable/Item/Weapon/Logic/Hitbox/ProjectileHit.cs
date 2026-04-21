@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class ProjectileHit : Hitbox, IPooledObject
@@ -11,6 +12,7 @@ public class ProjectileHit : Hitbox, IPooledObject
     private Rigidbody2D rb;
     private PureHealth health;
     private IProjectileHitStrategy lifetimeStrategy;
+    public Action OnSpawn;
     protected override void Awake()
     {
         base.Awake();
@@ -25,6 +27,7 @@ public class ProjectileHit : Hitbox, IPooledObject
         rb.linearVelocity = (Vector2)transform.right * speed;
         StartCoroutine(Disable());
         lifetimeStrategy?.OnSpawn(this);
+        OnSpawn?.Invoke();
     }
 
     private IEnumerator Disable()

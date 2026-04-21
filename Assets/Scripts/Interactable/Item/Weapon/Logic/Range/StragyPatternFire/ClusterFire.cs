@@ -74,6 +74,8 @@ public class ClusterSpreadFire : BasePatternFire
                     projectile.SetDamage(weapon.GetDamage());
                     projectile.SetProjectlieSpeed(speed);
                     projectile.SetOwner(weapon.GetOwner());
+                    projectile.SetUseSOData(weapon.UseSOData);
+                    projectile.SetWeaponData(weapon.WeaponDataSO);
                 }
             });
     }

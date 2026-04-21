@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 1300770233443965370}
   - component: {fileID: 4039359182724957715}
   - component: {fileID: 6221001429801348067}
-  - component: {fileID: 4656830489839823982}
+  - component: {fileID: -4008861126739708849}
   m_Layer: 0
   m_Name: BL_ElvenBow
   m_TagString: Untagged
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6604b5164e25f654bbe371670cddc664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4656830489839823982
+--- !u!114 &-4008861126739708849
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,7 +233,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8133499342184646943}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f696945056177894288852a4d3a7ade0, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fa07456e2772a8488206caa57558c84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useSOData: 1
   soundID: {fileID: 11400000, guid: 7c9df0dd585ce5a4b8f9e5431cfc5fcc, type: 2}

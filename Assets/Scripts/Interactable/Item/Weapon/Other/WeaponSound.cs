@@ -3,7 +3,7 @@ using UnityEngine;
 public class WeaponSound : MonoBehaviour
 {
     [Header("Scriptable Object Data")]
-    [SerializeField] protected bool useSOData = true;
+    [SerializeField] protected bool useSOData = false;
 
     [Header("Default Setting")]
     [SerializeField] private bool useAnimationEvent = false;
@@ -20,7 +20,12 @@ public class WeaponSound : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("Dont have onAttackSoundID in SOData");
+                Debug.LogWarning(
+                $"Dont have onAttackSoundID in SOData | " +
+                $"object={name} | " +
+                $"instance={GetInstanceID()} | " +
+                $"weaponData={(weapon != null && weapon.WeaponDataSO != null ? weapon.WeaponDataSO.name : "NULL")}");
+
             }
         }
     }
@@ -33,6 +38,10 @@ public class WeaponSound : MonoBehaviour
     {
         if(!useAnimationEvent)
         weapon.OnAttack -= PlaySoundOnAttack;
+    }
+    void Start()
+    {
+        
     }
     public void PlaySoundOnAttack()
     {

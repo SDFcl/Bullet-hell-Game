@@ -68,4 +68,19 @@ public class Hitbox : MonoBehaviour
     //API
     public float GetDamage() => damage;
     public GameObject GetOwner() => owner;
+
+
+    // ScriptableObject API
+    public bool UseSOData {get; private set;}
+    public void SetUseSOData(bool useSOData)
+    {
+        UseSOData = useSOData;
+    }
+    
+    public WeaponDataSO WeaponDataSO { get; private set; }
+
+    public void SetWeaponData(WeaponDataSO weaponData)
+    {
+        WeaponDataSO = weaponData;
+    }
 }

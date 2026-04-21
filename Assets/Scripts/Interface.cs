@@ -13,6 +13,7 @@ public interface IHealable
 
 public interface IWeapon
 {
+    bool UseSOData{get;}
     WeaponDataSO WeaponDataSO{get;}
     event Action OnAttack;
 

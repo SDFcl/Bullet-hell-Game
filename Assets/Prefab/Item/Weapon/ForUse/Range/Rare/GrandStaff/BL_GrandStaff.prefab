@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6656550387282677943}
   - component: {fileID: 7558967257861593766}
   - component: {fileID: 3622408283185863228}
-  - component: {fileID: 3815859522218992930}
+  - component: {fileID: 5224597982714544521}
   m_Layer: 0
   m_Name: BL_GrandStaff
   m_TagString: Untagged
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6604b5164e25f654bbe371670cddc664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3815859522218992930
+--- !u!114 &5224597982714544521
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,9 +146,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5581271519172677727}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f696945056177894288852a4d3a7ade0, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fa07456e2772a8488206caa57558c84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useSOData: 1
   soundID: {fileID: 11400000, guid: 6c63f57ad209eb241ba7cabfb6f29764, type: 2}
 --- !u!1 &6599560659724998169
 GameObject:
