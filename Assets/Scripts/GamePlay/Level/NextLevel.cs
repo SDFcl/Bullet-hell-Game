@@ -18,13 +18,13 @@ public class NextLevel : MonoBehaviour, ILevel
 
         if (nextStage == null)
         {
-            SceneManager.LoadScene("Lobby");
+            SceneLoader.Instance.LoadScene("Lobby",gameObject);
             return;
         }
 
         currentLevel.stage = nextStage.Value;
         GameSession.currentLevel = currentLevel;
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneLoader.Instance.ReloadCurrentScene(gameObject);
     }
 }

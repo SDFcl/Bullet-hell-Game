@@ -42,10 +42,10 @@ public class SoundManager : Singleton<SoundManager>
         }
     }
     // SFX
-    public void PlaySFX(SoundID id, Vector3 position)
+    public float PlaySFX(SoundID id, Vector3 position)
     {
         if (!soundsById.TryGetValue(id, out SoundData data))
-            return;
+            return 0f;
 
         GameObject audioObject = ObjectPooler.Instance.SpawnFromPool(
             audioPoolTag,
@@ -55,6 +55,8 @@ public class SoundManager : Singleton<SoundManager>
 
         if (audioObject.TryGetComponent(out SFXPlayer player))
             player.Play(data);
+
+        return data.clip != null ? data.clip.length : 0f;
     }
 
     //BGM
