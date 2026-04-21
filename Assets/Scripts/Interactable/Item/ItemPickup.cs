@@ -17,37 +17,42 @@ public class ItemPickup : MonoBehaviour, IPickable,ICollectEvent
     }
 
     public void Pickup(Inventory inventory)
-{
-    if (itemData == null || inventory == null) return;
-
-    InventoryItem newItem = new InventoryItem(itemData);
-
-    if (itemData.itemType == ItemType.Weapon)
     {
-        inventory.AddWeapon(newItem);
-    }
-    else if (itemData.itemType == ItemType.Consumable)
-    {
-        if (itemData.consumableType == ConsumableType.passive)
+        if (itemData == null || inventory == null) return;
+
+        InventoryItem newItem = new InventoryItem(itemData);
+
+        if (itemData.itemType == ItemType.Weapon)
         {
-            GameObject player = inventory.GetComponentInParent<PlayerController>()?.gameObject ?? inventory.gameObject;
-
-            foreach (var effect in itemData.effects)
+            if (inventory.AddWeapon(newItem))
             {
-                effect.Apply(player);
+                OnCollected?.Invoke(gameObject);
+                Destroy(gameObject);
+            }
+            else if (itemData.itemType == ItemType.Consumable)
+            {
+                if (itemData.consumableType == ConsumableType.passive)
+                {
+                    GameObject player = inventory.GetComponentInParent<PlayerController>()?.gameObject ?? inventory.gameObject;
+
+                    foreach (var effect in itemData.effects)
+                    {
+                        effect.Apply(player);
+                    }
+
+                    inventory.AddConsumable(newItem);
+                    Debug.Log($"[ItemPickup] Applied passive effect: {itemData.itemName}");
+                }
+                else
+                {
+                    inventory.AddConsumable(newItem);
+                }
+                OnCollected?.Invoke(gameObject);
+                Destroy(gameObject);
             }
 
-            inventory.AddConsumable(newItem);
-            Debug.Log($"[ItemPickup] Applied passive effect: {itemData.itemName}");
-        }
-        else
-        {
-            inventory.AddConsumable(newItem);
+
         }
     }
-
-    OnCollected?.Invoke(gameObject);
-    Destroy(gameObject);
-}
 
 }
