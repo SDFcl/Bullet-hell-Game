@@ -13,6 +13,12 @@ public class MetaCurrency : Singleton<MetaCurrency>
     {
         // เริ่มต้นด้วยค่าเริ่มต้นหรือโหลดจาก PlayerPrefs
         OnMetaCurrencyChanged?.Invoke(GuildCoin);
+        Debug.Log($"MetaCurrency initialized. Total: {GuildCoin}");
+    }
+
+    private void FixedUpdate()
+    {
+        OnMetaCurrencyChanged?.Invoke(GuildCoin);
     }
 
     public void AddMetaCurrency(int amount)

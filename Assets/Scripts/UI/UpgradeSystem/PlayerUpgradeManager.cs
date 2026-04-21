@@ -4,10 +4,19 @@ using UnityEngine;
 
 public class PlayerUpgradeManager : MonoBehaviour
 {
+    [SerializeField]
     public BasePlayerStats playerStats;
 
     private Dictionary<UpgradeData, int> currentUpgradeLevels = new();
     private IPlayerStats finalStats;
+
+    private void OnValidate()
+    {
+        if (playerStats != null)
+        {
+            Debug.Log($"[PlayerUpgradeManager] Base playerStats: {playerStats}");
+        }
+    }
 
     public IPlayerStats GetFinalStats()
     {

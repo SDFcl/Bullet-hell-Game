@@ -9,13 +9,7 @@ public class UIGuildCoin : MonoBehaviour
 
     private void Start()
     {
-        metaCurrency = MetaCurrency.Instance;
-        if (metaCurrency == null)
-        {
-            Debug.LogError("UIGuildCoin: MetaCurrency instance not found.");
-            return;
-        }
-        metaCurrency.OnMetaCurrencyChanged += UpdateGuildCoinDisplay;
+        MetaCurrency.Instance.OnMetaCurrencyChanged += UpdateGuildCoinDisplay;
     }
 
     public void UpdateGuildCoinDisplay(int newAmount)
