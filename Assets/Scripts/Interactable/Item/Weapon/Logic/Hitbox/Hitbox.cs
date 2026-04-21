@@ -71,11 +71,6 @@ public class Hitbox : MonoBehaviour
 
 
     // ScriptableObject API
-    public bool UseSOData {get; private set;}
-    public void SetUseSOData(bool useSOData)
-    {
-        UseSOData = useSOData;
-    }
     
     public WeaponDataSO WeaponDataSO { get; private set; }
 

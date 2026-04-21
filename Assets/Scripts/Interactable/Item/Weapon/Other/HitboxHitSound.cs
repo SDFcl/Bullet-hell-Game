@@ -6,7 +6,7 @@ public class HitboxHitSound : MonoBehaviour
     [Header("Default Setting")]
     [SerializeField] private SoundID soundID;
 
-    private bool useSOData = false;
+    
     private Hitbox hitbox;
 
     private void Awake()
@@ -28,14 +28,10 @@ public class HitboxHitSound : MonoBehaviour
 
     private void Start()
     {
-        if(hitbox != null)
+        if (hitbox.WeaponDataSO.onHitSoundID != null && hitbox != null)
         {
-            useSOData = hitbox.UseSOData;
-            if (useSOData)
-            {
-                soundID = hitbox.WeaponDataSO.onHitSoundID;
-            }     
-        } 
+             soundID = hitbox.WeaponDataSO.onHitSoundID;
+        }    
     }
 
     private void PlaySoundOnHit()

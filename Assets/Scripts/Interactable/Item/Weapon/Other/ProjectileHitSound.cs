@@ -23,14 +23,10 @@ public class ProjectileHitSound : MonoBehaviour
     }
     void SetReference()
     {
-        if(projectileHit != null)
+        if (projectileHit.WeaponDataSO.onHitSoundID != null && projectileHit != null)
         {
-            useSOData = projectileHit.UseSOData;
-            if (useSOData)
-            {
-                soundID = projectileHit.WeaponDataSO.onHitSoundID;
-            }     
-        } 
+             soundID = projectileHit.WeaponDataSO.onHitSoundID;
+        }   
     }
     void PlaySoundOnHit()
     {

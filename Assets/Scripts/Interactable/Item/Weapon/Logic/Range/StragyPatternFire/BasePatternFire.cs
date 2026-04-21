@@ -18,7 +18,6 @@ public abstract class BasePatternFire : MonoBehaviour, IFireStrategy
                     projHit.SetDamage(weapon.GetDamage());
                     projHit.SetProjectlieSpeed(weapon.ProjectileSpeed);
                     projHit.SetOwner(weapon.GetOwner());
-                    projHit.SetUseSOData(weapon.UseSOData);
                     projHit.SetWeaponData(weapon.WeaponDataSO);
                 }
             });
@@ -44,7 +43,6 @@ public abstract class BasePatternFire : MonoBehaviour, IFireStrategy
                     projHit.SetDamage(weapon.GetDamage());
                     projHit.SetProjectlieSpeed(speed);
                     projHit.SetOwner(weapon.GetOwner());
-                    projHit.SetUseSOData(weapon.UseSOData);
                     projHit.SetWeaponData(weapon.WeaponDataSO);
                 }
             });

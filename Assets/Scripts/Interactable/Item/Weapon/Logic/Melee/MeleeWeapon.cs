@@ -13,7 +13,6 @@ public class MeleeWeapon : BaseWeapon
         {
             hitbox.SetDamage(GetDamage());
             hitbox.SetWeaponData(weaponData);
-            hitbox.SetUseSOData(useSOData);
         }
     }
 

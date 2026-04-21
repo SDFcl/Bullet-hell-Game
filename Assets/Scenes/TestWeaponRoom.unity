@@ -199,6 +199,10 @@ PrefabInstance:
       propertyPath: maxMana
       value: 292.8
       objectReference: {fileID: 0}
+    - target: {fileID: 8731997803829606634, guid: 8f7871eaf1cc72949809ae0fa4d6551b, type: 3}
+      propertyPath: soundID
+      value: 
+      objectReference: {fileID: 11400000, guid: 10afb42ac66235f48934eec002c04076, type: 2}
     m_RemovedComponents:
     - {fileID: 508285795505796230, guid: 8f7871eaf1cc72949809ae0fa4d6551b, type: 3}
     m_RemovedGameObjects: []
@@ -6503,6 +6507,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1414335095}
     m_Modifications:
+    - target: {fileID: -8361285268207577802, guid: f3e69c9290e737444abc9c879a5cb17d, type: 3}
+      propertyPath: useSOData
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3458009856709907912, guid: f3e69c9290e737444abc9c879a5cb17d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.02
@@ -7323,6 +7331,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2119085615}
     m_Modifications:
+    - target: {fileID: -4091803622844544513, guid: addf6a7894f52a74fb94c3f50c656114, type: 3}
+      propertyPath: soundID
+      value: 
+      objectReference: {fileID: 11400000, guid: 1bab63aca8c69f74bb2ccfe999d23d60, type: 2}
     - target: {fileID: 1708246291836080847, guid: addf6a7894f52a74fb94c3f50c656114, type: 3}
       propertyPath: m_Name
       value: H_IronSword
