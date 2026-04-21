@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : Singleton<SceneLoader>
 {
     protected override bool UseDontDestroyOnLoad => false;
-    [SerializeField] private MonoBehaviour[] globalTaskBehaviours;
 
     private bool isLoading;
 
@@ -32,15 +32,29 @@ public class SceneLoader : Singleton<SceneLoader>
         if (source != null)
             tasks.AddRange(source.GetComponents<ISceneExitTask>());
 
-        foreach (MonoBehaviour behaviour in globalTaskBehaviours)
-        {
-            if (behaviour is ISceneExitTask task)
-                tasks.Add(task);
-        }
+        tasks.AddRange(FindGlobalExitTasks());
 
         yield return RunTasksParallel(tasks);
 
         SceneManager.LoadScene(sceneName);
+    }
+
+    private IEnumerable<ISceneExitTask> FindGlobalExitTasks()
+    {
+        GlobalSceneExitTaskMarker[] markers =
+        FindObjectsByType<GlobalSceneExitTaskMarker>(
+            FindObjectsInactive.Include,
+            FindObjectsSortMode.None);
+
+
+        foreach (GlobalSceneExitTaskMarker marker in markers)
+        {
+            foreach (MonoBehaviour behaviour in marker.GetComponents<MonoBehaviour>())
+            {
+                if (behaviour is ISceneExitTask task)
+                    yield return task;
+            }
+        }
     }
 
     private IEnumerator RunTasksParallel(List<ISceneExitTask> tasks)
@@ -57,7 +71,7 @@ public class SceneLoader : Singleton<SceneLoader>
             yield return null;
     }
 
-    private IEnumerator RunTask(ISceneExitTask task, System.Action onComplete)
+    private IEnumerator RunTask(ISceneExitTask task, Action onComplete)
     {
         yield return task.Execute();
         onComplete?.Invoke();
