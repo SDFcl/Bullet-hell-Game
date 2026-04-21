@@ -103,7 +103,6 @@ public class HoldingWeapon : MonoBehaviour
             }
 
             // ถ้าเป็นตัวเดิม ไม่ต้องทำอะไร
-            if (currentIndex == index) return;
         }
 
         // ลบของเก่า
