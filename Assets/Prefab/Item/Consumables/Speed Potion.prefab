@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5518167977944119125}
   - component: {fileID: 4489123529090344718}
   - component: {fileID: 2155462778299861019}
+  - component: {fileID: 6315437833986354915}
   m_Layer: 6
   m_Name: Speed Potion
   m_TagString: Untagged
@@ -83,6 +84,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: bb6d17bcee7c33b409cf28e387ccc097, type: 2}
+--- !u!114 &6315437833986354915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5394643348368818152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf3edbd5705973c4d98e532b7ad3e0eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundID: {fileID: 11400000, guid: 726c3565875bdec498b96ae0dd72f6e8, type: 2}
 --- !u!1 &6302867550213143745
 GameObject:
   m_ObjectHideFlags: 0

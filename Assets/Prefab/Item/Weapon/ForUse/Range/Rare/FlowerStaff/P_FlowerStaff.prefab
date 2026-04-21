@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7807868727147761303}
   - component: {fileID: 2239658222696235167}
   - component: {fileID: 4215866882303825894}
+  - component: {fileID: 5583784441554440005}
   m_Layer: 6
   m_Name: P_FlowerStaff
   m_TagString: Untagged
@@ -93,6 +94,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5583784441554440005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922007669856079096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf3edbd5705973c4d98e532b7ad3e0eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundID: {fileID: 11400000, guid: 726c3565875bdec498b96ae0dd72f6e8, type: 2}
 --- !u!1 &9028279896160043253
 GameObject:
   m_ObjectHideFlags: 0

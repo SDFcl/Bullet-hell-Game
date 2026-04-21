@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4084878393762064729}
   - component: {fileID: 279975790620752497}
   - component: {fileID: 3646031591605221505}
+  - component: {fileID: -6898157144816723845}
   m_Layer: 6
   m_Name: P_Carnage
   m_TagString: Untagged
@@ -93,6 +94,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-6898157144816723845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321640453731378740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf3edbd5705973c4d98e532b7ad3e0eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundID: {fileID: 11400000, guid: 726c3565875bdec498b96ae0dd72f6e8, type: 2}
 --- !u!1 &5412852695313862015
 GameObject:
   m_ObjectHideFlags: 0

@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 83579555830049678}
   - component: {fileID: 3160673599346487920}
   - component: {fileID: 4762368034949167081}
+  - component: {fileID: 291007573121539320}
   m_Layer: 6
   m_Name: P_StrayAxe
   m_TagString: Untagged
@@ -125,6 +126,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &291007573121539320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4290488803710063580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf3edbd5705973c4d98e532b7ad3e0eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundID: {fileID: 11400000, guid: 726c3565875bdec498b96ae0dd72f6e8, type: 2}
 --- !u!1 &5452734785516789643
 GameObject:
   m_ObjectHideFlags: 0

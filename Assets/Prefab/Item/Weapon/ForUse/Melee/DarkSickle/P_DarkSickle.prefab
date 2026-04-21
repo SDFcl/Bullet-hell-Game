@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 2927265650743903283}
   - component: {fileID: 1011219167319966184}
   - component: {fileID: 5693215408613175823}
+  - component: {fileID: -48405877568601437}
   m_Layer: 6
   m_Name: P_DarkSickle
   m_TagString: Untagged
@@ -125,6 +126,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-48405877568601437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6614050489399112242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf3edbd5705973c4d98e532b7ad3e0eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundID: {fileID: 11400000, guid: 726c3565875bdec498b96ae0dd72f6e8, type: 2}
 --- !u!1 &9018024856089096613
 GameObject:
   m_ObjectHideFlags: 0
