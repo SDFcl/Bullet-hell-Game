@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d30ef6e55ed4e045a3dba35811efbd3, type: 3}
-  m_Name: Health
+  m_Name: Mana
   m_EditorClassIdentifier: 
-  upgradeType: 1
-  upgradeName: Health
+  upgradeType: 2
+  upgradeName: Mana
   upgradeIcon: {fileID: 0}
   upgradeDescription: 
   upgradeValues:
   - value: 0
     cost: 0
-  - value: 1
-    cost: 1
-  - value: 2
+  - value: 20
+    cost: 2
+  - value: 30
     cost: 6
-  - value: 3
+  - value: 50
     cost: 10
-  - value: 4
+  - value: 80
     cost: 30
-  - value: 5
+  - value: 120
     cost: 40

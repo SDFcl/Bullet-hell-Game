@@ -10,6 +10,7 @@ public struct upgradeData
 
 public enum UpgradeType
 {
+    IncrementalDamage,
     Health,
     Mana,
     BonusCoin,

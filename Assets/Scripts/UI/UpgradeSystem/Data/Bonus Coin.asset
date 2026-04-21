@@ -12,12 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d30ef6e55ed4e045a3dba35811efbd3, type: 3}
   m_Name: Bonus Coin
   m_EditorClassIdentifier: 
+  upgradeType: 3
   upgradeName: Bonus Coin
-  upgradeType: 1
+  upgradeIcon: {fileID: 0}
+  upgradeDescription: 
   upgradeValues:
   - value: 0
     cost: 0
-  - value: 10
+  - value: 2
+    cost: 2
+  - value: 4
+    cost: 6
+  - value: 6
     cost: 10
-  - value: 20
-    cost: 20
+  - value: 10
+    cost: 30
+  - value: 15
+    cost: 40

@@ -14,6 +14,7 @@ public class UpdateSlotUpgradeUI : MonoBehaviour
     public TextMeshProUGUI upgradeDescriptionText;
     public TextMeshProUGUI upgradeCurrenStateText;
     public TextMeshProUGUI upgradeCostText;
+    public Button button;
 
     private void Awake()
     {
@@ -22,7 +23,6 @@ public class UpdateSlotUpgradeUI : MonoBehaviour
 
     public void UpdateUI(UpgradeData data,int Index)
     {
-        Debug.Log($"[UpdateSlotUpgradeUI] Received upgrade purchase event: {data.upgradeName} level {Index}. Upgrade type: {data.upgradeType}, Slot upgrade type: {upgradeType}");
         if (data.upgradeType != upgradeType)
         {
             return;
@@ -31,6 +31,16 @@ public class UpdateSlotUpgradeUI : MonoBehaviour
         upgradeIcon.sprite = data.upgradeIcon;
         upgradeDescriptionText.text = data.upgradeDescription;
         upgradeCurrenStateText.text = $"Current : {data.upgradeValues[Index].value}";
-        upgradeCostText.text = $"Cost : {data.upgradeValues[Index].cost}";
+        if (Index + 1 >= data.upgradeValues.Length)
+        {
+            TextMeshProUGUI textMeshProUGUI = button.GetComponentInChildren<TextMeshProUGUI>();
+            if (textMeshProUGUI != null)
+            {
+                textMeshProUGUI.text = "Maxed";
+                button.interactable = false;
+                return;
+            }
+        }
+        upgradeCostText.text = $"Cost : {data.upgradeValues[Index+1].cost}";
     }
 }

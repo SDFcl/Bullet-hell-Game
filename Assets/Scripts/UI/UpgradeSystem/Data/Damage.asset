@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d30ef6e55ed4e045a3dba35811efbd3, type: 3}
-  m_Name: Health
+  m_Name: Damage
   m_EditorClassIdentifier: 
-  upgradeType: 1
-  upgradeName: Health
+  upgradeType: 0
+  upgradeName: Damage
   upgradeIcon: {fileID: 0}
   upgradeDescription: 
   upgradeValues:
   - value: 0
     cost: 0
-  - value: 1
-    cost: 1
-  - value: 2
+  - value: 0
+    cost: 2
+  - value: 0
     cost: 6
-  - value: 3
-    cost: 10
-  - value: 4
+  - value: 0
+    cost: 20
+  - value: 0
     cost: 30
-  - value: 5
+  - value: 0
     cost: 40
