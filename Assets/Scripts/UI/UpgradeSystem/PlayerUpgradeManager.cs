@@ -29,6 +29,8 @@ public class PlayerUpgradeManager : MonoBehaviour
             currentUpgradeLevels[data] = 0;
 
         currentUpgradeLevels[data]++;
+        Rebuild(); // 🔧 Rebuild finalStats เมื่อเพิ่ม level
+        Debug.Log($"[PlayerUpgradeManager] Applied {data.upgradeName} upgrade. New level: {currentUpgradeLevels[data]}.");
     }
 
     public int GetLevel(UpgradeData data)
@@ -45,7 +47,8 @@ public class PlayerUpgradeManager : MonoBehaviour
 
         foreach (var up in currentUpgradeLevels)
         {
-            baseStats = (IPlayerStats)new StatUpgradeDecorator(baseStats, up.Key, up.Value);
+            Debug.Log($"[PlayerUpgradeManager] Rebuilding stats: Applying {up.Key.upgradeName} at level {up.Value}. {up.Key.upgradeValues}");
+            baseStats = new StatUpgradeDecorator(baseStats, up.Key, up.Value);
         }
 
         finalStats = baseStats;

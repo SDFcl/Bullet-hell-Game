@@ -9,5 +9,8 @@ public abstract class PlayerStatDecorator : IPlayerStats
         this.playerStats = playerStats;
     }
 
+    public virtual float IncreaseDamage => playerStats.IncreaseDamage;
     public virtual float MaxHealth => playerStats.MaxHealth;
+    public virtual float MaxMana => playerStats.MaxMana;
+    public virtual float BonusCoin => playerStats.BonusCoin;
 }

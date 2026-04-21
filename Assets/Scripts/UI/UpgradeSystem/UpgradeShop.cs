@@ -1,11 +1,33 @@
 ﻿using System;
 using Unity.VisualScripting;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class UpgradeShop : MonoBehaviour
 {
+    [Header("References")]
     public PlayerUpgradeManager manager;
     public int currency;
+
+    [Header("UI")]
+    public Toggle toggle;
+    public CanvasGroup canvasGroup;
+
+    public event Action<UpgradeData,int> OnUpgradePurchased;
+
+    private void Awake()
+    {
+        canvasGroup = GetComponent<CanvasGroup>();
+        if (manager == null)
+        {
+            manager = FindObjectOfType<PlayerUpgradeManager>();
+            if (manager == null)
+            {
+                Debug.LogError("UpgradeShop: PlayerUpgradeManager not found in the scene.");
+            }
+        }
+
+    }
 
     public void BuyUpgrade(UpgradeData data)
     {
@@ -30,26 +52,14 @@ public class UpgradeShop : MonoBehaviour
 
         currency -= cost;
         manager.ApplyUpgrade(data);
-        
-        // ✅ Update stats เลย!
-        UpdatePlayerStats();
-        
-        Debug.Log($"[UpgradeShop] Bought {data.upgradeName} level {nextLevel}. Remaining currency: {currency}");
-    }
+        OnUpgradePurchased?.Invoke(data,nextLevel);
 
-    private void UpdatePlayerStats()
+        Debug.Log($"[UpgradeShop] Bought {data.upgradeName} level {nextLevel}. Remaining currency: {currency}. {data.upgradeValues[nextLevel].value}");
+    }
+    public void ChangeState()
     {
-        var playerController = FindObjectOfType<PlayerController>();
-        if (playerController != null)
-        {
-            var stats = manager.GetFinalStats();
-            var health = playerController.GetComponent<PlayerHealth>();
-            
-            if (health != null && stats != null)
-            {
-                health.MaxHealth = stats.MaxHealth;
-                Debug.Log($"[UpgradeShop] Updated MaxHealth to {stats.MaxHealth}");
-            }
-        }
+        canvasGroup.alpha = toggle.isOn ? 1f : 0f;
+        canvasGroup.interactable = toggle.isOn;
+        canvasGroup.blocksRaycasts = toggle.isOn;
     }
 }

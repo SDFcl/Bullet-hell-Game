@@ -104,7 +104,10 @@ public interface IProjectileHitStrategy
 
 public interface IPlayerStats
 {
+    float IncreaseDamage { get; }
     float MaxHealth { get; }
+    float MaxMana { get; }
+    float BonusCoin { get; }
 }
 
 public interface ICollectEvent

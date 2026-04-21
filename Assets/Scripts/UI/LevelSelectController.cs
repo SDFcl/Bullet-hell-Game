@@ -70,5 +70,7 @@ public class LevelSelectController : MonoBehaviour
     public void ChangeState()
     {
         canvasGroup.alpha = toggle.isOn ? 1f : 0f;
+        canvasGroup.interactable = toggle.isOn;
+        canvasGroup.blocksRaycasts = toggle.isOn;
     }
 }

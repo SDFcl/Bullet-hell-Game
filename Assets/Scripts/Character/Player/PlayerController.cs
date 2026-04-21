@@ -55,8 +55,13 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("PlayerController: Found Health component, trying to set PlayerHealth MaxHealth to " + Stats.MaxHealth);
                 if (playerHealth != null)
                 {
-                    playerHealth.MaxHealth = Stats.MaxHealth;
-                    Debug.Log("PlayerController: Set PlayerHealth MaxHealth to " + Stats.MaxHealth);
+                    playerHealth.MaxHealth += Stats.MaxHealth;
+                    Debug.Log("PlayerController: Set PlayerHealth MaxHealth to " + playerHealth.MaxHealth);
+                }
+                if (attack != null)
+                {
+                    attack.AddDamagePercent(Stats.IncreaseDamage);
+                    Debug.Log("PlayerController: Added " + Stats.IncreaseDamage + "% damage to Attack component");
                 }
             }
         }
@@ -72,6 +77,8 @@ public class PlayerController : MonoBehaviour
     {
         health.OnDead -= OnDeadHandle;
     }
+
+
     public void OnMove(InputAction.CallbackContext context)
     {
         Vector2 moveInput = context.ReadValue<Vector2>();
