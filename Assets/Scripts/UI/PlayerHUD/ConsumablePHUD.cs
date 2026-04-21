@@ -1,4 +1,4 @@
-using Microsoft.Unity.VisualStudio.Editor;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class ConsumablePHUD : MonoBehaviour
@@ -55,6 +55,6 @@ public class ConsumablePHUD : MonoBehaviour
 
     void ChangeImage()
     {
-        
+        image.sprite = currentConsumable.itemData.itemIcon;
     }
 }
