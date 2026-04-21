@@ -11,16 +11,18 @@ public struct upgradeData
 public enum UpgradeType
 {
     Health,
-    Damage,
-    Speed,
+    Mana,
+    BonusCoin,
 }
 
 [CreateAssetMenu(menuName = "UpgradeData")]
 public class UpgradeData : ScriptableObject
 {
-    public string upgradeName;
-
     public UpgradeType upgradeType;
+
+    public string upgradeName;
+    public Sprite upgradeIcon;
+    public string upgradeDescription;
 
     public upgradeData[] upgradeValues;
 }
