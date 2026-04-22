@@ -3,10 +3,10 @@ using UnityEngine.UI;
 
 public class HearthPHUD : MonoBehaviour
 {
-    [SerializeField] private PlayerHealth playerHealth;
+    private PlayerHealth playerHealth;
     [SerializeField] private Sprite fullHeart;
     [SerializeField] private Sprite emptyHeart;
-    [SerializeField] private float hpPerHeart = 1f;
+    private float hpPerHeart = 1f;
 
     private Image[] hearts;
 

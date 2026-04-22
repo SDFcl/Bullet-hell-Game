@@ -3,9 +3,9 @@ using UnityEngine.UI;
 
 public class HeartUIBuilder : MonoBehaviour
 {
-    [SerializeField] private PlayerHealth playerHealth;
+    private PlayerHealth playerHealth;
     [SerializeField] private Image heartPrefab;
-    [SerializeField] private float hpPerHeart = 1f;
+    private float hpPerHeart = 1f;
 
     void Awake()
     {

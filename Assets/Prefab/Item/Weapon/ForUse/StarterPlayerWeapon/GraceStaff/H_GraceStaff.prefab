@@ -40,10 +40,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3458009856709907912}
+  - component: {fileID: 6132873989253028002}
   - component: {fileID: 5359260232141529213}
   - component: {fileID: 2168882196701068483}
   - component: {fileID: 7725235121974064890}
   - component: {fileID: -8361285268207577802}
+  - component: {fileID: 8197109315138961603}
   m_Layer: 0
   m_Name: H_GraceStaff
   m_TagString: Untagged
@@ -68,6 +70,28 @@ Transform:
   - {fileID: 2211180725753276931}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &6132873989253028002
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4096024061974053134}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ba3520b199b0e7941a5849e59bcfd53e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &5359260232141529213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,6 +110,7 @@ MonoBehaviour:
   currentDamage: 0
   cooldown: 0.2
   useAnimationEvent: 0
+  damagePercent: 0
   projectileSpeed: 20
   projectilePoolTag: HollowStaffBL
   manaCost: 1
@@ -127,9 +152,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6f0240538c4c8d4caa66993d71bcf7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useSOData: 0
   useAnimationEvent: 0
   soundID: {fileID: 11400000, guid: 506ff607fc0d6a14bb2bf628bbf4e147, type: 2}
+--- !u!114 &8197109315138961603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4096024061974053134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab30cc6909233d54eab4523d6dce764b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6192763994163552743
 GameObject:
   m_ObjectHideFlags: 0
