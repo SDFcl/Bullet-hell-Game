@@ -1,5 +1,6 @@
 ﻿using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameStateManager : Singleton<GameStateManager>
 {
@@ -45,6 +46,13 @@ public class GameStateManager : Singleton<GameStateManager>
                 break;
             case GameState.GameOver:
                 // แสดงหน้าจอเกมจบ, หยุดการเคลื่อนไหว ฯลฯ
+                DataPersistenceManager dataPersistenceManager = FindObjectOfType<DataPersistenceManager>();
+                if (dataPersistenceManager != null)
+                {
+                    dataPersistenceManager.SaveGame();
+                    Debug.Log("Game saved before loading level: Lobby");
+                }
+                SceneManager.LoadScene("Lobby"); // เปลี่ยนเป็นชื่อ Scene ที่ต้องการแสดงเมื่อเกมจบ
                 break;
             case GameState.Victory:
                 // แสดงหน้าจอชนะ, หยุดการเคลื่อนไหว ฯลฯ
