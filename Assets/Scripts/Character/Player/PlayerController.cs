@@ -212,5 +212,6 @@ public class PlayerController : MonoBehaviour
     private void OnDeadHandle()
     {
         playerInput.enabled = false;
+        GameStateManager.Instance.ChangeState(GameState.GameOver);
     }
 }
