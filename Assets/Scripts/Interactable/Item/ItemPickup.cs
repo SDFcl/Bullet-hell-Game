@@ -34,7 +34,8 @@ public class ItemPickup : MonoBehaviour, IPickable,ICollectEvent
                 OnCollected?.Invoke(gameObject);
                 Destroy(gameObject);
             }
-            else if (itemData.itemType == ItemType.Consumable)
+        }
+        else if (itemData.itemType == ItemType.Consumable)
             {
                 if (itemData.consumableType == ConsumableType.passive)
                 {
@@ -55,9 +56,6 @@ public class ItemPickup : MonoBehaviour, IPickable,ICollectEvent
                 OnCollected?.Invoke(gameObject);
                 Destroy(gameObject);
             }
-
-
-        }
     }
 
 }

@@ -1,60 +1,48 @@
-using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ConsumablePHUD : MonoBehaviour
 {
-    InventoryItem currentConsumable;
     Inventory inventory;
     Image image;
+
     void Awake()
     {
-        if(inventory = null)
-        {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        if (player != null)
             inventory = player.GetComponent<Inventory>();
-        }
+
         image = GetComponent<Image>();
     }
+
     void OnEnable()
     {
         if (inventory != null)
         {
-            inventory.OnConsumableChanged += RefreshCurrentConsumable;
-            RefreshCurrentConsumable();
+            inventory.OnConsumableChanged += ChangeImage;
+            ChangeImage();
         }
     }
+
     void OnDisable()
     {
         if (inventory != null)
-            inventory.OnConsumableChanged -= RefreshCurrentConsumable;
-
-        UnsubscribeCurrentConsumable();
-    }
-    private void RefreshCurrentConsumable()
-    {
-        UnsubscribeCurrentConsumable();
-
-        if (inventory == null)
-            return;
-
-        if (inventory.Consumables.Count == 0)
-            return;
-
-        currentConsumable = inventory.Consumables[0];
-        currentConsumable.OnUse += ChangeImage;
-    }
-
-    private void UnsubscribeCurrentConsumable()
-    {
-        if (currentConsumable == null)
-            return;
-
-        currentConsumable.OnUse -= ChangeImage;
-        currentConsumable = null;
+            inventory.OnConsumableChanged -= ChangeImage;
     }
 
     void ChangeImage()
     {
-        image.sprite = currentConsumable.itemData.itemIcon;
+        Debug.Log("trigger event");
+        if (inventory == null || image == null)
+            return;
+
+        if (inventory.Consumables.Count == 0)
+        {
+            image.sprite = null;
+            return;
+        }
+
+        image.sprite = inventory.Consumables[0].itemData.itemIcon;
     }
 }

@@ -76,6 +76,7 @@ public class Inventory : MonoBehaviour
         {
             DropConsumable(0);
             Consumables.Insert(0, item);
+            OnConsumableChanged?.Invoke();
             SaveInventory();
             return;
         }
