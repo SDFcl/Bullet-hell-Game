@@ -23,7 +23,8 @@ public class SpecialAbility : MonoBehaviour
         if(playerUpgradeManager != null)
         {
             IPlayerStats stats = playerUpgradeManager.GetFinalStats();
-            damageMultiplier += stats.IncreaseDamage/100; // ��������������¨ҡ�Ѿ�ô
+            if (stats != null)
+                damageMultiplier += stats.IncreaseDamage/100; // ��������������¨ҡ�Ѿ�ô
             Debug.Log($"[SpecialAbility] Damage multiplier after applying upgrades: {damageMultiplier}. {stats.IncreaseDamage}");
         }
     }

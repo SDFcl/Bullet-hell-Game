@@ -7,7 +7,6 @@ public class HoldingItemVisual : MonoBehaviour
 
     private void Awake()
     {
-        SetVisible(true);
         health = GetComponentInParent<Health>();
     }
 

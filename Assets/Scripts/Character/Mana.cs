@@ -16,7 +16,7 @@ public class Mana : MonoBehaviour
         if (stats != null)
         {
             maxMana += stats.MaxMana;
-            Debug.Log($"Mana: Max mana updated to {maxMana} based on player stats (BonusMana: {stats.MaxMana})");
+            //Debug.Log($"Mana: Max mana updated to {maxMana} based on player stats (BonusMana: {stats.MaxMana})");
         }
     }
 

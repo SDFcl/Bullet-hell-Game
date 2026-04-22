@@ -377,6 +377,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dfd1c73baa7dca4ca1181832394ac64, type: 3}
+--- !u!1 &8811148102685804293 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8601641729579575177, guid: 6dfd1c73baa7dca4ca1181832394ac64, type: 3}
+  m_PrefabInstance: {fileID: 943599850098106508}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9197195836595609101 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8267298237909450369, guid: 6dfd1c73baa7dca4ca1181832394ac64, type: 3}
@@ -1076,6 +1081,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3492606222884020517, guid: 663da579dd72c1d4c89165d445081b2a, type: 3}
+      propertyPath: enemies.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492606222884020517, guid: 663da579dd72c1d4c89165d445081b2a, type: 3}
+      propertyPath: 'enemies.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8811148102685804293}
     - target: {fileID: 3702569635357377061, guid: 663da579dd72c1d4c89165d445081b2a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.07
