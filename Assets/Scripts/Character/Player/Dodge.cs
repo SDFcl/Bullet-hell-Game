@@ -27,6 +27,8 @@ public class Dodge : MonoBehaviour
 
     private Vector2 dir;
 
+    float cooldownTimer;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -36,11 +38,23 @@ public class Dodge : MonoBehaviour
         }
         burstMove = GetComponent<IImpulseMover>();
     }
+    void Start()
+    {
+        cooldownTimer = cooldown;
+    }
+    void Update()
+    {
+        cooldownTimer += Time.deltaTime;
+    }
 
     public void TryDodge()
     {
-        if (!canDodge) return;
-        StartCoroutine(DodgeRoutine());
+        if(cooldownTimer >= cooldown)
+        {
+            cooldownTimer = 0;
+            if (!canDodge) return;
+            StartCoroutine(DodgeRoutine());
+        }
     }
 
     private IEnumerator DodgeRoutine()
@@ -55,8 +69,6 @@ public class Dodge : MonoBehaviour
 
         yield return new WaitForSeconds(iFrameDuration);
         EnableHitbox();
-
-        yield return new WaitForSeconds(cooldown);
         canDodge = true;
     }
 
