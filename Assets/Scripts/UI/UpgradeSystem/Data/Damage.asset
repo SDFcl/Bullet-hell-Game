@@ -12,20 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d30ef6e55ed4e045a3dba35811efbd3, type: 3}
   m_Name: Damage
   m_EditorClassIdentifier: 
+  id: 91633fbe-8b10-4a39-a643-c0629e8e07c1
   upgradeType: 0
   upgradeName: Damage
   upgradeIcon: {fileID: 0}
   upgradeDescription: 
   upgradeValues:
-  - value: 0
-    cost: 0
-  - value: 25
-    cost: 2
-  - value: 50
-    cost: 6
-  - value: 75
-    cost: 20
-  - value: 100
-    cost: 30
-  - value: 150
-    cost: 40
+  - cost: 0
+    value: 0
+  - cost: 2
+    value: 25
+  - cost: 6
+    value: 50
+  - cost: 20
+    value: 75
+  - cost: 30
+    value: 100
+  - cost: 40
+    value: 150

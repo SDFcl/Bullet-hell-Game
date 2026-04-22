@@ -12,20 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d30ef6e55ed4e045a3dba35811efbd3, type: 3}
   m_Name: Health
   m_EditorClassIdentifier: 
+  id: 7ed2a385-3e64-4984-a85d-6a1a1102f98d
   upgradeType: 1
   upgradeName: Health
   upgradeIcon: {fileID: 0}
   upgradeDescription: 
   upgradeValues:
-  - value: 0
-    cost: 0
-  - value: 1
-    cost: 1
-  - value: 2
-    cost: 6
-  - value: 3
-    cost: 10
-  - value: 4
-    cost: 30
-  - value: 5
-    cost: 40
+  - cost: 0
+    value: 0
+  - cost: 1
+    value: 1
+  - cost: 6
+    value: 2
+  - cost: 10
+    value: 3
+  - cost: 30
+    value: 4
+  - cost: 40
+    value: 5
