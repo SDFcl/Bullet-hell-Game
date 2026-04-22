@@ -39,14 +39,13 @@ public class ItemPickup : MonoBehaviour, IPickable,ICollectEvent
             {
                 if (itemData.consumableType == ConsumableType.passive)
                 {
-                    GameObject player = inventory.GetComponentInParent<PlayerController>()?.gameObject ?? inventory.gameObject;
+
+                    inventory.AddConsumable(newItem);
 
                     foreach (var effect in itemData.effects)
                     {
-                        effect.Apply(player);
+                        effect.Apply(inventory.gameObject);
                     }
-
-                    inventory.AddConsumable(newItem);
                     Debug.Log($"[ItemPickup] Applied passive effect: {itemData.itemName}");
                 }
                 else
