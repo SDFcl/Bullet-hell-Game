@@ -12,8 +12,8 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
     [SerializeField] protected float currentDamage;
     [SerializeField] protected float cooldown = 0.5f;
 
-    [Header("Animation Setting")]
-    [SerializeField] protected bool useAnimationEvent = false;
+    
+    protected bool useAnimationEvent = false;
 
     public event Action OnAttack;
 
@@ -32,6 +32,12 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
         {
             baseDamage = weaponData.GetBaseData().baseDamage;
             cooldown = weaponData.GetFireRateValue();
+        }
+
+        Animator animator = GetComponent<Animator>();
+        if (animator != null)
+        {
+            useAnimationEvent = true;
         }
     }
 

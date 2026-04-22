@@ -2,11 +2,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ShowStageChange : MonoBehaviour
+public class StagePHUD : MonoBehaviour
 {
     [SerializeField] private string baseStage = "Stage";
     private TextMeshProUGUI stageText;
-    private void Start()
+    private void Awake()
     {
         stageText = GetComponent<TextMeshProUGUI>();
     }
