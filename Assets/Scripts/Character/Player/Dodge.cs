@@ -21,9 +21,8 @@ public class Dodge : MonoBehaviour
     public event Action OnDodge;
 
     private bool canDodge = true;
-    private Rigidbody2D rb;
-    [SerializeField] private Collider2D col;
     private IImpulseMover burstMove;
+    private IIFrame iframe;
 
     private Vector2 dir;
 
@@ -31,11 +30,7 @@ public class Dodge : MonoBehaviour
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        if(col == null)
-        {
-            col = GetComponent<Collider2D>();
-        }
+        iframe = GetComponent<IIFrame>();
         burstMove = GetComponent<IImpulseMover>();
     }
     void Start()
@@ -65,10 +60,10 @@ public class Dodge : MonoBehaviour
         burstMove.Play(dir, dodgeForce * dodgeDistanceMultiplier, dodgeAnimation.length);
 
         yield return new WaitForSeconds(iFrameDelay);
-        DisableHitbox();
+        iframe.EnableIgnoreDamage(true);
 
         yield return new WaitForSeconds(iFrameDuration);
-        EnableHitbox();
+        iframe.EnableIgnoreDamage(false);
         canDodge = true;
     }
 
@@ -76,9 +71,6 @@ public class Dodge : MonoBehaviour
     {
         this.dir = dir;
     }
-
-    public void EnableHitbox() => col.enabled = true;
-    public void DisableHitbox() => col.enabled = false;
 
     public void AddDistanceMultiplier(float multiplier) => dodgeDistanceMultiplier += multiplier;
     public void RemoveDistanceMultiplier(float multiplier) => dodgeDistanceMultiplier -= multiplier;

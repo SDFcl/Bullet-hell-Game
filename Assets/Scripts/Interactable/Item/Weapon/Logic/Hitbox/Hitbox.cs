@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class Hitbox : MonoBehaviour
 {
-    private float damage;
+    [SerializeField] private float damage;
     private Collider2D hitCollider;
     [SerializeField] private bool isTrigger;
 
