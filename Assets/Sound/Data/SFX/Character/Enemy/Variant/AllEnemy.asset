@@ -13,7 +13,115 @@ MonoBehaviour:
   m_Name: AllEnemy
   m_EditorClassIdentifier: 
   sounds:
-  - idName: None
-    id: {fileID: 0}
-    clip: {fileID: 0}
-    volume: 0
+  - idName: CandleMelee_Attack
+    id: {fileID: 11400000, guid: 509bbbaa59736ec45a0e42579c0d5c2a, type: 2}
+    clip: {fileID: 8300000, guid: 76c4f21ac33374941ba801c409154c36, type: 3}
+    volume: 0.505
+  - idName: CandleMelee_AttackImpact
+    id: {fileID: 11400000, guid: a746aa6096fb67d4ca0a8a10f468a9cb, type: 2}
+    clip: {fileID: 8300000, guid: 6bd22d8127193fc4f8db4506c6baef58, type: 3}
+    volume: 0.495
+  - idName: CandleRanged_Attack
+    id: {fileID: 11400000, guid: b1433c3a2e3657d4d9145617c31af091, type: 2}
+    clip: {fileID: 8300000, guid: e9f0056082788a7488c9e8fbdc94661a, type: 3}
+    volume: 0.538
+  - idName: CandleRanged_AttackImpact
+    id: {fileID: 11400000, guid: 7b9383030d4e0ad43a5fc209fd125504, type: 2}
+    clip: {fileID: 8300000, guid: 96bacc8336ff5fe4886bff9bd92b9a41, type: 3}
+    volume: 0.094
+  - idName: HurtA
+    id: {fileID: 11400000, guid: 79acd0dd1b3fd8a46bf2a7544569e6f3, type: 2}
+    clip: {fileID: 8300000, guid: 99c592f9c71079f4a86b224c5813d38f, type: 3}
+    volume: 0.538
+  - idName: HurtB
+    id: {fileID: 11400000, guid: a23d3c051ca544d4582360cf6d681080, type: 2}
+    clip: {fileID: 8300000, guid: de349c8068df18f4f9473fe0f2bbd08a, type: 3}
+    volume: 0.542
+  - idName: HurtC
+    id: {fileID: 11400000, guid: 145cba9dc95f88945b0737e91f7f79c1, type: 2}
+    clip: {fileID: 8300000, guid: 82a73a35b88a4f045acb3cfe839d6750, type: 3}
+    volume: 0.533
+  - idName: HurtD
+    id: {fileID: 11400000, guid: 06c28caa9f4b8574995070e8e7b328e1, type: 2}
+    clip: {fileID: 8300000, guid: f5eece27134f29547ad4fa9d59fa9abe, type: 3}
+    volume: 0.533
+  - idName: MushroomArea_Attack
+    id: {fileID: 11400000, guid: b2e72ca7160d78f4ca010504c4aae619, type: 2}
+    clip: {fileID: 8300000, guid: 9b03cefe2f0732b45bf89773dcdec48f, type: 3}
+    volume: 0.481
+  - idName: MageFemale_Shoot
+    id: {fileID: 11400000, guid: 7a26a792db6e7954b8f22e3bb245fa2c, type: 2}
+    clip: {fileID: 8300000, guid: 88bbde1727af1e740b73402ee7300623, type: 3}
+    volume: 0.519
+  - idName: MageFemale_ShootImpact
+    id: {fileID: 11400000, guid: 423f8fd93cdde6d4b9e94fc862ea5ef7, type: 2}
+    clip: {fileID: 8300000, guid: ee8fd84b12087c8449c60238987b08cd, type: 3}
+    volume: 0.222
+  - idName: MageMale_Shoot
+    id: {fileID: 11400000, guid: f7b6faef9135b4448831aab192e2968f, type: 2}
+    clip: {fileID: 8300000, guid: ceb0601ce6107204094b10754c770402, type: 3}
+    volume: 0.524
+  - idName: MageMale_ShootImpact
+    id: {fileID: 11400000, guid: ac3417b081bddb848ba0a6fddd2db3fb, type: 2}
+    clip: {fileID: 8300000, guid: ee8fd84b12087c8449c60238987b08cd, type: 3}
+    volume: 0.165
+  - idName: MageFighter_Attack
+    id: {fileID: 11400000, guid: 5de722b068dca984b82978919164d129, type: 2}
+    clip: {fileID: 8300000, guid: 22a8c1cf50484af46a838f92e0090763, type: 3}
+    volume: 0.524
+  - idName: MageFighter_AttackImpact
+    id: {fileID: 11400000, guid: ea328eab9ff651944ad9454463b1419f, type: 2}
+    clip: {fileID: 8300000, guid: b3b341477b0a04a468e78106f6c40359, type: 3}
+    volume: 0.5
+  - idName: Necromancer_AttackArea
+    id: {fileID: 11400000, guid: ce282dbab60b012428896c61752daac5, type: 2}
+    clip: {fileID: 8300000, guid: 88bbde1727af1e740b73402ee7300623, type: 3}
+    volume: 0.5
+  - idName: Necromancer_AttackShoot
+    id: {fileID: 11400000, guid: 5937a8c4196252841b17a2df5c834074, type: 2}
+    clip: {fileID: 8300000, guid: e9f0056082788a7488c9e8fbdc94661a, type: 3}
+    volume: 0.5
+  - idName: Necromancer_Die
+    id: {fileID: 11400000, guid: ffe0502c25d3fd14d8d2868039bd7c74, type: 2}
+    clip: {fileID: 8300000, guid: cb5c7ea412661a74b87f8a0cde8c645e, type: 3}
+    volume: 0.495
+  - idName: Necromancer_Summon
+    id: {fileID: 11400000, guid: 5ce8c608139ae424081ceb1f3af6d585, type: 2}
+    clip: {fileID: 8300000, guid: bc2c8b48c1694bc468f7268daaeb7789, type: 3}
+    volume: 0.547
+  - idName: Abomination_AttackArea
+    id: {fileID: 11400000, guid: 0c70d50dca8514f43a576fd0e08d5097, type: 2}
+    clip: {fileID: 8300000, guid: 318a3787fa12872438bb54f55535f578, type: 3}
+    volume: 0.5
+  - idName: Abomination_AttackCannon
+    id: {fileID: 11400000, guid: c50c8d0bdfc176544a25dbe6fbe86ec0, type: 2}
+    clip: {fileID: 8300000, guid: bb9bd45f790059041bf509e63b28a334, type: 3}
+    volume: 0.5
+  - idName: Abomination_Die
+    id: {fileID: 11400000, guid: 38cebeb808e0a3e45a021846b16ad8ac, type: 2}
+    clip: {fileID: 8300000, guid: 914596c9044a5694080635cf7886f53a, type: 3}
+    volume: 0.519
+  - idName: Abomination_Summon
+    id: {fileID: 11400000, guid: d56e4921039be9949af6d65a01d01e36, type: 2}
+    clip: {fileID: 8300000, guid: fdb957ea4d838cc42aa93fe450103a36, type: 3}
+    volume: 0.458
+  - idName: Harbinger_AttackArea
+    id: {fileID: 11400000, guid: 74db8009d4f11ab488c1e8bbc14306c7, type: 2}
+    clip: {fileID: 8300000, guid: a88b5383038ef9a429c030d348f5a30e, type: 3}
+    volume: 0.443
+  - idName: Harbinger_AttackLunge
+    id: {fileID: 11400000, guid: 7b817988f0227114dac807600ff91373, type: 2}
+    clip: {fileID: 8300000, guid: 5777916f3339a6844aecab0f35d0272e, type: 3}
+    volume: 0.448
+  - idName: Harbinger_AttackSlash
+    id: {fileID: 11400000, guid: bf1925b2345424b4693d2ff006764092, type: 2}
+    clip: {fileID: 8300000, guid: 900527829fa71454eb71ef4de3592e1f, type: 3}
+    volume: 0.491
+  - idName: Harbinger_Die
+    id: {fileID: 11400000, guid: 10090b75bf7e5a441870bf638da67aab, type: 2}
+    clip: {fileID: 8300000, guid: 2c34dfe22b93a4c4e9872a3e97794eaf, type: 3}
+    volume: 0.481
+  - idName: Harbinger_Hurt
+    id: {fileID: 11400000, guid: f6b5740055943b64da84cd32ddc999eb, type: 2}
+    clip: {fileID: 8300000, guid: b53f4ed0cdf55c44b83c3ec679f27767, type: 3}
+    volume: 0.524
