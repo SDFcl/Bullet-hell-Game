@@ -650,8 +650,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17deccb81d783c543a3771f8f12468dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 6
-  <CurrentHP>k__BackingField: 6
+  maxHealth: 5
+  <CurrentHP>k__BackingField: 5
   iframeDuration: 2
 --- !u!114 &8270400359032394410
 MonoBehaviour:
@@ -665,9 +665,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feebc9b62afe7e342be3c0a5403ae055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMana: 50
-  manaRegenRate: 1
-  <CurrentMana>k__BackingField: 10
+  maxMana: 100
+  manaRegenRate: 3
+  <CurrentMana>k__BackingField: 100
 --- !u!114 &504865364479676631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -726,7 +726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e149856b005c4964b832d55645268044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxWeapons: 5
+  maxWeapons: 3
   Weapons: []
   maxConsumables: 1
   Consumables: []
@@ -821,6 +821,8 @@ MonoBehaviour:
   useDodgeAnimationEvent: 1
   DodgeID: {fileID: 11400000, guid: 0ba3b0379ed03a84a8c410f41608c46a, type: 2}
   UseConsumable: {fileID: 11400000, guid: 2726112bcdf43284a98b61b3371ff0ea, type: 2}
+  UseSpecialAbility: {fileID: 11400000, guid: edca2877e4a7a8b428d0e7d19174266b, type: 2}
+  OnSpeAbililyActive: {fileID: 11400000, guid: e384cfd067289cb4eadf0bb16f2aed77, type: 2}
 --- !u!114 &1914432539701490768
 MonoBehaviour:
   m_ObjectHideFlags: 0

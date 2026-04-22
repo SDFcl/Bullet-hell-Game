@@ -6,6 +6,8 @@ public class WeaponPHUD : MonoBehaviour
     HoldingItemWatcher holdingItemWatcher;
     Transform holdingItem;
     Image image;
+    [SerializeField] private RectTransform frame;
+    float imageSclae = 0.75f;
 
     void Awake()
     {
@@ -43,6 +45,10 @@ public class WeaponPHUD : MonoBehaviour
     void ChangeWeaponImage()
     {
         Item item = holdingItem.GetComponentInChildren<Item>();
+        image.color = new Color(1f, 1f, 1f, 1f);
         image.sprite = item.itemData.itemIcon;
+        image.preserveAspect = true;
+        image.SetNativeSize();
+        image.rectTransform.sizeDelta = frame.rect.size/imageSclae;
     }
 }

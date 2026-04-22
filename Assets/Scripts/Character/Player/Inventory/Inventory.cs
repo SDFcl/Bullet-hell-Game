@@ -15,6 +15,7 @@ public class Inventory : MonoBehaviour
     [Header("Currency")]
     [SerializeField]
     public int Coins = 0;
+    public int CurrentCoin => Coins;
 
     #region Events
     public Action<int> OnWeaponChanged;

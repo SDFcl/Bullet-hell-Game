@@ -176,7 +176,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: combatUI_Element_3
+      name: CBUI_Coin
       rect:
         serializedVersion: 2
         x: 68
@@ -198,7 +198,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: combatUI_Element_4
+      name: CBUI_Heath_Full
       rect:
         serializedVersion: 2
         x: 82
@@ -220,7 +220,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: combatUI_Element_5
+      name: CBUI_Heath_Empty
       rect:
         serializedVersion: 2
         x: 98
@@ -395,6 +395,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: CBUI_Special_Icon
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 65
+        width: 24
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d5bce2747ef9d54595e1ee0f6623514
+      internalID: -324074782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -412,16 +434,17 @@ TextureImporter:
       CBUI_BossBar_Black: -1038217282
       CBUI_BossBar_Front: -2073926984
       CBUI_BossBar_Middle: 739991421
+      CBUI_Coin: -601259266
       CBUI_Consumable: -1961973383
+      CBUI_Heath_Empty: -822409587
+      CBUI_Heath_Full: 1545299545
       CBUI_ManaBar_Back: 715592342
       CBUI_ManaBar_Front: 375067640
       CBUI_ManaBar_Middle: -39251354
       CBUI_MiniMap: -1706876388
       CBUI_Special skill: 1425247548
+      CBUI_Special_Icon: -324074782
       CBUI_Weapon: 1794427769
-      combatUI_Element_3: -601259266
-      combatUI_Element_4: 1545299545
-      combatUI_Element_5: -822409587
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

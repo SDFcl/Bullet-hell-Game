@@ -23,9 +23,11 @@ MonoBehaviour:
     baseData:
       weaponName: AzureStaff
       baseDamage: 2
-      fireRate: 4
+      fireRate: 3
       weaponType: 1
     projectileTag: AzureStaffBL
-    manaCostType: 0
+    manaCostType: 1
     projectileSpeed: 6
   statTable: {fileID: 11400000, guid: a79cb71f417133f4bb60f44ba3f8217f, type: 2}
+  onAttackSoundID: {fileID: 11400000, guid: afcefc57a9e248d459924873257b397e, type: 2}
+  onHitSoundID: {fileID: 11400000, guid: b2218e02738663b4db44d492bc0fbee0, type: 2}

@@ -16,8 +16,8 @@ MonoBehaviour:
   meleeData:
     baseData:
       weaponName: DarkSickle
-      baseDamage: 30
-      fireRate: 2
+      baseDamage: 20
+      fireRate: 3
       weaponType: 0
   rangedData:
     baseData:
@@ -25,6 +25,9 @@ MonoBehaviour:
       baseDamage: 0
       fireRate: 0
       weaponType: 0
+    projectileTag: 
     manaCostType: 0
     projectileSpeed: 0
   statTable: {fileID: 11400000, guid: a79cb71f417133f4bb60f44ba3f8217f, type: 2}
+  onAttackSoundID: {fileID: 11400000, guid: 341aa9ce9c4499745b3cdf1ef82f668a, type: 2}
+  onHitSoundID: {fileID: 11400000, guid: 6ee76e0601d65c347a1ffad2c34a892b, type: 2}
