@@ -35,6 +35,7 @@ public class DataPersistenceManager : Singleton<DataPersistenceManager>
         LoadGame();
     }
 
+
     private void OnApplicationQuit()
     {
         SaveGame();

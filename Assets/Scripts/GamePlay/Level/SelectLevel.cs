@@ -11,6 +11,12 @@ public class SelectLevel : MonoBehaviour, ILevel
         GameSession.currentLevel = levelToEnter;
         GameSession.lastRandomIndex = -1;
         GameSession.savedInventory = new SavedInventory();
+        DataPersistenceManager dataPersistenceManager = FindObjectOfType<DataPersistenceManager>();
+        if (dataPersistenceManager != null)
+        {
+            dataPersistenceManager.SaveGame();
+            Debug.Log("Game saved before loading level: " + sceneName);
+        }
         SceneManager.LoadScene(sceneName);
     }
 

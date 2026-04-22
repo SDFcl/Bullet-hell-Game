@@ -46,9 +46,10 @@ public class PlayerController : MonoBehaviour
         health = GetComponent<Health>();
         specialAbility = GetComponent<SpecialAbility>();
 
-        IPlayerStats Stats = FindObjectOfType<PlayerUpgradeManager>().GetFinalStats();
-        if (Stats != null)
+        PlayerUpgradeManager playerUpgradeManager = FindObjectOfType<PlayerUpgradeManager>();
+        if (playerUpgradeManager != null)
         {
+            IPlayerStats Stats = playerUpgradeManager.GetFinalStats();
             if (health != null)
             {
                 PlayerHealth playerHealth = health.GetComponent<PlayerHealth>();
