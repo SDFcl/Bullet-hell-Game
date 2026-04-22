@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8967127164362899254, guid: b37bf3107b53c6244a7d96d58b70b5e3, type: 3}
+      propertyPath: soundID
+      value: 
+      objectReference: {fileID: 11400000, guid: bf1925b2345424b4693d2ff006764092, type: 2}
     - target: {fileID: 463129060273056909, guid: b37bf3107b53c6244a7d96d58b70b5e3, type: 3}
       propertyPath: m_Controller
       value: 
@@ -149,4 +153,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 712ed09c8ca999a40aedf31ff122b7be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sideBulletCount: 2
   spreadAngle: 15

@@ -88,6 +88,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8397869137123264509, guid: 4a62dd549864f804a847e2958a7632cc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6815109377760971592}
+    - targetCorrespondingSourceObject: {fileID: 8397869137123264509, guid: 4a62dd549864f804a847e2958a7632cc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4262973262799961604}
   m_SourcePrefab: {fileID: 100100000, guid: 4a62dd549864f804a847e2958a7632cc, type: 3}
 --- !u!1 &2199859002045862841 stripped
 GameObject:
@@ -111,3 +114,16 @@ MonoBehaviour:
   childProjectileTag: Enemy_BulletABL
   childProjectileSpeed: 6
   childProjectileDamage: 1
+--- !u!114 &4262973262799961604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2199859002045862841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa07456e2772a8488206caa57558c84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundID: {fileID: 11400000, guid: 423f8fd93cdde6d4b9e94fc862ea5ef7, type: 2}

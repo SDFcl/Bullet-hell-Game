@@ -16,27 +16,27 @@ MonoBehaviour:
   - idName: CandleMelee_Attack
     id: {fileID: 11400000, guid: 509bbbaa59736ec45a0e42579c0d5c2a, type: 2}
     clip: {fileID: 8300000, guid: 76c4f21ac33374941ba801c409154c36, type: 3}
-    volume: 0.505
+    volume: 0.335
   - idName: CandleMelee_AttackImpact
     id: {fileID: 11400000, guid: a746aa6096fb67d4ca0a8a10f468a9cb, type: 2}
     clip: {fileID: 8300000, guid: 6bd22d8127193fc4f8db4506c6baef58, type: 3}
-    volume: 0.495
+    volume: 0.124
   - idName: CandleRanged_Attack
     id: {fileID: 11400000, guid: b1433c3a2e3657d4d9145617c31af091, type: 2}
     clip: {fileID: 8300000, guid: e9f0056082788a7488c9e8fbdc94661a, type: 3}
-    volume: 0.538
+    volume: 0.143
   - idName: CandleRanged_AttackImpact
     id: {fileID: 11400000, guid: 7b9383030d4e0ad43a5fc209fd125504, type: 2}
     clip: {fileID: 8300000, guid: 96bacc8336ff5fe4886bff9bd92b9a41, type: 3}
-    volume: 0.094
+    volume: 0.149
   - idName: HurtA
     id: {fileID: 11400000, guid: 79acd0dd1b3fd8a46bf2a7544569e6f3, type: 2}
     clip: {fileID: 8300000, guid: 99c592f9c71079f4a86b224c5813d38f, type: 3}
-    volume: 0.538
+    volume: 0.205
   - idName: HurtB
     id: {fileID: 11400000, guid: a23d3c051ca544d4582360cf6d681080, type: 2}
     clip: {fileID: 8300000, guid: de349c8068df18f4f9473fe0f2bbd08a, type: 3}
-    volume: 0.542
+    volume: 0.093
   - idName: HurtC
     id: {fileID: 11400000, guid: 145cba9dc95f88945b0737e91f7f79c1, type: 2}
     clip: {fileID: 8300000, guid: 82a73a35b88a4f045acb3cfe839d6750, type: 3}
@@ -48,19 +48,19 @@ MonoBehaviour:
   - idName: MushroomArea_Attack
     id: {fileID: 11400000, guid: b2e72ca7160d78f4ca010504c4aae619, type: 2}
     clip: {fileID: 8300000, guid: 9b03cefe2f0732b45bf89773dcdec48f, type: 3}
-    volume: 0.481
+    volume: 0.342
   - idName: MageFemale_Shoot
     id: {fileID: 11400000, guid: 7a26a792db6e7954b8f22e3bb245fa2c, type: 2}
     clip: {fileID: 8300000, guid: 88bbde1727af1e740b73402ee7300623, type: 3}
-    volume: 0.519
+    volume: 0.342
   - idName: MageFemale_ShootImpact
     id: {fileID: 11400000, guid: 423f8fd93cdde6d4b9e94fc862ea5ef7, type: 2}
-    clip: {fileID: 8300000, guid: ee8fd84b12087c8449c60238987b08cd, type: 3}
-    volume: 0.222
+    clip: {fileID: 8300000, guid: 07834e76b5d8c0f4c879d7ed98288546, type: 3}
+    volume: 0.18
   - idName: MageMale_Shoot
     id: {fileID: 11400000, guid: f7b6faef9135b4448831aab192e2968f, type: 2}
     clip: {fileID: 8300000, guid: ceb0601ce6107204094b10754c770402, type: 3}
-    volume: 0.524
+    volume: 0.292
   - idName: MageMale_ShootImpact
     id: {fileID: 11400000, guid: ac3417b081bddb848ba0a6fddd2db3fb, type: 2}
     clip: {fileID: 8300000, guid: ee8fd84b12087c8449c60238987b08cd, type: 3}
@@ -68,11 +68,11 @@ MonoBehaviour:
   - idName: MageFighter_Attack
     id: {fileID: 11400000, guid: 5de722b068dca984b82978919164d129, type: 2}
     clip: {fileID: 8300000, guid: 22a8c1cf50484af46a838f92e0090763, type: 3}
-    volume: 0.524
+    volume: 0.23
   - idName: MageFighter_AttackImpact
     id: {fileID: 11400000, guid: ea328eab9ff651944ad9454463b1419f, type: 2}
     clip: {fileID: 8300000, guid: b3b341477b0a04a468e78106f6c40359, type: 3}
-    volume: 0.5
+    volume: 0.342
   - idName: Necromancer_AttackArea
     id: {fileID: 11400000, guid: ce282dbab60b012428896c61752daac5, type: 2}
     clip: {fileID: 8300000, guid: 88bbde1727af1e740b73402ee7300623, type: 3}
@@ -125,3 +125,7 @@ MonoBehaviour:
     id: {fileID: 11400000, guid: f6b5740055943b64da84cd32ddc999eb, type: 2}
     clip: {fileID: 8300000, guid: b53f4ed0cdf55c44b83c3ec679f27767, type: 3}
     volume: 0.524
+  - idName: SmallProjectileImpact
+    id: {fileID: 11400000, guid: e8e18ba18588a1d4e9bf78c0eb5f2765, type: 2}
+    clip: {fileID: 8300000, guid: ee8fd84b12087c8449c60238987b08cd, type: 3}
+    volume: 0.068
