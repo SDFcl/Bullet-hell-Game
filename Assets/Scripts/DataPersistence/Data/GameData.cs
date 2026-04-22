@@ -5,13 +5,13 @@ using System.Collections.Generic;
 public class GameData
 {
     public int guildCoin;
-
-    // 🔥 เก็บแค่นี้พอ
     public SerializableDictionary<string, int> upgradeLevels;
+    public SerializableDictionary<int, bool> UnLockLevel;
 
     public GameData()
     {
         guildCoin = 0;
         upgradeLevels = new SerializableDictionary<string, int>();
+        UnLockLevel = new SerializableDictionary<int, bool>();
     }
 }

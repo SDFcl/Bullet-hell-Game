@@ -54,7 +54,8 @@ public class RoomController : MonoBehaviour
     public void RoomCleared()
     {
         doorController.OpenDoors();
-        rewardController.SetRewardActive(true);
+        if (rewardController != null)
+            rewardController.SetRewardActive(true);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

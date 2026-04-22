@@ -87,6 +87,7 @@ public class RoomEnemysController : MonoBehaviour
 
         if (enemyCount <= 0)
         {
+            Debug.Log("All enemies in the room are dead!");
             OnRoomCleared?.Invoke();
         }
     }
