@@ -11,7 +11,7 @@ public class RoomEnemysController : MonoBehaviour
 
     private EnemySpawner enemySpawner;
     private Collider2D roomArea;
-    private int enemyCount;
+    public int enemyCount;
 
 
     public System.Action OnRoomCleared;
@@ -37,6 +37,22 @@ public class RoomEnemysController : MonoBehaviour
         {
             enemySpawner.SpawnEnemies(roomArea, goEnemyGroup);
             FindEnemiesInRoom(); // Refresh the enemy list after spawning
+        }
+        else
+        {
+            foreach (var enemy in enemies)
+            {
+                if (enemy != null)
+                {
+                    Health health = enemy.GetComponent<Health>();
+                    Debug.Log($"[RoomEnemysController] Found enemy: {enemy.name}, Health component: {(health != null ? "Yes" : "No")}");
+                    if (health != null)
+                    {
+                        health.OnDead += OnEnemyDead;
+                        enemyCount++;
+                    }
+                }
+            }
         }
         SetEnemiesActive(false);
     }

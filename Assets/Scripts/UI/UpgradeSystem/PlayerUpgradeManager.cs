@@ -50,6 +50,7 @@ public class PlayerUpgradeManager : MonoBehaviour
 
     public IPlayerStats GetFinalStats()
     {
+        Rebuild(); // 🔥 Ensure stats are up-to-date before returning
         return finalStats;
     }
 
