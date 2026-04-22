@@ -43,6 +43,7 @@ public class ProjectileWeapon : BaseWeapon, IProjectileWeapon
         {
             Debug.LogWarning("Shooting point not found!");
         }
+        
     }
 
     public void SetProjectileTag(string tag)
