@@ -1,17 +1,37 @@
 using UnityEngine;
 
-public class TripleFire : BasePatternFire
+public class MultiSideFire : BasePatternFire
 {
+    [SerializeField] private int sideBulletCount = 1;
     [SerializeField] private float spreadAngle = 15f;
+
     public override void Execute(IProjectileWeapon weapon)
     {
-        SpawnProjectile(weapon, weapon.ShootPoint.position, 
-        weapon.ShootPoint.rotation);
+        Transform shootPoint = weapon.ShootPoint;
 
-        SpawnProjectile(weapon, weapon.ShootPoint.position, 
-        weapon.ShootPoint.rotation * Quaternion.Euler(0, 0, spreadAngle));
+        // กระสุนตรงกลาง
+        SpawnProjectile(
+            weapon,
+            shootPoint.position,
+            shootPoint.rotation
+        );
 
-        SpawnProjectile(weapon, weapon.ShootPoint.position, 
-        weapon.ShootPoint.rotation * Quaternion.Euler(0, 0, -spreadAngle));
+        // กระสุนด้านข้าง ซ้าย/ขวา เพิ่มตามจำนวน
+        for (int i = 1; i <= sideBulletCount; i++)
+        {
+            float angle = spreadAngle * i;
+
+            SpawnProjectile(
+                weapon,
+                shootPoint.position,
+                shootPoint.rotation * Quaternion.Euler(0, 0, angle)
+            );
+
+            SpawnProjectile(
+                weapon,
+                shootPoint.position,
+                shootPoint.rotation * Quaternion.Euler(0, 0, -angle)
+            );
+        }
     }
 }
