@@ -8,6 +8,9 @@ public class UpdateSlotUpgradeUI : MonoBehaviour
     public UpgradeShop upgradeShop;
     public UpgradeType upgradeType;
 
+    [Header("Upgrade Data")]
+    public UpgradeData upgradeData;
+
     [Header("UI Elements")]
     public TextMeshProUGUI upgradeNameText;
     public Image upgradeIcon;
@@ -42,5 +45,10 @@ public class UpdateSlotUpgradeUI : MonoBehaviour
             }
         }
         upgradeCostText.text = $"Cost : {data.upgradeValues[Index+1].cost}";
+    }
+
+    public void OnClick()
+    {
+        upgradeShop.BuyUpgrade(upgradeData);
     }
 }

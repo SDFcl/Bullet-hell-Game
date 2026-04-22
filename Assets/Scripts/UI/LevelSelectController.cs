@@ -30,7 +30,7 @@ public class LevelSelectController : MonoBehaviour
 
     [Header("UI Control")]
     public Toggle toggle;
-    private CanvasGroup canvasGroup;
+    public CanvasGroup canvasGroup;
 
     private SelectLevel selectLevel;
 

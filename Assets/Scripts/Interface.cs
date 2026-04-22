@@ -121,3 +121,9 @@ public interface ISceneExitTask
 {
     IEnumerator Execute();
 }
+
+public interface IDataPersistence
+{
+    void LoadData(GameData data);
+    void SaveData(ref GameData data);
+}

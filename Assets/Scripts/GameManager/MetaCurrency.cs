@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class MetaCurrency : Singleton<MetaCurrency>
+public class MetaCurrency : Singleton<MetaCurrency>, IDataPersistence
 {
     [SerializeField] private int GuildCoin = 0;
 
@@ -11,9 +11,20 @@ public class MetaCurrency : Singleton<MetaCurrency>
 
     public void Start()
     {
-        // เริ่มต้นด้วยค่าเริ่มต้นหรือโหลดจาก PlayerPrefs
         OnMetaCurrencyChanged?.Invoke(GuildCoin);
         Debug.Log($"MetaCurrency initialized. Total: {GuildCoin}");
+    }
+
+    public void LoadData(GameData data)
+    {
+        GuildCoin = data.guildCoin;
+        Debug.Log($"MetaCurrency loaded. Total: {GuildCoin}");
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.guildCoin = this.GuildCoin;
+        Debug.Log($"MetaCurrency saved. Total: {GuildCoin}");
     }
 
     private void FixedUpdate()

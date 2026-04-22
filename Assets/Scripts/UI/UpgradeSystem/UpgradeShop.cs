@@ -1,12 +1,17 @@
-Ôªøusing System;
+using System;
 using Unity.VisualScripting;
 using UnityEngine.UI;
 using UnityEngine;
+using System.Collections.Generic;
 
-public class UpgradeShop : MonoBehaviour
+public class UpgradeShop : MonoBehaviour, IDataPersistence
 {
     [Header("References")]
     public PlayerUpgradeManager manager;
+
+    [Header("Upgrade Data")]
+    [SerializeField] private List<UpgradeData> allUpgrades;
+    private Dictionary<string, UpgradeData> lookup = new();
 
     [Header("UI")]
     public Toggle toggle;
@@ -20,10 +25,14 @@ public class UpgradeShop : MonoBehaviour
         if (manager == null)
         {
             manager = FindObjectOfType<PlayerUpgradeManager>();
-            if (manager == null)
-            {
-                Debug.LogError("UpgradeShop: PlayerUpgradeManager not found in the scene.");
-            }
+        }
+        
+        // ?? Register ∑ÿ° upgrade
+        foreach (var up in allUpgrades)
+        {
+            lookup[up.Id] = up;
+            manager.RegisterUpgrade(up);  // ?? NEW
+            OnUpgradePurchased?.Invoke(up, manager.GetLevel(up)); // ?? NEW - Õ—æ‡¥µ UI µÕπ‡√‘Ë¡‡°¡
         }
 
     }
@@ -33,19 +42,19 @@ public class UpgradeShop : MonoBehaviour
         int currentLevel = manager.GetLevel(data);
         int nextLevel = currentLevel + 1;
 
-        // üîí ‡∏Å‡∏±‡∏ô index ‡∏´‡∏•‡∏∏‡∏î
+        // ?? °—π index À≈ÿ¥
         if (nextLevel >= data.upgradeValues.Length)
         {
-            Debug.Log("‡∏≠‡∏±‡∏û‡πÄ‡∏Å‡∏£‡∏î‡πÄ‡∏ï‡πá‡∏°‡πÅ‡∏•‡πâ‡∏ß");
+            Debug.Log("Õ—æ‡°√¥‡µÁ¡·≈È«");
             return;
         }
 
         int cost = data.upgradeValues[nextLevel].cost;
 
-        // üîí ‡πÄ‡∏ä‡πá‡∏Ñ‡πÄ‡∏á‡∏¥‡∏ô‡∏ó‡∏µ‡∏´‡∏•‡∏±‡∏á (‡∏õ‡∏•‡∏≠‡∏î‡∏†‡∏±‡∏¢‡∏Å‡∏ß‡πà‡∏≤)
+        // ?? ‡™Á§‡ß‘π∑’À≈—ß (ª≈Õ¥¿—¬°«Ë“)
         if (!MetaCurrency.Instance.CanAfford(cost))
         {
-            Debug.Log("‡πÄ‡∏á‡∏¥‡∏ô‡πÑ‡∏°‡πà‡∏û‡∏≠");
+            Debug.Log("‡ß‘π‰¡ËæÕ");
             return;
         }
 
@@ -55,6 +64,42 @@ public class UpgradeShop : MonoBehaviour
 
         Debug.Log($"[UpgradeShop] Bought {data.upgradeName} level {nextLevel}. {data.upgradeValues[nextLevel].value}");
     }
+
+    // ======================
+    // SAVE / LOAD
+    // ======================
+    public void LoadData(GameData data)
+    {
+        //Debug.Log($"[UpgradeShop] Loading upgrades...");
+        foreach (var up in allUpgrades)
+        {
+            //Debug.Log($"[UpgradeShop] Loading {up.upgradeName}...");
+            int savedLevel = data.upgradeLevels.ContainsKey(up.Id) ? data.upgradeLevels[up.Id] : 0;
+            Debug.Log($"[UpgradeShop] Saved level for {up.upgradeName}: {savedLevel}");
+            for (int i = 0; i < savedLevel; i++)
+            {
+                manager.ApplyUpgrade(up);
+                OnUpgradePurchased?.Invoke(up, i + 1);
+                Debug.Log($"[UpgradeShop] Loaded {up.upgradeName} level {i + 1}. {up.upgradeValues[i + 1].value}");
+            }
+        }
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        foreach (var up in allUpgrades)
+        {
+            if (data.upgradeLevels.ContainsKey(up.Id))
+            {
+                data.upgradeLevels.Remove(up.Id);
+            }
+            Debug.Log($"[UpgradeShop] Saving {up.upgradeName}...");
+            int currentLevel = manager.GetLevel(up);
+            data.upgradeLevels.Add(up.Id, currentLevel);
+            Debug.Log($"{data.upgradeLevels.ContainsKey(up.Id)}");
+        }
+    }
+
     public void ChangeState()
     {
         canvasGroup.alpha = toggle.isOn ? 1f : 0f;
@@ -62,3 +107,6 @@ public class UpgradeShop : MonoBehaviour
         canvasGroup.blocksRaycasts = toggle.isOn;
     }
 }
+
+
+

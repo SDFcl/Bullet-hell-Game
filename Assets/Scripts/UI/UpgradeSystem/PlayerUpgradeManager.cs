@@ -1,65 +1,57 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerUpgradeManager : MonoBehaviour
 {
-    [SerializeField]
-    public BasePlayerStats playerStats;
-
-    private Dictionary<UpgradeData, int> currentUpgradeLevels = new();
+    [SerializeField] private BasePlayerStats playerStats;
+    private Dictionary<string, int> currentUpgradeLevels = new();
+    private Dictionary<string, UpgradeData> upgradeLookup = new(); // 🔥 NEW
     private IPlayerStats finalStats;
 
-    private void OnValidate()
+    public void RegisterUpgrade(UpgradeData data) // 🔥 NEW - เรียกจาก UpgradeShop
     {
-        if (playerStats != null)
-        {
-            Debug.Log($"[PlayerUpgradeManager] Base playerStats: {playerStats}");
-        }
-    }
-
-    public IPlayerStats GetFinalStats()
-    {
-        Rebuild();
-        return finalStats;
-    }
-
-    public bool CanUpgrade(UpgradeData data, int currentCurrency)
-    {
-        int level = GetLevel(data) + 1;
-        if (level > data.upgradeValues.Length) return false;
-
-        return currentCurrency >= data.upgradeValues[level-1].cost;
-    }
-
-    public void ApplyUpgrade(UpgradeData data)
-    {
-        if(!currentUpgradeLevels.ContainsKey(data))
-            currentUpgradeLevels[data] = 0;
-
-        currentUpgradeLevels[data]++;
-        Rebuild(); // 🔧 Rebuild finalStats เมื่อเพิ่ม level
-        Debug.Log($"[PlayerUpgradeManager] Applied {data.upgradeName} upgrade. New level: {currentUpgradeLevels[data]}.");
+        upgradeLookup[data.Id] = data;
     }
 
     public int GetLevel(UpgradeData data)
     {
-        return currentUpgradeLevels.ContainsKey(data) ? currentUpgradeLevels[data] : 0;
+        return currentUpgradeLevels.ContainsKey(data.Id) ? currentUpgradeLevels[data.Id] : 0;
     }
 
-    // The error CS0266 occurs because 'StatUpgradeDecorator' does not implement the 'IPlayerStats' interface directly.  
-    // To fix this, you need to ensure that 'StatUpgradeDecorator' either implements 'IPlayerStats' or explicitly cast it to 'IPlayerStats'.  
+    public bool CanUpgrade(UpgradeData data, int currency)
+    {
+        int level = GetLevel(data);
+        if (level >= data.upgradeValues.Length) return false;
+
+        return currency >= data.upgradeValues[level].cost;
+    }
+
+    public void ApplyUpgrade(UpgradeData data)
+    {
+        string id = data.Id;
+        if (!currentUpgradeLevels.ContainsKey(id))
+            currentUpgradeLevels[id] = 0;
+        currentUpgradeLevels[id]++;
+        Rebuild();
+    }
 
     private void Rebuild()
     {
         IPlayerStats baseStats = playerStats;
-
-        foreach (var up in currentUpgradeLevels)
+        foreach (var kv in currentUpgradeLevels)
         {
-            Debug.Log($"[PlayerUpgradeManager] Rebuilding stats: Applying {up.Key.upgradeName} at level {up.Value}. {up.Key.upgradeValues}");
-            baseStats = new StatUpgradeDecorator(baseStats, up.Key, up.Value);
+            if (upgradeLookup.ContainsKey(kv.Key)) // 🔥 ค้นหา UpgradeData จาก ID
+            {
+                baseStats = new StatUpgradeDecorator(baseStats, upgradeLookup[kv.Key], kv.Value);
+            }
         }
-
         finalStats = baseStats;
     }
+
+    public IPlayerStats GetFinalStats()
+    {
+        return finalStats;
+    }
+
+
 }

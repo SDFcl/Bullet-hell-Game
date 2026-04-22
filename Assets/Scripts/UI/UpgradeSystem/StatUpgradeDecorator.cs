@@ -24,7 +24,7 @@ public class StatUpgradeDecorator : PlayerStatDecorator
                 int level = upgradeLevels.ContainsKey(UpgradeType.IncrementalDamage) ? upgradeLevels[UpgradeType.IncrementalDamage] : 0;
                 if (level > 0 && level <= data.upgradeValues.Length)
                 {
-                    int index = level - 1;
+                    int index = level;
                     float upgradeValue = data.upgradeValues[index].value;
                     float increased = playerStats.IncreaseDamage + upgradeValue;
                     Debug.Log($"IncreaseDamage: base={playerStats.IncreaseDamage} + Lv{level}={upgradeValue} = {increased}");
@@ -44,7 +44,7 @@ public class StatUpgradeDecorator : PlayerStatDecorator
                 int level = upgradeLevels.ContainsKey(UpgradeType.Health) ? upgradeLevels[UpgradeType.Health] : 0;
                 if (level > 0 && level <= data.upgradeValues.Length)
                 {
-                    int index = level - 1;
+                    int index = level;
                     float upgradeValue = data.upgradeValues[index].value;
                     float increased = playerStats.MaxHealth + upgradeValue;
 
@@ -65,7 +65,7 @@ public class StatUpgradeDecorator : PlayerStatDecorator
                 int level = upgradeLevels.ContainsKey(UpgradeType.Mana) ? upgradeLevels[UpgradeType.Mana] : 0;
                 if (level > 0 && level <= data.upgradeValues.Length)
                 {
-                    int index = level - 1;
+                    int index = level;
                     float upgradeValue = data.upgradeValues[index].value;
                     float increased = playerStats.MaxMana + upgradeValue;
                     Debug.Log($"Mana: base={playerStats.MaxMana} + Lv{level}={upgradeValue} = {increased}");
@@ -85,7 +85,7 @@ public class StatUpgradeDecorator : PlayerStatDecorator
                 int level = upgradeLevels.ContainsKey(UpgradeType.BonusCoin) ? upgradeLevels[UpgradeType.BonusCoin] : 0;
                 if (level > 0 && level <= data.upgradeValues.Length)
                 {
-                    int index = level - 1;
+                    int index = level;
                     float upgradeValue = data.upgradeValues[index].value;
                     float increased = playerStats.BonusCoin + upgradeValue;
 
