@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     private bool holdTriggered;
 
     private float firePressedTime;
-    private float holdThreshold = 0.1f;
+    private float holdThreshold = 0f;
 
 
     [SerializeField] private Camera mainCamera;

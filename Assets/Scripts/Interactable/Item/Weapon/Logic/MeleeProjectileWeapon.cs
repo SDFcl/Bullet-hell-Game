@@ -74,7 +74,6 @@ public class MeleeProjectileWeapon : MeleeWeapon, IProjectileWeapon
         return true;
     }
 
-
     protected override void ExecuteWeaponAction()
     {
         Shoot();
