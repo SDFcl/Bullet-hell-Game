@@ -6,6 +6,7 @@ public class Ef_IncreaseMoveSpeed : ItemEffect
 {
     public float Duration = 15f; // ����ʱ��
     public float speedIncreaseMultiplier = 1.5f; // �����������������
+    float speed = 0f;
 
     public bool IsActive = false;
 
@@ -14,19 +15,18 @@ public class Ef_IncreaseMoveSpeed : ItemEffect
         var player = target.GetComponent<Movement>();
         if (player != null)
         {
-            float originalSpeed = player.GetMoveSpeed();
             if (!IsActive)
             {
-
-                player.SetMoveSpeed(originalSpeed * speedIncreaseMultiplier);
+                float originalSpeed = player.GetMoveSpeed();
+                speed = originalSpeed * speedIncreaseMultiplier;
+                player.AddMoveSpeed(speed);
                 IsActive = true;
-                EffectCoroutineRunner.Run(RemoveAfterTime(player, originalSpeed));
             }
             else
             {
                 if (player != null)
                 {
-                    player.SetMoveSpeed(originalSpeed / speedIncreaseMultiplier);
+                    player.AddMoveSpeed(-speed);
                     IsActive = false;
                 }
             }
