@@ -8,15 +8,9 @@ public struct ButtonBuyData
 {
     public bool isUnlock;
     public int Cost;
-
-    ButtonBuyData(bool isUnlock, int cost): this()
-    {
-        this.isUnlock = isUnlock;
-        this.Cost = cost;
-    }
 }
 
-public class LevelSelectController : MonoBehaviour
+public class LevelSelectController : MonoBehaviour, IDataPersistence
 {
     [Header("Stage")]
     public GameObject[] stageObjects;
@@ -55,6 +49,32 @@ public class LevelSelectController : MonoBehaviour
         currentIndex = selectLevel.getLevelMap();
         UpdateUI();
         ChangeState();
+    }
+
+    public void LoadData(GameData data)
+    {
+        foreach (var item in data.UnLockLevel)
+        {
+            int index = item.Key;
+            bool isUnlocked = item.Value;
+
+            // กัน index หลุด
+            if (index < 0 || index >= StageUnlock.Count) continue;
+
+            ButtonBuyData temp = StageUnlock[index];
+            temp.isUnlock = isUnlocked;
+            StageUnlock[index] = temp;
+        }
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.UnLockLevel.Clear();
+
+        for (int i = 0; i < StageUnlock.Count; i++)
+        {
+            data.UnLockLevel[i] = StageUnlock[i].isUnlock;
+        }
     }
 
     public void Next()

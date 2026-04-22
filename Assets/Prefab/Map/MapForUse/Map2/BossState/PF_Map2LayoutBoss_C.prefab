@@ -1419,6 +1419,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3492606222884020517, guid: 663da579dd72c1d4c89165d445081b2a, type: 3}
+      propertyPath: enemies.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492606222884020517, guid: 663da579dd72c1d4c89165d445081b2a, type: 3}
+      propertyPath: 'enemies.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8027106299925165809}
     - target: {fileID: 3702569635357377061, guid: 663da579dd72c1d4c89165d445081b2a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.04
@@ -1786,6 +1794,11 @@ PrefabInstance:
 --- !u!4 &7674836078617735161 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2224431181875664490, guid: d554c809694433449a6637748060c75b, type: 3}
+  m_PrefabInstance: {fileID: 8384781801681123731}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8027106299925165809 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1962083145663254370, guid: d554c809694433449a6637748060c75b, type: 3}
   m_PrefabInstance: {fileID: 8384781801681123731}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8689799577552546546

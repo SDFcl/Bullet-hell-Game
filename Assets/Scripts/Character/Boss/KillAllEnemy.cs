@@ -15,6 +15,7 @@ public class KillAllEnemy : MonoBehaviour
         EnemyController[] enemies = FindObjectsOfType<EnemyController>();
         foreach (EnemyController enemy in enemies)
         {
+            Debug.Log($"Killing enemy: {enemy.gameObject.name}");
             Health enemyHealth = enemy.GetComponent<Health>();
             if (enemyHealth != null && !enemyHealth.IsDead)
             {
