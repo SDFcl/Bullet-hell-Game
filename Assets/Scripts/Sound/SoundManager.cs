@@ -58,6 +58,23 @@ public class SoundManager : Singleton<SoundManager>
 
         return data.clip != null ? data.clip.length : 0f;
     }
+    
+    public float PlayLoopSFX(SoundID id, Vector3 position, float duration)
+    {
+        if (!soundsById.TryGetValue(id, out SoundData data))
+            return 0f;
+
+        GameObject audioObject = ObjectPooler.Instance.SpawnFromPool(
+            audioPoolTag,
+            position,
+            Quaternion.identity
+        );
+
+        if (audioObject.TryGetComponent(out SFXPlayer player))
+            player.PlayLoop(data, duration);
+
+        return duration;
+    }
 
     //BGM
     public void PlayBGM(SoundID id)

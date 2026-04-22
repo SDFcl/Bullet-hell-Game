@@ -6,10 +6,13 @@ public class PlayerSound : CharacterSound
     [SerializeField] private bool useDodgeAnimationEvent = false;
     [SerializeField] private SoundID DodgeID;
     [SerializeField] private SoundID UseConsumable;
+    [SerializeField] private SoundID UseSpecialAbility;
+    [SerializeField] private SoundID OnSpeAbililyActive;
 
     private Dodge playerDodge;
     private Inventory playerInventory;
     private InventoryItem currentConsumable;
+    private SpecialAbility specialAbility;
 
     protected override void Awake()
     {
@@ -17,6 +20,7 @@ public class PlayerSound : CharacterSound
 
         playerDodge = GetComponent<Dodge>();
         playerInventory = GetComponent<Inventory>();
+        specialAbility = GetComponent<SpecialAbility>();
     }
 
     protected override void OnEnable()
@@ -31,6 +35,11 @@ public class PlayerSound : CharacterSound
             playerInventory.OnConsumableChanged += RefreshCurrentConsumable;
             RefreshCurrentConsumable();
         }
+
+        if(specialAbility != null)
+        {
+            specialAbility.OnActive += PlayerSoundOnSpecialAbility;
+        }
     }
 
     protected override void OnDisable()
@@ -41,9 +50,15 @@ public class PlayerSound : CharacterSound
             playerDodge.OnDodge -= PlaySoundOnRoll;
 
         if (playerInventory != null)
+        {
             playerInventory.OnConsumableChanged -= RefreshCurrentConsumable;
+            UnsubscribeCurrentConsumable();
+        }   
 
-        UnsubscribeCurrentConsumable();
+        if(specialAbility != null)
+        {
+            specialAbility.OnActive -= PlayerSoundOnSpecialAbility;
+        }
     }
 
     private void RefreshCurrentConsumable()
@@ -80,5 +95,10 @@ public class PlayerSound : CharacterSound
 
         // เพราะ item นี้ถูกใช้แล้ว เดี๋ยวมันโดน Remove ออกจาก list
         UnsubscribeCurrentConsumable();
+    }
+    public void PlayerSoundOnSpecialAbility(float duration)
+    {
+        SoundManager.Instance.PlaySFX(UseSpecialAbility, transform.position);
+        SoundManager.Instance.PlayLoopSFX(OnSpeAbililyActive, transform.position,duration);
     }
 }

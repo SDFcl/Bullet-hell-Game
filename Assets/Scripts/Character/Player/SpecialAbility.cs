@@ -1,13 +1,20 @@
+using System;
+using NUnit.Framework;
 using UnityEngine;
 
 public class SpecialAbility : MonoBehaviour
 {
-    public float damageMultiplier = 1.5f; // ตัวคูณความเสียหายของสกิลพิเศษ
-    public float duration = 3f; // ระยะเวลาของสกิลพิเศษ
-    public float cooldownTime = 5f; // เวลาคูลดาวน์ของสกิลพิเศษ
+    public float damageMultiplier = 1.5f; // ๏ฟฝ๏ฟฝวคูณ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝยของสก๏ฟฝลพ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ
+    public float duration = 3f; // ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝาของสก๏ฟฝลพ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ
+    public float cooldownTime = 5f; // ๏ฟฝ๏ฟฝ๏ฟฝาค๏ฟฝลด๏ฟฝวน๏ฟฝองสก๏ฟฝลพ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ
+    float cooldowntimer;
+    public float CurrentCooldown => Mathf.Clamp01(cooldowntimer / cooldownTime);
+
 
     private Attack Attack;
     private PlayerUpgradeManager upgradeManager;
+
+    public Action<float> OnActive;
 
     private void Awake()
     {
@@ -16,31 +23,44 @@ public class SpecialAbility : MonoBehaviour
         if(upgradeManager != null)
         {
             IPlayerStats stats = upgradeManager.GetFinalStats();
-            damageMultiplier += stats.IncreaseDamage/100; // เพิ่มความเสียหายจากอัพเกรด
+            damageMultiplier += stats.IncreaseDamage/100; // ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝยจาก๏ฟฝัพ๏ฟฝรด
             Debug.Log($"[SpecialAbility] Damage multiplier after applying upgrades: {damageMultiplier}. {stats.IncreaseDamage}");
         }
+    }
+    void Start()
+    {
+        cooldowntimer = cooldownTime;
+    }
+    void Update()
+    {
+        cooldowntimer += Time.deltaTime;
     }
 
     public void TryUse()
     {
         if (Attack == null) return;
 
-        // เพิ่มความเสียหายชั่วคราว
-        Attack.AddDamagePercent(damageMultiplier); // เพิ่มเป็น damageMultiplier เท่า
+        if(cooldowntimer >= cooldownTime)
+        {
+            cooldowntimer = 0;
+            Attack.AddDamagePercent(damageMultiplier);
+            Invoke(nameof(ResetDamage), duration);
 
-        //Animation หรือ VFX สำหรับสกิลพิเศษสามารถใส่ตรงนี้ได้
-
-
-        // เริ่มคูลดาวน์
-        Invoke(nameof(ResetDamage), duration);
+            OnActive?.Invoke(duration);
+            //Debug.Log("Add Sucess");
+        }
+        else
+        {
+            //Debug.Log("Is cooldown");
+        }
     }
 
     private void ResetDamage()
     {
         if (Attack == null) return;
-        // รีเซ็ตความเสียหายกลับเป็นปกติ
-        Attack.RemoveDamagePercent(damageMultiplier); // ลดกลับเป็น 1 เท่า
-        //Animation หรือ VFX สำหรับรีเซ็ตสกิลพิเศษสามารถใส่ตรงนี้ได้
+        // ๏ฟฝ๏ฟฝ๏ฟฝ็ตค๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝยก๏ฟฝับ๏ฟฝ็นป๏ฟฝ๏ฟฝ๏ฟฝ
+        Attack.RemoveDamagePercent(damageMultiplier); // ลด๏ฟฝ๏ฟฝับ๏ฟฝ๏ฟฝ 1 ๏ฟฝ๏ฟฝ๏ฟฝ
+        //Animation ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ VFX ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝับ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝสก๏ฟฝลพ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝรถ๏ฟฝ๏ฟฝ๏ฟฝรง๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ
 
 
     }
