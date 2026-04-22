@@ -28,8 +28,6 @@ public class PlayerController : MonoBehaviour
     private float firePressedTime;
     private float holdThreshold = 0.1f;
 
-    private IPlayerStats Stats;
-    public PlayerUpgradeManager PlayerUpgradeManager;
 
     [SerializeField] private Camera mainCamera;
 
@@ -48,10 +46,9 @@ public class PlayerController : MonoBehaviour
         health = GetComponent<Health>();
         specialAbility = GetComponent<SpecialAbility>();
 
-        PlayerUpgradeManager =  FindObjectOfType<PlayerUpgradeManager>();
-        if (PlayerUpgradeManager != null)
+        IPlayerStats Stats = FindObjectOfType<PlayerUpgradeManager>().GetFinalStats();
+        if (Stats != null)
         {
-            Stats = PlayerUpgradeManager.GetFinalStats();
             if (health != null)
             {
                 PlayerHealth playerHealth = health.GetComponent<PlayerHealth>();

@@ -91,10 +91,14 @@ public class Inventory : MonoBehaviour
     {
         if (index < 0 || index >= Consumables.Count) return;
         InventoryItem item = Consumables[index];
-        foreach (var effect in item.itemData.effects)
+        if (item.itemData.consumableType == ConsumableType.passive)
         {
-            effect.Apply(this.gameObject);
+            foreach (var effect in item.itemData.effects)
+            {
+                effect.Apply(this.gameObject);
+            }
         }
+        
         Instantiate(item.itemData.WorldPrefab, this.transform.position, Quaternion.identity);
         Consumables.RemoveAt(index);
     }

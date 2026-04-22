@@ -19,10 +19,9 @@ public class SpecialAbility : MonoBehaviour
     private void Awake()
     {
         Attack = GetComponent<Attack>();
-        upgradeManager = FindObjectOfType<PlayerUpgradeManager>();
-        if(upgradeManager != null)
+        IPlayerStats stats = FindObjectOfType<PlayerUpgradeManager>().GetFinalStats();
+        if(stats != null)
         {
-            IPlayerStats stats = upgradeManager.GetFinalStats();
             damageMultiplier += stats.IncreaseDamage/100; // ��������������¨ҡ�Ѿ�ô
             Debug.Log($"[SpecialAbility] Damage multiplier after applying upgrades: {damageMultiplier}. {stats.IncreaseDamage}");
         }
