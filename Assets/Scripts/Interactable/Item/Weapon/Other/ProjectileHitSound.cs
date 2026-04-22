@@ -5,32 +5,44 @@ public class ProjectileHitSound : MonoBehaviour
     [Header("Default Setting")]
     [SerializeField] private SoundID soundID;
 
-    private bool useSOData = false;
     private ProjectileHit projectileHit;
+
     void Awake()
     {
         projectileHit = GetComponent<ProjectileHit>();
     }
+
     void OnEnable()
     {
+        if (projectileHit == null)
+            return;
+
         projectileHit.OnSpawn += SetReference;
         projectileHit.OnHit += PlaySoundOnHit;
     }
+
     void OnDisable()
     {
+        if (projectileHit == null)
+            return;
+
         projectileHit.OnSpawn -= SetReference;
         projectileHit.OnHit -= PlaySoundOnHit;
     }
+
     void SetReference()
     {
-        if (projectileHit.WeaponDataSO.onHitSoundID != null && projectileHit != null)
+        if (projectileHit != null && projectileHit.WeaponDataSO != null && projectileHit.WeaponDataSO.onHitSoundID != null)
         {
-             soundID = projectileHit.WeaponDataSO.onHitSoundID;
+            soundID = projectileHit.WeaponDataSO.onHitSoundID;
         }   
     }
+
     void PlaySoundOnHit()
     {
+        if (soundID == null)
+            return;
+
         SoundManager.Instance.PlaySFX(soundID, transform.position);
     }
-
 }

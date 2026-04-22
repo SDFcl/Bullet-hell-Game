@@ -28,9 +28,9 @@ public class HitboxHitSound : MonoBehaviour
 
     private void Start()
     {
-        if (hitbox.WeaponDataSO.onHitSoundID != null && hitbox != null)
+        if (hitbox != null && hitbox.WeaponDataSO != null && hitbox.WeaponDataSO.onHitSoundID != null)
         {
-             soundID = hitbox.WeaponDataSO.onHitSoundID;
+            soundID = hitbox.WeaponDataSO.onHitSoundID;
         }    
     }
 
