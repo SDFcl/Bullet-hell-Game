@@ -19,6 +19,7 @@ public class Ef_IncreaseMoveSpeed : ItemEffect
             {
                 float originalSpeed = player.GetMoveSpeed();
                 speed = originalSpeed * speedIncreaseMultiplier;
+                Debug.Log($"Original Speed: {originalSpeed}, Increased Speed: {speed}");
                 player.AddMoveSpeed(speed);
                 IsActive = true;
             }
@@ -30,16 +31,6 @@ public class Ef_IncreaseMoveSpeed : ItemEffect
                     IsActive = false;
                 }
             }
-        }
-    }
-    
-
-    private IEnumerator RemoveAfterTime(Movement player, float originalSpeed)
-    {
-        yield return new WaitForSeconds(Duration);
-        if (player != null)
-        {
-            player.SetMoveSpeed(originalSpeed);
         }
     }
 }
