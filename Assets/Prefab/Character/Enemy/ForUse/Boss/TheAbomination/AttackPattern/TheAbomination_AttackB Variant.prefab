@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6870492347874388881, guid: 64e7e98baa967a744a8dca0f9015ceb9, type: 3}
+      propertyPath: soundID
+      value: 
+      objectReference: {fileID: 11400000, guid: c50c8d0bdfc176544a25dbe6fbe86ec0, type: 2}
     - target: {fileID: 63836094722377855, guid: 64e7e98baa967a744a8dca0f9015ceb9, type: 3}
       propertyPath: m_Name
       value: TheAbomination_AttackB Variant
@@ -123,12 +127,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scatterProjectileTag: Enemy_BulletABL
-  scatterCount: 6
-  spreadAngle: 60
-  minSpawnOffset: 0.2
+  scatterCount: 10
+  spreadAngle: 22.2
+  minSpawnOffset: 0.3
   maxSpawnOffset: 1
-  minSpeedMultiplier: 0.25
-  maxSpeedMultiplier: 1
+  minSpeedMultiplier: 1.7
+  maxSpeedMultiplier: 1.5
 --- !u!114 &6668312676307355378
 MonoBehaviour:
   m_ObjectHideFlags: 0

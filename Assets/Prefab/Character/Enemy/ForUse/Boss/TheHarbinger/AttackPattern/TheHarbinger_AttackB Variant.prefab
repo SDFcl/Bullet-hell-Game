@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8967127164362899254, guid: b37bf3107b53c6244a7d96d58b70b5e3, type: 3}
+      propertyPath: soundID
+      value: 
+      objectReference: {fileID: 11400000, guid: 74db8009d4f11ab488c1e8bbc14306c7, type: 2}
     - target: {fileID: 463129060273056909, guid: b37bf3107b53c6244a7d96d58b70b5e3, type: 3}
       propertyPath: m_Controller
       value: 
@@ -59,6 +63,10 @@ PrefabInstance:
     - target: {fileID: 5488594418738725830, guid: b37bf3107b53c6244a7d96d58b70b5e3, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5581696693717098482, guid: b37bf3107b53c6244a7d96d58b70b5e3, type: 3}
+      propertyPath: projectileSpeed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5581696693717098482, guid: b37bf3107b53c6244a7d96d58b70b5e3, type: 3}
       propertyPath: projectilePoolTag
@@ -153,8 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28e36f11371d3f2489fac4d87c7c3b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletCount: 15
-  minSpawnOffset: 0.5
-  maxSpawnOffset: 1.5
+  bulletCount: 70
+  minSpawnOffset: 0
+  maxSpawnOffset: 0
   minSpeedMultiplier: 0.15
   maxSpeedMultiplier: 1

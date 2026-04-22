@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6870492347874388881, guid: 64e7e98baa967a744a8dca0f9015ceb9, type: 3}
+      propertyPath: soundID
+      value: 
+      objectReference: {fileID: 11400000, guid: 0c70d50dca8514f43a576fd0e08d5097, type: 2}
     - target: {fileID: 63836094722377855, guid: 64e7e98baa967a744a8dca0f9015ceb9, type: 3}
       propertyPath: m_Name
       value: TheAbomination_AttackA Variant
@@ -118,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28e36f11371d3f2489fac4d87c7c3b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletCount: 15
+  bulletCount: 70
   minSpawnOffset: 0.5
   maxSpawnOffset: 1.5
   minSpeedMultiplier: 0.25
