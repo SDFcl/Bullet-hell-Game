@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class ConsumablePHUD : MonoBehaviour
 {
     Inventory inventory;
+    InventoryItem currentConsumable;
     Image image;
 
     void Awake()
@@ -20,20 +21,23 @@ public class ConsumablePHUD : MonoBehaviour
     {
         if (inventory != null)
         {
-            inventory.OnConsumableChanged += ChangeImage;
-            ChangeImage();
+            inventory.OnConsumableChanged += RefreshCurrentConsumable;
+            RefreshCurrentConsumable();
         }
     }
 
     void OnDisable()
     {
         if (inventory != null)
-            inventory.OnConsumableChanged -= ChangeImage;
+            inventory.OnConsumableChanged -= RefreshCurrentConsumable;
+
+        UnsubscribeCurrentConsumable();
     }
 
-    void ChangeImage()
+    void RefreshCurrentConsumable()
     {
-        Debug.Log("trigger event");
+        UnsubscribeCurrentConsumable();
+
         if (inventory == null || image == null)
             return;
 
@@ -43,6 +47,26 @@ public class ConsumablePHUD : MonoBehaviour
             return;
         }
 
-        image.sprite = inventory.Consumables[0].itemData.itemIcon;
+        currentConsumable = inventory.Consumables[0];
+        
+        image.color = Color.white;
+        image.sprite = currentConsumable.itemData.itemIcon;
+
+        currentConsumable.OnUse += ClearImage;
+    }
+
+    void UnsubscribeCurrentConsumable()
+    {
+        if (currentConsumable == null)
+            return;
+
+        currentConsumable.OnUse -= ClearImage;
+        currentConsumable = null;
+    }
+
+    void ClearImage()
+    {
+        image.color = new Color(1f, 1f, 1f, 0f);
+        UnsubscribeCurrentConsumable();
     }
 }
