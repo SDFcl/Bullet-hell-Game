@@ -128,7 +128,7 @@ public interface IDataPersistence
     void SaveData(ref GameData data);
 }
 
-public interface IIFrame
+public interface IDamageBlocker
 {
-    public void EnableIgnoreDamage(bool enable);
+    bool IsDamageBlocked { get; }
 }

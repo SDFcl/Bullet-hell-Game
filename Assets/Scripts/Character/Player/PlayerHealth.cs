@@ -1,43 +1,41 @@
 using System;
 using UnityEngine;
-using System.Collections;
 
 public class PlayerHealth : Health, IHealable
 {
-    [SerializeField] private float iframeDuration;
-    private Coroutine iFrameRoutine;
-    public Action<bool> OnIFrame;
+    [SerializeField] private float hitIFrameDuration = 0.5f;
+    private IFrameController iframe;
+    public Action OnIFrame;
 
     public float MaxHealth
     {
         get => maxHealth;
         set
         {
-            //µÑé§¤èÒ MaxHealth ãËÁèáÅÐ»ÃÑº CurrentHP ãËéà·èÒ¡Ñº MaxHealth
+            //ï¿½ï¿½é§¤ï¿½ï¿½ MaxHealth ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½Ñº CurrentHP ï¿½ï¿½ï¿½ï¿½ï¿½Ò¡Ñº MaxHealth
             maxHealth = value;
             CurrentHP = maxHealth;
         }
     }
-
+    protected override void Awake()
+    {
+        base.Awake();
+        iframe = GetComponent<IFrameController>();
+    }
     public override void TakeDamage(float damage)
     {
+
+        float hpBefore = CurrentHP;
+
         base.TakeDamage(damage);
-        if (iFrameRoutine != null || ignoreDamage || IsDead) return;
-        iFrameRoutine = StartCoroutine(IFrameCount());
-    }
 
-    IEnumerator IFrameCount()
-    {
-        EnableIgnoreDamage(true);
-        OnIFrame?.Invoke(true);
+        bool tookDamage = CurrentHP < hpBefore;
 
-        yield return new WaitForSeconds(iframeDuration);
-        //Debug.Log("Player can take damage");
-
-        EnableIgnoreDamage(false);
-        OnIFrame?.Invoke(false);
-        
-        iFrameRoutine = null;
+        if (tookDamage && !IsDead && iframe != null)
+        {
+            iframe.AddDuration(hitIFrameDuration);
+            OnIFrame?.Invoke();
+        }
     }
     public void Heal(float amount)
     {

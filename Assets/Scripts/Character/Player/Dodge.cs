@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 using System;
 
 public class Dodge : MonoBehaviour
@@ -19,10 +18,8 @@ public class Dodge : MonoBehaviour
     public AnimationClip dodgeAnimation;
 
     public event Action OnDodge;
-
-    private bool canDodge = true;
     private IImpulseMover burstMove;
-    private IIFrame iframe;
+    private IFrameController iframe;
 
     private Vector2 dir;
 
@@ -30,7 +27,7 @@ public class Dodge : MonoBehaviour
 
     void Awake()
     {
-        iframe = GetComponent<IIFrame>();
+        iframe = GetComponent<IFrameController>();
         burstMove = GetComponent<IImpulseMover>();
     }
     void Start()
@@ -44,27 +41,19 @@ public class Dodge : MonoBehaviour
 
     public void TryDodge()
     {
-        if(cooldownTimer >= cooldown)
-        {
-            cooldownTimer = 0;
-            if (!canDodge) return;
-            StartCoroutine(DodgeRoutine());
-        }
-    }
+        if (cooldownTimer < cooldown)
+        return;
 
-    private IEnumerator DodgeRoutine()
-    {
-        canDodge = false;
-        OnDodge?.Invoke();
+        cooldownTimer = 0;
 
         burstMove.Play(dir, dodgeForce * dodgeDistanceMultiplier, dodgeAnimation.length);
 
-        yield return new WaitForSeconds(iFrameDelay);
-        iframe.EnableIgnoreDamage(true);
+        if (iframe != null)
+        {
+            iframe.AddDuration(iFrameDuration);
+        }
 
-        yield return new WaitForSeconds(iFrameDuration);
-        iframe.EnableIgnoreDamage(false);
-        canDodge = true;
+        OnDodge?.Invoke();
     }
 
     public void SetDirection(Vector2 dir)

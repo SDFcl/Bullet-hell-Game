@@ -8,20 +8,10 @@ public class Ef_Invincibility : ItemEffect
 
     public override void Apply(GameObject target)
     {
-        var player = target.GetComponent<Health>();
+        var player = target.GetComponent<IFrameController>();
         if (player != null)
         {
-            player.EnableIgnoreDamage(true);
-            EffectCoroutineRunner.Run(RemoveAfterTime(player));
-        }
-    }
-
-    private IEnumerator RemoveAfterTime(Health player)
-    {
-        yield return new WaitForSeconds(duration); // ����ʱ��
-        if (player != null)
-        {
-            player.EnableIgnoreDamage(false);
+            player.AddDuration(duration);
         }
     }
 }

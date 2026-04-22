@@ -10,6 +10,7 @@ public class PlayerAnimations : CharacterAnimations
 
     private Dodge dodge;
     private PlayerHealth playerHealth;
+    private IFrameController iframeController;
 
     protected override void Awake()
     {
@@ -17,6 +18,7 @@ public class PlayerAnimations : CharacterAnimations
 
         dodge = GetComponent<Dodge>();
         playerHealth = GetComponent<PlayerHealth>();
+        iframeController = GetComponent<IFrameController>();
 
         if (spriteRenderer == null)
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -38,7 +40,7 @@ public class PlayerAnimations : CharacterAnimations
         animator.SetTrigger("Dodge");
     }
 
-    public void HandleIFrameBlink(bool isOnIFrame)
+    public void HandleIFrameBlink()
 {
     if (blinkRoutine != null)
     {
@@ -46,7 +48,7 @@ public class PlayerAnimations : CharacterAnimations
         blinkRoutine = null;
     }
 
-    if (isOnIFrame)
+    if (iframeController.IsDamageBlocked)
     {
         blinkRoutine = StartCoroutine(BlinkRoutine());
         return;
@@ -57,7 +59,7 @@ public class PlayerAnimations : CharacterAnimations
 
     private IEnumerator BlinkRoutine()
     {
-        while (true)
+        while (iframeController.IsDamageBlocked)
         {
             spriteRenderer.enabled = !spriteRenderer.enabled;
             yield return new WaitForSeconds(blinkInterval);

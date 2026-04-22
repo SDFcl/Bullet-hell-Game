@@ -1,15 +1,14 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Health : MonoBehaviour, IDamageable,IIFrame
+public class Health : MonoBehaviour, IDamageable
 {
     [SerializeField] protected float maxHealth = 100f;
     
     [field: SerializeField]
     public float CurrentHP { get; protected set; }
     public bool IsDead => CurrentHP <= 0;
-    protected bool ignoreDamage = false;
+    private IDamageBlocker[] damageBlockers;
 
     public event Action OnDead;
     public event Action<float> OnHealthChanged;
@@ -18,14 +17,21 @@ public class Health : MonoBehaviour, IDamageable,IIFrame
     protected void DeadEvent() => OnDead?.Invoke();
     protected void HealthChangedEvent() => OnHealthChanged?.Invoke(CurrentHP);
 
-    private void Awake()
+    protected virtual void Awake()
     {
         CurrentHP = maxHealth;
+        damageBlockers = GetComponents<IDamageBlocker>();
     }
 
     public virtual void TakeDamage(float damage)
     {
-        if (IsDead || ignoreDamage) return;
+        if (IsDead || IgnoreDamage) return;
+
+        foreach (IDamageBlocker blocker in damageBlockers)
+        {
+            if (blocker.IsDamageBlocked)
+                return;
+        }
 
         CurrentHP -= damage;
         HealthChangedEvent();
@@ -50,9 +56,9 @@ public class Health : MonoBehaviour, IDamageable,IIFrame
         DeadEvent();
     }
 
+    public bool IgnoreDamage { get; private set; } = false;
     public void EnableIgnoreDamage(bool enable)
     {
-        ignoreDamage = enable;
+        IgnoreDamage = enable;
     }
-
 }
