@@ -8,6 +8,7 @@ public class Attack : MonoBehaviour
 
     private HoldingItemWatcher holdingItemWatcher;
     private IWeapon currentWeapon;
+    public IWeapon CurrentWeapon => currentWeapon;
 
     public Action OnAttack;
 
