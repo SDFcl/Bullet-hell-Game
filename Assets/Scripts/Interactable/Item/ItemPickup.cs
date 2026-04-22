@@ -13,12 +13,17 @@ public class ItemPickup : MonoBehaviour, IPickable,ICollectEvent
     public void Interact(GameObject player)
     {
         Inventory inventory = player.GetComponentInChildren<Inventory>();
+        //Debug.Log("interact"); 
         Pickup(inventory);
     }
 
     public void Pickup(Inventory inventory)
     {
-        if (itemData == null || inventory == null) return;
+        if (itemData == null || inventory == null)
+        {
+            Debug.Log("itemData == null"); 
+            return;
+        } 
 
         InventoryItem newItem = new InventoryItem(itemData);
 
