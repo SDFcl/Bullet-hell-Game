@@ -12,4 +12,184 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 285123c42b81afb4bb8a12b41da865db, type: 3}
   m_Name: AllWeapon
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - idName: HollowStaff_Attack
+    id: {fileID: 11400000, guid: 290680960c4f7b946903ac77a1e8c802, type: 2}
+    clip: {fileID: 8300000, guid: bbeda8e6f00377d45a055a8d75ac5156, type: 3}
+    volume: 0.279
+  - idName: HollowStaff_Impact
+    id: {fileID: 11400000, guid: d399fdb3f19caf347b04796a78965457, type: 2}
+    clip: {fileID: 8300000, guid: cc826701c1616334888e2ef72d23059f, type: 3}
+    volume: 0.196
+  - idName: StarterStaff_Attack
+    id: {fileID: 11400000, guid: 79a5abd0d2987844ba24c915e17a7385, type: 2}
+    clip: {fileID: 8300000, guid: 81aa51849d136884b9c3d0a9ff5afb90, type: 3}
+    volume: 0.553
+  - idName: StarterStaff_Impact
+    id: {fileID: 11400000, guid: 8482ec55b1c85994cbbb8db1523c19ad, type: 2}
+    clip: {fileID: 8300000, guid: 50e426ab63789c6439f7666aac20b8b9, type: 3}
+    volume: 0.24
+  - idName: ArcanePulse_Attack
+    id: {fileID: 11400000, guid: bb5ed061b3747d1409ba02a0dfb3a105, type: 2}
+    clip: {fileID: 8300000, guid: 9e732d4d845403041b8d4616db388778, type: 3}
+    volume: 0.392
+  - idName: ArcanePulse_Impact
+    id: {fileID: 11400000, guid: f4d682005a9c0d54ead9f7081da817ab, type: 2}
+    clip: {fileID: 8300000, guid: bdf6407c0ccc64e40854c724a3a0b6d1, type: 3}
+    volume: 0.094
+  - idName: Axe_Attack
+    id: {fileID: 11400000, guid: 341aa9ce9c4499745b3cdf1ef82f668a, type: 2}
+    clip: {fileID: 8300000, guid: 22a8c1cf50484af46a838f92e0090763, type: 3}
+    volume: 0.24
+  - idName: Axe_Hit
+    id: {fileID: 11400000, guid: 6ee76e0601d65c347a1ffad2c34a892b, type: 2}
+    clip: {fileID: 8300000, guid: b3b341477b0a04a468e78106f6c40359, type: 3}
+    volume: 0.492
+  - idName: AzureStaff_Attack
+    id: {fileID: 11400000, guid: afcefc57a9e248d459924873257b397e, type: 2}
+    clip: {fileID: 8300000, guid: 5c6ceaf96c56ccc459ba65fa52986085, type: 3}
+    volume: 0.194
+  - idName: AzureStaff_Impact
+    id: {fileID: 11400000, guid: b2218e02738663b4db44d492bc0fbee0, type: 2}
+    clip: {fileID: 8300000, guid: dc72cdb2818ac7f44b0b36cb51fc2dca, type: 3}
+    volume: 0.126
+  - idName: Bow_Attack
+    id: {fileID: 11400000, guid: 4884698e7c1058f478a9760beb937fdc, type: 2}
+    clip: {fileID: 8300000, guid: bdc800edc8cf62a4dbf98342b8baa017, type: 3}
+    volume: 0.492
+  - idName: Bow_Impact
+    id: {fileID: 11400000, guid: 3191e7f6587077a4f8740a5770f54655, type: 2}
+    clip: {fileID: 8300000, guid: 2606b649fd2bf7d4ca0c16934677dcc1, type: 3}
+    volume: 0.074
+  - idName: Carnage_Attack
+    id: {fileID: 11400000, guid: 08234ae28b2935349add94a8717fda6f, type: 2}
+    clip: {fileID: 8300000, guid: 0431afa49dcd4174db0f7d7cb67fbb83, type: 3}
+    volume: 0.492
+  - idName: Carnage_Hit
+    id: {fileID: 11400000, guid: 210e0abd09cb9974ba4a034abf0d4899, type: 2}
+    clip: {fileID: 8300000, guid: 23ff9f0742f73d140ac126c7ef10a3c3, type: 3}
+    volume: 0.392
+  - idName: Chrometic_Attack
+    id: {fileID: 11400000, guid: 7b05acaa7931fe44f81cbce71b3eb08f, type: 2}
+    clip: {fileID: 8300000, guid: a071ea3034ed47045a8764feb0964a52, type: 3}
+    volume: 0.403
+  - idName: Chrometic_Impact
+    id: {fileID: 11400000, guid: 6f6bb36dce199a845babbc21e561978a, type: 2}
+    clip: {fileID: 8300000, guid: 4367f5b411936ad419332b35c91e2d6e, type: 3}
+    volume: 0.113
+  - idName: CrescentStaff_Attack
+    id: {fileID: 11400000, guid: 35f5b027731e3dc4abf230c66bd88fa4, type: 2}
+    clip: {fileID: 8300000, guid: 9a71bf5108da5a34b844acfd2b315c1a, type: 3}
+    volume: 0.294
+  - idName: CrescentStaff_Impact
+    id: {fileID: 11400000, guid: 34692d3d48c08c44aa40df72d7783c02, type: 2}
+    clip: {fileID: 8300000, guid: 1a5d78307b158c8458e82a5a4fa2ddfc, type: 3}
+    volume: 0.492
+  - idName: Crimsonveil_Attack
+    id: {fileID: 11400000, guid: ee1a0da443003ee4d86051f0309a092b, type: 2}
+    clip: {fileID: 8300000, guid: 9ba9868f7c7712548814142465f72197, type: 3}
+    volume: 0.492
+  - idName: Crimsonveil_Impact
+    id: {fileID: 11400000, guid: 05aebe3fa8febe54b9aaa5a6121948f2, type: 2}
+    clip: {fileID: 8300000, guid: fa9937d487cb58046a8d507e64905d54, type: 3}
+    volume: 0.102
+  - idName: Fish_Attack
+    id: {fileID: 11400000, guid: b8d7b6674e4806d4aae1d8f0341efd81, type: 2}
+    clip: {fileID: 8300000, guid: f0566c5fe071f7c4f91c1557a7332ca2, type: 3}
+    volume: 0.397
+  - idName: Fish_Impact
+    id: {fileID: 11400000, guid: 317255cc465228a478b23655406ca2d9, type: 2}
+    clip: {fileID: 8300000, guid: 480b5bc1e4b6ea54fbbbd5bc63a34905, type: 3}
+    volume: 0.096
+  - idName: FlowerStaff_Attack
+    id: {fileID: 11400000, guid: dab369e21e590e144b1e1aa8f637b144, type: 2}
+    clip: {fileID: 8300000, guid: 8da6ef637d7893347a75a254d592587f, type: 3}
+    volume: 0.575
+  - idName: FlowerStaff_Impact
+    id: {fileID: 11400000, guid: a17d453bff02c74479a2ce88baed1a0b, type: 2}
+    clip: {fileID: 8300000, guid: 61b01cdf9d7f73f4db701b752bf4bc3a, type: 3}
+    volume: 0.492
+  - idName: GrandStaff_Attack
+    id: {fileID: 11400000, guid: bc85d9bb5ba6cbe478452ce6e45eefeb, type: 2}
+    clip: {fileID: 8300000, guid: 09bb3b573b154194fb1d1cfa6499730e, type: 3}
+    volume: 0.492
+  - idName: GrandStaff_Impact
+    id: {fileID: 11400000, guid: bd1cb4f6ee380054ebf8632e6dbc9dc8, type: 2}
+    clip: {fileID: 8300000, guid: c52192bbfbec0a245bba7cae86087d2f, type: 3}
+    volume: 0.061
+  - idName: GreenStaff_Attack
+    id: {fileID: 11400000, guid: bdade159eb90f544699342af65a38308, type: 2}
+    clip: {fileID: 8300000, guid: 02847f2a98bea744c8b03d0f8a1f6790, type: 3}
+    volume: 0.17
+  - idName: GreenStaff_Impact
+    id: {fileID: 11400000, guid: b9f313c8a62d05b4face9800f6fcd935, type: 2}
+    clip: {fileID: 8300000, guid: e1394acd3b7402b4a8afb374f6b55c34, type: 3}
+    volume: 0.159
+  - idName: IronSword_Attack
+    id: {fileID: 11400000, guid: a357e8df956c9e44daf246407910fdc3, type: 2}
+    clip: {fileID: 8300000, guid: 76c4f21ac33374941ba801c409154c36, type: 3}
+    volume: 0.451
+  - idName: IronSword_Hit
+    id: {fileID: 11400000, guid: 9264c1f1b461e6341a5098afa6596946, type: 2}
+    clip: {fileID: 8300000, guid: 6bd22d8127193fc4f8db4506c6baef58, type: 3}
+    volume: 0.492
+  - idName: Lineage_Attack
+    id: {fileID: 11400000, guid: 61c3f150e16c39c4781286ece9afa0ab, type: 2}
+    clip: {fileID: 8300000, guid: c693eb2c026fd6e4caa0242d5bc0afa2, type: 3}
+    volume: 0.617
+  - idName: Lineage_Impact
+    id: {fileID: 11400000, guid: 43d3ffea82838754dafeb86e9808b6e7, type: 2}
+    clip: {fileID: 8300000, guid: 63de2f3f1337b5c488d90398720680c3, type: 3}
+    volume: 0.15
+  - idName: Myr'ror_Attack
+    id: {fileID: 11400000, guid: d4d594c550b91ac4eb2c096db245c8f7, type: 2}
+    clip: {fileID: 8300000, guid: e91b6b3206d396d478f95d75e18c7c4b, type: 3}
+    volume: 0.379
+  - idName: Myr'ror_Impact
+    id: {fileID: 11400000, guid: 4eabd9b6707a8654692d453dc51c9a67, type: 2}
+    clip: {fileID: 8300000, guid: a0dd7033d3db1c34d97f6f50cdc16c0f, type: 3}
+    volume: 0.264
+  - idName: NightStar_Attack
+    id: {fileID: 11400000, guid: 895efd781aebd574a8e305112f2b353a, type: 2}
+    clip: {fileID: 8300000, guid: 8603d40f88aa6e64a8055af80167996c, type: 3}
+    volume: 0.492
+  - idName: NightStar_Impact
+    id: {fileID: 11400000, guid: bac0df24e0fbafc43a3aab843f6d2c41, type: 2}
+    clip: {fileID: 8300000, guid: 1e2d2ca05eafed04e8a467c8c33ea059, type: 3}
+    volume: 0.492
+  - idName: RedRibbon_Attack
+    id: {fileID: 11400000, guid: e1f1f832a1f06524592aa9635bde16a9, type: 2}
+    clip: {fileID: 8300000, guid: e5ff8616260f30b4983043ac97c6c821, type: 3}
+    volume: 0.453
+  - idName: RedRibbon_Impact
+    id: {fileID: 11400000, guid: da158d013b88d0448807f246dabe12ea, type: 2}
+    clip: {fileID: 8300000, guid: a54aea4635a618540bafe9c5207428ab, type: 3}
+    volume: 0.205
+  - idName: TheDestroyer_Attack
+    id: {fileID: 11400000, guid: 2fa9ae73ec9fdc045a267291118b034c, type: 2}
+    clip: {fileID: 8300000, guid: bc8e11e0be0aba743a7aff93bf1797d3, type: 3}
+    volume: 0.329
+  - idName: TheDestroyer_Impact
+    id: {fileID: 11400000, guid: b3b3b47d442d8e94c9d975253b90eda7, type: 2}
+    clip: {fileID: 8300000, guid: 11205e124aa783346b8f393c82f9fcdf, type: 3}
+    volume: 0.196
+  - idName: Vel'crithTome_Attack
+    id: {fileID: 11400000, guid: e855680b6ef85054781c3a404d90aa63, type: 2}
+    clip: {fileID: 8300000, guid: 6227b3e9c076a63449ad1a8590f0844f, type: 3}
+    volume: 0.283
+  - idName: Vel'crithTome_Impact
+    id: {fileID: 11400000, guid: 98dec5ba50194764797ca71e9167545f, type: 2}
+    clip: {fileID: 8300000, guid: 73316f8f1d3839a4896ba771e6145d00, type: 3}
+    volume: 0.22
+  - idName: VoidStaff_Attack
+    id: {fileID: 11400000, guid: d4382d768a58f3348867fb206d714693, type: 2}
+    clip: {fileID: 8300000, guid: 01f6504a0b56de04284289a9749fbc9e, type: 3}
+    volume: 0.492
+  - idName: VoidStaff_Impact
+    id: {fileID: 11400000, guid: 732124e794f36934a944dff190ac1c19, type: 2}
+    clip: {fileID: 8300000, guid: 60bff23cf83da8b408e939d1f4eae20b, type: 3}
+    volume: 0.333
+  - idName: BowElven_Attack
+    id: {fileID: 11400000, guid: d6766c21599ab4c41b3219e9086125a7, type: 2}
+    clip: {fileID: 8300000, guid: 971e01bd4711f7c41ac0da90d6b533d2, type: 3}
+    volume: 0.492

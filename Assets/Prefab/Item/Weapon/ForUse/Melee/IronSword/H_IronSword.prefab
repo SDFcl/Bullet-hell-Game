@@ -78,6 +78,7 @@ MonoBehaviour:
   currentDamage: 0
   cooldown: 0.5
   useAnimationEvent: 0
+  damagePercent: 0
 --- !u!114 &2666929356030408498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,8 +116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 452447bcc347b1d41a0ae0d002d56968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impulseForce: 15
-  impulseDuration: 0.075
+  impulseForce: 0
+  impulseDuration: 0
   directionMode: 0
   useAnimationEvent: 0
 --- !u!114 &-4091803622844544513

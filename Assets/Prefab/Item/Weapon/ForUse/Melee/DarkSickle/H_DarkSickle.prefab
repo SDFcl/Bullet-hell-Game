@@ -105,7 +105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f696945056177894288852a4d3a7ade0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useSOData: 1
   soundID: {fileID: 11400000, guid: 86ebc1e7f3c5ae246b43943690e67d4b, type: 2}
 --- !u!61 &8403192063894262403
 BoxCollider2D:
@@ -231,6 +230,7 @@ MonoBehaviour:
   currentDamage: 0
   cooldown: 0.5
   useAnimationEvent: 0
+  damagePercent: 0
 --- !u!114 &2343462240032323875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,8 +268,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 452447bcc347b1d41a0ae0d002d56968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impulseForce: 15
-  impulseDuration: 0.075
+  impulseForce: 0
+  impulseDuration: 0
   directionMode: 0
   useAnimationEvent: 0
 --- !u!114 &3328241755587939349
@@ -284,7 +284,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6f0240538c4c8d4caa66993d71bcf7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useSOData: 0
   useAnimationEvent: 0
   soundID: {fileID: 11400000, guid: 10afb42ac66235f48934eec002c04076, type: 2}
 --- !u!1 &8596240131584455193
