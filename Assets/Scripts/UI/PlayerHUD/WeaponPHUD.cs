@@ -4,15 +4,20 @@ using UnityEngine.UI;
 public class WeaponPHUD : MonoBehaviour
 {
     HoldingItemWatcher holdingItemWatcher;
-    GameObject player;
+    Transform holdingItem;
     Image image;
 
     void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
 
         if (player != null)
-            holdingItemWatcher = player.GetComponent<HoldingItemWatcher>();
+        {
+            holdingItem = player.transform.Find("HoldingItem");
+
+            if (holdingItem != null)
+                holdingItemWatcher = holdingItem.GetComponent<HoldingItemWatcher>();
+        }
 
         image = GetComponent<Image>();
     }
@@ -37,7 +42,7 @@ public class WeaponPHUD : MonoBehaviour
 
     void ChangeWeaponImage()
     {
-        Item item = player.GetComponentInChildren<Item>();
+        Item item = holdingItem.GetComponentInChildren<Item>();
         image.sprite = item.itemData.itemIcon;
     }
 }
