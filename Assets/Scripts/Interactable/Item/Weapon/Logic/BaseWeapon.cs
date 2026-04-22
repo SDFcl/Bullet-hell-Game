@@ -81,7 +81,7 @@ public abstract class BaseWeapon : MonoBehaviour, IWeapon
 
     protected virtual void PerformAttack()
     {
-        
+        if (useAnimationEvent) return;
         ExecuteWeaponAction();
     }
 
