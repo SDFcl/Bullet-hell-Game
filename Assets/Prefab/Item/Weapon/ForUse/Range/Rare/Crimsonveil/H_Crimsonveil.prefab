@@ -228,7 +228,7 @@ Animator:
   m_GameObject: {fileID: 5104695943621066586}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e952060781ef496469ba4883ad7f9130, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3956495c58115b4408a20fc3a25e9250, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -257,7 +257,7 @@ MonoBehaviour:
   baseDamage: 15
   currentDamage: 0
   cooldown: 0.5
-  useAnimationEvent: 0
+  damagePercent: 0
   projectileDamage: 5
   projectileSpeed: 10
   projectilePoolTag: BlueProjectile
@@ -312,7 +312,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6f0240538c4c8d4caa66993d71bcf7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useSOData: 0
   useAnimationEvent: 0
   soundID: {fileID: 11400000, guid: 10afb42ac66235f48934eec002c04076, type: 2}
 --- !u!1 &5647106461903270758
