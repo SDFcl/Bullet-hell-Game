@@ -12,6 +12,7 @@ public class UIGuildCoin : MonoBehaviour
 
     public void UpdateGuildCoinDisplay(int newAmount)
     {
+        TextGuildCoin.text = MetaCurrency.Instance.MetaCurrencyAmount.ToString();
         Debug.Log($"Guild Coin display updated: {newAmount}");
     }
 }
