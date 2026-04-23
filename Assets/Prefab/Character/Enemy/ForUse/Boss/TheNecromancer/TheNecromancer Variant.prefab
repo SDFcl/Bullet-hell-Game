@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TheNecromancer Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4764147975119969297, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 5008803227342585709, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
       propertyPath: m_Size.x
       value: 1.25
@@ -227,6 +231,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4764147975119969297, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2654642142654878409}
+    - targetCorrespondingSourceObject: {fileID: 4764147975119969297, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -1685131544851574946}
   m_SourcePrefab: {fileID: 100100000, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
 --- !u!1 &8601641729579575177 stripped
 GameObject:
@@ -283,6 +290,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed60c2078b2f23a4180f1b421575ef0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-1685131544851574946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8601641729579575177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5283fb5c9d09bd4b858e4998b9b5bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossname: The Necromancer
 --- !u!4 &8991366167430043471 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5297696783387487447, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}

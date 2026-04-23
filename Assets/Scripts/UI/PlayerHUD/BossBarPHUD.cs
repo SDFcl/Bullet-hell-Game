@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class BossBarPHUD : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class BossBarPHUD : MonoBehaviour
     [SerializeField] private float range = 10f;
     [SerializeField] private LayerMask bossLayer;
     [SerializeField] private float fadeSpeed = 8f;
+    [SerializeField] private TextMeshProUGUI nameBoss;
 
     private Health currentBossHealth;
     private CanvasGroup canvasGroup;
@@ -100,11 +102,13 @@ public class BossBarPHUD : MonoBehaviour
             return;
 
         ClearBoss();
+        
 
         currentBossHealth = bossHealth;
         currentBossHealth.OnHealthChanged += UpdateBossBar;
         currentBossHealth.OnDead += HandleBossDead;
 
+        nameBoss.text = currentBossHealth.gameObject.GetComponent<BossName>().bossname;
         UpdateBossBar(currentBossHealth.CurrentHP);
     }
 
