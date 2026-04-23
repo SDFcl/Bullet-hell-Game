@@ -68,9 +68,10 @@ public class Health : MonoBehaviour, IDamageable
     {
         IgnoreDamage = enable;
     }
-
-    public void SaveHealth()
+    
+    public void SetCurrentHealth(float amout)
     {
-        GameSession.savedHealth = (int)CurrentHP;
-    }   
+        if(amout <= 0) return;
+        CurrentHP = amout;
+    }
 }
