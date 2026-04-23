@@ -212,13 +212,14 @@ GameObject:
   - component: {fileID: 5173285673147813043}
   - component: {fileID: 5853918518097103913}
   - component: {fileID: 7604448175185843845}
+  - component: {fileID: 627366338400374830}
   m_Layer: 6
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8193942225323332650
 RectTransform:
   m_ObjectHideFlags: 0
@@ -391,3 +392,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sortingLayerName: Obj in scene
   orderInLayer: 0
+--- !u!114 &627366338400374830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6683118860154976714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0654ee2d5c7b1a742af142d9c95be4b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1.5
