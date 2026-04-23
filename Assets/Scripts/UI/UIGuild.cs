@@ -4,13 +4,15 @@ using UnityEngine;
 public class UIGuildCoin : MonoBehaviour
 {
     public TextMeshProUGUI TextGuildCoin;
+    MetaCurrency metaCurrency;
 
-    private void OnEnable()
+    private void Awake()
     {
-        if (MetaCurrency.Instance != null)
+        metaCurrency = FindObjectOfType<MetaCurrency>();
+        if (metaCurrency != null)
         {
-            MetaCurrency.Instance.OnMetaCurrencyChanged += UpdateGuildCoinDisplay;
-            UpdateGuildCoinDisplay(MetaCurrency.Instance.MetaCurrencyAmount);
+            metaCurrency.OnMetaCurrencyChanged += UpdateGuildCoinDisplay;
+            UpdateGuildCoinDisplay(metaCurrency.MetaCurrencyAmount);
         }
     }
 
@@ -24,7 +26,7 @@ public class UIGuildCoin : MonoBehaviour
 
     public void UpdateGuildCoinDisplay(int newAmount)
     {
-        TextGuildCoin.text = MetaCurrency.Instance.MetaCurrencyAmount.ToString();
+        TextGuildCoin.text = metaCurrency.MetaCurrencyAmount.ToString();
         Debug.Log($"Guild Coin display updated: {newAmount}");
     }
 }

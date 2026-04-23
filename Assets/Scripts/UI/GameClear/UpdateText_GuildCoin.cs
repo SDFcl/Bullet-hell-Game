@@ -1,16 +1,15 @@
+using TMPro;
 using UnityEngine;
 
 public class UpdateText_GuildCoin : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    TextMeshProUGUI guildCoinText;
+    void Awake()
+    {
+        guildCoinText = GetComponent<TextMeshProUGUI>();
+    }
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        guildCoinText.text = GameSession.CurrentReward.ToString();
     }
 }
