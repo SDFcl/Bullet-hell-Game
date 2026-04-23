@@ -719,7 +719,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8601641729579575177, guid: 6dfd1c73baa7dca4ca1181832394ac64, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 854095785}
   m_SourcePrefab: {fileID: 100100000, guid: 6dfd1c73baa7dca4ca1181832394ac64, type: 3}
 --- !u!4 &164358125 stripped
 Transform:
@@ -1237,6 +1240,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4783988450818162485, guid: 0cf793536356c754c84d00f676ce9a92, type: 3}
   m_PrefabInstance: {fileID: 561198297}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &324356877
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1962083145663254370, guid: d554c809694433449a6637748060c75b, type: 3}
+      propertyPath: m_Name
+      value: TheAbomination Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224431181875664490, guid: d554c809694433449a6637748060c75b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.758253
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224431181875664490, guid: d554c809694433449a6637748060c75b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.159658
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224431181875664490, guid: d554c809694433449a6637748060c75b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224431181875664490, guid: d554c809694433449a6637748060c75b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224431181875664490, guid: d554c809694433449a6637748060c75b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224431181875664490, guid: d554c809694433449a6637748060c75b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224431181875664490, guid: d554c809694433449a6637748060c75b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224431181875664490, guid: d554c809694433449a6637748060c75b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224431181875664490, guid: d554c809694433449a6637748060c75b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2224431181875664490, guid: d554c809694433449a6637748060c75b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d554c809694433449a6637748060c75b, type: 3}
 --- !u!1001 &330123490
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3105,6 +3165,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2454753326418080608, guid: 80f60fc5624591d418448685fda249ed, type: 3}
   m_PrefabInstance: {fileID: 190283553}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &854095762 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8601641729579575177, guid: 6dfd1c73baa7dca4ca1181832394ac64, type: 3}
+  m_PrefabInstance: {fileID: 161591427}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &854095785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854095762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5283fb5c9d09bd4b858e4998b9b5bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossname: TheNecromancer
 --- !u!4 &857724585 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5518167977944119125, guid: 17166886ac7c463458b72a6d6bc47ade, type: 3}
@@ -11608,3 +11686,4 @@ SceneRoots:
   - {fileID: 292402386}
   - {fileID: 1274454012}
   - {fileID: 161591427}
+  - {fileID: 324356877}
