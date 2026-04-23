@@ -37,7 +37,6 @@ public class SelectLevel : MonoBehaviour, ILevel, IDataPersistence
     {
         if (GameSession.isGamePlaying)
         {
-            GameSession.isGamePlaying = false;
             DataPersistenceManager dataPersistenceManager = FindObjectOfType<DataPersistenceManager>();
             if (dataPersistenceManager != null)
             {

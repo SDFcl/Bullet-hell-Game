@@ -109,7 +109,7 @@ MonoBehaviour:
   baseDamage: 10
   currentDamage: 0
   cooldown: 0.2
-  useAnimationEvent: 0
+  damagePercent: 0
   projectileSpeed: 20
   projectilePoolTag: HollowStaffBL
   manaCost: 1
@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 712ed09c8ca999a40aedf31ff122b7be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sideBulletCount: 1
   spreadAngle: 15
 --- !u!114 &7928433281483128498
 MonoBehaviour:
@@ -164,7 +165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6f0240538c4c8d4caa66993d71bcf7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useSOData: 0
   useAnimationEvent: 0
   soundID: {fileID: 11400000, guid: 506ff607fc0d6a14bb2bf628bbf4e147, type: 2}
 --- !u!1 &8666195332215388714
@@ -177,7 +177,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4586587890095770450}
   - component: {fileID: 8991828689977051348}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}

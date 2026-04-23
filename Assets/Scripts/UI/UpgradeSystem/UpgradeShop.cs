@@ -19,7 +19,7 @@ public class UpgradeShop : MonoBehaviour, IDataPersistence
 
     public event Action<UpgradeData,int> OnUpgradePurchased;
 
-    private void Awake()
+    private void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
         if (manager == null)
