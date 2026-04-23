@@ -46,6 +46,7 @@ public class GameStateManager : Singleton<GameStateManager>
                 break;
             case GameState.GameOver:
                 // แสดงหน้าจอเกมจบ, หยุดการเคลื่อนไหว ฯลฯ
+                GameSession.isGamePlaying = false;
                 DataPersistenceManager dataPersistenceManager = FindObjectOfType<DataPersistenceManager>();
                 if (dataPersistenceManager != null)
                 {

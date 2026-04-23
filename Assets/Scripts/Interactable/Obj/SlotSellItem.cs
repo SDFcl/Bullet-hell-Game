@@ -7,7 +7,7 @@ public class SlotSellItem : InteractiveSlotSellItem
     [Header("Slot Sell Item Settings")]
     [SerializeField] private bool IsSold = false;
     public int Price;
-    [SerializeField] private GameObject ItemGameObject;
+    public GameObject ItemGameObject;
 
     private BoxCollider2D boxCollider;
 
