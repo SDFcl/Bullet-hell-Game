@@ -3,17 +3,16 @@ using UnityEngine.UI;
 
 public class BossBarPHUD : MonoBehaviour
 {
-    [Header("UI")]
     [SerializeField] private GameObject bossBarRoot;
     [SerializeField] private Slider bossHpSlider;
-
-    [Header("Detection")]
-    [SerializeField] private float detectRange = 12f;
     [SerializeField] private Transform player;
-    [SerializeField] private Health bossHealth;
+    [SerializeField] private float range = 10f;
+    [SerializeField] private LayerMask bossLayer;
+    [SerializeField] private float fadeSpeed = 8f;
 
-    private KillAllEnemy[] bossMarkers;
     private Health currentBossHealth;
+    private CanvasGroup canvasGroup;
+    private float targetAlpha;
 
     private void Awake()
     {
@@ -22,162 +21,107 @@ public class BossBarPHUD : MonoBehaviour
             bossBarRoot = gameObject;
         }
 
+        canvasGroup = bossBarRoot.GetComponent<CanvasGroup>();
+        if (canvasGroup == null)
+        {
+            canvasGroup = bossBarRoot.AddComponent<CanvasGroup>();
+        }
+
         if (bossHpSlider == null)
         {
-            bossHpSlider = GetComponentInChildren<Slider>();
+            bossHpSlider = GetComponentInChildren<Slider>(true);
         }
 
         if (player == null)
         {
-            GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-            if (playerObject != null)
-            {
-                player = playerObject.transform;
-            }
+            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+            if (playerObj != null)
+                player = playerObj.transform;
         }
-
-        bossMarkers = FindObjectsOfType<KillAllEnemy>(true);
-        HideBossBar();
-    }
-
-    private void OnEnable()
-    {
-        if (bossHealth != null)
-        {
-            BindBoss(bossHealth);
-        }
-    }
-
-    private void OnDisable()
-    {
-        UnbindBoss();
-    }
-
-    private void Update()
-    {
-        if (player == null)
-        {
-            return;
-        }
-
-        if (currentBossHealth != null)
-        {
-            if (currentBossHealth.IsDead)
-            {
-                HideBossBar();
-                UnbindBoss();
-                return;
-            }
-
-            float distanceToCurrentBoss = Vector2.Distance(player.position, currentBossHealth.transform.position);
-            if (distanceToCurrentBoss > detectRange)
-            {
-                HideBossBar();
-                UnbindBoss();
-                return;
-            }
-
-            ShowBossBar();
-            UpdateBossHealth(currentBossHealth.CurrentHP);
-            return;
-        }
-
-        Health detectedBoss = FindBossInRange();
-        if (detectedBoss != null)
-        {
-            BindBoss(detectedBoss);
-            ShowBossBar();
-            UpdateBossHealth(detectedBoss.CurrentHP);
-        }
-        else
-        {
-            HideBossBar();
-        }
-    }
-
-    private Health FindBossInRange()
-    {
-        if (bossHealth != null)
-        {
-            if (!bossHealth.IsDead && Vector2.Distance(player.position, bossHealth.transform.position) <= detectRange)
-            {
-                return bossHealth;
-            }
-
-            return null;
-        }
-
-        if (bossMarkers == null || bossMarkers.Length == 0)
-        {
-            bossMarkers = FindObjectsOfType<KillAllEnemy>(true);
-        }
-
-        Health nearestBoss = null;
-        float nearestDistance = float.MaxValue;
-
-        foreach (KillAllEnemy marker in bossMarkers)
-        {
-            if (marker == null)
-            {
-                continue;
-            }
-
-            Health health = marker.GetComponent<Health>();
-            if (health == null || health.IsDead)
-            {
-                continue;
-            }
-
-            float distance = Vector2.Distance(player.position, marker.transform.position);
-            if (distance > detectRange || distance >= nearestDistance)
-            {
-                continue;
-            }
-
-            nearestDistance = distance;
-            nearestBoss = health;
-        }
-
-        return nearestBoss;
-    }
-
-    private void BindBoss(Health newBossHealth)
-    {
-        if (newBossHealth == null || newBossHealth == currentBossHealth)
-        {
-            return;
-        }
-
-        UnbindBoss();
-        currentBossHealth = newBossHealth;
-        currentBossHealth.OnHealthChanged += UpdateBossHealth;
-        currentBossHealth.OnDead += HandleBossDead;
 
         if (bossHpSlider != null)
         {
             bossHpSlider.minValue = 0f;
             bossHpSlider.maxValue = 1f;
         }
+
+        bossBarRoot.SetActive(true);
+        targetAlpha = 0f;
+        canvasGroup.alpha = 0f;
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
     }
 
-    private void UnbindBoss()
+    private void Update()
     {
-        if (currentBossHealth == null)
+        UpdateFade();
+
+        if (player == null)
+            return;
+
+        Collider2D hit = FindBossInRange();
+
+        if (hit == null)
         {
+            HideBossBar();
+            ClearBoss();
             return;
         }
 
-        currentBossHealth.OnHealthChanged -= UpdateBossHealth;
+        if (!hit.CompareTag("Enemy"))
+            return;
+
+        Health bossHealth = hit.GetComponent<Health>();
+        if (bossHealth == null)
+            bossHealth = hit.GetComponentInParent<Health>();
+
+        if (bossHealth == null)
+            return;
+
+        if (currentBossHealth != bossHealth)
+        {
+            SetBoss(bossHealth);
+        }
+
+        if (currentBossHealth.IsDead)
+        {
+            HideBossBar();
+            ClearBoss();
+            return;
+        }
+
+        ShowBossBar();
+        UpdateBossBar(currentBossHealth.CurrentHP);
+    }
+
+    public void SetBoss(Health bossHealth)
+    {
+        if (bossHealth == null)
+            return;
+
+        ClearBoss();
+
+        currentBossHealth = bossHealth;
+        currentBossHealth.OnHealthChanged += UpdateBossBar;
+        currentBossHealth.OnDead += HandleBossDead;
+
+        UpdateBossBar(currentBossHealth.CurrentHP);
+    }
+
+    private void ClearBoss()
+    {
+        if (currentBossHealth == null)
+            return;
+
+        currentBossHealth.OnHealthChanged -= UpdateBossBar;
         currentBossHealth.OnDead -= HandleBossDead;
         currentBossHealth = null;
     }
 
-    private void UpdateBossHealth(float currentHp)
+    private void UpdateBossBar(float currentHp)
     {
         if (bossHpSlider == null || currentBossHealth == null)
-        {
             return;
-        }
 
         if (currentBossHealth.MaxHealth <= 0f)
         {
@@ -191,33 +135,52 @@ public class BossBarPHUD : MonoBehaviour
     private void HandleBossDead()
     {
         HideBossBar();
-        UnbindBoss();
+        ClearBoss();
     }
 
     private void ShowBossBar()
     {
-        if (bossBarRoot != null && !bossBarRoot.activeSelf)
-        {
-            bossBarRoot.SetActive(true);
-        }
+        targetAlpha = 1f;
+        canvasGroup.interactable = true;
+        canvasGroup.blocksRaycasts = true;
     }
 
     private void HideBossBar()
     {
-        if (bossBarRoot != null && bossBarRoot.activeSelf)
+        targetAlpha = 0f;
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
+    }
+
+    private Collider2D FindBossInRange()
+    {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(player.position, range, bossLayer);
+
+        foreach (Collider2D hit in hits)
         {
-            bossBarRoot.SetActive(false);
+            if (hit.CompareTag("Enemy"))
+            {
+                return hit;
+            }
         }
+
+        return null;
+    }
+
+    private void UpdateFade()
+    {
+        if (canvasGroup == null)
+            return;
+
+        canvasGroup.alpha = Mathf.MoveTowards(canvasGroup.alpha, targetAlpha, fadeSpeed * Time.deltaTime);
     }
 
     private void OnDrawGizmosSelected()
     {
         if (player == null)
-        {
             return;
-        }
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(player.position, detectRange);
+        Gizmos.DrawWireSphere(player.position, range);
     }
 }

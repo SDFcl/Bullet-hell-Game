@@ -1776,8 +1776,10 @@ GameObject:
   - component: {fileID: 2562877973884171854}
   - component: {fileID: 8368199873122150304}
   - component: {fileID: 292266848957659759}
+  - component: {fileID: 2649881718503865173}
+  - component: {fileID: 6655477832986488321}
   m_Layer: 5
-  m_Name: BossBar
+  m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1864,6 +1866,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4008457701089083695}
   m_CullTransparentMesh: 1
+--- !u!225 &2649881718503865173
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4008457701089083695}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &6655477832986488321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4008457701089083695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4492963ffeca607419a0bb8dbc2b96ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossBarRoot: {fileID: 0}
+  bossHpSlider: {fileID: 0}
+  player: {fileID: 0}
+  range: 20
+  bossLayer:
+    serializedVersion: 2
+    m_Bits: 4096
+  fadeSpeed: 8
 --- !u!1 &4268225484046325410
 GameObject:
   m_ObjectHideFlags: 0
