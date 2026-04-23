@@ -12,12 +12,12 @@ public class NextLevel : MonoBehaviour, ILevel
             playerInventory.SaveInventory();
         }
 
-        Health playerHealth = GameObject.FindGameObjectWithTag("Player")?.GetComponentInChildren<Health>();
-        if (playerHealth != null)
-        {
-            playerHealth.SaveHealth();
-            Debug.Log("Player health saved: " + playerHealth.gameObject.name);
-        }
+        // Health playerHealth = GameObject.FindGameObjectWithTag("Player")?.GetComponentInChildren<Health>();
+        // if (playerHealth != null)
+        // {
+        //     playerHealth.SaveHealth();
+        //     Debug.Log("Player health saved: " + playerHealth.gameObject.name);
+        // }
 
         LevelID currentLevel = GameSession.currentLevel;
 
