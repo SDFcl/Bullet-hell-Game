@@ -12,11 +12,11 @@ public class EnemyKillCounter : Singleton<EnemyKillCounter>
     {
         if(GameSession.currentLevel.stage == Stage.Stage2 || GameSession.currentLevel.stage == Stage.BossStage)
         {
-            enemyKillCount += GameSession.enemyCout;
+            enemyKillCount += GameSession.enemyCount;
         }
         else
         {
-            GameSession.enemyCout = 0;
+            GameSession.enemyCount = 0;
             enemyKillCount = 0;
         }
     }
@@ -42,6 +42,6 @@ public class EnemyKillCounter : Singleton<EnemyKillCounter>
     private void CountEnemyKill()
     {
         enemyKillCount++;
-        GameSession.enemyCout = enemyKillCount;
+        GameSession.enemyCount = enemyKillCount;
     }
 }

@@ -10,6 +10,6 @@ public class UpdateText_Enemy : MonoBehaviour
     }
     void Start()
     {
-        timeCountText.text = GameSession.enemyCout.ToString();
+        timeCountText.text = GameSession.enemyCount.ToString();
     }
 }
