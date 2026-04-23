@@ -193,10 +193,22 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8177065121567281754, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
+      propertyPath: viewAngle
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 8177065121567281754, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
+      propertyPath: detectRange
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 8482359702682925280, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: aeb7705cdbcf88c49a7d758c156da35e, type: 2}
+    - target: {fileID: 9033796279139054383, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
+      propertyPath: stateGraph
+      value: 
+      objectReference: {fileID: 11400000, guid: 672257bb3128b2f45a04f7162c1a3ff1, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
