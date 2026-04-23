@@ -48,7 +48,9 @@ public class GameFacade : MonoBehaviour,IDataPersistence
     public void SaveData(ref GameData data)
     {
         data.OnGamePlaying = GameSession.isGamePlaying;
-        data.SavedTimeCount = GameSession.timeCount;
+        TimeCountGamePlay timeCountGamePlay = FindObjectOfType<TimeCountGamePlay>();
+        if (timeCountGamePlay != null) 
+            data.SavedTimeCount = timeCountGamePlay.timer;
         data.SavedenemyCount = GameSession.enemyCount;
         data.CurrentReward = GameSession.CurrentReward;
     }

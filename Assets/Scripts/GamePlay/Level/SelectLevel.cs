@@ -38,6 +38,12 @@ public class SelectLevel : MonoBehaviour, ILevel, IDataPersistence
         if (GameSession.isGamePlaying)
         {
             GameSession.isGamePlaying = false;
+            DataPersistenceManager dataPersistenceManager = FindObjectOfType<DataPersistenceManager>();
+            if (dataPersistenceManager != null)
+            {
+                dataPersistenceManager.SaveGame();
+                Debug.Log("Game saved before loading GameClear scene.");
+            }
             SceneLoader.Instance.LoadScene("GameClear", gameObject);
         }
     }
@@ -51,6 +57,6 @@ public class SelectLevel : MonoBehaviour, ILevel, IDataPersistence
 
     public void SaveData(ref GameData data)
     {
-        GameSession.isGamePlaying = data.OnGamePlaying;
+        data.OnGamePlaying = GameSession.isGamePlaying;
     }
 }
