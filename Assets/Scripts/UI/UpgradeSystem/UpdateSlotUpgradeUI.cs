@@ -17,7 +17,10 @@ public class UpdateSlotUpgradeUI : MonoBehaviour
     public TextMeshProUGUI upgradeDescriptionText;
     public TextMeshProUGUI upgradeCurrenStateText;
     public TextMeshProUGUI upgradeCostText;
+    public Image gcIcon;
     public Button button;
+    public Sprite sprite;
+    public string currnetStateTextAddOn = "";
 
     private void Awake()
     {
@@ -33,18 +36,24 @@ public class UpdateSlotUpgradeUI : MonoBehaviour
         upgradeNameText.text = data.upgradeName;
         upgradeIcon.sprite = data.upgradeIcon;
         upgradeDescriptionText.text = data.upgradeDescription;
-        upgradeCurrenStateText.text = $"Current : {data.upgradeValues[Index].value}";
+        upgradeCurrenStateText.text = $"Current : +{data.upgradeValues[Index].value}{currnetStateTextAddOn}";
         if (Index + 1 >= data.upgradeValues.Length)
         {
             TextMeshProUGUI textMeshProUGUI = button.GetComponentInChildren<TextMeshProUGUI>();
+            Image image = button.GetComponent<Image>();
             if (textMeshProUGUI != null)
             {
                 textMeshProUGUI.text = "Maxed";
+                textMeshProUGUI.color = new Color(1f,1f,1f,1f);
+                image.sprite = sprite;
                 button.interactable = false;
+                upgradeCostText.text = "";
+                gcIcon.color = new Color(1f,1f,1f,0f);
+                
                 return;
             }
         }
-        upgradeCostText.text = $"Cost : {data.upgradeValues[Index+1].cost}";
+        upgradeCostText.text = $"{data.upgradeValues[Index+1].cost}";
     }
 
     public void OnClick()
