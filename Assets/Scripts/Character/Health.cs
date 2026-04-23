@@ -19,7 +19,14 @@ public class Health : MonoBehaviour, IDamageable
 
     protected virtual void Awake()
     {
-        CurrentHP = maxHealth;
+        if (GameSession.savedHealth > 0)
+        {
+            CurrentHP = GameSession.savedHealth;
+        }
+        else
+        {
+            CurrentHP = maxHealth;
+        }
         damageBlockers = GetComponents<IDamageBlocker>();
     }
 
@@ -61,4 +68,9 @@ public class Health : MonoBehaviour, IDamageable
     {
         IgnoreDamage = enable;
     }
+
+    public void SaveHealth()
+    {
+        GameSession.savedHealth = (int)CurrentHP;
+    }   
 }

@@ -1496,7 +1496,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
   m_IsOn: 0
 --- !u!114 &375150184
 MonoBehaviour:
@@ -2084,7 +2084,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
   m_IsOn: 0
 --- !u!114 &446165731
 MonoBehaviour:
@@ -4398,7 +4398,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 916597864}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 0.97
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -5480,7 +5480,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
   m_IsOn: 0
 --- !u!114 &1193066890
 MonoBehaviour:
@@ -5810,7 +5810,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1258649838}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -5965,7 +5965,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
   m_IsOn: 1
 --- !u!224 &1302120494
 RectTransform:
@@ -6757,6 +6757,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -1497088265, guid: 2118051f56773fc4ea7de6a9b6c5aeaa, type: 3}
+    - target: {fileID: 6891403394091855175, guid: 7983915c3471c584b94c340a42eff881, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 32
+      objectReference: {fileID: 0}
     - target: {fileID: 7647414878097856102, guid: 7983915c3471c584b94c340a42eff881, type: 3}
       propertyPath: upgradeData
       value: 
@@ -8433,7 +8437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelToEnter:
     map: 1
-    stage: 2
+    stage: 0
   sceneName: GamePlay
 --- !u!225 &1981238513
 CanvasGroup:

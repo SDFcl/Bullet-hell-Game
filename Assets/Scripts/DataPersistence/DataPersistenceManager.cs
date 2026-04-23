@@ -89,6 +89,8 @@ public class DataPersistenceManager : Singleton<DataPersistenceManager>
     {
         if (gameData == null) return;
 
+        this.dataPersistenceObjects = FindAllDataPersistenceObjects();
+
         foreach (IDataPersistence obj in dataPersistenceObjects)
         {
             obj.SaveData(ref gameData);

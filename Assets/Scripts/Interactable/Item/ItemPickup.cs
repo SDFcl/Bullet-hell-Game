@@ -5,6 +5,7 @@ public class ItemPickup : MonoBehaviour, IPickable,ICollectEvent
 {
     public ItemData itemData;
     public event Action<GameObject> OnCollected;
+
     public ItemData GetItemData()
     {
         return itemData;

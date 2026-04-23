@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
 public class RayInteract : MonoBehaviour
@@ -44,9 +44,44 @@ public class RayInteract : MonoBehaviour
                 closest = col.transform;
             }
         }
-        if (closest == null) return null;
+
+        // ❗ เคสไม่เจออะไร
+        if (closest == null)
+        {
+            if (target != null)
+            {
+                OnFogus oldFocus = target.GetComponent<OnFogus>();
+                if (oldFocus != null)
+                    oldFocus.SetFogus(false);
+
+                target = null; // สำคัญมาก กันค้าง
+            }
+
+            return null;
+        }
+
+        // ❗ เคสเจอ แต่เป็นตัวใหม่
+        if (target != closest.gameObject)
+        {
+            // ปิดตัวเก่า
+            if (target != null)
+            {
+                OnFogus oldFocus = target.GetComponent<OnFogus>();
+                if (oldFocus != null)
+                    oldFocus.SetFogus(false);
+            }
+
+            // เปิดตัวใหม่
+            OnFogus newFocus = closest.GetComponent<OnFogus>();
+            if (newFocus != null)
+                newFocus.SetFogus(true);
+
+            target = closest.gameObject;
+        }
 
         return closest.gameObject;
+
+        return null;
     }
 
     void Update()
