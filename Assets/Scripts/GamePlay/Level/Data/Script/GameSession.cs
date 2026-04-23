@@ -15,4 +15,6 @@ public static class GameSession
     public static LevelID currentLevel;
     public static int lastRandomIndex = -1;
     public static SavedInventory savedInventory;
+    public static float timeCount;
+    public static float EnemyCount;
 }
