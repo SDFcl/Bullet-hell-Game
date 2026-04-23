@@ -10,8 +10,15 @@ public class EnemyKillCounter : Singleton<EnemyKillCounter>
 
     private void Start()
     {
-        enemyKillCount = 0;
-        GameSession.enemyCout = 0;
+        if(GameSession.currentLevel.stage == Stage.Stage2 || GameSession.currentLevel.stage == Stage.BossStage)
+        {
+            enemyKillCount += GameSession.enemyCout;
+        }
+        else
+        {
+            GameSession.enemyCout = 0;
+            enemyKillCount = 0;
+        }
     }
 
     public void RegisterEnemy(Health enemyHealth)
