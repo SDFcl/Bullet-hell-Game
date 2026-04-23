@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
@@ -9,6 +10,8 @@ public class SlotSellItem : InteractiveSlotSellItem
     [SerializeField] private GameObject ItemGameObject;
 
     private BoxCollider2D boxCollider;
+
+    public Action OnSuccess;
 
     private void Awake()
     {
@@ -42,6 +45,7 @@ public class SlotSellItem : InteractiveSlotSellItem
                     itemCollider.enabled = true; // Disable collider after selling
                 }
                 boxCollider.enabled = false; // Disable collider after selling
+                OnSuccess?.Invoke();
                 Debug.Log($"[SlotSellItem] Sold {itemData.itemName} for {Price} coins.");
             }
             else
