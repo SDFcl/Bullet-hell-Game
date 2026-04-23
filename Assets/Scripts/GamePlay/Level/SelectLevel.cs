@@ -17,7 +17,7 @@ public class SelectLevel : MonoBehaviour, ILevel
             dataPersistenceManager.SaveGame();
             Debug.Log("Game saved before loading level: " + sceneName);
         }
-        SceneManager.LoadScene(sceneName);
+        SceneLoader.Instance.LoadScene(sceneName,gameObject);
     }
 
     public void setLevelMap(int map)

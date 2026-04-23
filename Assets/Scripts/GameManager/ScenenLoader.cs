@@ -76,4 +76,10 @@ public class SceneLoader : Singleton<SceneLoader>
         yield return task.Execute();
         onComplete?.Invoke();
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+        Debug.Log("quit the game");
+    }
 }

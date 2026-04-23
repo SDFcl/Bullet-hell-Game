@@ -75,6 +75,11 @@ public class SoundManager : Singleton<SoundManager>
 
         return duration;
     }
+    // UnityEvent
+    public void PlayEventSFX(SoundID id)
+    {
+        PlaySFX(id, Vector3.zero);
+    }
 
     //BGM
     public void PlayBGM(SoundID id)
