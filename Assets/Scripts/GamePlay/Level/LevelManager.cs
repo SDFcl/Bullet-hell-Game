@@ -17,6 +17,21 @@ public class LevelManager : MonoBehaviour
         }
         Instantiate(GetRandomPrefab(), Vector3.zero, Quaternion.identity); 
     }
+
+    public void SpawnCurrentLevel()
+    {
+        if(pool == null || pool.Count == 0)
+        {
+            Debug.LogWarning("Pool is empty. Make sure to load a level first.");
+            return;
+        }
+        GameObject prefab = GetPrefab();
+        if (prefab == null)
+        {
+            prefab = GetRandomPrefab();
+        }
+        Instantiate(prefab, Vector3.zero, Quaternion.identity); 
+    }
     public void LoadLevel()
     {
         currentLevel = GameSession.currentLevel;
@@ -48,6 +63,21 @@ public class LevelManager : MonoBehaviour
         GameSession.lastRandomIndex = randomIndex;
 
         return pool[randomIndex];
+    }
+
+    public GameObject GetPrefab()
+    {
+        if (pool == null || pool.Count == 0)
+        {
+            Debug.LogWarning("Pool is empty. Make sure to load a level first.");
+            return null;
+        }
+        if (GameSession.lastRandomIndex < 0 || GameSession.lastRandomIndex >= pool.Count)
+        {
+            Debug.LogWarning("Invalid lastRandomIndex, cannot get saved prefab.");
+            return null;
+        }
+        return pool[GameSession.lastRandomIndex];
     }
 
     public int GetMetaCurrencyReward()

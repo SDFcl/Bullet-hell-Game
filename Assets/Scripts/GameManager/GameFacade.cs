@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GameFacade : MonoBehaviour
+public class GameFacade : MonoBehaviour,IDataPersistence
 {
     private AstarPath pathfinder;
     private LevelManager levelManager;
@@ -22,7 +22,14 @@ public class GameFacade : MonoBehaviour
     }
     public void GameStart()
     {
-        levelManager?.SpawnLevel();
+        if (GameSession.isGamePlaying)
+        {
+            levelManager?.SpawnCurrentLevel();
+        }
+        else
+        {
+            levelManager?.SpawnLevel();
+        }
         pathfinder?.Scan();
 
         // Load player inventory after spawning level
@@ -31,5 +38,23 @@ public class GameFacade : MonoBehaviour
         {
             playerInventory.LoadInventory();
         }
+    }
+
+    public void LoadData(GameData data)
+    {
+        GameSession.isGamePlaying = data.OnGamePlaying;
+        GameSession.lastRandomIndex = data.lastRandomIndex;
+        GameSession.currentLevel = new LevelID(data.currentMap, (Stage)data.currentStage);
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        LevelID level = GameSession.currentLevel;
+
+        Debug.Log($"Saving OnGamePlaying: {GameSession.isGamePlaying}");
+        data.OnGamePlaying = GameSession.isGamePlaying;
+        data.lastRandomIndex = GameSession.lastRandomIndex;
+        data.currentMap = level.map;
+        data.currentStage = (int)level.stage;
     }
 }

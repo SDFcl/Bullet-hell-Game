@@ -11,6 +11,7 @@ public class GameData
     public bool OnGamePlaying; // ใช้สำหรับเช็คว่าเกมกำลังเล่นอยู่หรือไม่
     public int currentMap;
     public int currentStage;
+    public int lastRandomIndex;
 
     public GameData()
     {

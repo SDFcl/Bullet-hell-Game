@@ -8,17 +8,20 @@ public class SelectLevel : MonoBehaviour, ILevel, IDataPersistence
 
     public void Execute()
     {
-        GameSession.currentLevel = levelToEnter;
-        GameSession.lastRandomIndex = -1;
-        GameSession.savedInventory = new SavedInventory();
-        GameSession.isGamePlaying = true;
-        DataPersistenceManager dataPersistenceManager = FindObjectOfType<DataPersistenceManager>();
-        if (dataPersistenceManager != null)
+        if (!GameSession.isGamePlaying)
         {
-            dataPersistenceManager.SaveGame();
-            Debug.Log("Game saved before loading level: " + sceneName);
+            GameSession.currentLevel = levelToEnter;
+            GameSession.lastRandomIndex = -1;
+            GameSession.savedInventory = new SavedInventory();
+            GameSession.isGamePlaying = true;
+            DataPersistenceManager dataPersistenceManager = FindObjectOfType<DataPersistenceManager>();
+            if (dataPersistenceManager != null)
+            {
+                dataPersistenceManager.SaveGame();
+                Debug.Log("Game saved before loading level: " + sceneName);
+            }
+            SceneLoader.Instance.LoadScene(sceneName, gameObject);
         }
-        SceneLoader.Instance.LoadScene(sceneName, gameObject);
     }
 
     public void setLevelMap(int map)
@@ -43,7 +46,7 @@ public class SelectLevel : MonoBehaviour, ILevel, IDataPersistence
             data.currentMap,
             (Stage)data.currentStage
         );
-
+        GameSession.lastRandomIndex = data.lastRandomIndex;
         GameSession.currentLevel = level;
         GameSession.isGamePlaying = data.OnGamePlaying;
     }
@@ -54,6 +57,7 @@ public class SelectLevel : MonoBehaviour, ILevel, IDataPersistence
 
         Debug.Log($"Saving OnGamePlaying: {GameSession.isGamePlaying}");
         data.OnGamePlaying = GameSession.isGamePlaying;
+        data.lastRandomIndex = GameSession.lastRandomIndex;
         data.currentMap = level.map;
         data.currentStage = (int)level.stage;
     }
