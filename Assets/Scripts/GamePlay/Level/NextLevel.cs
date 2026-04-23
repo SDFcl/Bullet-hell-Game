@@ -25,7 +25,7 @@ public class NextLevel : MonoBehaviour, ILevel
 
         if (nextStage == null)
         {
-            SceneLoader.Instance.LoadScene("Lobby",gameObject);
+            SceneLoader.Instance.LoadScene("GameClear",gameObject);
             return;
         }
 
