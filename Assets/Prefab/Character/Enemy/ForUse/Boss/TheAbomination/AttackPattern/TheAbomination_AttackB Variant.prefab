@@ -25,6 +25,10 @@ PrefabInstance:
       value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 6361842490613243919, guid: 64e7e98baa967a744a8dca0f9015ceb9, type: 3}
+      propertyPath: projectileSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361842490613243919, guid: 64e7e98baa967a744a8dca0f9015ceb9, type: 3}
       propertyPath: projectilePoolTag
       value: Enemy_BulletBBL
       objectReference: {fileID: 0}
@@ -127,12 +131,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scatterProjectileTag: Enemy_BulletABL
-  scatterCount: 10
+  scatterCount: 20
   spreadAngle: 22.2
   minSpawnOffset: 0.3
   maxSpawnOffset: 1
-  minSpeedMultiplier: 1.7
-  maxSpeedMultiplier: 1.5
+  minSpeedMultiplier: 2
+  maxSpeedMultiplier: 2.1
 --- !u!114 &6668312676307355378
 MonoBehaviour:
   m_ObjectHideFlags: 0

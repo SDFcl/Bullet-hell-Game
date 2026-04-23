@@ -17,6 +17,10 @@ public class SceneLoader : Singleton<SceneLoader>
 
         StartCoroutine(LoadSceneRoutine(sceneName, source));
     }
+    public void LoadSceneEvent(string sceneName)
+    {
+        LoadScene(sceneName,gameObject);
+    }
 
     public void ReloadCurrentScene(GameObject source)
     {

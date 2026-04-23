@@ -6,6 +6,7 @@ public class RoomDoorController : MonoBehaviour
     private void Awake()
     {
         doors = GameObject.FindGameObjectsWithTag("Barrier");
+        AddDoorAnimationComponents();
     }
 
     private void Start()
@@ -29,6 +30,17 @@ public class RoomDoorController : MonoBehaviour
         {
             //Debug.Log("Setting door " + door.name + " active: " + state);
             door.SetActive(state);
+        }
+    }
+
+    void AddDoorAnimationComponents()
+    {
+        foreach (var door in doors)
+        {
+            if (door.GetComponent<DoorAnimation>() == null)
+            {
+                door.AddComponent<DoorAnimation>();
+            }
         }
     }
 }

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 285123c42b81afb4bb8a12b41da865db, type: 3}
+  m_Name: GameClearSFX
+  m_EditorClassIdentifier: 
+  sounds:
+  - idName: Gameover
+    id: {fileID: 11400000, guid: 2678372a0d3f1be4b9edda822d2793df, type: 2}
+    clip: {fileID: 8300000, guid: 77ba29b33e7dd4c4c995e91349ca85b6, type: 3}
+    volume: 1
+  - idName: GameWin
+    id: {fileID: 11400000, guid: 314edf14130e12a4caef2ee0a6968ed1, type: 2}
+    clip: {fileID: 8300000, guid: a5a174dde8d6d29488d778eae71145a0, type: 3}
+    volume: 1

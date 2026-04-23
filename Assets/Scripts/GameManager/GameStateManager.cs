@@ -52,7 +52,7 @@ public class GameStateManager : Singleton<GameStateManager>
                     dataPersistenceManager.SaveGame();
                     Debug.Log("Game saved before loading level: Lobby");
                 }
-                SceneManager.LoadScene("Lobby"); // เปลี่ยนเป็นชื่อ Scene ที่ต้องการแสดงเมื่อเกมจบ
+                SceneLoader.Instance.LoadScene("GameClear",gameObject); // เปลี่ยนเป็นชื่อ Scene ที่ต้องการแสดงเมื่อเกมจบ
                 break;
             case GameState.Victory:
                 // แสดงหน้าจอชนะ, หยุดการเคลื่อนไหว ฯลฯ
