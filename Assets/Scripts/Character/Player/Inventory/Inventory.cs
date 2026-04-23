@@ -39,11 +39,11 @@ public class Inventory : MonoBehaviour
         {
             HoldingWeapon holdingWeapon = FindObjectOfType<HoldingWeapon>();
             int currentIndex = holdingWeapon.currentIndex;
-            if (currentIndex == 0)
-            {
-                Debug.Log("Cannot add weapon: " + item.itemData.itemName + " because current holding weapon index is 0 and max weapons reached.");
-                return false;
-            }
+            //if (currentIndex == 0)
+            //{
+            //    Debug.Log("Cannot add weapon: " + item.itemData.itemName + " because current holding weapon index is 0 and max weapons reached.");
+            //    return false;
+            //}
             DropWeapon(currentIndex);
             Weapons.Insert(currentIndex, item);
 
