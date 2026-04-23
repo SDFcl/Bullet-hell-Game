@@ -32,6 +32,7 @@ public class LevelSelectController : MonoBehaviour, IDataPersistence
 
     [Header("Enter Button")]
     public Button enterButton;
+    public Image GC_Icon;
     public GameObject costText;
 
     private int MaxLevel => stageObjects.Length;
@@ -125,6 +126,7 @@ public class LevelSelectController : MonoBehaviour, IDataPersistence
                 buttonText.text = "EMBARK!";
             }
             costText.SetActive(false);
+            GC_Icon.color = new Color(1,1,1,0);
         }
         else
         {
@@ -134,6 +136,7 @@ public class LevelSelectController : MonoBehaviour, IDataPersistence
                 buttonText.text = "UNLOCK";
             }
             costText.SetActive(true);
+            GC_Icon.color = new Color(1,1,1,1);
             TextMeshProUGUI costTextComponent = costText.GetComponentInChildren<TextMeshProUGUI>();
             costTextComponent.text = StageUnlock[currentIndex - 1].Cost.ToString();
         }
