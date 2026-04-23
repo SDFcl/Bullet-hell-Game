@@ -16,4 +16,5 @@ public static class GameSession
     public static int lastRandomIndex = -1;
     public static SavedInventory savedInventory;
     public static int savedHealth = 0;
+    public static float timeCount = 0f;
 }
