@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TimeCountGamePlay : MonoBehaviour
 {
-    float timer;
+    public float timer;
     void Start()
     {
         if(GameSession.currentLevel.stage == Stage.Stage2 || GameSession.currentLevel.stage == Stage.BossStage)
