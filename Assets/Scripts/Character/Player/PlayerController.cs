@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
 
     [SerializeField] private Camera mainCamera;
+    GameObject pausedMenu;
 
     void Awake()
     {
@@ -63,7 +64,9 @@ public class PlayerController : MonoBehaviour
         }
 
         if (mainCamera == null)
-            mainCamera = Camera.main;  
+            mainCamera = Camera.main;
+
+        pausedMenu = GameObject.FindGameObjectWithTag("PausedMenu");
     }
     void OnEnable()
     {
@@ -207,6 +210,10 @@ public class PlayerController : MonoBehaviour
         if (holdTriggered || isAiming)
         {
             attack.TryAttack();
+        }
+        if (Input.GetKeyDown(KeyCode.Escape) && pausedMenu != null)
+        {
+            pausedMenu.SetActive(!pausedMenu.activeSelf);
         }
     }
     private void OnDeadHandle()

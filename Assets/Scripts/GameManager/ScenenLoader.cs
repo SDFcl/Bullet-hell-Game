@@ -80,7 +80,10 @@ public class SceneLoader : Singleton<SceneLoader>
         yield return task.Execute();
         onComplete?.Invoke();
     }
-
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
     public void QuitGame()
     {
         Application.Quit();

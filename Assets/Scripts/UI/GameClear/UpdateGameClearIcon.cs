@@ -6,7 +6,7 @@ public class UpdateGameClearIcon : MonoBehaviour, IDataPersistence
     public GameObject gameOverIcon;
     void Start()
     {
-        if(GameSession.savedHealth <= 0)
+        if(GameSession.savedHealth == 0)
         {
             gameOverIcon.SetActive(true);
         }
