@@ -678,10 +678,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 711c26a8b01b33d4aa47380796127ac4, type: 2}
   - {fileID: 11400000, guid: 9cc6d0778988f214e98568f52d504cbe, type: 2}
   - {fileID: 11400000, guid: b021422562dcb6940b9a9a007621a625, type: 2}
-  bossSoundID:
-  - {fileID: 11400000, guid: c9750a25c2236e44fb123d2bc4f1c3f9, type: 2}
-  - {fileID: 11400000, guid: 4e9721e2d53a2c0438ff897a6a9bf56d, type: 2}
-  - {fileID: 11400000, guid: 57e089d69733a864cacf4c47ef2e78c7, type: 2}
 --- !u!1 &1915643170
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,6 +788,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2661507905946663864, guid: 833441f5b59634d43b6eef260c87dfc6, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4937833322044505211, guid: 833441f5b59634d43b6eef260c87dfc6, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
