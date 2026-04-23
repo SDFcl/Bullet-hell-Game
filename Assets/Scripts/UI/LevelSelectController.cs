@@ -58,7 +58,7 @@ public class LevelSelectController : MonoBehaviour, IDataPersistence
             int index = item.Key;
             bool isUnlocked = item.Value;
 
-            // ¡Ñ¹ index ËÅØ´
+            // ï¿½Ñ¹ index ï¿½ï¿½Ø´
             if (index < 0 || index >= StageUnlock.Count) continue;
 
             ButtonBuyData temp = StageUnlock[index];
@@ -122,7 +122,7 @@ public class LevelSelectController : MonoBehaviour, IDataPersistence
             TextMeshProUGUI buttonText = enterButton.GetComponentInChildren<TextMeshProUGUI>();
             if (buttonText != null)
             {
-                buttonText.text = "EMBARK!!";
+                buttonText.text = "EMBARK!";
             }
             costText.SetActive(false);
         }
@@ -131,7 +131,7 @@ public class LevelSelectController : MonoBehaviour, IDataPersistence
             TextMeshProUGUI buttonText = enterButton.GetComponentInChildren<TextMeshProUGUI>();
             if (buttonText != null)
             {
-                buttonText.text = "BUY";
+                buttonText.text = "UNLOCK";
             }
             costText.SetActive(true);
             TextMeshProUGUI costTextComponent = costText.GetComponentInChildren<TextMeshProUGUI>();
