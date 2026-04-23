@@ -412,7 +412,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c9750a25c2236e44fb123d2bc4f1c3f9, type: 2}
   - {fileID: 11400000, guid: 4e9721e2d53a2c0438ff897a6a9bf56d, type: 2}
   - {fileID: 11400000, guid: 57e089d69733a864cacf4c47ef2e78c7, type: 2}
-  targetCollider: {fileID: 348815275370994465}
 --- !u!1001 &3439562872640138965
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -424,10 +423,26 @@ PrefabInstance:
     - target: {fileID: 1075176898665799913, guid: 112fa9f91fcfc2044a5a84423d7540e4, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 315797807, guid: 6da75566e25d9c748a897907adb6cd5e, type: 3}
+      objectReference: {fileID: 1734120890, guid: 6da75566e25d9c748a897907adb6cd5e, type: 3}
     - target: {fileID: 1987209779597533050, guid: 112fa9f91fcfc2044a5a84423d7540e4, type: 3}
       propertyPath: m_Name
       value: Minimap
+      objectReference: {fileID: 0}
+    - target: {fileID: 3722522439244189636, guid: 112fa9f91fcfc2044a5a84423d7540e4, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487758817895652302, guid: 112fa9f91fcfc2044a5a84423d7540e4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 28.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487758817895652302, guid: 112fa9f91fcfc2044a5a84423d7540e4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 28.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487758817895652302, guid: 112fa9f91fcfc2044a5a84423d7540e4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 28.4
       objectReference: {fileID: 0}
     - target: {fileID: 4487758817895652302, guid: 112fa9f91fcfc2044a5a84423d7540e4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -492,11 +507,23 @@ PrefabInstance:
     - target: {fileID: 8494587550979317146, guid: 112fa9f91fcfc2044a5a84423d7540e4, type: 3}
       propertyPath: DiscoverIcon
       value: 
-      objectReference: {fileID: -1630133292, guid: 6da75566e25d9c748a897907adb6cd5e, type: 3}
+      objectReference: {fileID: 1734120890, guid: 6da75566e25d9c748a897907adb6cd5e, type: 3}
     - target: {fileID: 8494587550979317146, guid: 112fa9f91fcfc2044a5a84423d7540e4, type: 3}
       propertyPath: ExploredIcon
       value: 
-      objectReference: {fileID: 21300000, guid: d767efcf2aec63549a0cf89a0d9ae519, type: 3}
+      objectReference: {fileID: 1734120890, guid: 6da75566e25d9c748a897907adb6cd5e, type: 3}
+    - target: {fileID: 8494587550979317146, guid: 112fa9f91fcfc2044a5a84423d7540e4, type: 3}
+      propertyPath: ExploredColor.b
+      value: 0.7254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 8494587550979317146, guid: 112fa9f91fcfc2044a5a84423d7540e4, type: 3}
+      propertyPath: ExploredColor.g
+      value: 0.7254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 8494587550979317146, guid: 112fa9f91fcfc2044a5a84423d7540e4, type: 3}
+      propertyPath: ExploredColor.r
+      value: 0.7254902
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

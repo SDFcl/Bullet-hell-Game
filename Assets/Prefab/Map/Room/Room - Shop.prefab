@@ -657,6 +657,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Minimap
       objectReference: {fileID: 0}
+    - target: {fileID: 4487758817895652302, guid: 112fa9f91fcfc2044a5a84423d7540e4, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487758817895652302, guid: 112fa9f91fcfc2044a5a84423d7540e4, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4487758817895652302, guid: 112fa9f91fcfc2044a5a84423d7540e4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4839870737655899714, guid: 112fa9f91fcfc2044a5a84423d7540e4, type: 3}
       propertyPath: m_LocalScale.x
       value: 9.579514
@@ -720,7 +732,19 @@ PrefabInstance:
     - target: {fileID: 8494587550979317146, guid: 112fa9f91fcfc2044a5a84423d7540e4, type: 3}
       propertyPath: ExploredIcon
       value: 
-      objectReference: {fileID: 379755980, guid: 6da75566e25d9c748a897907adb6cd5e, type: 3}
+      objectReference: {fileID: 1320043652, guid: 6da75566e25d9c748a897907adb6cd5e, type: 3}
+    - target: {fileID: 8494587550979317146, guid: 112fa9f91fcfc2044a5a84423d7540e4, type: 3}
+      propertyPath: ExploredColor.b
+      value: 0.7254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 8494587550979317146, guid: 112fa9f91fcfc2044a5a84423d7540e4, type: 3}
+      propertyPath: ExploredColor.g
+      value: 0.7254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 8494587550979317146, guid: 112fa9f91fcfc2044a5a84423d7540e4, type: 3}
+      propertyPath: ExploredColor.r
+      value: 0.7254902
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
