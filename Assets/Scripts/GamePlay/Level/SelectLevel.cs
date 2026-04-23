@@ -52,6 +52,7 @@ public class SelectLevel : MonoBehaviour, ILevel, IDataPersistence
     {
         LevelID level = GameSession.currentLevel;
 
+        Debug.Log($"Saving OnGamePlaying: {GameSession.isGamePlaying}");
         data.OnGamePlaying = GameSession.isGamePlaying;
         data.currentMap = level.map;
         data.currentStage = (int)level.stage;
