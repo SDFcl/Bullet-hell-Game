@@ -51,6 +51,6 @@ public class SelectLevel : MonoBehaviour, ILevel, IDataPersistence
 
     public void SaveData(ref GameData data)
     {
-
+        GameSession.isGamePlaying = data.OnGamePlaying;
     }
 }
