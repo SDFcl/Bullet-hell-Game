@@ -29,7 +29,7 @@ public class MetaCurrency : Singleton<MetaCurrency>, IDataPersistence
 
     private void FixedUpdate()
     {
-        OnMetaCurrencyChanged?.Invoke(GuildCoin);
+        // OnMetaCurrencyChanged?.Invoke(GuildCoin);
     }
 
     public void AddMetaCurrency(int amount)
