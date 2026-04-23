@@ -9,9 +9,9 @@ public class GameData
 
     // ✅ เพิ่มตรงนี้
     public bool OnGamePlaying; // ใช้สำหรับเช็คว่าเกมกำลังเล่นอยู่หรือไม่
-    public int currentMap;
-    public int currentStage;
-    public int lastRandomIndex;
+    public float SavedTimeCount; // ใช้สำหรับเก็บเวลาที่เล่นไปแล้ว
+    public int SavedenemyCount; // ใช้สำหรับเก็บจำนวนศัตรูที่เล่นไปแล้ว
+    public int CurrentReward;
 
     public GameData()
     {
@@ -20,13 +20,8 @@ public class GameData
         UnLockLevel = new SerializableDictionary<int, bool>();
 
         OnGamePlaying = false; // เริ่มต้นว่าเกมยังไม่เล่น
-        currentMap = 1;
-        currentStage = 0; // Stage1
-    }
-
-    public void SetCurrentLevel(int map, int stage)
-    {
-        currentMap = map;
-        currentStage = stage;
+        SavedTimeCount = 0f; // เริ่มต้นเวลาที่เล่นไปแล้วเป็น 0
+        SavedenemyCount = 0; // เริ่มต้นจำนวนศัตรูที่เล่นไปแล้วเป็น 0
+        CurrentReward = 0;
     }
 }

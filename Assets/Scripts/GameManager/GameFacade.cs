@@ -42,19 +42,14 @@ public class GameFacade : MonoBehaviour,IDataPersistence
 
     public void LoadData(GameData data)
     {
-        GameSession.isGamePlaying = data.OnGamePlaying;
-        GameSession.lastRandomIndex = data.lastRandomIndex;
-        GameSession.currentLevel = new LevelID(data.currentMap, (Stage)data.currentStage);
+
     }
 
     public void SaveData(ref GameData data)
     {
-        LevelID level = GameSession.currentLevel;
-
-        Debug.Log($"Saving OnGamePlaying: {GameSession.isGamePlaying}");
         data.OnGamePlaying = GameSession.isGamePlaying;
-        data.lastRandomIndex = GameSession.lastRandomIndex;
-        data.currentMap = level.map;
-        data.currentStage = (int)level.stage;
+        data.SavedTimeCount = GameSession.timeCount;
+        data.SavedenemyCount = GameSession.enemyCount;
+        data.CurrentReward = GameSession.CurrentReward;
     }
 }

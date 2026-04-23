@@ -85,6 +85,7 @@ public class LevelManager : MonoBehaviour
         LevelDataSO data = levelData.GetLevelData(GameSession.currentLevel);
         if (data != null)
         {
+            GameSession.CurrentReward += data.metaCurrencyReward;
             return data.metaCurrencyReward;
         }
         return 0;

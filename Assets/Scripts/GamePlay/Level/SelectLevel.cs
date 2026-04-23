@@ -37,28 +37,20 @@ public class SelectLevel : MonoBehaviour, ILevel, IDataPersistence
     {
         if (GameSession.isGamePlaying)
         {
-            SceneLoader.Instance.LoadScene(sceneName, gameObject);
+            GameSession.isGamePlaying = false;
+            SceneLoader.Instance.LoadScene("GameClear", gameObject);
         }
     }
     public void LoadData(GameData data)
     {
-        LevelID level = new LevelID(
-            data.currentMap,
-            (Stage)data.currentStage
-        );
-        GameSession.lastRandomIndex = data.lastRandomIndex;
-        GameSession.currentLevel = level;
         GameSession.isGamePlaying = data.OnGamePlaying;
+        GameSession.timeCount = data.SavedTimeCount;
+        GameSession.enemyCount = data.SavedenemyCount;
+        GameSession.CurrentReward = data.CurrentReward;
     }
 
     public void SaveData(ref GameData data)
     {
-        LevelID level = GameSession.currentLevel;
 
-        Debug.Log($"Saving OnGamePlaying: {GameSession.isGamePlaying}");
-        data.OnGamePlaying = GameSession.isGamePlaying;
-        data.lastRandomIndex = GameSession.lastRandomIndex;
-        data.currentMap = level.map;
-        data.currentStage = (int)level.stage;
     }
 }

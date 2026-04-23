@@ -19,4 +19,5 @@ public static class GameSession
     public static float timeCount;
     public static int enemyCount;
     public static bool isGamePlaying = false;
+    public static int CurrentReward = 0;
 }
