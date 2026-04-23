@@ -14,6 +14,12 @@ public class EndPointInterectable : InteractiveObject
         {
             int reward = levelManager.GetMetaCurrencyReward();
             MetaCurrency.Instance.AddMetaCurrency(reward);
+            DataPersistenceManager dataPersistenceManager = FindObjectOfType<DataPersistenceManager>();
+            if (dataPersistenceManager != null)
+            {
+                dataPersistenceManager.SaveGame();
+                Debug.Log($"Game saved after awarding {reward} MetaCurrency.");
+            }
         }
 
         // Execute level transition

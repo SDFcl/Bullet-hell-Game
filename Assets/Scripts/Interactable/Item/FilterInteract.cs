@@ -71,7 +71,7 @@ public class FilterInteract
     private void ExecuteInteractive(IInteractive interactive)
     {
         interactive.Interact(player);
-        Debug.Log($"[FilterInteract] Interacted with: {interactive.GetInteractionName()}");
+        //Debug.Log($"[FilterInteract] Interacted with: {interactive.GetInteractionName()}");
     }
 
     /// <summary>

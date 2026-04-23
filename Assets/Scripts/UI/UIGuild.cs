@@ -5,9 +5,21 @@ public class UIGuildCoin : MonoBehaviour
 {
     public TextMeshProUGUI TextGuildCoin;
 
-    private void Start()
+    private void OnEnable()
     {
-        MetaCurrency.Instance.OnMetaCurrencyChanged += UpdateGuildCoinDisplay;
+        if (MetaCurrency.Instance != null)
+        {
+            MetaCurrency.Instance.OnMetaCurrencyChanged += UpdateGuildCoinDisplay;
+            UpdateGuildCoinDisplay(MetaCurrency.Instance.MetaCurrencyAmount);
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (MetaCurrency.Instance != null)
+        {
+            MetaCurrency.Instance.OnMetaCurrencyChanged -= UpdateGuildCoinDisplay;
+        }
     }
 
     public void UpdateGuildCoinDisplay(int newAmount)

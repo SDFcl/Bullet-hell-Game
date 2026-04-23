@@ -12,7 +12,7 @@ public class MetaCurrency : Singleton<MetaCurrency>, IDataPersistence
     public void Start()
     {
         OnMetaCurrencyChanged?.Invoke(GuildCoin);
-        Debug.Log($"MetaCurrency initialized. Total: {GuildCoin}");
+        //Debug.Log($"MetaCurrency initialized. Total: {GuildCoin}");
     }
 
     public void LoadData(GameData data)
@@ -36,14 +36,14 @@ public class MetaCurrency : Singleton<MetaCurrency>, IDataPersistence
     {
         GuildCoin += amount;
         OnMetaCurrencyChanged?.Invoke(GuildCoin);
-        Debug.Log($"MetaCurrency increased by {amount}. Total: {GuildCoin}");
+        //Debug.Log($"MetaCurrency increased by {amount}. Total: {GuildCoin}");
     }
 
     public bool SpendMetaCurrency(int amount)
     {
         if (GuildCoin < amount) return false;
         GuildCoin -= amount;
-        Debug.Log($"MetaCurrency decreased by {amount}. Total: {GuildCoin}");
+        //Debug.Log($"MetaCurrency decreased by {amount}. Total: {GuildCoin}");
         OnMetaCurrencyChanged?.Invoke(GuildCoin);
         return true;
     }

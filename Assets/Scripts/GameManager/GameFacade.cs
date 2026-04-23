@@ -22,14 +22,7 @@ public class GameFacade : MonoBehaviour,IDataPersistence
     }
     public void GameStart()
     {
-        if (GameSession.isGamePlaying)
-        {
-            levelManager?.SpawnCurrentLevel();
-        }
-        else
-        {
-            levelManager?.SpawnLevel();
-        }
+        levelManager?.SpawnLevel();
         pathfinder?.Scan();
 
         // Load player inventory after spawning level
