@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: c36aaaa52abce124ba151589cedffb01, type: 3}
     - target: {fileID: 2346490093800541275, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
       propertyPath: maxHealth
-      value: 500
+      value: 1200
       objectReference: {fileID: 0}
     - target: {fileID: 3787288551003797566, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
       propertyPath: showGizmo
@@ -163,6 +163,14 @@ PrefabInstance:
     - target: {fileID: 7249032133714973187, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.658
+      objectReference: {fileID: 0}
+    - target: {fileID: 8177065121567281754, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
+      propertyPath: viewAngle
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 8177065121567281754, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
+      propertyPath: detectRange
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8177065121567281754, guid: 67e4f97e7fd6c0540a203aead326a946, type: 3}
       propertyPath: fovAngleOffset
