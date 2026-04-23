@@ -7,7 +7,7 @@ public class UIGuildCoin : MonoBehaviour
 
     private MetaCurrency metaCurrency;
 
-    private void Start()
+    private void OnEnable()
     {
         MetaCurrency.Instance.OnMetaCurrencyChanged += UpdateGuildCoinDisplay;
     }
