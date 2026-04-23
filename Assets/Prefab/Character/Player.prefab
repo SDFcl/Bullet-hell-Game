@@ -652,7 +652,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   <CurrentHP>k__BackingField: 5
-  hitIFrameDuration: 0.5
+  hitIFrameDuration: 2
 --- !u!114 &8270400359032394410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -835,8 +835,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 1.5
-  duration: 3
-  cooldownTime: 5
+  duration: 10
+  cooldownTime: 60
 --- !u!114 &3562520556013709230
 MonoBehaviour:
   m_ObjectHideFlags: 0
