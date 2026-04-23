@@ -4,6 +4,7 @@ using UnityEngine;
 public class Health : MonoBehaviour, IDamageable
 {
     [SerializeField] protected float maxHealth = 100f;
+    public float MaxHealth => maxHealth;
     
     [field: SerializeField]
     public float CurrentHP { get; protected set; }
