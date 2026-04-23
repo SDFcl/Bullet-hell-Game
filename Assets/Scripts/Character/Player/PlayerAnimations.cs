@@ -31,9 +31,15 @@ public class PlayerAnimations : CharacterAnimations
     }
     protected override void OnDisable()
     {
-        base.OnDisable();
-        dodge.OnDodge -= TriggerDodgeAnimation;
-        playerHealth.OnIFrame -= HandleIFrameBlink;
+        if (blinkRoutine != null)
+        {
+            StopCoroutine(blinkRoutine);
+            blinkRoutine = null;
+        }
+
+        if (spriteRenderer != null)
+            spriteRenderer.enabled = true;
+
     }
     public void TriggerDodgeAnimation()
     {
@@ -41,21 +47,21 @@ public class PlayerAnimations : CharacterAnimations
     }
 
     public void HandleIFrameBlink()
-{
-    if (blinkRoutine != null)
     {
-        StopCoroutine(blinkRoutine);
-        blinkRoutine = null;
-    }
+        if (blinkRoutine != null)
+        {
+            StopCoroutine(blinkRoutine);
+            blinkRoutine = null;
+        }
 
-    if (iframeController.IsDamageBlocked)
-    {
-        blinkRoutine = StartCoroutine(BlinkRoutine());
-        return;
-    }
+        if (iframeController.IsDamageBlocked)
+        {
+            blinkRoutine = StartCoroutine(BlinkRoutine());
+            return;
+        }
 
-    spriteRenderer.enabled = true;
-}
+        spriteRenderer.enabled = true;
+    }
 
     private IEnumerator BlinkRoutine()
     {
@@ -64,5 +70,9 @@ public class PlayerAnimations : CharacterAnimations
             spriteRenderer.enabled = !spriteRenderer.enabled;
             yield return new WaitForSeconds(blinkInterval);
         }
+
+        spriteRenderer.enabled = true;
+        blinkRoutine = null;
     }
+
 }

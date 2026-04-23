@@ -281,6 +281,7 @@ GameObject:
   - component: {fileID: 920678228815343744}
   - component: {fileID: 2413450767164437874}
   - component: {fileID: 3492606222884020517}
+  - component: {fileID: 3248039634408694291}
   m_Layer: 0
   m_Name: Room - CombatBoss
   m_TagString: Untagged
@@ -394,6 +395,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: []
   goEnemyGroup: {fileID: 0}
+  enemyCount: 0
+--- !u!114 &3248039634408694291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8970293228750558856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f3e7bc2f0c2b5a4b8b08114e3487143, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossSoundIDs:
+  - {fileID: 11400000, guid: c9750a25c2236e44fb123d2bc4f1c3f9, type: 2}
+  - {fileID: 11400000, guid: 4e9721e2d53a2c0438ff897a6a9bf56d, type: 2}
+  - {fileID: 11400000, guid: 57e089d69733a864cacf4c47ef2e78c7, type: 2}
+  targetCollider: {fileID: 348815275370994465}
 --- !u!1001 &3439562872640138965
 PrefabInstance:
   m_ObjectHideFlags: 0
