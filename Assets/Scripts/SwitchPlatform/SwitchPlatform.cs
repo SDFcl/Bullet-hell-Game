@@ -45,26 +45,46 @@ public class SwitchPlatform : MonoBehaviour
     void MannoaSwitchControlScheme()
     {
         string schemeName = (controlType == ControlType.Keyboard)
-                                            ? "Keyboard&Mouse"
-                                            : "Gamepad";
-        InputDevice device = null;
+            ? "Keyboard&Mouse"
+            : "Gamepad";
+
         if (controlType == ControlType.Keyboard)
         {
-            device = Keyboard.current; // หรือ Keyboard.current ?? Mouse.current;
-        }
+            var keyboard = Keyboard.current;
+            var mouse = Mouse.current;
+
+            if (keyboard != null && mouse != null)
+            {
+                playerInput.SwitchCurrentControlScheme(
+                    schemeName,
+                    keyboard,
+                    mouse
+                );
+
+                Debug.Log($"✓ Switched to {schemeName} (Keyboard + Mouse)");
+            }
+            else
+            {
+                Debug.LogWarning("❌ Keyboard or Mouse not found!");
+            }
+        }
         else if (controlType == ControlType.Gamepad)
         {
-            device = Gamepad.current;
-        }
-        if (device != null)
-        {
-            playerInput.SwitchCurrentControlScheme(schemeName, device);
-            Debug.Log($"✓ Switched to {schemeName} with device: {device.displayName}");
-        }
-        else
-        {
-            Debug.LogWarning($"❌ No device found for {schemeName}!\n" +
-            $"Current devices: {string.Join(", ", InputSystem.devices.Select(d => d.displayName))}");
+            var gamepad = Gamepad.current;
+
+            if (gamepad != null)
+            {
+                playerInput.SwitchCurrentControlScheme(
+                    schemeName,
+                    gamepad
+                );
+
+                Debug.Log($"✓ Switched to {schemeName}");
+            }
+            else
+            {
+                Debug.LogWarning("❌ No Gamepad found!");
+            }
         }
     }
 }

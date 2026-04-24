@@ -47,26 +47,32 @@ public class PlayerController : MonoBehaviour
         health = GetComponent<Health>();
         specialAbility = GetComponent<SpecialAbility>();
 
+        
+
+        if (mainCamera == null)
+            mainCamera = Camera.main;
+
+        pausedMenu = GameObject.FindGameObjectWithTag("PausedMenu");
+    }
+
+    private void Start()
+    {
         PlayerUpgradeManager playerUpgradeManager = FindObjectOfType<PlayerUpgradeManager>();
+        //Debug.Log("PlayerController: Found PlayerUpgradeManager: " + (playerUpgradeManager != null));
         if (playerUpgradeManager != null)
         {
             IPlayerStats Stats = playerUpgradeManager.GetFinalStats();
             if (health != null)
             {
                 PlayerHealth playerHealth = health.GetComponent<PlayerHealth>();
-                Debug.Log("PlayerController: Found Health component, trying to set PlayerHealth MaxHealth to " + Stats.MaxHealth);
+                //Debug.Log("PlayerController: Found Health component, trying to set PlayerHealth MaxHealth to " + Stats.MaxHealth);
                 if (playerHealth != null)
                 {
                     playerHealth.MaxHealth += Stats.MaxHealth;
-                    Debug.Log("PlayerController: Set PlayerHealth MaxHealth to " + playerHealth.MaxHealth);
+                    //Debug.Log("PlayerController: Set PlayerHealth MaxHealth to " + playerHealth.MaxHealth);
                 }
             }
         }
-
-        if (mainCamera == null)
-            mainCamera = Camera.main;
-
-        pausedMenu = GameObject.FindGameObjectWithTag("PausedMenu");
     }
     void OnEnable()
     {

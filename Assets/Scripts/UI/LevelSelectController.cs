@@ -43,7 +43,6 @@ public class LevelSelectController : MonoBehaviour, IDataPersistence
     private void Awake()
     {
         selectLevel = GetComponent<SelectLevel>();
-        canvasGroup = GetComponent<CanvasGroup>();
         gameStateManager = FindObjectOfType<GameStateManager>();
         selectLevelComponent = GetComponent<SelectLevel>();
 
