@@ -33,6 +33,9 @@ public class AimTargetFollowMouse : MonoBehaviour
     void OnDisable()
     {
         EventBus.Unsubscribe<GameStateChangedEvent>(EnableMyself);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        spriteRenderer.color = new Color(1,1,1,0);
     }
 
     void EnableMyself(GameStateChangedEvent e)
