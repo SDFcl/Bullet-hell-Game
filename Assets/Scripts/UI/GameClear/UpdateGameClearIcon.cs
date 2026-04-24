@@ -14,8 +14,8 @@ public class UpdateGameClearIcon : MonoBehaviour, IDataPersistence
         {
             gameclearIcon.SetActive(true);
         }
-        GameSession.isGamePlaying = false;
-        DataPersistenceManager dataPersistenceManager = FindObjectOfType<DataPersistenceManager>();
+            GameSession.isGamePlaying = false;
+            DataPersistenceManager dataPersistenceManager = FindObjectOfType<DataPersistenceManager>();
         if (dataPersistenceManager != null)
         {
             dataPersistenceManager.SaveGame();

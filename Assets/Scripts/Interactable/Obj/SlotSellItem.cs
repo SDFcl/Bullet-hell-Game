@@ -48,6 +48,7 @@ public class SlotSellItem : InteractiveSlotSellItem
                     PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
                     if (playerHealth != null)
                     {
+                        OnSuccess?.Invoke();
                         playerHealth.Heal(1);
                     }
                     //OnSuccess?.Invoke();
