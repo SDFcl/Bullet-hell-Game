@@ -14,7 +14,7 @@ public class Coins : MonoBehaviour
         {
             Stats = playerUpgradeManager.GetFinalStats();
             multiplier += Stats.BonusCoin / 100;
-            //Debug.Log($"Coins: Multiplier updated to {multiplier} based on player stats (BonusCoin: {Stats.BonusCoin}%)");
+            Debug.Log($"Coins: Multiplier updated to {multiplier} based on player stats (BonusCoin: {Stats.BonusCoin}%)");
         }
     }
 
