@@ -41,6 +41,8 @@ public class Chest : InteractiveObject
         this.gameObject.layer = LayerMask.NameToLayer("Default"); // Change layer to prevent further interactions
     }
 
+
+    int PosX = 0;
     private void SpawnReward(GameObject reward)
     {
         if (reward == null)
@@ -55,6 +57,9 @@ public class Chest : InteractiveObject
             Random.Range(0.5f, 1.5f),
             0f
         );
+
+        spawnPosition.x += PosX; // Ensure reward spawns on the same plane
+        PosX += 1; // Increment X position for next reward
 
         Instantiate(reward, spawnPosition, Quaternion.identity);
     }

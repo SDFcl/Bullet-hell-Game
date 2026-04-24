@@ -93,7 +93,7 @@ public class DataPersistenceManager : Singleton<DataPersistenceManager>
 
         foreach (IDataPersistence obj in dataPersistenceObjects)
         {
-            Debug.Log("Saving data for: " + obj.GetType().Name);
+            // Debug.Log("Saving data for: " + obj.GetType().Name);
             obj.SaveData(ref gameData);
         }
 
