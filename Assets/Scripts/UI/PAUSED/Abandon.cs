@@ -1,13 +1,11 @@
-using UnityEditor.SearchService;
 using UnityEngine;
 
 public class Abandon : MonoBehaviour
 {
     public void AbandonRun()
     {
-        GameSession.isGamePlaying = false;
+        Time.timeScale = 1;
         GameSession.savedHealth = -1;
-
-        SceneLoader.Instance.LoadScene("GameClear");
+        GameStateManager.Instance.ChangeState(GameState.GameOver);
     }
 }

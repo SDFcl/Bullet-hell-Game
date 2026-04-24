@@ -13,6 +13,7 @@ public class SelectLevel : MonoBehaviour, ILevel, IDataPersistence
             GameSession.currentLevel = levelToEnter;
             GameSession.lastRandomIndex = -1;
             GameSession.savedInventory = new SavedInventory();
+            GameSession.CurrentReward = 0;
             GameSession.isGamePlaying = true;
             DataPersistenceManager dataPersistenceManager = FindObjectOfType<DataPersistenceManager>();
             if (dataPersistenceManager != null)

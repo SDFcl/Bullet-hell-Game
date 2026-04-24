@@ -30,7 +30,6 @@ public class PlayerController : MonoBehaviour
 
 
     [SerializeField] private Camera mainCamera;
-    GameObject pausedMenu;
 
     void Awake()
     {
@@ -47,6 +46,16 @@ public class PlayerController : MonoBehaviour
         health = GetComponent<Health>();
         specialAbility = GetComponent<SpecialAbility>();
 
+        
+
+        if (mainCamera == null)
+            mainCamera = Camera.main;
+
+        
+    }
+
+    void Start()
+    {
         PlayerUpgradeManager playerUpgradeManager = FindObjectOfType<PlayerUpgradeManager>();
         if (playerUpgradeManager != null)
         {
@@ -62,11 +71,6 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-
-        if (mainCamera == null)
-            mainCamera = Camera.main;
-
-        pausedMenu = GameObject.FindGameObjectWithTag("PausedMenu");
     }
     void OnEnable()
     {
@@ -211,9 +215,16 @@ public class PlayerController : MonoBehaviour
         {
             attack.TryAttack();
         }
-        if (Input.GetKeyDown(KeyCode.Escape) && pausedMenu != null)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            pausedMenu.SetActive(!pausedMenu.activeSelf);
+            if (GameStateManager.CurrentState == GameState.Paused)
+            {
+                GameStateManager.Instance.ChangeState(GameState.GamePlay);
+            }
+            else
+            {
+                GameStateManager.Instance.ChangeState(GameState.Paused);
+            }
         }
     }
     private void OnDeadHandle()

@@ -12,17 +12,19 @@ public class Mana : MonoBehaviour
 
     private void Awake()
     {
-        IPlayerStats stats = FindObjectOfType<PlayerUpgradeManager>()?.GetFinalStats();
-        if (stats != null)
-        {
-            maxMana += stats.MaxMana;
-            //Debug.Log($"Mana: Max mana updated to {maxMana} based on player stats (BonusMana: {stats.MaxMana})");
-        }
+        
     }
 
     private void Start()
     {
         CurrentMana = maxMana;
+        IPlayerStats stats = FindObjectOfType<PlayerUpgradeManager>()?.GetFinalStats();
+        if (stats != null)
+        {
+            maxMana += stats.MaxMana;
+            CurrentMana = maxMana;
+            //Debug.Log($"Mana: Max mana updated to {maxMana} based on player stats (BonusMana: {stats.MaxMana})");
+        }
     }
     private void Update()
     {
