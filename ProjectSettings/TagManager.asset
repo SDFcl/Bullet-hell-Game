@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Barrier
   - PausedMenu
+  - Input Camera
   layers:
   - Default
   - TransparentFX
@@ -64,6 +65,9 @@ TagManager:
     locked: 0
   - name: Character
     uniqueID: 815942295
+    locked: 0
+  - name: Cursor
+    uniqueID: 3361088129
     locked: 0
   m_RenderingLayers:
   - Default
