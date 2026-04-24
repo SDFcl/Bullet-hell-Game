@@ -1,7 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using static UnityEditor.Progress;
 
 [RequireComponent(typeof(BoxCollider2D))]
 public class SlotSellItem : InteractiveSlotSellItem
