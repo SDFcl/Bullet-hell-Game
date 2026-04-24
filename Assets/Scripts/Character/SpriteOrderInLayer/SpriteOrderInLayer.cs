@@ -8,25 +8,34 @@ public class SpriteOrderInLayer : MonoBehaviour
 
     public void Awake()
     {
-        List<SpriteChilden> Newchilden;
+        FindSpriteChilden();
+    }
+
+    public void FindSpriteChilden()
+    {
         if (spriteParent == null)
         {
             spriteParent = gameObject;
-            Newchilden = new List<SpriteChilden>(spriteParent.GetComponentsInChildren<SpriteChilden>());
+            childen = new List<SpriteChilden>(spriteParent.GetComponentsInChildren<SpriteChilden>());
         }
         else
         {
-            Newchilden = new List<SpriteChilden>(spriteParent.GetComponentsInChildren<SpriteChilden>());
+            childen = new List<SpriteChilden>(spriteParent.GetComponentsInChildren<SpriteChilden>());
         }
-       
-        childen.AddRange(Newchilden);
     }
 
     public void Update()
     {
         for (int i = 0; i < childen.Count; i++)
         {
-            childen[i].GetComponent<SpriteRenderer>().sortingOrder = -(int)(spriteParent.transform.position.y *100 - childen[i].offsetY);
+            if (childen[i] == null)
+            {
+                FindSpriteChilden();
+            }
+            else
+            {
+                childen[i].GetComponent<SpriteRenderer>().sortingOrder = -(int)(spriteParent.transform.position.y *10 - childen[i].offsetY);
+            }
         }
     }
 }
