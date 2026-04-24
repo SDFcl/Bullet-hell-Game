@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using static UnityEditor.Progress;
 
 [RequireComponent(typeof(BoxCollider2D))]
 public class SlotSellItem : InteractiveSlotSellItem
@@ -22,6 +24,10 @@ public class SlotSellItem : InteractiveSlotSellItem
     public void SetItem(GameObject item)
     {
         ItemGameObject = item;
+        if (item.TryGetComponent(out MagnetBehavior magnetBehavior))
+        {
+            magnetBehavior.enabled = false; // Disable magnet behavior for items in the shop
+        }
     }
 
     public override string GetInteractionName()
@@ -39,12 +45,24 @@ public class SlotSellItem : InteractiveSlotSellItem
             if (inventory.Coins >= Price)
             {
                 inventory.Coins -= Price;
+                if (ItemGameObject.TryGetComponent(out MagnetBehavior magnetBehavior))
+                {
+                    PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+                    if (playerHealth != null)
+                    {
+                        playerHealth.Heal(1);
+                    }
+                    //OnSuccess?.Invoke();
+                    return;
+                }
                 IsSold = true;
+
                 if (ItemGameObject.TryGetComponent(out Collider2D itemCollider))
                 {
                     itemCollider.enabled = true; // Disable collider after selling
                 }
                 boxCollider.enabled = false; // Disable collider after selling
+
                 OnSuccess?.Invoke();
                 Debug.Log($"[SlotSellItem] Sold {itemData.itemName} for {Price} coins.");
             }
