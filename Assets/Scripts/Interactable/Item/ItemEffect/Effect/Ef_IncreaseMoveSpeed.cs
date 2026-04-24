@@ -15,22 +15,20 @@ public class Ef_IncreaseMoveSpeed : ItemEffect
         var player = target.GetComponent<Movement>();
         if (player != null)
         {
-            if (!IsActive)
-            {
-                float originalSpeed = player.GetMoveSpeed();
-                speed = originalSpeed * speedIncreaseMultiplier;
-                Debug.Log($"Original Speed: {originalSpeed}, Increased Speed: {speed}");
-                player.AddMoveSpeed(speed);
-                IsActive = true;
-            }
-            else
-            {
-                if (player != null)
-                {
-                    player.AddMoveSpeed(-speed);
-                    IsActive = false;
-                }
-            }
+            float originalSpeed = player.GetMoveSpeed();
+            speed = originalSpeed * speedIncreaseMultiplier;
+            Debug.Log($"Original Speed: {originalSpeed}, Increased Speed: {speed}");
+            player.AddMoveSpeed(speed);
+            EffectCoroutineRunner.Run(RemoveAfterTime(player));
+        }
+    }
+
+    public IEnumerator RemoveAfterTime(Movement player)
+    {
+        yield return new WaitForSeconds(Duration);
+        if (player != null)
+        {
+            player.AddMoveSpeed(-speed); // Revert the speed increase
         }
     }
 }
