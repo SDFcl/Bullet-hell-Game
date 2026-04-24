@@ -10,7 +10,7 @@ public class DoorScriptLight : MonoBehaviour
 
     [Header("Light Color")]
     [SerializeField] private Color hiddenColor = new Color(1f, 0f, 0f, 0f);
-    [SerializeField] private Color visibleColor = new Color(1f, 0f, 0f, 1f);
+    [SerializeField] private Color visibleColor = new Color(1f, 0f, 0f, 0.5f);
 
     [Header("Light Settings")]
     [SerializeField] private float visibleIntensity = 1f;
