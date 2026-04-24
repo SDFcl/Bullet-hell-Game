@@ -24,6 +24,14 @@ public class Inventory : MonoBehaviour
     #endregion
 
     #region Weapon
+    void Start()
+    {
+        Invoke(nameof(DealySetup),0.01f);
+    }
+    void DealySetup()
+    {
+        OnConsumableChanged?.Invoke();
+    }
     public bool AddWeapon(InventoryItem item)
     {
         if (Weapons.Count == 0)
