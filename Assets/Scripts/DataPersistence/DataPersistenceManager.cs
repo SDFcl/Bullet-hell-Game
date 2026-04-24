@@ -41,6 +41,14 @@ public class DataPersistenceManager : Singleton<DataPersistenceManager>
         SaveGame();
     }
 
+    private void OnApplicationPause(bool pauseStatus)
+    {
+        if (pauseStatus)
+        {
+            SaveGame();
+        }
+    }
+
     private List<IDataPersistence> FindAllDataPersistenceObjects()
     {
         return FindObjectsOfType<MonoBehaviour>(true)
