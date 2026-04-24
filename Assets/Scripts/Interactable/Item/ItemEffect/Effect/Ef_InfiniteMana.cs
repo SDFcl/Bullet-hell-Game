@@ -5,8 +5,8 @@ using UnityEngine;
 public class Ef_InfiniteMana : ItemEffect
 {
     public float Duration = 30f; // Duration of the effect in seconds
-
-    public override void Apply(GameObject target)
+    public override bool IsActive { get; set; } = false;
+    public override void Apply(GameObject target, bool IsActive = false)
     {
         var player = target.GetComponent<Mana>();
         if (player != null)

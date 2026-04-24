@@ -6,9 +6,9 @@ public class Ef_DodgeModify : ItemEffect
     public float DistanceMultiplier = 0.25f; // ԭ1.5֮ǰ
     public float iFrameDuration = 0.1f; // ԭ0.3֮ǰ
 
-    public bool IsActive = false;
+    public override bool IsActive { get; set; } = false;
 
-    public override void Apply(GameObject target)
+    public override void Apply(GameObject target, bool IsActive = false)
     {
         var dodge = target.GetComponent<Dodge>();
         if (!IsActive)

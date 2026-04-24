@@ -8,9 +8,9 @@ public class Ef_IncreaseMoveSpeedPassive : ItemEffect
     public float speedIncreaseMultiplier = 1.5f; // �����������������
     float speed = 0f;
 
-    public bool IsActive = false;
+    public override bool IsActive { get; set; } = false;
 
-    public override void Apply(GameObject target)
+    public override void Apply(GameObject target, bool IsActive = false)
     {
         var player = target.GetComponent<Movement>();
         if (player != null)
@@ -18,7 +18,7 @@ public class Ef_IncreaseMoveSpeedPassive : ItemEffect
             if (!IsActive)
             {
                 float originalSpeed = player.GetMoveSpeed();
-                speed = originalSpeed * speedIncreaseMultiplier;
+                speed = 8f * speedIncreaseMultiplier;
                 Debug.Log($"Original Speed: {originalSpeed}, Increased Speed: {speed}");
                 player.AddMoveSpeed(speed);
                 IsActive = true;
@@ -27,6 +27,7 @@ public class Ef_IncreaseMoveSpeedPassive : ItemEffect
             {
                 if (player != null)
                 {
+                    Debug.Log($"Reverting Speed: {-speed}");
                     player.AddMoveSpeed(-speed);
                     IsActive = false;
                 }
