@@ -87,7 +87,11 @@ public class Attack : MonoBehaviour
     }
 
     #region AdjustDamage API
-    public void AddDamagePercent(float percent) => currentWeapon?.AddDamagePercent(percent);
+    public void AddDamagePercent(float percent)
+    {
+        currentWeapon?.AddDamagePercent(percent);
+        Debug.Log($"Added {percent * 100}% damage. Current total damage: {currentWeapon?.GetDamage()}");
+    }
     public void RemoveDamagePercent(float percent) => currentWeapon?.RemoveDamagePercent(percent);
     public void ResetDamagePercent() => currentWeapon?.ResetDamagePercent();
 

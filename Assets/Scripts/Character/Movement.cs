@@ -77,7 +77,10 @@ public class Movement : MonoBehaviour, IMovement
     #region Speed
 
     public void SetMoveSpeed(float newSpeed) => moveSpeed = newSpeed;
-    public void AddMoveSpeed(float newSpeed) => moveSpeed += newSpeed;
+    public void AddMoveSpeed(float newSpeed)
+    {
+        moveSpeed += newSpeed;
+    }
 
     public void ResetMoveSpeed() => moveSpeed = defaultMoveSpeed;
 

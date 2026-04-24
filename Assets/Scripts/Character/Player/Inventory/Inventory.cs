@@ -103,7 +103,7 @@ public class Inventory : MonoBehaviour
         {
             foreach (var effect in item.itemData.effects)
             {
-                effect.Apply(this.gameObject);
+                effect.Apply(this.gameObject, true);
             }
         }
         

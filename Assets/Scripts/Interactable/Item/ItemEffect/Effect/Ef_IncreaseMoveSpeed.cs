@@ -8,15 +8,15 @@ public class Ef_IncreaseMoveSpeed : ItemEffect
     public float speedIncreaseMultiplier = 1.5f; // �����������������
     float speed = 0f;
 
-    public bool IsActive = false;
+    public override bool IsActive { get; set; } = false;
 
-    public override void Apply(GameObject target)
+    public override void Apply(GameObject target, bool IsActive = false)
     {
         var player = target.GetComponent<Movement>();
         if (player != null)
         {
             float originalSpeed = player.GetMoveSpeed();
-            speed = originalSpeed * speedIncreaseMultiplier;
+            speed = 8 * speedIncreaseMultiplier;
             Debug.Log($"Original Speed: {originalSpeed}, Increased Speed: {speed}");
             player.AddMoveSpeed(speed);
             EffectCoroutineRunner.Run(RemoveAfterTime(player));

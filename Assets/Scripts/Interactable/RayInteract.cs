@@ -80,8 +80,6 @@ public class RayInteract : MonoBehaviour
         }
 
         return closest.gameObject;
-
-        return null;
     }
 
     void Update()

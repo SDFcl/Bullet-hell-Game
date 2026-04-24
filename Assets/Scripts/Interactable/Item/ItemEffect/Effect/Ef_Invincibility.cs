@@ -6,7 +6,9 @@ public class Ef_Invincibility : ItemEffect
 {
     public float duration = 10f;
 
-    public override void Apply(GameObject target)
+    public override bool IsActive { get; set; } = false;
+
+    public override void Apply(GameObject target, bool IsActive = false)
     {
         var player = target.GetComponent<IFrameController>();
         if (player != null)

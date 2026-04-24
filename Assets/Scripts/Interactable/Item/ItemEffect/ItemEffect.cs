@@ -3,5 +3,6 @@ using UnityEngine;
 
 public abstract class ItemEffect : ScriptableObject
 {
-    public abstract void Apply(GameObject target);
+    public abstract bool IsActive { get; set; }
+    public abstract void Apply(GameObject target,bool IsActive = false);
 }
