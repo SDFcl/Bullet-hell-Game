@@ -40,6 +40,7 @@ public class RoomDoorController : MonoBehaviour
             if (door.GetComponent<DoorAnimation>() == null)
             {
                 door.AddComponent<DoorAnimation>();
+                door.AddComponent<DoorScriptLight>();
             }
         }
     }
