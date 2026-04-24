@@ -9,7 +9,7 @@ public class UpdateAudioSlider : MonoBehaviour
 
     void Start()
     {
-        Invoke(nameof(DealySetup), 1f);
+        Invoke(nameof(DealySetup), 0.01f);
     }
 
     void DealySetup()
