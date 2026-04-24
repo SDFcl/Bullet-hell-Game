@@ -21,7 +21,8 @@ public enum ManaCostType
     Low,
     Medium,
     High,
-    VeryHigh
+    VeryHigh,
+    QuiteLowSP
 }
 
 [System.Serializable]
