@@ -10,7 +10,8 @@ public enum FireRateType
     Slow,
     Normal,
     Fast,
-    VeryFast
+    VeryFast,
+    MeleeFast
 
 }
 public enum ManaCostType
