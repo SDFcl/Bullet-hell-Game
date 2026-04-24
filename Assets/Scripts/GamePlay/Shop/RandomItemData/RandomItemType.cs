@@ -11,7 +11,7 @@ public class RandomItem : ClassRandom
 
     public override GameObject GetRandomItem()
     {
-        float randomValue = Random.value;
+        float randomValue = Random.Range(0f, listRateDropItem.NormalRate + listRateDropItem.RareRate + listRateDropItem.LegendaryRate + 1);
         if (randomValue < listRateDropItem.NormalRate)
         {
             return listRateDropItem.Normal[Random.Range(0, listRateDropItem.Normal.Count)];

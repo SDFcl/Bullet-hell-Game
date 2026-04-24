@@ -21,7 +21,7 @@ public class GameStateManager : Singleton<GameStateManager>
         CurrentState = newState;
         EnterState(CurrentState);
 
-        Debug.Log($"Game State changed: {previousState} → {newState}");
+        // Debug.Log($"Game State changed: {previousState} → {newState}");
 
         // ส่ง Event ผ่าน Event Bus
         EventBus.Raise(new GameStateChangedEvent(previousState, newState));

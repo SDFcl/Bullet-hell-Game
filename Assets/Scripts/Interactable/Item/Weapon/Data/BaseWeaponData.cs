@@ -10,15 +10,18 @@ public enum FireRateType
     Slow,
     Normal,
     Fast,
-    VeryFast
+    VeryFast,
+    MeleeFast
 
 }
 public enum ManaCostType
 {
     None,
+    VeryLow,
     Low,
     Medium,
-    High
+    High,
+    VeryHigh
 }
 
 [System.Serializable]
