@@ -18,13 +18,13 @@ public class MetaCurrency : Singleton<MetaCurrency>, IDataPersistence
     public void LoadData(GameData data)
     {
         GuildCoin = data.guildCoin;
-        Debug.Log($"MetaCurrency loaded. Total: {GuildCoin}");
+        // Debug.Log($"MetaCurrency loaded. Total: {GuildCoin}");
     }
 
     public void SaveData(ref GameData data)
     {
         data.guildCoin = this.GuildCoin;
-        Debug.Log($"MetaCurrency saved. Total: {GuildCoin}");
+        // Debug.Log($"MetaCurrency saved. Total: {GuildCoin}");
     }
 
     private void FixedUpdate()

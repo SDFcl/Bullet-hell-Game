@@ -62,7 +62,7 @@ public class UpgradeShop : MonoBehaviour, IDataPersistence
         manager.ApplyUpgrade(data);
         OnUpgradePurchased?.Invoke(data,nextLevel);
 
-        Debug.Log($"[UpgradeShop] Bought {data.upgradeName} level {nextLevel}. {data.upgradeValues[nextLevel].value}");
+        // Debug.Log($"[UpgradeShop] Bought {data.upgradeName} level {nextLevel}. {data.upgradeValues[nextLevel].value}");
     }
 
     // ======================
@@ -80,7 +80,7 @@ public class UpgradeShop : MonoBehaviour, IDataPersistence
             {
                 manager.ApplyUpgrade(up);
                 OnUpgradePurchased?.Invoke(up, i + 1);
-                Debug.Log($"[UpgradeShop] Loaded {up.upgradeName} level {i + 1}. {up.upgradeValues[i + 1].value}");
+                // Debug.Log($"[UpgradeShop] Loaded {up.upgradeName} level {i + 1}. {up.upgradeValues[i + 1].value}");
             }
         }
     }
@@ -93,10 +93,10 @@ public class UpgradeShop : MonoBehaviour, IDataPersistence
             {
                 data.upgradeLevels.Remove(up.Id);
             }
-            Debug.Log($"[UpgradeShop] Saving {up.upgradeName}...");
+            // Debug.Log($"[UpgradeShop] Saving {up.upgradeName}...");
             int currentLevel = manager.GetLevel(up);
             data.upgradeLevels.Add(up.Id, currentLevel);
-            Debug.Log($"{data.upgradeLevels.ContainsKey(up.Id)}");
+            // Debug.Log($"{data.upgradeLevels.ContainsKey(up.Id)}");
         }
     }
 

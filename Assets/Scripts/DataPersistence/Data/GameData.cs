@@ -13,6 +13,11 @@ public class GameData
     public int SavedenemyCount; // ใช้สำหรับเก็บจำนวนศัตรูที่เล่นไปแล้ว
     public int CurrentReward;
 
+    // AudionSave
+    public float MasterVolume;
+    public float SFXVolume;
+    public float BMGVolume;
+
     public GameData()
     {
         guildCoin = 0;
@@ -23,5 +28,10 @@ public class GameData
         SavedTimeCount = 0f; // เริ่มต้นเวลาที่เล่นไปแล้วเป็น 0
         SavedenemyCount = 0; // เริ่มต้นจำนวนศัตรูที่เล่นไปแล้วเป็น 0
         CurrentReward = 0;
+
+        //AudioSave
+        MasterVolume = 0;
+        SFXVolume = 0;
+        BMGVolume = 0;
     }
 }

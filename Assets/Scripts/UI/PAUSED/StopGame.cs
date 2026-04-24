@@ -57,4 +57,8 @@ public class StopGame : MonoBehaviour
             EnableMyself(false);
         }
     }
+    public void Resume()
+    {
+        GameStateManager.Instance.ChangeState(GameState.GamePlay);
+    }
 }
