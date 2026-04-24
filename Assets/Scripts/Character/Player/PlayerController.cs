@@ -51,11 +51,6 @@ public class PlayerController : MonoBehaviour
         if (mainCamera == null)
             mainCamera = Camera.main;
 
-        
-    }
-
-    void Start()
-    {
         PlayerUpgradeManager playerUpgradeManager = FindObjectOfType<PlayerUpgradeManager>();
         if (playerUpgradeManager != null)
         {
@@ -67,10 +62,15 @@ public class PlayerController : MonoBehaviour
                 if (playerHealth != null)
                 {
                     playerHealth.MaxHealth += Stats.MaxHealth;
-                    Debug.Log("PlayerController: Set PlayerHealth MaxHealth to " + playerHealth.MaxHealth);
+                    Debug.Log("PlayerController: Set PlayerHealth MaxHealth to " + playerHealth.MaxHealth + " " + Stats.MaxHealth);
                 }
             }
         }
+    }
+
+    void Start()
+    {
+        
     }
     void OnEnable()
     {

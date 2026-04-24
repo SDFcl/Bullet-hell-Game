@@ -39,6 +39,13 @@ public class MetaCurrency : Singleton<MetaCurrency>, IDataPersistence
         //Debug.Log($"MetaCurrency increased by {amount}. Total: {GuildCoin}");
     }
 
+    public void SetMetaCurrency(int amount)
+    {
+        GuildCoin = amount;
+        OnMetaCurrencyChanged?.Invoke(GuildCoin);
+        //Debug.Log($"MetaCurrency set to {amount}. Total: {GuildCoin}");
+    }
+
     public bool SpendMetaCurrency(int amount)
     {
         if (GuildCoin < amount) return false;

@@ -30,6 +30,7 @@ public class HearthPHUD : MonoBehaviour
     void Start()
     {
         hearts = GetComponentsInChildren<Image>();
+        OnEnable(); // Ensure we subscribe to the event before updating the hearts
         UpdateHearts(playerHealth.CurrentHP);
     }
 

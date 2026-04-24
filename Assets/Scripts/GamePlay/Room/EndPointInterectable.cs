@@ -13,7 +13,7 @@ public class EndPointInterectable : InteractiveObject
         if (levelManager != null)
         {
             int reward = levelManager.GetMetaCurrencyReward();
-            MetaCurrency.Instance.AddMetaCurrency(reward);
+            GameSession.CurrentReward = reward;
             DataPersistenceManager dataPersistenceManager = FindObjectOfType<DataPersistenceManager>();
             if (dataPersistenceManager != null)
             {
