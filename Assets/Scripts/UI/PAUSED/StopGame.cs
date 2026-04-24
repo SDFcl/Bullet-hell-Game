@@ -5,25 +5,56 @@ using UnityEngine.InputSystem;
 public class StopGame : MonoBehaviour
 {
     private PlayerInput playerInput;
+    private CanvasGroup canvasGroup;
+
     void Awake()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if(player == null) return;
         playerInput = player.GetComponent<PlayerInput>();
+        canvasGroup = GetComponent<CanvasGroup>();
     }
     void Start()
     {
-        gameObject.SetActive(false);
+        EnableMyself(false);
     }
-    void OnEnable()
+    public void EnableMyself(bool Enble)
     {
-        Time.timeScale = 0;
-        playerInput.enabled = false;
+        if (Enble)
+        {
+            canvasGroup.alpha = 1;
+            canvasGroup.interactable = true;
+            canvasGroup.blocksRaycasts = true;
+            Time.timeScale = 0;
+            playerInput.enabled = false;
+        }
+        else
+        {
+            canvasGroup.alpha = 0;
+            canvasGroup.interactable = false;
+            canvasGroup.blocksRaycasts = false;
+            Time.timeScale = 1;
+            playerInput.enabled = true;
+        }
+    }
+    private void OnEnable()
+    {
+        EventBus.Subscribe<GameStateChangedEvent>(OnGameStateChanged);
     }
 
-    void OnDisable()
+    private void OnDisable()
     {
-        Time.timeScale = 1;
-        playerInput.enabled = true;
+        EventBus.Unsubscribe<GameStateChangedEvent>(OnGameStateChanged);
+    }
+    private void OnGameStateChanged(GameStateChangedEvent e)
+    {
+        if (e.NewState == GameState.Paused)
+        {
+            EnableMyself(true);
+        }
+        else if (e.NewState == GameState.GamePlay)
+        {
+            EnableMyself(false);
+        }
     }
 }

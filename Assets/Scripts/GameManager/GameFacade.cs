@@ -18,6 +18,7 @@ public class GameFacade : MonoBehaviour,IDataPersistence
 
     public void GameLoad()
     {
+        GameStateManager.Instance.ChangeState(GameState.GamePlay);
         levelManager?.LoadLevel();
     }
     public void GameStart()
