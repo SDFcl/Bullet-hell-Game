@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class KillAllEnemy : MonoBehaviour
 {
@@ -7,11 +7,28 @@ public class KillAllEnemy : MonoBehaviour
     private void Start()
     {
         bossHealh = GetComponent<Health>();
-        bossHealh.OnDead += HandleBossDeath;
+        if (bossHealh != null)
+        {
+            bossHealh.OnDead += HandleBossDeath;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (bossHealh != null)
+        {
+            bossHealh.OnDead -= HandleBossDeath;
+        }
     }
 
     private void HandleBossDeath()
     {
+        // เมื่อบอสตายให้หยุดเพลง BGM ทันที
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.StopBGM();
+        }
+
         EnemyController[] enemies = FindObjectsOfType<EnemyController>();
         foreach (EnemyController enemy in enemies)
         {
