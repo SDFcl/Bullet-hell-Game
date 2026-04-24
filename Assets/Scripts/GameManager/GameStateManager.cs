@@ -9,8 +9,7 @@ public class GameStateManager : Singleton<GameStateManager>
 
     private void Start()
     {
-        // เริ่มเกมที่ MainMenu หรือ Playing ก็ได้
-        ChangeState(GameState.MainMenu);
+        
     }
 
     public void ChangeState(GameState newState)
