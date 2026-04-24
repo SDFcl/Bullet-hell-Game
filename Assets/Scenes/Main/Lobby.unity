@@ -5671,6 +5671,7 @@ GameObject:
   m_Component:
   - component: {fileID: 949953181}
   - component: {fileID: 949953182}
+  - component: {fileID: 949953183}
   m_Layer: 5
   m_Name: SoundOptionGroup_Slider
   m_TagString: Untagged
@@ -5726,6 +5727,22 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &949953183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949953180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cf113c0a595fa44c80f769bfbd84087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  master: {fileID: 62398564}
+  sfx: {fileID: 686568648}
+  bmg: {fileID: 464505320}
+  audioMixer: {fileID: 24100000, guid: ec42162ab175f0e49b1031da845672e7, type: 2}
 --- !u!1 &1035683499
 GameObject:
   m_ObjectHideFlags: 0
@@ -8393,6 +8410,7 @@ GameObject:
   - component: {fileID: 1666625372}
   - component: {fileID: 1666625374}
   - component: {fileID: 1666625375}
+  - component: {fileID: 1666625376}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -8485,6 +8503,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: save.json
+--- !u!114 &1666625376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666625369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3586d16eaf341a4db6f2c0b7aea3c70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: ec42162ab175f0e49b1031da845672e7, type: 2}
 --- !u!1 &1726681081
 GameObject:
   m_ObjectHideFlags: 0
