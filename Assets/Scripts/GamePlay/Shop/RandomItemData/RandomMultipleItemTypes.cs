@@ -47,11 +47,11 @@ public class RandomMultipleItemTypes : ClassRandom
             }
         }
 
+
         // ได้ประเภทแล้ว → ไปสุ่ม item ในประเภทนั้น
         ListRateDropItem selectedType = listRateDropItems[selectedIndex];
 
-        float rand = Random.value;
-
+        float rand = Random.Range(0f, selectedType.NormalRate + selectedType.RareRate + selectedType.LegendaryRate + 1);
         if (rand < selectedType.NormalRate)
         {
             return selectedType.Normal[Random.Range(0, selectedType.Normal.Count)];

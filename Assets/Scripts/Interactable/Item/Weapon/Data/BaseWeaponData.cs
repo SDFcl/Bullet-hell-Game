@@ -16,9 +16,11 @@ public enum FireRateType
 public enum ManaCostType
 {
     None,
+    VeryLow,
     Low,
     Medium,
-    High
+    High,
+    VeryHigh
 }
 
 [System.Serializable]
