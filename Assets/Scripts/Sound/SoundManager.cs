@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SoundManager : Singleton<SoundManager>
 {
@@ -10,6 +11,9 @@ public class SoundManager : Singleton<SoundManager>
 
     [Header("BGM")]
     [SerializeField] private AudioSource bgmSource;
+
+    [Header("Mixer")]
+    [SerializeField] private AudioMixer audioMixer;
     private SoundID currentBgmId;
 
     private Dictionary<SoundID, SoundData> soundsById;
@@ -102,5 +106,18 @@ public class SoundManager : Singleton<SoundManager>
     {
         currentBgmId = null;
         bgmSource.Stop();
+    }
+
+    public void SetMasterVolume(float level)
+    {
+        audioMixer.SetFloat("MasterVolume",level);
+    }
+    public void SetSoundFXVolume(float level)
+    {
+        audioMixer.SetFloat("SFXVolume",level);
+    }
+    public void SetMusicVolume(float level)
+    {
+        audioMixer.SetFloat("BGMVolume",level);
     }
 }

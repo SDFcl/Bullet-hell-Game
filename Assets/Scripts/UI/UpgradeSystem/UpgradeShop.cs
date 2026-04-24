@@ -27,12 +27,12 @@ public class UpgradeShop : MonoBehaviour, IDataPersistence
             manager = FindObjectOfType<PlayerUpgradeManager>();
         }
         
-        // ?? Register ·Ø¡ upgrade
+        // ?? Register ï¿½Ø¡ upgrade
         foreach (var up in allUpgrades)
         {
             lookup[up.Id] = up;
             manager.RegisterUpgrade(up);  // ?? NEW
-            OnUpgradePurchased?.Invoke(up, manager.GetLevel(up)); // ?? NEW - ÍÑ¾à´µ UI µÍ¹àÃÔèÁà¡Á
+            OnUpgradePurchased?.Invoke(up, manager.GetLevel(up)); // ?? NEW - ï¿½Ñ¾à´µ UI ï¿½Í¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         }
 
     }
@@ -42,19 +42,19 @@ public class UpgradeShop : MonoBehaviour, IDataPersistence
         int currentLevel = manager.GetLevel(data);
         int nextLevel = currentLevel + 1;
 
-        // ?? ¡Ñ¹ index ËÅØ´
+        // ?? ï¿½Ñ¹ index ï¿½ï¿½Ø´
         if (nextLevel >= data.upgradeValues.Length)
         {
-            Debug.Log("ÍÑ¾à¡Ã´àµçÁáÅéÇ");
+            Debug.Log("ï¿½Ñ¾ï¿½Ã´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
             return;
         }
 
         int cost = data.upgradeValues[nextLevel].cost;
 
-        // ?? àªç¤à§Ô¹·ÕËÅÑ§ (»ÅÍ´ÀÑÂ¡ÇèÒ)
+        // ?? ï¿½ï¿½ï¿½Ô¹ï¿½ï¿½ï¿½ï¿½Ñ§ (ï¿½ï¿½Í´ï¿½ï¿½Â¡ï¿½ï¿½ï¿½)
         if (!MetaCurrency.Instance.CanAfford(cost))
         {
-            Debug.Log("à§Ô¹äÁè¾Í");
+            Debug.Log("ï¿½Ô¹ï¿½ï¿½ï¿½ï¿½");
             return;
         }
 
@@ -75,7 +75,7 @@ public class UpgradeShop : MonoBehaviour, IDataPersistence
         {
             //Debug.Log($"[UpgradeShop] Loading {up.upgradeName}...");
             int savedLevel = data.upgradeLevels.ContainsKey(up.Id) ? data.upgradeLevels[up.Id] : 0;
-            Debug.Log($"[UpgradeShop] Saved level for {up.upgradeName}: {savedLevel}");
+            // Debug.Log($"[UpgradeShop] Saved level for {up.upgradeName}: {savedLevel}");
             for (int i = 0; i < savedLevel; i++)
             {
                 manager.ApplyUpgrade(up);
