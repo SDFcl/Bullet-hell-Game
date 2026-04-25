@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -39,6 +40,7 @@ public class LevelSelectController : MonoBehaviour, IDataPersistence
 
     private GameStateManager gameStateManager;
     private SelectLevel selectLevelComponent;
+    public Action OnBuySuccess;
 
     private void Awake()
     {
@@ -148,6 +150,7 @@ public class LevelSelectController : MonoBehaviour, IDataPersistence
         if (StageUnlock[currentIndex - 1].isUnlock == false) 
         {
             BuyLevel();
+            OnBuySuccess?.Invoke();
             return;
         }
         gameStateManager.ChangeState(GameState.GamePlay);

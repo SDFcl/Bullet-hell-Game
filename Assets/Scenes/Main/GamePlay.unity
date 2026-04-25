@@ -180,6 +180,56 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f7871eaf1cc72949809ae0fa4d6551b, type: 3}
+--- !u!1 &51904397 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2982945758867479575, guid: 833441f5b59634d43b6eef260c87dfc6, type: 3}
+  m_PrefabInstance: {fileID: 8370305670134459227}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &51904399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51904397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 57498900}
+          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+          m_MethodName: PlayEventSFX
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: ff1828083b0f3a04286279cf8db6b833, type: 2}
+            m_ObjectArgumentAssemblyTypeName: SoundID, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 57498900}
+          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+          m_MethodName: PlayEventSFX
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 24b376c5087846f4e8c4b9c88c1506b0, type: 2}
+            m_ObjectArgumentAssemblyTypeName: SoundID, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &57498900 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3643279444790455157, guid: 8b444d3c77e87b3418547d1b979ca757, type: 3}
@@ -361,6 +411,56 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b444d3c77e87b3418547d1b979ca757, type: 3}
+--- !u!1 &521909971 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6935383944490250160, guid: 833441f5b59634d43b6eef260c87dfc6, type: 3}
+  m_PrefabInstance: {fileID: 8370305670134459227}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &521909973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521909971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 57498900}
+          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+          m_MethodName: PlayEventSFX
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: ff1828083b0f3a04286279cf8db6b833, type: 2}
+            m_ObjectArgumentAssemblyTypeName: SoundID, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 57498900}
+          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+          m_MethodName: PlayEventSFX
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 24b376c5087846f4e8c4b9c88c1506b0, type: 2}
+            m_ObjectArgumentAssemblyTypeName: SoundID, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &712397105
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,6 +551,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &764428849 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1499748152431833505, guid: 833441f5b59634d43b6eef260c87dfc6, type: 3}
+  m_PrefabInstance: {fileID: 8370305670134459227}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &764428851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764428849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 57498900}
+          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+          m_MethodName: PlayEventSFX
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: ff1828083b0f3a04286279cf8db6b833, type: 2}
+            m_ObjectArgumentAssemblyTypeName: SoundID, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 57498900}
+          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+          m_MethodName: PlayEventSFX
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 24b376c5087846f4e8c4b9c88c1506b0, type: 2}
+            m_ObjectArgumentAssemblyTypeName: SoundID, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &778454729
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,6 +764,56 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1104044351}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &920804909 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9125291585654912001, guid: 833441f5b59634d43b6eef260c87dfc6, type: 3}
+  m_PrefabInstance: {fileID: 8370305670134459227}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &920804911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920804909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 57498900}
+          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+          m_MethodName: PlayEventSFX
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: ff1828083b0f3a04286279cf8db6b833, type: 2}
+            m_ObjectArgumentAssemblyTypeName: SoundID, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 57498900}
+          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+          m_MethodName: PlayEventSFX
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 24b376c5087846f4e8c4b9c88c1506b0, type: 2}
+            m_ObjectArgumentAssemblyTypeName: SoundID, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &961259011
 GameObject:
   m_ObjectHideFlags: 0
@@ -1183,6 +1383,56 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1890164505 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 240971802376572613, guid: 833441f5b59634d43b6eef260c87dfc6, type: 3}
+  m_PrefabInstance: {fileID: 8370305670134459227}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1890164507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890164505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 57498900}
+          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+          m_MethodName: PlayEventSFX
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: ff1828083b0f3a04286279cf8db6b833, type: 2}
+            m_ObjectArgumentAssemblyTypeName: SoundID, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 57498900}
+          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+          m_MethodName: PlayEventSFX
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 24b376c5087846f4e8c4b9c88c1506b0, type: 2}
+            m_ObjectArgumentAssemblyTypeName: SoundID, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1915643170
 GameObject:
   m_ObjectHideFlags: 0
@@ -1668,7 +1918,22 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 240971802376572613, guid: 833441f5b59634d43b6eef260c87dfc6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1890164507}
+    - targetCorrespondingSourceObject: {fileID: 2982945758867479575, guid: 833441f5b59634d43b6eef260c87dfc6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 51904399}
+    - targetCorrespondingSourceObject: {fileID: 1499748152431833505, guid: 833441f5b59634d43b6eef260c87dfc6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 764428851}
+    - targetCorrespondingSourceObject: {fileID: 9125291585654912001, guid: 833441f5b59634d43b6eef260c87dfc6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 920804911}
+    - targetCorrespondingSourceObject: {fileID: 6935383944490250160, guid: 833441f5b59634d43b6eef260c87dfc6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 521909973}
   m_SourcePrefab: {fileID: 100100000, guid: 833441f5b59634d43b6eef260c87dfc6, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
