@@ -18,6 +18,12 @@ public class PlayerCHManager : MonoBehaviour
     }
     void OnDisable()
     {
+        if (GameStateManager.CurrentState == GameState.GameOver)
+        {
+            playerHealth.OnDead -= PlayerDeadHeadle;
+            return;
+        }
+
         GameSession.savedHealth = (int)playerHealth.CurrentHP;
         playerHealth.OnDead -= PlayerDeadHeadle;
     }
