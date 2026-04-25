@@ -1,0 +1,149 @@
+@startuml DamageHealthSystem
+skinparam classAttributeIconSize 0
+left to right direction
+skinparam nodesep 20
+skinparam ranksep 20
+
+interface IDamageable {
+  +TakeDamage(damage: float): void
+}
+
+interface IDamageBlocker {
+  +IsDamageBlocked: bool
+}
+
+class Health {
+  #maxHealth: float
+  +MaxHealth: float
+  +CurrentHP: float
+  +IsDead: bool
+  -damageBlockers: IDamageBlocker[]
+  +OnDead: Action
+  +OnHealthChanged: Action<float>
+  +Onhit: Action
+  #Awake(): void
+  +TakeDamage(damage: float): void
+  +Kill(): void
+  +IgnoreDamage: bool
+  +EnableIgnoreDamage(enable: bool): void
+  +SetCurrentHealth(amount: float): void
+  #DeadEvent(): void
+  #HealthChangedEvent(): void
+}
+
+class PlayerHealth {
+  -hitIFrameDuration: float
+  -iframe: IFrameController
+  +OnIFrame: Action
+  +MaxHealth: float
+  +TakeDamage(damage: float): void
+}
+
+class IFrameController {
+  -routine: Coroutine
+  -endTime: float
+  -hitCollider: Collider2D
+  +IsDamageBlocked: bool
+  -Awake(): void
+  +AddDuration(duration: float): void
+  -IFrameRoutine(): IEnumerator
+}
+
+class Attack {
+  -baseDamage: float
+  +OnAttack: Action
+  -Awake(): void
+  -OnEnable(): void
+  -OnDisable(): void
+  +TryAttack(): void
+  +RefreshWeapon(): void
+  -HandleWeaponAttack(): void
+  -UnsubscribeCurrentWeapon(): void
+  +AddDamagePercent(percent: float): void
+  +RemoveDamagePercent(percent: float): void
+  +ResetDamagePercent(): void
+  +AddFlatDamage(amount: float): void
+  +RemoveFlatDamage(amount: float): void
+  +ResetFlatDamage(): void
+}
+
+class Hitbox {
+  -damage: float
+  -hitCollider: Collider2D
+  -isTrigger: bool
+  -owner: GameObject
+  +OnHit: Action
+  +SetDamage(damage: float): void
+  +SetOwner(owner: GameObject): void
+  +EnableCol(enable: bool): void
+  #Awake(): void
+  -OnTriggerEnter2D(other: Collider2D): void
+  -OnCollisionEnter2D(collision: Collision2D): void
+  #ProcessHit(col: Collider2D): void
+  #CheckOwner(col: Collider2D): bool
+  #InvokeOnDealDamage(): bool
+  +GetDamage(): float
+  +GetOwner(): GameObject
+}
+
+class ProjectileHit {
+  -lifeTime: float
+  -bulletHealth: float
+  -speed: float
+  -rb: Rigidbody2D
+  -health: PureHealth
+  +OnSpawn: Action
+  #Awake(): void
+  +OnObjectSpawn(): void
+  -Disable(): IEnumerator
+  #ProcessHit(col: Collider2D): void
+  #InvokeOnDealDamage(): bool
+  +SetProjectlieSpeed(value: float): void
+}
+
+class PureHealth {
+  +MaxHP: float
+  +CurrentHP: float
+  +IsDead: bool
+  +PureHealth(maxHP: float)
+  +TakeDamage(damage: float): void
+  +ResetHP(): void
+}
+
+IDamageable <|.. Health
+IDamageBlocker <|.. IFrameController
+
+Health <|-- PlayerHealth
+Hitbox <|-- ProjectileHit
+
+Attack -right-> Hitbox : produces
+Hitbox -right-> Health : deals damage
+PlayerHealth -down-> IFrameController : uses
+Health -down-> IDamageBlocker : checks
+Health ..> IDamageable
+ProjectileHit -down-> PureHealth : bullet durability
+
+note right of Health
+Core HP container.
+Handles damage, death,
+and health change events.
+end note
+
+note right of PlayerHealth
+Extends Health with
+temporary i-frame trigger
+after taking damage.
+end note
+
+note right of Hitbox
+Collision entry point for damage.
+Skips owner/self hits before
+calling IDamageable.TakeDamage().
+end note
+
+note right of Attack
+Represents attack entry point
+from character logic.
+end note
+
+@enduml

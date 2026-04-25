@@ -1,0 +1,90 @@
+@startuml IFrameSystem
+skinparam classAttributeIconSize 0
+left to right direction
+skinparam nodesep 20
+skinparam ranksep 20
+
+interface IDamageBlocker {
+  +IsDamageBlocked: bool
+}
+
+interface IImpulseMover {
+  +Play(direction: Vector2, force: float, duration: float): void
+}
+
+class Health {
+  #maxHealth: float
+  +CurrentHP: float
+  +IsDead: bool
+  -damageBlockers: IDamageBlocker[]
+  +OnDead: Action
+  +OnHealthChanged: Action<float>
+  +Onhit: Action
+  +IgnoreDamage: bool
+  +TakeDamage(damage: float): void
+  +EnableIgnoreDamage(enable: bool): void
+}
+
+class PlayerHealth {
+  -hitIFrameDuration: float
+  -iframe: IFrameController
+  +OnIFrame: Action
+  +TakeDamage(damage: float): void
+}
+
+class Dodge {
+  +dodgeForce: float
+  +cooldown: float
+  +dodgeDistanceMultiplier: float
+  -iFrameDelay: float
+  -iFrameDuration: float
+  +dodgeAnimation: AnimationClip
+  +OnDodge: Action
+  -burstMove: IImpulseMover
+  -iframe: IFrameController
+  -dir: Vector2
+  -cooldownTimer: float
+  +TryDodge(): void
+  +SetDirection(dir: Vector2): void
+  +AddDistanceMultiplier(multiplier: float): void
+  +RemoveDistanceMultiplier(multiplier: float): void
+  +AddIFrameDuration(amount: float): void
+  +RemoveIFrameDuration(amount: float): void
+}
+
+class IFrameController {
+  -routine: Coroutine
+  -endTime: float
+  -hitCollider: Collider2D
+  +IsDamageBlocked: bool
+  +AddDuration(duration: float): void
+  -IFrameRoutine(): IEnumerator
+}
+
+Health <|-- PlayerHealth
+IDamageBlocker <|.. IFrameController
+IImpulseMover <|.. Dodge
+
+PlayerHealth -right-> IFrameController : triggers i-frame
+Dodge -right-> IFrameController : roll i-frame
+Dodge -down-> IImpulseMover : movement burst
+Health -down-> IDamageBlocker : checks blockers
+
+note right of PlayerHealth
+After taking damage successfully,
+PlayerHealth starts temporary i-frame
+through IFrameController.AddDuration().
+end note
+
+note right of Dodge
+Roll/Dodge also grants temporary
+i-frame by calling AddDuration()
+when TryDodge() succeeds.
+end note
+
+note right of IFrameController
+Blocks damage and disables Collider2D
+until the i-frame duration ends.
+end note
+
+@enduml
