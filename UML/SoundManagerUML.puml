@@ -1,0 +1,102 @@
+@startuml SoundManagerSystem
+skinparam classAttributeIconSize 0
+left to right direction
+skinparam nodesep 6
+skinparam ranksep 6
+
+class SoundManager {
+  -soundTable: SoundTable
+  -audioPoolTag: string
+  -bgmSource: AudioSource
+  -audioMixer: AudioMixer
+  -currentBgmId: SoundID
+  -soundsById: Dictionary
+  +PlaySFX(id: SoundID, position: Vector3): float
+  +PlayLoopSFX(id: SoundID, position: Vector3, duration: float): float
+  +PlayEventSFX(id: SoundID): void
+  +PlayBGM(id: SoundID): void
+  +StopBGM(): void
+  +SetMasterVolume(level: float): void
+  +SetSoundFXVolume(level: float): void
+  +SetMusicVolume(level: float): void
+}
+
+class SoundTable {
+  +soundLibraries: List
+}
+
+class SoundLibrary {
+  +sounds: List
+}
+
+class SoundData {
+  +id: SoundID
+  +clip: AudioClip
+  +volume: float
+}
+
+class SoundID
+
+class SFXPlayer {
+  -audioSource: AudioSource
+  -returnRoutine: Coroutine
+  +Play(data: SoundData): void
+  +PlayLoop(data: SoundData, duration: float): void
+}
+
+class ObjectPooler {
+  +SpawnFromPool(tag: string, position: Vector3, rotation: Quaternion): GameObject
+}
+
+class SoundSaveData {
+  +audioMixer: AudioMixer
+  +LoadData(data: GameData): void
+  +SaveData(data: GameData): void
+}
+
+class BGMPlayer
+class BMGStageManager
+class BMGBossTriggerRoom
+class CharacterSound
+class PlayerSound
+class WeaponSound
+class HitboxHitSound
+class ProjectileHitSound
+
+SoundManager --> SoundTable : builds lookup
+SoundTable --> SoundLibrary : groups
+SoundLibrary --> SoundData : contains
+SoundData --> SoundID : key
+
+SoundManager --> ObjectPooler : SpawnFromPool(SFX)
+SoundManager --> SFXPlayer : Play / PlayLoop
+SoundManager --> AudioSource : BGM output
+SoundManager --> AudioMixer : set volumes
+
+SoundSaveData --> AudioMixer : load/save mixer values
+
+BGMPlayer --> SoundManager : PlayBGM()
+BMGStageManager --> SoundManager : PlayBGM()
+BMGBossTriggerRoom --> SoundManager : PlayBGM()
+CharacterSound --> SoundManager : PlaySFX()
+PlayerSound --> SoundManager : PlaySFX()/PlayLoopSFX()
+WeaponSound --> SoundManager : PlaySFX()
+HitboxHitSound --> SoundManager : PlaySFX()
+ProjectileHitSound --> SoundManager : PlaySFX()
+
+note bottom of SoundManager
+Central sound service.
+Uses SoundID -> SoundData lookup,
+pooled SFX players, and a dedicated BGM AudioSource.
+end note
+
+note bottom of SFXPlayer
+Reusable pooled audio player
+that disables itself after playback.
+end note
+
+note bottom of SoundSaveData
+Persists mixer volume settings.
+end note
+
+@enduml

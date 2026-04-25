@@ -1,0 +1,76 @@
+@startuml ManaSystem
+skinparam classAttributeIconSize 0
+left to right direction
+skinparam nodesep 6
+skinparam ranksep 6
+
+class Mana {
+  -maxMana: float
+  -manaRegenRate: float
+  -ignoreManaCost: bool
+  +CurrentMana: float
+  +MaxMana: float
+  +ConsumeMana(amount: float): void
+  +EnableIgnoreManaCost(enable: bool): void
+}
+
+class ProjectileWeapon {
+  -manaCost: float
+  -mana: Mana
+  +SetOwner(owner: GameObject): void
+  +Shoot(): void
+}
+
+class MeleeProjectileWeapon {
+  -manaCost: float
+  -mana: Mana
+  +SetOwner(owner: GameObject): void
+  +Shoot(): void
+}
+
+class SummonWeapon {
+  -manaCost: float
+  -mana: Mana
+  +SetOwner(owner: GameObject): void
+}
+
+class ManaSliderPHUD {
+  -mana: Mana
+  -manaSlider: Slider
+}
+
+class Ef_InfiniteMana {
+  +Duration: float
+  +Apply(target: GameObject, IsActive: bool = false): void
+  +RemoveAfterTime(player: Mana): IEnumerator
+}
+
+class PlayerUpgradeManager
+interface IPlayerStats {
+  +MaxMana: float
+}
+
+Mana --> PlayerUpgradeManager : reads upgrade stats
+PlayerUpgradeManager ..> IPlayerStats : GetFinalStats()
+
+ProjectileWeapon --> Mana : check/consume
+MeleeProjectileWeapon --> Mana : check/consume
+SummonWeapon --> Mana : check/consume
+ManaSliderPHUD --> Mana : display ratio
+Ef_InfiniteMana --> Mana : ignore cost on/off
+
+note bottom of Mana
+Core mana container:
+regen over time, spend on skill/weapon use,
+and optionally ignore mana cost.
+end note
+
+note bottom of ProjectileWeapon
+Consumes mana after successful ranged attack.
+end note
+
+note bottom of Ef_InfiniteMana
+Temporary buff that disables mana spending.
+end note
+
+@enduml

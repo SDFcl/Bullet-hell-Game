@@ -1,0 +1,79 @@
+@startuml ObjectPoolSystem
+skinparam classAttributeIconSize 0
+left to right direction
+skinparam nodesep 6
+skinparam ranksep 6
+
+class Pool {
+  +tag: string
+  +prefab: GameObject
+  +size: int
+}
+
+class ObjectPoolTableSO {
+  +poolTableList: List
+}
+
+class ObjectPoolListSO {
+  +pools: List
+}
+
+class ObjectPooler {
+  +poolTable: ObjectPoolTableSO
+  +useScriptableObject: bool
+  +pools: List
+  -finalPools: List
+  +poolDictionary: Dictionary
+  +SpawnFromPool(tag: string, position: Vector3, rotation: Quaternion, beforeSpawn: Action = null): GameObject
+}
+
+interface IPooledObject {
+  +OnObjectSpawn(): void
+}
+
+class ProjectileHit {
+  +OnObjectSpawn(): void
+}
+
+class Portal {
+  +OnObjectSpawn(): void
+}
+
+class BasePatternFire
+class SummonWeapon
+class SoundManager
+class Drop
+
+ObjectPoolTableSO --> ObjectPoolListSO : groups
+ObjectPoolListSO --> Pool : contains
+ObjectPooler --> ObjectPoolTableSO : reads config
+ObjectPooler --> Pool : merges/finalizes
+
+IPooledObject <|.. ProjectileHit
+IPooledObject <|.. Portal
+
+BasePatternFire --> ObjectPooler : SpawnFromPool()
+SummonWeapon --> ObjectPooler : SpawnFromPool()
+Drop --> ObjectPooler : SpawnFromPool()
+SoundManager --> ObjectPooler : SpawnFromPool()
+
+ObjectPooler --> IPooledObject : OnObjectSpawn()
+
+note bottom of ObjectPooler
+Central runtime pool.
+Reuses inactive objects by tag,
+creates new ones if pool is exhausted,
+then optionally calls OnObjectSpawn().
+end note
+
+note bottom of ObjectPoolTableSO
+ScriptableObject configuration layer
+for organizing multiple pool lists.
+end note
+
+note bottom of IPooledObject
+Hook for pooled objects to reset themselves
+when reactivated from the pool.
+end note
+
+@enduml

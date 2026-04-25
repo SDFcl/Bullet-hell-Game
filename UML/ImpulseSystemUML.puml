@@ -1,0 +1,103 @@
+@startuml ImpulseSystem
+skinparam classAttributeIconSize 0
+left to right direction
+skinparam nodesep 6
+skinparam ranksep 6
+
+interface IMovement {
+  +SetMoveInput(input: Vector2): void
+  +GetMoveInput(): Vector2
+  +GetDirection(): Vector2
+  +EnableMovement(): void
+  +DisableMovement(): void
+  +ResetVelocity(): void
+  +ApplyImpulse(direction: Vector2, magnitude: float): void
+}
+
+interface IImpulseMover {
+  +Play(direction: Vector2, force: float, duration: float): void
+  +StopCurrent(): void
+}
+
+interface IWeapon {
+  +OnAttack: Action
+}
+
+class Movement {
+  -moveSpeed: float
+  -defaultMoveSpeed: float
+  -rb2d: Rigidbody2D
+  -moveInput: Vector2
+  -lastMoveDir: Vector2
+  -canMove: bool
+  +ResetVelocity(): void
+  +ApplyImpulse(direction: Vector2, magnitude: float): void
+  +EnableMovement(): void
+  +DisableMovement(): void
+  +SetMoveInput(input: Vector2): void
+  +GetMoveInput(): Vector2
+  +GetDirection(): Vector2
+}
+
+class ImpulseController {
+  -movement: IMovement
+  -currentCoroutine: Coroutine
+  +Play(direction: Vector2, force: float, duration: float): void
+  +StopCurrent(): void
+  -PlayRoutine(direction: Vector2, force: float, duration: float): IEnumerator
+  -Cleanup(): void
+}
+
+class Dodge {
+  +dodgeForce: float
+  +cooldown: float
+  +dodgeDistanceMultiplier: float
+  -iFrameDelay: float
+  -iFrameDuration: float
+  +dodgeAnimation: AnimationClip
+  +OnDodge: Action
+  -burstMove: IImpulseMover
+  -dir: Vector2
+  -cooldownTimer: float
+  +TryDodge(): void
+  +SetDirection(dir: Vector2): void
+  +AddDistanceMultiplier(multiplier: float): void
+  +RemoveDistanceMultiplier(multiplier: float): void
+}
+
+class ImpulseOnAttack {
+  -impulseForce: float
+  -impulseDuration: float
+  -directionMode: ImpulseDirectionMode
+  -useAnimationEvent: bool
+  -ownerAimPivot: AimPivot2D
+  -impulseMover: IImpulseMover
+  -weapon: IWeapon
+  +PerformEffect(): void
+  -GetImpulseDirection(): Vector2
+  +ImpulsMover(): void
+}
+
+IMovement <|.. Movement
+IImpulseMover <|.. ImpulseController
+
+ImpulseController --> IMovement : controls movement
+Dodge --> IImpulseMover : roll burst
+ImpulseOnAttack --> IImpulseMover : attack impulse
+ImpulseOnAttack --> IWeapon : subscribes OnAttack
+
+note bottom of ImpulseController
+Temporarily disables normal movement,
+applies impulse, waits, then restores control.
+end note
+
+note bottom of Dodge
+Uses impulse for roll / dash movement.
+end note
+
+note bottom of ImpulseOnAttack
+Weapon composition that adds recoil or lunge
+when attack event fires.
+end note
+
+@enduml

@@ -1,0 +1,161 @@
+@startuml EnemyBossSystem
+skinparam classAttributeIconSize 0
+left to right direction
+skinparam nodesep 6
+skinparam ranksep 6
+
+class EnemyController {
+  -target: Transform
+  -stateGraph: EnemyStateGraphSO
+  -ctx: EnemyContext
+  -stateMachine: StateMachine
+  +Awake(): void
+  +Update(): void
+}
+
+class EnemyContext {
+  +Self: Transform
+  +Target: Transform
+  +Health: Health
+  +Movement: Movement
+  +AimPivot: AimPivot2D
+  +Facing: Facing2D
+  +PathToDir: PathToDir
+  +Timer: Timer
+  +LineOfSight: LineOfSight2D
+  +Attack: Attack
+  +MoveTo(destination: Vector2): void
+}
+
+class EnemyStateGraphSO {
+  +entryState: EnemyStateSO
+  +allStates: List
+  +anyTransitions: List
+}
+
+class EnemyStateSO {
+  +actions: List
+  +transitions: List
+}
+
+class EnemyStateTransitionSO {
+  +condition: EnemyConditionSO
+  +targetState: EnemyStateSO
+}
+
+class EnemyActionSO {
+  +CreateAction(): IAction
+}
+
+class EnemyConditionSO {
+  +CreateCondition(): ICondition
+}
+
+interface IAction
+interface ICondition
+
+class EnemyAttackAction
+class EnemyChaseAction
+class EnemyWanderAction
+class EnemyPrepareATKAction
+class EnemyDeadAction
+class EnemyEntryAction
+
+class EnemyDistanceCondition
+class EnemySeeTargetCondition
+class EnemyCooldownCondition
+class EnemyOnDeadCondition
+class EnemyAndCondition
+class EnemyNotCondition
+
+class EnemyAttackSelector {
+  -attacks: List
+  +OnSelected: Action
+  +SelectRandomAttack(): bool
+}
+
+class AttackEntry {
+  +attackName: string
+  +prefab: GameObject
+  +cooldown: float
+  +IsReady: bool
+}
+
+class BossAnimations {
+  +SetIndexSelector(index: int): void
+}
+
+class KillAllEnemy {
+  +HandleBossDeath(): void
+}
+
+class Health
+class Attack
+class CharacterAnimations
+
+EnemyController --> EnemyContext : builds
+EnemyController --> EnemyStateGraphSO : runs
+
+EnemyStateGraphSO --> EnemyStateSO : states
+EnemyStateSO --> EnemyActionSO : actions
+EnemyStateSO --> EnemyStateTransitionSO : transitions
+EnemyStateTransitionSO --> EnemyConditionSO : condition
+EnemyStateTransitionSO --> EnemyStateSO : target
+
+EnemyActionSO ..> IAction : create
+EnemyConditionSO ..> ICondition : create
+
+IAction <|.. EnemyAttackAction
+IAction <|.. EnemyChaseAction
+IAction <|.. EnemyWanderAction
+IAction <|.. EnemyPrepareATKAction
+IAction <|.. EnemyDeadAction
+IAction <|.. EnemyEntryAction
+
+ICondition <|.. EnemyDistanceCondition
+ICondition <|.. EnemySeeTargetCondition
+ICondition <|.. EnemyCooldownCondition
+ICondition <|.. EnemyOnDeadCondition
+ICondition <|.. EnemyAndCondition
+ICondition <|.. EnemyNotCondition
+
+EnemyAttackAction --> EnemyContext : uses
+EnemyAttackAction --> EnemyAttackSelector : select attack
+EnemyAttackAction --> Attack : RefreshWeapon/TryAttack
+
+EnemyChaseAction --> EnemyContext : move to target
+EnemyWanderAction --> EnemyContext : roam
+EnemyPrepareATKAction --> EnemyContext : stop + face target
+EnemyDeadAction --> EnemyContext : stop + drop
+EnemyEntryAction --> EnemyContext : ignore damage
+
+EnemyDistanceCondition --> EnemyContext : distance
+EnemySeeTargetCondition --> EnemyContext : sight
+EnemyCooldownCondition --> EnemyContext : timer
+EnemyOnDeadCondition --> EnemyContext : health
+EnemyAndCondition --> ICondition : combine
+EnemyNotCondition --> ICondition : negate
+
+EnemyAttackSelector --> AttackEntry : owns
+BossAnimations --|> CharacterAnimations
+BossAnimations --> EnemyAttackSelector : listens OnSelected
+KillAllEnemy --> Health : listens OnDead
+KillAllEnemy ..> EnemyController : kill remaining enemies
+
+note bottom of EnemyController
+Entry point for enemy AI runtime.
+end note
+
+note bottom of EnemyContext
+Shared runtime data used by actions and conditions.
+end note
+
+note bottom of EnemyAttackSelector
+Boss/enemy attack prefab selector with cooldowns.
+end note
+
+note bottom of KillAllEnemy
+Boss death side effect.
+end note
+
+@enduml

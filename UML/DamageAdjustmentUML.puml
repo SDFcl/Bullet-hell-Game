@@ -1,0 +1,111 @@
+@startuml DamageAdjustment
+skinparam classAttributeIconSize 0
+left to right direction
+skinparam nodesep 6
+skinparam ranksep 6
+
+interface IWeapon {
+  +GetDamage(): float
+  +AddDamagePercent(multiplier: float): void
+  +RemoveDamagePercent(multiplier: float): void
+  +ResetDamagePercent(): void
+  +AddFlatDamage(amount: float): void
+  +RemoveFlatDamage(amount: float): void
+  +ResetFlatDamage(): void
+}
+
+class Attack {
+  -baseDamage: float
+  -currentWeapon: IWeapon
+  +CurrentWeapon: IWeapon
+  +AddDamagePercent(percent: float): void
+  +RemoveDamagePercent(percent: float): void
+  +ResetDamagePercent(): void
+  +AddFlatDamage(amount: float): void
+  +RemoveFlatDamage(amount: float): void
+  +ResetFlatDamage(): void
+  +RefreshWeapon(): void
+}
+
+class BaseWeapon {
+  #baseDamage: float
+  #currentDamage: float
+  +damagePercent: float
+  #flatDamage: float
+  +GetDamage(): float
+  +AddDamagePercent(percent: float): void
+  +RemoveDamagePercent(percent: float): void
+  +ResetDamagePercent(): void
+  +AddFlatDamage(amount: float): void
+  +RemoveFlatDamage(amount: float): void
+  +ResetFlatDamage(): void
+  #OnDamageChanged(): void
+}
+
+class MeleeWeapon {
+  -hitbox: Hitbox
+  #OnDamageChanged(): void
+}
+
+class ProjectileWeapon
+
+class Hitbox {
+  -damage: float
+  +SetDamage(damage: float): void
+  +GetDamage(): float
+}
+
+class ProjectileHit {
+  +SetDamage(damage: float): void
+}
+
+class Ef_IncreaseTotalDamage {
+  +DamageIncreasePercent: float
+  +Apply(target: GameObject, IsActive: bool = false): void
+}
+
+class SpecialAbility {
+  -damageMultiplier: float
+  +TryUse(): void
+  -ResetDamage(): void
+}
+
+class SummonWeapon {
+  #ExecuteWeaponAction(): void
+}
+
+IWeapon <|.. BaseWeapon
+BaseWeapon <|-- MeleeWeapon
+BaseWeapon <|-- ProjectileWeapon
+BaseWeapon <|-- SummonWeapon
+
+Attack --> IWeapon : forwards damage adjust
+Attack --> BaseWeapon : adds baseDamage on refresh
+MeleeWeapon --> Hitbox : update damage
+ProjectileWeapon --> ProjectileHit : spawned projectile uses GetDamage()
+Ef_IncreaseTotalDamage --> Attack : AddDamagePercent()
+SpecialAbility --> Attack : AddDamagePercent()\nRemoveDamagePercent()
+SummonWeapon ..> Attack : minion AddFlatDamage(GetDamage())
+
+note bottom of BaseWeapon
+Damage formula:
+(baseDamage + flatDamage) * (1 + damagePercent)
+end note
+
+note bottom of Attack
+Character-side entry point
+for temporary or persistent
+damage modification.
+end note
+
+note bottom of MeleeWeapon
+When damage changes,
+Hitbox.SetDamage(GetDamage()) is called.
+end note
+
+note bottom of ProjectileWeapon
+Projectile damage is copied
+into ProjectileHit on spawn.
+end note
+
+@enduml
