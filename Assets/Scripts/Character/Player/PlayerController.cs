@@ -215,7 +215,7 @@ public class PlayerController : MonoBehaviour
         {
             attack.TryAttack();
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
             if (GameStateManager.CurrentState == GameState.Paused)
             {
