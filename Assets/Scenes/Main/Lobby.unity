@@ -10135,6 +10135,7 @@ GameObject:
   - component: {fileID: 1981238511}
   - component: {fileID: 1981238512}
   - component: {fileID: 1981238514}
+  - component: {fileID: 1981238515}
   m_Layer: 5
   m_Name: Canvas Group - Start
   m_TagString: Untagged
@@ -10245,6 +10246,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundID: {fileID: 11400000, guid: c08589450f5563640ab8eb7460f9aa4b, type: 2}
+--- !u!114 &1981238515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981238509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6db40b3539e01d498405fde6bd4b69e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundID: {fileID: 11400000, guid: ff1828083b0f3a04286279cf8db6b833, type: 2}
 --- !u!1 &1983203071
 GameObject:
   m_ObjectHideFlags: 0
