@@ -5,7 +5,7 @@ public class RadialProjectileHit : MonoBehaviour, IProjectileHitStrategy
     [Header("Child Projectile Spawn")]
     [SerializeField] private int projectileCount = 8;
     [SerializeField] private float angleOffset = 360f;
-    [SerializeField] private string childProjectileTag = "";
+    [SerializeField] private string childProjectileTag = "BlueProjectile";
 
     [Header("Child Projectile Ability")]
     [SerializeField] private float childProjectileSpeed = 6f;
