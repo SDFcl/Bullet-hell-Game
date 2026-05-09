@@ -9,6 +9,8 @@ public class EnemyController : MonoBehaviour
     private EnemyContext ctx;
     private StateMachine<EnemyContext> stateMachine;
 
+    [SerializeField] private string currentStateName;
+
     private void Awake()
     {
         if (target == null)
@@ -30,6 +32,7 @@ public class EnemyController : MonoBehaviour
 
         IState<EnemyContext> startState = EnemyStateGraphBuilder.Build(stateGraph);
         stateMachine.Initialize(startState);
+        currentStateName = (startState as State<EnemyContext>)?.Name ?? "Unknown";
 
         stateMachine.OnStateChanged += HandleStateChanged;
     }
@@ -47,5 +50,6 @@ public class EnemyController : MonoBehaviour
     private void HandleStateChanged(IState<EnemyContext> prev, IState<EnemyContext> next)
     {
         ctx.Timer.ResetTimer();
+        currentStateName = (next as State<EnemyContext>)?.Name ?? "Unknown";
     }
 }

@@ -2,6 +2,8 @@ using System.Collections.Generic;
 
 public class State<T> : IState<T>
 {
+    public string Name { get; }
+
     #region Fields
 
     private readonly List<IAction<T>> _actions = new();
@@ -10,8 +12,10 @@ public class State<T> : IState<T>
 
     #endregion
 
-    public State(IEnumerable<IAction<T>> actions = null, IEnumerable<Transition<T>> transitions = null)
+    public State(string name = "", IEnumerable<IAction<T>> actions = null, IEnumerable<Transition<T>> transitions = null)
     {
+        Name = name;
+
         if (actions != null)
             _actions.AddRange(actions);
 

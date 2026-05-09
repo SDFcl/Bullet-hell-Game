@@ -25,7 +25,7 @@ public static class EnemyStateGraphBuilder
             if (stateSO == null || stateMap.ContainsKey(stateSO))
                 continue;
 
-            var runtimeState = new State<EnemyContext>();
+            var runtimeState = new State<EnemyContext>(stateSO.name);
 
             foreach (var actionSO in stateSO.actions)
             {
@@ -41,7 +41,7 @@ public static class EnemyStateGraphBuilder
         // กันกรณี entryState ไม่อยู่ใน list
         if (!stateMap.ContainsKey(graph.entryState))
         {
-            var runtimeEntry = new State<EnemyContext>();
+            var runtimeEntry = new State<EnemyContext>(graph.entryState.name);
 
             foreach (var actionSO in graph.entryState.actions)
             {
