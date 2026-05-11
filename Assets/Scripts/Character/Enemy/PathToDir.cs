@@ -77,7 +77,7 @@ public class PathToDir : MonoBehaviour
         }
 
         currentPath = path;
-        currentWaypointIndex = FindClosestWaypointIndex();
+        currentWaypointIndex = 0;
     }
 
     private Vector2 CalculateDirection()
@@ -103,24 +103,5 @@ public class PathToDir : MonoBehaviour
 
         Vector2 dir = (Vector2)currentPath.vectorPath[currentWaypointIndex] - currentPos;
         return dir.sqrMagnitude <= 0.0001f ? Vector2.zero : dir.normalized;
-    }
-
-    private int FindClosestWaypointIndex()
-    {
-        int bestIndex = 0;
-        float bestDistance = float.MaxValue;
-        Vector2 currentPos = self.position;
-
-        for (int i = 0; i < currentPath.vectorPath.Count; i++)
-        {
-            float dist = ((Vector2)currentPath.vectorPath[i] - currentPos).sqrMagnitude;
-            if (dist < bestDistance)
-            {
-                bestDistance = dist;
-                bestIndex = i;
-            }
-        }
-
-        return bestIndex;
     }
 }
