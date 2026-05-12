@@ -1,0 +1,182 @@
+@startuml WeaponCompositionStrategy
+skinparam classAttributeIconSize 0
+left to right direction
+skinparam nodesep 4
+skinparam ranksep 4
+
+interface IWeapon {
+  +OnAttack: Action
+  +GetOwner(): GameObject
+  +GetDamage(): float
+}
+
+interface IProjectileWeapon {
+  +ProjectileSpeed: float
+  +ProjectilePoolTag: string
+  +ShootPoint: Transform
+  +SetProjectileTag(tag: string): void
+}
+
+interface IFireStrategy {
+  +Execute(weapon: IProjectileWeapon): void
+}
+
+interface IProjectileHitStrategy {
+  +OnSpawn(projectile: ProjectileHit): void
+  +OnDespawn(projectile: ProjectileHit): void
+}
+
+interface IProjectileBlocker
+
+interface IImpulseMover {
+  +Play(direction: Vector2, force: float, duration: float): void
+}
+
+class ProjectileWeapon {
+  -firePattern: IFireStrategy
+  +Shoot(): void
+}
+
+class MeleeProjectileWeapon {
+  -firePattern: IFireStrategy
+  +Shoot(): void
+}
+
+abstract class BasePatternFire {
+  +Execute(weapon: IProjectileWeapon): void
+  #SpawnProjectile(weapon: IProjectileWeapon, position: Vector3, rotation: Quaternion): void
+}
+
+class NormalFire {
+  +Execute(weapon: IProjectileWeapon): void
+}
+
+class ArcFire {
+  -bulletCount: int
+  -totalArcAngle: float
+  -spawnOffset: float
+  +Execute(weapon: IProjectileWeapon): void
+}
+
+class RadialFire {
+  -numberOfProjectiles: int
+  +Execute(weapon: IProjectileWeapon): void
+}
+
+class DaulSideFire {
+  -sideOffset: float
+  +Execute(weapon: IProjectileWeapon): void
+}
+
+class MultiSideFire {
+  -sideBulletCount: int
+  -spreadAngle: float
+  +Execute(weapon: IProjectileWeapon): void
+}
+
+class ClusterSpreadFire {
+  -scatterProjectileTag: string
+  -scatterCount: int
+  -spreadAngle: float
+  -minSpawnOffset: float
+  -maxSpawnOffset: float
+  -minSpeedMultiplier: float
+  -maxSpeedMultiplier: float
+  +Execute(weapon: IProjectileWeapon): void
+}
+
+class RandomRadialFire {
+  -bulletCount: int
+  -minSpawnOffset: float
+  -maxSpawnOffset: float
+  -minSpeedMultiplier: float
+  -maxSpeedMultiplier: float
+  +Execute(weapon: IProjectileWeapon): void
+}
+
+class ProjectilesBurstCount {
+  -burstCount: int
+  -burstInterval: float
+  -firePattern: IFireStrategy
+  -projectileWeapon: ProjectileWeapon
+  +PerformAttack(): void
+}
+
+class ImpulseOnAttack {
+  -impulseForce: float
+  -impulseDuration: float
+  -directionMode: ImpulseDirectionMode
+  -useAnimationEvent: bool
+  -impulseMover: IImpulseMover
+  -weapon: IWeapon
+  +PerformEffect(): void
+  +ImpulsMover(): void
+}
+
+class ProjectileHit {
+  -lifetimeStrategy: IProjectileHitStrategy
+  +OnSpawn: Action
+}
+
+class NormalProjectileHit {
+  +OnSpawn(projectile: ProjectileHit): void
+  +OnDespawn(projectile: ProjectileHit): void
+}
+
+class RadialProjectileHit {
+  -projectileCount: int
+  -angleOffset: float
+  -childProjectileTag: string
+  -childProjectileSpeed: float
+  -childProjectileDamage: float
+  +OnSpawn(projectile: ProjectileHit): void
+  +OnDespawn(projectile: ProjectileHit): void
+}
+
+class ProjectileBlocker
+
+IWeapon <|.. ProjectileWeapon
+IWeapon <|.. MeleeProjectileWeapon
+IProjectileWeapon <|.. ProjectileWeapon
+IProjectileWeapon <|.. MeleeProjectileWeapon
+
+IFireStrategy <|.. BasePatternFire
+BasePatternFire <|-- NormalFire
+BasePatternFire <|-- ArcFire
+BasePatternFire <|-- RadialFire
+BasePatternFire <|-- DaulSideFire
+BasePatternFire <|-- MultiSideFire
+BasePatternFire <|-- ClusterSpreadFire
+BasePatternFire <|-- RandomRadialFire
+
+IProjectileHitStrategy <|.. NormalProjectileHit
+IProjectileHitStrategy <|.. RadialProjectileHit
+IProjectileBlocker <|.. ProjectileBlocker
+
+ProjectileWeapon -right-> IFireStrategy : fire pattern
+MeleeProjectileWeapon -right-> IFireStrategy : fire pattern
+ProjectilesBurstCount -up-> ProjectileWeapon : subscribes
+ProjectilesBurstCount -right-> IFireStrategy : repeat
+ImpulseOnAttack -up-> IWeapon : subscribes
+ImpulseOnAttack -right-> IImpulseMover : impulse
+ProjectileHit -right-> IProjectileHitStrategy : despawn
+ProjectileHit ..> IProjectileBlocker : collision check
+
+note bottom of BasePatternFire
+Fire strategy family.
+end note
+
+note bottom of ProjectilesBurstCount
+Burst composition.
+end note
+
+note bottom of ImpulseOnAttack
+Impulse composition.
+end note
+
+note bottom of IProjectileHitStrategy
+Projectile strategy family.
+Swap despawn / split behavior here.
+end note
+
+@enduml

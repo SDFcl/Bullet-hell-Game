@@ -4,7 +4,7 @@ public class Startpoint : MonoBehaviour
 {
     [SerializeField] private bool disableTP = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void OnEnable()
     {
        //test
         MovePlayerToStartpoint();
