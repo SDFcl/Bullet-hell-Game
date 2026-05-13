@@ -27,7 +27,7 @@ public class AdapterPatternClientTest : MonoBehaviour
     public void GameStart()
     {
         levelManager?.SpawnLevel();
-        ConfigureGridFromTilemap();   // ← เพิ่มแค่บรรทัดนี้
+        ConfigureGridFromTilemap();
         pathfinder?.Scan();
 
         Inventory playerInventory = GameObject.FindGameObjectWithTag("Player")?.GetComponentInChildren<Inventory>();
